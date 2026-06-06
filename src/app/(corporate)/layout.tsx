@@ -1,6 +1,4 @@
 import { createClient } from '@/lib/supabase/server'
-import { redirect } from 'next/navigation'
-import { headers } from 'next/headers'
 import Link from 'next/link'
 import { BRAND_NAME } from '@/lib/constants'
 
@@ -9,16 +7,8 @@ export default async function CorporateLayout({
 }: {
   children: React.ReactNode
 }) {
-  const hdrs = await headers()
-  const pathname = hdrs.get('x-pathname') ?? ''
-  const isLoginPage = pathname.includes('/login')
-
   const supabase = await createClient()
   const { data: { user } } = await supabase.auth.getUser()
-
-  if (!user && !isLoginPage) {
-    redirect('/corporate/login')
-  }
 
   return (
     <div className="min-h-screen bg-carbon">
