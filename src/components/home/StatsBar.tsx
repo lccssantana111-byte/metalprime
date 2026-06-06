@@ -41,14 +41,11 @@ export default function StatsBar() {
   return (
     <section className="bg-graphite border-y border-white/5 py-0 overflow-hidden">
       <div className="container mx-auto px-4 sm:px-8">
-        <div className="grid grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-2 lg:grid-cols-4 divide-x divide-white/5">
           {stats.map((stat, i) => (
             <div
               key={stat.label}
               className="relative py-10 px-6 flex flex-col justify-center"
-              style={{
-                borderRight: i < stats.length - 1 ? '1px solid rgba(255,255,255,0.05)' : 'none',
-              }}
             >
               {/* Subtle top accent on first */}
               {i === 0 && (

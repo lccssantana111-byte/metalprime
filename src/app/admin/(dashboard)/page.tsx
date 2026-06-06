@@ -1,8 +1,11 @@
 import { getDashboardMetrics } from '@/lib/queries/metrics'
 import { formatBRL } from '@/lib/utils'
 import {
-  Users, FileText, FolderOpen, TrendingUp, Target, BarChart3,
-  TrendingDown, Minus, AlertTriangle, UserX,
+  TrendingUp,
+  TrendingDown,
+  Minus,
+  AlertTriangle,
+  UserX,
 } from 'lucide-react'
 import Link from 'next/link'
 import { LeadsLineChart } from '@/components/admin/dashboard/LeadsLineChart'
@@ -17,10 +20,24 @@ function Trend({ current, previous }: { current: number; previous: number }) {
   const diff = current - previous
   const pct = Math.round((diff / previous) * 100)
   if (diff === 0)
-    return <span className="inline-flex items-center gap-0.5 text-xs text-metal-dark"><Minus className="w-3 h-3" />{pct}%</span>
+    return (
+      <span className="inline-flex items-center gap-0.5 text-[11px] text-metal-dark font-mono">
+        <Minus className="w-3 h-3" />
+        {pct}%
+      </span>
+    )
   if (diff > 0)
-    return <span className="inline-flex items-center gap-0.5 text-xs text-green-400"><TrendingUp className="w-3 h-3" />+{pct}%</span>
-  return <span className="inline-flex items-center gap-0.5 text-xs text-red-400"><TrendingDown className="w-3 h-3" />{pct}%</span>
+    return (
+      <span className="inline-flex items-center gap-0.5 text-[11px] text-green-400 font-mono">
+        <TrendingUp className="w-3 h-3" />+{pct}%
+      </span>
+    )
+  return (
+    <span className="inline-flex items-center gap-0.5 text-[11px] text-red-400 font-mono">
+      <TrendingDown className="w-3 h-3" />
+      {pct}%
+    </span>
+  )
 }
 
 export default async function AdminDashboardPage() {
@@ -33,64 +50,52 @@ export default async function AdminDashboardPage() {
 
   const kpis = [
     {
-      icon: Users,
       label: 'Leads hoje',
       value: metrics?.leads_today ?? 0,
       sub: `${metrics?.leads_this_month ?? 0} este mês`,
       trend: <Trend current={metrics?.leads_this_month ?? 0} previous={metrics?.leads_prev_month ?? 0} />,
       href: '/admin/leads',
-      color: 'text-blue-400',
-      bg: 'bg-blue-500/10 border-blue-500/20',
+      accent: true,
     },
     {
-      icon: FileText,
       label: 'Orçamentos abertos',
       value: metrics?.open_quotes ?? 0,
       sub: 'Aguardando análise',
       trend: null,
       href: '/admin/orcamentos',
-      color: 'text-yellow-400',
-      bg: 'bg-yellow-500/10 border-yellow-500/20',
+      accent: false,
     },
     {
-      icon: FolderOpen,
       label: 'Projetos em andamento',
       value: metrics?.active_projects ?? 0,
       sub: 'Em execução',
       trend: null,
       href: '/admin/projetos',
-      color: 'text-green-400',
-      bg: 'bg-green-500/10 border-green-500/20',
+      accent: false,
     },
     {
-      icon: TrendingUp,
       label: 'Receita este mês',
       value: formatBRL(metrics?.revenue_this_month ?? 0),
       sub: `${formatBRL(metrics?.revenue_ytd ?? 0)} no ano`,
       trend: null,
       href: '/admin/projetos',
-      color: 'text-amber-400',
-      bg: 'bg-amber-500/10 border-amber-500/20',
+      accent: false,
     },
     {
-      icon: Target,
       label: 'Taxa de conversão',
       value: `${metrics?.conversion_rate ?? 0}%`,
       sub: 'Leads → ganho',
       trend: null,
       href: '/admin/leads',
-      color: 'text-purple-400',
-      bg: 'bg-purple-500/10 border-purple-500/20',
+      accent: false,
     },
     {
-      icon: BarChart3,
       label: 'Leads 30 dias',
       value: leads30dTotal,
       sub: 'Últimos 30 dias',
       trend: null,
       href: '/admin/leads',
-      color: 'text-cyan-400',
-      bg: 'bg-cyan-500/10 border-cyan-500/20',
+      accent: false,
     },
   ]
 
@@ -98,39 +103,55 @@ export default async function AdminDashboardPage() {
 
   return (
     <div>
-      <div className="mb-8">
-        <h1 className="font-display text-3xl font-bold text-white">Dashboard</h1>
-        <p className="text-metal mt-1">Visão geral da operação comercial</p>
+      {/* Page header */}
+      <div className="mb-8 flex items-start justify-between gap-4">
+        <div>
+          <p className="text-[11px] font-semibold tracking-[0.25em] uppercase text-amber-brand mb-1">
+            Visão Geral
+          </p>
+          <h1 className="font-display text-3xl font-black text-white leading-none">Dashboard</h1>
+        </div>
+        <div className="text-right shrink-0">
+          <p className="text-xs text-metal-dark">
+            {new Date().toLocaleDateString('pt-BR', { weekday: 'long', day: 'numeric', month: 'long' })}
+          </p>
+        </div>
       </div>
 
       {/* Alertas operacionais */}
       {hasAlerts && (
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
           {stale > 0 && (
-            <Link href="/admin/leads?status=novo" className="flex items-center gap-3 bg-orange-500/10 border border-orange-500/30 rounded-xl p-4 hover:border-orange-500/50 transition-colors">
-              <div className="w-9 h-9 rounded-lg bg-orange-500/20 flex items-center justify-center shrink-0">
+            <Link
+              href="/admin/leads?status=novo"
+              className="flex items-center gap-3 bg-orange-500/8 border border-orange-500/25 rounded-xl p-4 hover:border-orange-500/45 transition-colors group"
+            >
+              <div className="w-8 h-8 rounded-lg bg-orange-500/15 flex items-center justify-center shrink-0">
                 <AlertTriangle className="w-4 h-4 text-orange-400" />
               </div>
               <div>
                 <p className="text-sm font-semibold text-white">
                   {stale} lead{stale > 1 ? 's' : ''} sem resposta
                 </p>
-                <p className="text-xs text-orange-300/70">
-                  Sem atualização há mais de {staleDays} dias — requer ação
+                <p className="text-xs text-orange-300/60">
+                  Sem atualização há mais de {staleDays} dias
                 </p>
               </div>
             </Link>
           )}
           {unassigned > 0 && (
-            <Link href="/admin/leads" className="flex items-center gap-3 bg-yellow-500/10 border border-yellow-500/30 rounded-xl p-4 hover:border-yellow-500/50 transition-colors">
-              <div className="w-9 h-9 rounded-lg bg-yellow-500/20 flex items-center justify-center shrink-0">
+            <Link
+              href="/admin/leads"
+              className="flex items-center gap-3 bg-yellow-500/8 border border-yellow-500/25 rounded-xl p-4 hover:border-yellow-500/45 transition-colors group"
+            >
+              <div className="w-8 h-8 rounded-lg bg-yellow-500/15 flex items-center justify-center shrink-0">
                 <UserX className="w-4 h-4 text-yellow-400" />
               </div>
               <div>
                 <p className="text-sm font-semibold text-white">
                   {unassigned} lead{unassigned > 1 ? 's' : ''} sem responsável
                 </p>
-                <p className="text-xs text-yellow-300/70">Atribua um vendedor para garantir o follow-up</p>
+                <p className="text-xs text-yellow-300/60">Atribua um vendedor para garantir o follow-up</p>
               </div>
             </Link>
           )}
@@ -138,42 +159,78 @@ export default async function AdminDashboardPage() {
       )}
 
       {/* KPI cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 mb-8">
         {kpis.map((kpi) => (
-          <Link key={kpi.label} href={kpi.href}>
-            <div className="bg-graphite border border-metal-dark/30 rounded-xl p-6 hover:border-amber-brand/30 transition-colors group">
-              <div className="flex items-center justify-between mb-4">
-                <div className={`w-10 h-10 rounded-lg border flex items-center justify-center ${kpi.bg}`}>
-                  <kpi.icon className={`w-5 h-5 ${kpi.color}`} />
-                </div>
+          <Link key={kpi.label} href={kpi.href} className="group block">
+            <div
+              className={`
+                relative bg-graphite border border-metal-dark/25 rounded-xl p-5
+                hover:border-amber-brand/25 transition-all duration-200
+                overflow-hidden
+              `}
+            >
+              {/* Accent bar */}
+              {kpi.accent && (
+                <div className="absolute left-0 top-4 bottom-4 w-[2px] bg-amber-brand rounded-r-full" />
+              )}
+
+              {/* Top row: label + trend */}
+              <div className="flex items-center justify-between mb-3">
+                <span className="text-[10px] font-semibold tracking-[0.2em] uppercase text-metal-dark">
+                  {kpi.label}
+                </span>
                 {kpi.trend}
               </div>
-              <div className="font-display text-3xl font-bold text-white mb-1">{kpi.value}</div>
-              <div className="text-sm font-medium text-metal-light">{kpi.label}</div>
-              <div className="text-xs text-metal-dark mt-1">{kpi.sub}</div>
+
+              {/* Divider */}
+              <div className="h-px bg-white/4 mb-3" />
+
+              {/* Value */}
+              <div className="font-display text-[2rem] font-black text-white leading-none mb-1.5 group-hover:text-amber-light transition-colors duration-200">
+                {kpi.value}
+              </div>
+
+              {/* Sub */}
+              <p className="text-[11px] text-metal-dark">{kpi.sub}</p>
+
+              {/* Corner decoration */}
+              <div className="absolute bottom-3 right-3 w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                <div className="absolute bottom-0 right-0 w-2 h-px bg-amber-brand/40" />
+                <div className="absolute bottom-0 right-0 w-px h-2 bg-amber-brand/40" />
+              </div>
             </div>
           </Link>
         ))}
       </div>
 
-      {/* Gráfico de linha 30 dias + Leads recentes */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
-        <div className="lg:col-span-2 bg-graphite border border-metal-dark/30 rounded-xl p-6">
+      {/* Charts row */}
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-4">
+        <div className="lg:col-span-2 bg-graphite border border-metal-dark/25 rounded-xl p-5">
           <div className="flex items-center justify-between mb-4">
-            <h3 className="font-semibold text-white">Leads — últimos 30 dias</h3>
-            <span className="text-xs text-metal-dark">{leads30dTotal} total</span>
+            <div>
+              <p className="text-[10px] font-semibold tracking-[0.2em] uppercase text-metal-dark mb-0.5">
+                Tendência
+              </p>
+              <h3 className="font-display font-semibold text-white text-sm">Leads — últimos 30 dias</h3>
+            </div>
+            <span className="font-mono text-xs text-metal-dark tabular-nums">{leads30dTotal} total</span>
           </div>
           {metrics?.leads_30d && metrics.leads_30d.length > 0 ? (
             <LeadsLineChart data={metrics.leads_30d} />
           ) : (
-            <div className="h-[200px] flex items-center justify-center text-sm text-metal">Sem dados</div>
+            <EmptyChart />
           )}
         </div>
 
-        <div className="bg-graphite border border-metal-dark/30 rounded-xl p-6">
+        <div className="bg-graphite border border-metal-dark/25 rounded-xl p-5">
           <div className="flex items-center justify-between mb-4">
-            <h3 className="font-semibold text-white">Leads recentes</h3>
-            <Link href="/admin/leads" className="text-xs text-amber-brand hover:text-amber-light transition-colors">
+            <div>
+              <p className="text-[10px] font-semibold tracking-[0.2em] uppercase text-metal-dark mb-0.5">
+                Recentes
+              </p>
+              <h3 className="font-display font-semibold text-white text-sm">Leads recentes</h3>
+            </div>
+            <Link href="/admin/leads" className="text-[10px] text-amber-brand hover:text-amber-light transition-colors tracking-widest uppercase">
               Ver todos
             </Link>
           </div>
@@ -181,26 +238,45 @@ export default async function AdminDashboardPage() {
         </div>
       </div>
 
-      {/* Funil de conversão + Distribuição por serviço */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div className="bg-graphite border border-metal-dark/30 rounded-xl p-6">
-          <h3 className="font-semibold text-white mb-4">Funil de conversão</h3>
+      {/* Bottom charts */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+        <div className="bg-graphite border border-metal-dark/25 rounded-xl p-5">
+          <div className="mb-4">
+            <p className="text-[10px] font-semibold tracking-[0.2em] uppercase text-metal-dark mb-0.5">
+              Pipeline
+            </p>
+            <h3 className="font-display font-semibold text-white text-sm">Funil de conversão</h3>
+          </div>
           {metrics?.leads_by_status && metrics.leads_by_status.length > 0 ? (
             <ConversionFunnel data={metrics.leads_by_status as Parameters<typeof ConversionFunnel>[0]['data']} />
           ) : (
-            <div className="h-[200px] flex items-center justify-center text-sm text-metal">Sem dados</div>
+            <EmptyChart />
           )}
         </div>
 
-        <div className="bg-graphite border border-metal-dark/30 rounded-xl p-6">
-          <h3 className="font-semibold text-white mb-4">Leads por serviço</h3>
+        <div className="bg-graphite border border-metal-dark/25 rounded-xl p-5">
+          <div className="mb-4">
+            <p className="text-[10px] font-semibold tracking-[0.2em] uppercase text-metal-dark mb-0.5">
+              Distribuição
+            </p>
+            <h3 className="font-display font-semibold text-white text-sm">Leads por serviço</h3>
+          </div>
           {metrics?.leads_by_service && metrics.leads_by_service.length > 0 ? (
             <ServicesPieChart data={metrics.leads_by_service as Parameters<typeof ServicesPieChart>[0]['data']} />
           ) : (
-            <div className="h-[200px] flex items-center justify-center text-sm text-metal">Sem dados</div>
+            <EmptyChart />
           )}
         </div>
       </div>
+    </div>
+  )
+}
+
+function EmptyChart() {
+  return (
+    <div className="h-[180px] flex flex-col items-center justify-center gap-2">
+      <div className="w-8 h-px bg-metal-dark/50" />
+      <p className="text-xs text-metal-dark">Sem dados ainda</p>
     </div>
   )
 }

@@ -22,12 +22,12 @@ export default function ClientLogos() {
         <div className="h-px bg-white/5 flex-1" />
       </div>
 
-      <div className="relative">
+      <div className="relative group/marquee">
         {/* Fade edges */}
         <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-carbon to-transparent z-10 pointer-events-none" />
         <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-carbon to-transparent z-10 pointer-events-none" />
 
-        <div className="flex gap-0 animate-marquee w-max">
+        <div className="flex gap-0 animate-marquee w-max group-hover/marquee:[animation-play-state:paused]">
           {[...clients, ...clients].map((client, i) => (
             <div
               key={i}

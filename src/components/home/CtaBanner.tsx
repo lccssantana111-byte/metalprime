@@ -3,7 +3,7 @@
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 import Link from 'next/link'
-import { ArrowRight } from 'lucide-react'
+import { ArrowRight, CheckCircle2 } from 'lucide-react'
 import { COMPANY_PHONE, WHATSAPP_NUMBER } from '@/lib/constants'
 
 export default function CtaBanner() {
@@ -91,14 +91,15 @@ export default function CtaBanner() {
             </div>
 
             {/* Trust badges */}
-            <div className="flex flex-wrap items-center justify-center gap-6 mt-12">
+            <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 mt-12">
               {[
-                '✓ Orçamento em 24h',
-                '✓ Visita técnica gratuita',
-                '✓ ART inclusa',
-                '✓ +5.000 projetos entregues',
+                'Orçamento em 24h',
+                'Visita técnica gratuita',
+                'ART inclusa',
+                '+5.000 projetos entregues',
               ].map((badge) => (
-                <span key={badge} className="text-xs text-metal-dark tracking-wide">
+                <span key={badge} className="flex items-center gap-1.5 text-xs text-metal-dark tracking-wide">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-amber-brand/60 shrink-0" />
                   {badge}
                 </span>
               ))}
