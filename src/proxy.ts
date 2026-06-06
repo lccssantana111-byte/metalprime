@@ -10,11 +10,6 @@ export async function proxy(request: NextRequest) {
   const isCorporateLogin = pathname === '/corporate/login'
 
   if (!process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY) {
-    if ((isAdminPath && !isAdminLogin) || (isCorporatePath && !isCorporateLogin)) {
-      const url = request.nextUrl.clone()
-      url.pathname = isAdminPath ? '/admin/login' : '/corporate/login'
-      return NextResponse.redirect(url)
-    }
     return NextResponse.next({ request })
   }
 
