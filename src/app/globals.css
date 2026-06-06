@@ -1,26 +1,135 @@
 @import "tailwindcss";
+@import "tw-animate-css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:where(.dark, .dark *));
 
 @theme inline {
+  /* ── Typography ──────────────────────────────────── */
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-outfit);
+  --font-mono: var(--font-geist-mono);
+
+  /* ── Steel / Metal brand palette ────────────────── */
+  --color-steel-DEFAULT: #1c2b3a;
+  --color-steel-light: #2d3f50;
+  --color-steel-dark: #0f1924;
+
+  --color-metal-DEFAULT: #8c97a0;
+  --color-metal-light: #b8c0c8;
+  --color-metal-dark: #5a6470;
+
+  --color-amber-brand: #c8860a;
+  --color-amber-light: #e8a020;
+
+  --color-carbon: #0a0c0f;
+  --color-graphite: #1e2328;
+
+  /* ── Shadcn CSS variable bridge ──────────────────── */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  /* ── Custom animations ───────────────────────────── */
+  --animate-marquee: marquee 35s linear infinite;
+  --animate-fade-in: fadeIn 0.8s ease forwards;
+  --animate-slide-up: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  --animate-pulse-slow: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-spin-slow: spin 8s linear infinite;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ── Shadcn theme tokens ───────────────────────────── */
+:root {
+  --radius: 0.625rem;
+  --background: #0a0c0f;
+  --foreground: #f0f2f4;
+  --card: #1e2328;
+  --card-foreground: #f0f2f4;
+  --popover: #1e2328;
+  --popover-foreground: #f0f2f4;
+  --primary: #c8860a;
+  --primary-foreground: #0a0c0f;
+  --secondary: #1c2b3a;
+  --secondary-foreground: #f0f2f4;
+  --muted: #2d3f50;
+  --muted-foreground: #8c97a0;
+  --accent: #2d3f50;
+  --accent-foreground: #f0f2f4;
+  --destructive: #ef4444;
+  --border: #2d3f50;
+  --input: #2d3f50;
+  --ring: #c8860a;
+}
+
+/* ── Base styles ───────────────────────────────────── */
+* {
+  border-color: var(--border);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans, system-ui, sans-serif);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Custom keyframes ──────────────────────────────── */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes slideUp {
+  0% { opacity: 0; transform: translateY(40px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Smooth scroll ─────────────────────────────────── */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ── Custom scrollbar ──────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--carbon, #0a0c0f);
+}
+::-webkit-scrollbar-thumb {
+  background: #2d3f50;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #8c97a0;
+}
+
+/* ── Selection ─────────────────────────────────────── */
+::selection {
+  background: #c8860a33;
+  color: #f0f2f4;
 }

@@ -1,0 +1,71 @@
+export const BRAND_NAME = process.env.NEXT_PUBLIC_BRAND_NAME ?? 'Metalprime Serralheria'
+export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://metalprime.com.br'
+export const WHATSAPP_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '5511999999999'
+export const COMPANY_PHONE = '(11) 99999-9999'
+export const COMPANY_EMAIL = 'contato@metalprime.com.br'
+export const COMPANY_ADDRESS = 'Rua das Indústrias, 123 — São Paulo, SP'
+export const COMPANY_TAGLINE = 'Estruturas de aço com precisão e elegância'
+
+export const SERVICE_LABELS: Record<string, string> = {
+  portoes: 'Portões',
+  grades_e_cercas: 'Grades e Cercas',
+  escadas: 'Escadas',
+  corrimoes: 'Corrimões',
+  estruturas_metalicas: 'Estruturas Metálicas',
+  sob_medida: 'Sob Medida',
+}
+
+export const SERVICE_SLUGS: Record<string, string> = {
+  portoes: 'portoes',
+  grades_e_cercas: 'grades-e-cercas',
+  escadas: 'escadas',
+  corrimoes: 'corrimoes',
+  estruturas_metalicas: 'estruturas-metalicas',
+  sob_medida: 'sob-medida',
+}
+
+export const LEAD_STATUS_LABELS: Record<string, string> = {
+  novo: 'Novo',
+  em_contato: 'Em Contato',
+  proposta_enviada: 'Proposta Enviada',
+  em_negociacao: 'Em Negociação',
+  ganho: 'Ganho',
+  perdido: 'Perdido',
+  sem_interesse: 'Sem Interesse',
+}
+
+export const LEAD_STATUS_COLORS: Record<string, string> = {
+  novo: 'bg-blue-500/20 text-blue-300 border-blue-500/30',
+  em_contato: 'bg-yellow-500/20 text-yellow-300 border-yellow-500/30',
+  proposta_enviada: 'bg-purple-500/20 text-purple-300 border-purple-500/30',
+  em_negociacao: 'bg-orange-500/20 text-orange-300 border-orange-500/30',
+  ganho: 'bg-green-500/20 text-green-300 border-green-500/30',
+  perdido: 'bg-red-500/20 text-red-300 border-red-500/30',
+  sem_interesse: 'bg-gray-500/20 text-gray-300 border-gray-500/30',
+}
+
+export const PROJECT_STATUS_LABELS: Record<string, string> = {
+  planejamento: 'Planejamento',
+  medicao: 'Medição',
+  producao: 'Produção',
+  instalacao: 'Instalação',
+  concluido: 'Concluído',
+  pausado: 'Pausado',
+  cancelado: 'Cancelado',
+}
+
+export const QUOTE_STATUS_LABELS: Record<string, string> = {
+  pendente: 'Pendente',
+  em_analise: 'Em Análise',
+  proposta_enviada: 'Proposta Enviada',
+  aprovado: 'Aprovado',
+  recusado: 'Recusado',
+  expirado: 'Expirado',
+}
+
+export const CLIENT_TYPE_LABELS: Record<string, string> = {
+  pessoa_fisica: 'Pessoa Física',
+  condominio: 'Condomínio',
+  construtora: 'Construtora',
+  empresa: 'Empresa',
+}
