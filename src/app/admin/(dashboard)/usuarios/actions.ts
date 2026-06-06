@@ -26,10 +26,10 @@ export async function convidarUsuario(formData: FormData) {
   if (!nome || !email || !role) return { error: 'Preencha todos os campos.' }
   if (!['admin', 'comercial', 'viewer'].includes(role)) return { error: 'Perfil inválido.' }
 
-  const { data: newUser, error: createError } = await supabase.auth.admin.createUser({
-    email,
-    email_confirm: true,
-    user_metadata: { full_name: nome },
+  // inviteUserByEmail creates the user AND sends an email with a link to set password
+  const { data: newUser, error: createError } = await supabase.auth.admin.inviteUserByEmail(email, {
+    data: { full_name: nome },
+    redirectTo: `${process.env.NEXT_PUBLIC_SITE_URL}/admin/login`,
   })
 
   if (createError) {

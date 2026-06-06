@@ -41,7 +41,7 @@ export function UsuariosClient({ users, currentUserId }: { users: User[]; curren
     if (result.error) {
       toast.error(result.error)
     } else {
-      toast.success('Usuário adicionado com sucesso.')
+      toast.success('Convite enviado! A pessoa receberá um e-mail para definir a senha.')
       setModalOpen(false)
       formRef.current?.reset()
       setRole('comercial')
