@@ -1,203 +1,199 @@
 'use client'
 
-import { useState, useEffect, useRef } from 'react'
+import { useState, useRef } from 'react'
 import { motion, AnimatePresence, useInView } from 'framer-motion'
-import { Star, ArrowLeft, ArrowRight } from 'lucide-react'
+import { ArrowLeft, ArrowRight } from 'lucide-react'
 
 const testimonials = [
   {
     name: 'Carlos Rodrigues',
     role: 'Síndico',
-    company: 'Cond. Alphaville Business',
-    content:
-      'A Metalprime reformou completamente o sistema de portões e grades do nosso condomínio. Pontualidade, qualidade impecável e pós-venda excelente. Já indicamos para outros 3 condomínios.',
-    rating: 5,
-    tag: 'Portões e Grades',
+    company: 'Condomínio Alphaville Business',
+    content: 'A Metalprime reformou completamente o sistema de portões e grades do nosso condomínio. Pontualidade, qualidade impecável e pós-venda excelente. Já indicamos para outros três condomínios da região.',
+    service: 'Portões e Grades',
     initial: 'CR',
   },
   {
     name: 'Arq. Patricia Lima',
-    role: 'Arquiteta',
+    role: 'Arquiteta Sênior',
     company: 'Lima & Associados',
-    content:
-      'Parceiro indispensável nos nossos projetos residenciais de alto padrão. A Metalprime transforma nossos desenhos em peças únicas com precisão e acabamento de altíssimo nível.',
-    rating: 5,
-    tag: 'Sob Medida',
+    content: 'Parceiro indispensável nos nossos projetos residenciais de alto padrão. A Metalprime transforma nossos projetos em peças únicas com precisão e acabamento que os clientes reconhecem como diferencial.',
+    service: 'Projetos Sob Medida',
     initial: 'PL',
   },
   {
     name: 'Eng. Roberto Mendes',
     role: 'Diretor de Obras',
-    company: 'Construtora Mendes',
-    content:
-      'Fornecedor oficial para todas as nossas obras em SP. Cumprimento rigoroso de prazo e ART em todos os projetos estruturais. Recomendo sem hesitar.',
-    rating: 5,
-    tag: 'Estruturas Metálicas',
+    company: 'Construtora Mendes & Associados',
+    content: 'Fornecedor oficial para todas as nossas obras em São Paulo há seis anos. Cumprimento rigoroso de cronograma e ART em 100% dos projetos estruturais. Referência no segmento.',
+    service: 'Estruturas Metálicas',
     initial: 'RM',
   },
   {
     name: 'Ana Paula Souza',
     role: 'Proprietária',
-    company: 'Residência em Moema',
-    content:
-      'Fizeram a escada em aço e vidro da minha casa. Ficou exatamente como visualizei com o arquiteto — os vizinhos não param de perguntar quem fez.',
-    rating: 5,
-    tag: 'Escadas',
+    company: 'Residência Alto de Pinheiros',
+    content: 'Fizeram a escada helicoidal em aço e vidro da minha casa. O resultado superou todas as expectativas — os visitantes fazem questão de perguntar quem executou a obra.',
+    service: 'Escadas Metálicas',
     initial: 'AS',
   },
 ]
 
 export default function TestimonialsCarousel() {
   const [current, setCurrent] = useState(0)
-  const [paused, setPaused] = useState(false)
+  const [direction, setDirection] = useState(1)
   const ref = useRef(null)
-  const inView = useInView(ref, { once: true, margin: '-80px' })
+  const inView = useInView(ref, { once: true, margin: '-60px' })
 
-  useEffect(() => {
-    if (paused) return
-    const id = setInterval(() => setCurrent((c) => (c + 1) % testimonials.length), 5000)
-    return () => clearInterval(id)
-  }, [paused])
+  const navigate = (dir: 1 | -1) => {
+    setDirection(dir)
+    setCurrent((c) => (c + dir + testimonials.length) % testimonials.length)
+  }
 
-  const prev = () => setCurrent((c) => (c - 1 + testimonials.length) % testimonials.length)
-  const next = () => setCurrent((c) => (c + 1) % testimonials.length)
   const t = testimonials[current]
 
   return (
-    <section className="py-28 bg-steel-dark relative overflow-hidden" ref={ref}>
-      {/* Huge quote mark background */}
-      <div className="absolute top-0 left-0 pointer-events-none select-none overflow-hidden">
-        <span
-          className="font-display font-black text-[30vw] leading-none text-transparent"
-          style={{ WebkitTextStroke: '1px rgba(44,55,66,0.6)' }}
-        >
-          "
-        </span>
-      </div>
+    <section
+      ref={ref}
+      className="py-28 sm:py-36 overflow-hidden"
+      style={{ background: '#13161b' }}
+    >
+      <div className="container mx-auto px-5 sm:px-8">
 
-      <div className="container mx-auto px-4 sm:px-8 relative z-10">
+        {/* Header row */}
         <motion.div
-          className="mb-16"
-          initial={{ opacity: 0, y: 24 }}
+          className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-8 mb-20"
+          initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7 }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
-          <div className="flex items-center gap-3 mb-4">
-            <div className="w-8 h-px bg-amber-brand" />
-            <span className="text-amber-brand text-xs font-semibold tracking-[0.35em] uppercase">
+          <div>
+            <span className="font-mono text-[10px] tracking-[0.45em] uppercase block mb-6" style={{ color: 'rgba(196,160,64,0.7)' }}>
               Quem confia em nós
             </span>
+            <h2
+              className="font-display font-black leading-[0.88]"
+              style={{ fontSize: 'clamp(3rem, 6vw, 6.5rem)', color: '#f0f1f2', letterSpacing: '-0.02em' }}
+            >
+              O que nossos<br />
+              <span style={{ color: 'rgba(240,241,242,0.18)' }}>clientes dizem</span>
+            </h2>
           </div>
-          <h2 className="font-display font-black text-4xl sm:text-5xl lg:text-6xl text-white leading-none">
-            Depoimentos
-          </h2>
+
+          {/* Navigation */}
+          <div className="flex items-center gap-3">
+            <span className="font-mono text-[12px] tabular-nums" style={{ color: 'rgba(180,188,198,0.3)' }}>
+              {String(current + 1).padStart(2, '0')} / {String(testimonials.length).padStart(2, '0')}
+            </span>
+            <button
+              onClick={() => navigate(-1)}
+              className="w-11 h-11 flex items-center justify-center transition-all duration-200"
+              style={{ border: '1px solid rgba(255,255,255,0.1)', color: '#b4bcc6' }}
+              onMouseEnter={(e) => {
+                const el = e.currentTarget as HTMLElement
+                el.style.borderColor = 'rgba(196,160,64,0.4)'
+                el.style.color = '#f0f1f2'
+              }}
+              onMouseLeave={(e) => {
+                const el = e.currentTarget as HTMLElement
+                el.style.borderColor = 'rgba(255,255,255,0.1)'
+                el.style.color = '#b4bcc6'
+              }}
+              aria-label="Anterior"
+            >
+              <ArrowLeft className="w-4 h-4" />
+            </button>
+            <button
+              onClick={() => navigate(1)}
+              className="w-11 h-11 flex items-center justify-center transition-all duration-200"
+              style={{ border: '1px solid rgba(255,255,255,0.1)', color: '#b4bcc6' }}
+              onMouseEnter={(e) => {
+                const el = e.currentTarget as HTMLElement
+                el.style.borderColor = 'rgba(196,160,64,0.4)'
+                el.style.color = '#f0f1f2'
+              }}
+              onMouseLeave={(e) => {
+                const el = e.currentTarget as HTMLElement
+                el.style.borderColor = 'rgba(255,255,255,0.1)'
+                el.style.color = '#b4bcc6'
+              }}
+              aria-label="Próximo"
+            >
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          </div>
         </motion.div>
 
-        <div
-          className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center"
-          onMouseEnter={() => setPaused(true)}
-          onMouseLeave={() => setPaused(false)}
-        >
-          {/* Left — large number + navigation */}
-          <div className="hidden lg:flex lg:col-span-2 flex-col items-start gap-8">
-            <div className="font-display font-black text-8xl text-white/10 leading-none">
-              {String(current + 1).padStart(2, '0')}
-            </div>
-            <div className="text-xs text-metal-dark tracking-widest uppercase">
-              de {testimonials.length}
-            </div>
-            <div className="flex gap-2 mt-4">
-              <button
-                onClick={prev}
-                className="w-10 h-10 border border-white/10 hover:border-amber-brand/50 flex items-center justify-center text-metal hover:text-white transition-all duration-200"
-                aria-label="Anterior"
+        {/* Quote */}
+        <div className="relative">
+          <AnimatePresence mode="wait" custom={direction}>
+            <motion.div
+              key={current}
+              custom={direction}
+              initial={{ opacity: 0, x: direction * 40 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: direction * -40 }}
+              transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+            >
+              {/* Large quote mark */}
+              <div
+                className="font-display font-black leading-none mb-8 select-none"
+                style={{ fontSize: 'clamp(5rem, 10vw, 9rem)', color: 'rgba(196,160,64,0.07)', lineHeight: 1 }}
+                aria-hidden
               >
-                <ArrowLeft className="w-4 h-4" />
-              </button>
-              <button
-                onClick={next}
-                className="w-10 h-10 border border-white/10 hover:border-amber-brand/50 flex items-center justify-center text-metal hover:text-white transition-all duration-200"
-                aria-label="Próximo"
+                "
+              </div>
+
+              <blockquote
+                className="font-display font-medium leading-[1.35] mb-12"
+                style={{ fontSize: 'clamp(1.5rem, 3vw, 2.5rem)', color: '#f0f1f2', maxWidth: '900px' }}
               >
-                <ArrowRight className="w-4 h-4" />
-              </button>
-            </div>
-          </div>
+                {t.content}
+              </blockquote>
 
-          {/* Main testimonial */}
-          <div className="lg:col-span-10">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={current}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
-              >
-                {/* Stars */}
-                <div className="flex gap-1 mb-8">
-                  {Array.from({ length: t.rating }).map((_, i) => (
-                    <Star key={i} className="w-4 h-4 fill-amber-brand text-amber-brand" />
-                  ))}
-                </div>
-
-                {/* Quote */}
-                <blockquote className="font-display text-2xl sm:text-3xl lg:text-4xl font-medium text-white leading-snug mb-10 max-w-3xl">
-                  &ldquo;{t.content}&rdquo;
-                </blockquote>
-
-                {/* Author */}
-                <div className="flex flex-col sm:flex-row sm:items-center gap-5">
-                  <div className="flex items-center gap-4">
-                    {/* Avatar initial */}
-                    <div className="w-12 h-12 bg-amber-brand/10 border border-amber-brand/30 flex items-center justify-center shrink-0">
-                      <span className="font-display font-bold text-amber-brand text-sm">{t.initial}</span>
-                    </div>
-                    <div>
-                      <p className="font-semibold text-white text-sm">{t.name}</p>
-                      <p className="text-xs text-metal mt-0.5">{t.role} · {t.company}</p>
-                    </div>
+              {/* Attribution */}
+              <div className="flex flex-col sm:flex-row sm:items-center gap-5">
+                <div className="flex items-center gap-4">
+                  <div
+                    className="w-12 h-12 flex items-center justify-center shrink-0 font-display font-bold text-[13px]"
+                    style={{ background: 'rgba(196,160,64,0.1)', border: '1px solid rgba(196,160,64,0.25)', color: '#c4a040' }}
+                  >
+                    {t.initial}
                   </div>
-
-                  <div className="sm:ml-auto">
-                    <span className="text-[11px] font-semibold tracking-widest uppercase text-amber-brand border border-amber-brand/30 px-3 py-1.5">
-                      {t.tag}
-                    </span>
+                  <div>
+                    <p className="font-semibold text-[15px]" style={{ color: '#f0f1f2' }}>{t.name}</p>
+                    <p className="text-[12px] mt-0.5" style={{ color: '#5a6470' }}>
+                      {t.role} · {t.company}
+                    </p>
                   </div>
                 </div>
-              </motion.div>
-            </AnimatePresence>
+                <div className="sm:ml-auto">
+                  <span
+                    className="text-[10px] font-mono tracking-[0.3em] uppercase px-3 py-2"
+                    style={{ border: '1px solid rgba(196,160,64,0.2)', color: 'rgba(196,160,64,0.6)' }}
+                  >
+                    {t.service}
+                  </span>
+                </div>
+              </div>
+            </motion.div>
+          </AnimatePresence>
+
+          {/* Progress line */}
+          <div className="flex gap-2 mt-14">
+            {testimonials.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => { setDirection(i > current ? 1 : -1); setCurrent(i) }}
+                className="h-px transition-all duration-300"
+                style={{
+                  width: i === current ? '48px' : '20px',
+                  background: i === current ? '#c4a040' : 'rgba(255,255,255,0.12)',
+                }}
+                aria-label={`Depoimento ${i + 1}`}
+              />
+            ))}
           </div>
-        </div>
-
-        {/* Progress dots */}
-        <div className="flex items-center gap-2 mt-12 lg:ml-[calc(100%/6+3rem)]">
-          {testimonials.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => setCurrent(i)}
-              className={`transition-all duration-400 h-0.5 ${
-                i === current ? 'w-10 bg-amber-brand' : 'w-4 bg-metal-dark hover:bg-metal'
-              }`}
-              aria-label={`Ir para depoimento ${i + 1}`}
-            />
-          ))}
-        </div>
-
-        {/* Mobile navigation */}
-        <div className="flex gap-2 mt-8 lg:hidden">
-          <button
-            onClick={prev}
-            className="w-10 h-10 border border-white/10 hover:border-amber-brand/50 flex items-center justify-center text-metal hover:text-white transition-all"
-          >
-            <ArrowLeft className="w-4 h-4" />
-          </button>
-          <button
-            onClick={next}
-            className="w-10 h-10 border border-white/10 hover:border-amber-brand/50 flex items-center justify-center text-metal hover:text-white transition-all"
-          >
-            <ArrowRight className="w-4 h-4" />
-          </button>
         </div>
       </div>
     </section>

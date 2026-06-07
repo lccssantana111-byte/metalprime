@@ -1,42 +1,55 @@
 const clients = [
-  'Construtora Camargo',
-  'Cond. Alphaville',
-  'MRV Engenharia',
-  'Cyrela',
-  'Rodobens',
-  'Brookfield',
-  'Tecnisa',
-  'EZTec',
-  'Rossi Residencial',
-  'Even',
+  { name: 'Cyrela', type: 'Construtora' },
+  { name: 'MRV Engenharia', type: 'Construtora' },
+  { name: 'Even', type: 'Construtora' },
+  { name: 'Cond. Alphaville', type: 'Condomínio' },
+  { name: 'JHSF', type: 'Incorporadora' },
+  { name: 'Brookfield', type: 'Incorporadora' },
+  { name: 'Living', type: 'Construtora' },
+  { name: 'Eztec', type: 'Incorporadora' },
+  { name: 'Tegma', type: 'Logística' },
+  { name: 'Votorantim', type: 'Industrial' },
 ]
+
+const duplicated = [...clients, ...clients]
 
 export default function ClientLogos() {
   return (
-    <section className="py-14 bg-carbon border-y border-white/5 overflow-hidden">
-      <div className="container mx-auto px-4 sm:px-8 mb-8 flex items-center gap-6">
-        <div className="w-8 h-px bg-white/10 shrink-0" />
-        <p className="text-[11px] font-semibold tracking-[0.35em] text-metal-dark uppercase whitespace-nowrap">
-          Empresas que confiam na Metalprime
-        </p>
-        <div className="h-px bg-white/5 flex-1" />
+    <section
+      className="py-20 overflow-hidden"
+      style={{ background: '#0c0e11', borderTop: '1px solid rgba(255,255,255,0.05)' }}
+    >
+      <div className="container mx-auto px-5 sm:px-8 mb-12">
+        <div className="flex items-center gap-4">
+          <div className="h-px flex-1" style={{ background: 'rgba(255,255,255,0.06)' }} />
+          <span className="font-mono text-[10px] tracking-[0.45em] uppercase shrink-0" style={{ color: 'rgba(180,188,198,0.25)' }}>
+            Empresas que confiam na Metalprime
+          </span>
+          <div className="h-px flex-1" style={{ background: 'rgba(255,255,255,0.06)' }} />
+        </div>
       </div>
 
       <div className="relative group/marquee">
         {/* Fade edges */}
-        <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-carbon to-transparent z-10 pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-carbon to-transparent z-10 pointer-events-none" />
+        <div className="absolute left-0 top-0 bottom-0 w-24 z-10 pointer-events-none" style={{ background: 'linear-gradient(to right, #0c0e11, transparent)' }} />
+        <div className="absolute right-0 top-0 bottom-0 w-24 z-10 pointer-events-none" style={{ background: 'linear-gradient(to left, #0c0e11, transparent)' }} />
 
-        <div className="flex gap-0 animate-marquee w-max group-hover/marquee:[animation-play-state:paused]">
-          {[...clients, ...clients].map((client, i) => (
+        <div
+          className="flex gap-0 animate-marquee group-hover/marquee:[animation-play-state:paused]"
+          style={{ width: 'max-content' }}
+        >
+          {duplicated.map((client, i) => (
             <div
               key={i}
-              className="flex items-center gap-4 px-10 shrink-0"
+              className="px-12 py-4 flex items-center gap-3 shrink-0"
+              style={{ borderRight: '1px solid rgba(255,255,255,0.05)' }}
             >
-              <div className="w-1.5 h-1.5 bg-amber-brand/30 rotate-45 shrink-0" />
-              <span className="text-sm font-medium text-metal-dark/70 whitespace-nowrap tracking-wide hover:text-metal transition-colors">
-                {client}
-              </span>
+              <div className="w-1.5 h-1.5 shrink-0" style={{ background: 'rgba(196,160,64,0.3)', transform: 'rotate(45deg)' }} />
+              <div>
+                <span className="font-display font-semibold text-[15px] whitespace-nowrap" style={{ color: 'rgba(180,188,198,0.45)' }}>
+                  {client.name}
+                </span>
+              </div>
             </div>
           ))}
         </div>

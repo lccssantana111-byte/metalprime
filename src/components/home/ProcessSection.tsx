@@ -1,136 +1,134 @@
 'use client'
 
-import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
+import { motion, useInView } from 'framer-motion'
+import { PHOTOS } from '@/lib/images'
 
 const steps = [
   {
     number: '01',
-    title: 'Consulta Gratuita',
-    description:
-      'Nos conte seu projeto pelo WhatsApp ou formulário. Respondemos em até 24 horas.',
-    detail: 'Sem compromisso',
+    title: 'Consulta e Visita Técnica',
+    description: 'Nosso engenheiro visita o local, faz medições precisas e elabora o projeto executivo. Sem custo, sem compromisso.',
+    badge: 'Gratuita',
   },
   {
     number: '02',
-    title: 'Visita Técnica',
-    description:
-      'Nosso engenheiro visita o local, faz medições precisas e elabora o projeto executivo.',
-    detail: 'Gratuita',
+    title: 'Projeto e Orçamento',
+    description: 'Desenvolvemos o projeto técnico detalhado com memorial descritivo, cronograma e proposta formal em até 48h.',
+    badge: '48h',
   },
   {
     number: '03',
-    title: 'Produção',
-    description:
-      'Fabricamos em estrutura industrial própria com controle rigoroso de qualidade.',
-    detail: 'ISO 9001',
+    title: 'Fabricação Industrial',
+    description: 'Produzimos em estrutura industrial própria com controle rigoroso de qualidade e rastreabilidade de materiais.',
+    badge: 'ISO 9001',
   },
   {
     number: '04',
-    title: 'Instalação',
-    description:
-      'Equipe especializada instala no prazo combinado com acabamento impecável e ART inclusa.',
-    detail: 'Com ART',
+    title: 'Instalação com ART',
+    description: 'Equipe especializada instala no prazo combinado. Entregamos ART do engenheiro responsável em todos os projetos.',
+    badge: 'ART inclusa',
   },
 ]
 
 export default function ProcessSection() {
   const ref = useRef(null)
-  const inView = useInView(ref, { once: true, margin: '-80px' })
+  const inView = useInView(ref, { once: true, margin: '-60px' })
 
   return (
-    <section className="py-28 bg-graphite relative overflow-hidden" ref={ref}>
-      {/* Subtle grid */}
-      <div
-        className="absolute inset-0 opacity-[0.02]"
-        style={{
-          backgroundImage: 'linear-gradient(#8c97a0 1px, transparent 1px), linear-gradient(90deg, #8c97a0 1px, transparent 1px)',
-          backgroundSize: '40px 40px',
-        }}
-      />
+    <section ref={ref} className="overflow-hidden" style={{ background: '#0c0e11' }}>
+      <div className="grid grid-cols-1 lg:grid-cols-2">
 
-      <div className="container mx-auto px-4 sm:px-8 relative z-10">
-        {/* Header */}
-        <motion.div
-          className="mb-20"
-          initial={{ opacity: 0, y: 24 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7 }}
-        >
-          <div className="flex items-center gap-3 mb-4">
-            <div className="w-8 h-px bg-amber-brand" />
-            <span className="text-amber-brand text-xs font-semibold tracking-[0.35em] uppercase">
+        {/* Left — content */}
+        <div className="py-28 sm:py-36 px-8 sm:px-16 xl:px-24 flex flex-col justify-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <span className="font-mono text-[10px] tracking-[0.45em] uppercase block mb-8" style={{ color: 'rgba(196,160,64,0.7)' }}>
               Como trabalhamos
             </span>
-          </div>
-          <div className="flex flex-col lg:flex-row lg:items-end gap-6">
-            <h2 className="font-display font-black text-4xl sm:text-5xl lg:text-6xl text-white leading-none">
+            <h2
+              className="font-display font-black leading-[0.88] mb-16"
+              style={{ fontSize: 'clamp(2.5rem, 5vw, 5rem)', color: '#f0f1f2', letterSpacing: '-0.02em' }}
+            >
               Do orçamento<br />
-              <span className="text-metal/40">à entrega</span>
+              <span style={{ color: 'rgba(240,241,242,0.18)' }}>à entrega</span>
             </h2>
-            <p className="text-metal text-sm max-w-xs leading-relaxed lg:ml-16 lg:mb-1">
-              Um processo estruturado para garantir qualidade, prazo e total transparência.
-            </p>
-          </div>
-        </motion.div>
+          </motion.div>
 
-        {/* Steps */}
-        <div className="relative">
-          {/* Connecting line */}
-          <div className="hidden lg:block absolute top-8 left-0 right-0 h-px bg-white/5" />
-          <motion.div
-            className="hidden lg:block absolute top-8 left-0 h-px bg-gradient-to-r from-amber-brand/60 to-transparent"
-            initial={{ width: '0%' }}
-            animate={inView ? { width: '100%' } : {}}
-            transition={{ duration: 1.4, delay: 0.4, ease: 'easeInOut' }}
-          />
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-0">
+          <div className="space-y-0">
             {steps.map((step, i) => (
               <motion.div
                 key={step.number}
-                className="relative pt-0 lg:pt-16 pl-0 lg:pl-8 pr-8 pb-0"
-                initial={{ opacity: 0, y: 30 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: 0.2 + i * 0.12 }}
+                className="relative flex gap-8"
+                initial={{ opacity: 0, x: -24 }}
+                animate={inView ? { opacity: 1, x: 0 } : {}}
+                transition={{ duration: 0.7, delay: 0.1 + i * 0.12, ease: [0.16, 1, 0.3, 1] }}
               >
-                {/* Number bubble on the line */}
-                <div className="flex lg:block items-start gap-6 mb-8 lg:mb-0">
-                  <div className="relative shrink-0">
-                    <div className="hidden lg:flex absolute -top-16 left-0 w-16 h-16 items-center justify-center">
-                      <div className="absolute inset-0 border border-amber-brand/20 rotate-45" />
-                      <span className="font-display font-black text-amber-brand text-lg relative z-10">
-                        {step.number}
-                      </span>
-                    </div>
-                    <div className="lg:hidden flex w-12 h-12 items-center justify-center border border-amber-brand/30 bg-amber-brand/5">
-                      <span className="font-display font-black text-amber-brand text-sm">{step.number}</span>
-                    </div>
+                <div className="flex flex-col items-center shrink-0 pt-1">
+                  <div
+                    className="w-9 h-9 flex items-center justify-center shrink-0 font-mono font-bold text-[11px]"
+                    style={{ background: 'rgba(196,160,64,0.08)', border: '1px solid rgba(196,160,64,0.2)', color: '#c4a040' }}
+                  >
+                    {step.number}
                   </div>
-
-                  <div className="lg:mt-8">
-                    {/* Detail badge */}
-                    <span className="inline-block text-[10px] font-semibold tracking-widest uppercase text-amber-brand border border-amber-brand/30 px-2 py-0.5 mb-3">
-                      {step.detail}
-                    </span>
-
-                    <h3 className="font-display font-bold text-xl text-white mb-3 leading-tight">
-                      {step.title}
-                    </h3>
-                    <p className="text-sm text-metal leading-relaxed">
-                      {step.description}
-                    </p>
-                  </div>
+                  {i < steps.length - 1 && (
+                    <div className="w-px mt-3 mb-3" style={{ background: 'rgba(255,255,255,0.06)', height: '40px' }} />
+                  )}
                 </div>
 
-                {/* Mobile separator */}
-                {i < steps.length - 1 && (
-                  <div className="sm:hidden w-px h-8 bg-gradient-to-b from-amber-brand/40 to-transparent ml-5.5 mb-8" />
-                )}
+                <div className="pb-10">
+                  <div className="flex items-center gap-3 mb-3 flex-wrap">
+                    <h3 className="font-display font-bold" style={{ fontSize: '1.1rem', color: '#f0f1f2' }}>
+                      {step.title}
+                    </h3>
+                    <span
+                      className="text-[9px] font-mono tracking-widest uppercase px-2 py-1 shrink-0"
+                      style={{ background: 'rgba(196,160,64,0.08)', border: '1px solid rgba(196,160,64,0.15)', color: 'rgba(196,160,64,0.7)' }}
+                    >
+                      {step.badge}
+                    </span>
+                  </div>
+                  <p className="text-[14px] leading-[1.8]" style={{ color: 'rgba(180,188,198,0.5)' }}>
+                    {step.description}
+                  </p>
+                </div>
               </motion.div>
             ))}
           </div>
         </div>
+
+        {/* Right — photo */}
+        <motion.div
+          className="relative hidden lg:block"
+          style={{ minHeight: '600px' }}
+          initial={{ opacity: 0 }}
+          animate={inView ? { opacity: 1 } : {}}
+          transition={{ duration: 1, delay: 0.2 }}
+        >
+          <div
+            className="absolute inset-0"
+            style={{ backgroundImage: `url("${PHOTOS.process}")`, backgroundSize: 'cover', backgroundPosition: 'center' }}
+          />
+          <div
+            className="absolute inset-0"
+            style={{ background: 'linear-gradient(to right, #0c0e11 0%, rgba(12,14,17,0.15) 40%, transparent 100%)' }}
+          />
+          <div className="absolute bottom-12 right-12">
+            <div
+              className="px-6 py-5"
+              style={{ background: 'rgba(12,14,17,0.92)', border: '1px solid rgba(196,160,64,0.2)', backdropFilter: 'blur(12px)' }}
+            >
+              <div className="font-display font-black text-[2.5rem] leading-none" style={{ color: '#c4a040' }}>20+</div>
+              <div className="font-mono text-[10px] tracking-[0.3em] uppercase mt-1" style={{ color: 'rgba(180,188,198,0.4)' }}>
+                Anos de expertise
+              </div>
+            </div>
+          </div>
+        </motion.div>
+
       </div>
     </section>
   )

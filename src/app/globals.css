@@ -9,20 +9,30 @@
   --font-display: var(--font-outfit);
   --font-mono: var(--font-geist-mono);
 
-  /* ── Steel / Metal brand palette ────────────────── */
+  /* ── Premium Industrial palette ─────────────────── */
+  --color-obsidian: #050608;
+  --color-iron: #0c0e11;
+  --color-forge: #13161b;
+  --color-alloy: #1c2028;
+
+  --color-gold: #c4a040;
+  --color-gold-light: #d4b454;
+  --color-gold-dim: rgba(196,160,64,0.12);
+
+  --color-platinum: #b4bcc6;
+  --color-off-white: #f0f1f2;
+
+  /* ── Legacy aliases (keep for admin components) ── */
   --color-steel-DEFAULT: #1c2b3a;
   --color-steel-light: #2d3f50;
   --color-steel-dark: #0f1924;
-
   --color-metal-DEFAULT: #8c97a0;
   --color-metal-light: #b8c0c8;
   --color-metal-dark: #5a6470;
-
-  --color-amber-brand: #c8860a;
-  --color-amber-light: #e8a020;
-
-  --color-carbon: #0a0c0f;
-  --color-graphite: #1e2328;
+  --color-amber-brand: #c4a040;
+  --color-amber-light: #d4b454;
+  --color-carbon: #050608;
+  --color-graphite: #13161b;
 
   /* ── Shadcn CSS variable bridge ──────────────────── */
   --color-background: var(--background);
@@ -48,35 +58,35 @@
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
 
-  /* ── Custom animations ───────────────────────────── */
-  --animate-marquee: marquee 35s linear infinite;
-  --animate-fade-in: fadeIn 0.8s ease forwards;
-  --animate-slide-up: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  /* ── Animations ─────────────────────────────────── */
+  --animate-marquee: marquee 40s linear infinite;
+  --animate-fade-in: fadeIn 0.9s ease forwards;
+  --animate-slide-up: slideUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   --animate-pulse-slow: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   --animate-spin-slow: spin 8s linear infinite;
 }
 
 /* ── Shadcn theme tokens ───────────────────────────── */
 :root {
-  --radius: 0.625rem;
-  --background: #0a0c0f;
-  --foreground: #f0f2f4;
-  --card: #1e2328;
-  --card-foreground: #f0f2f4;
-  --popover: #1e2328;
-  --popover-foreground: #f0f2f4;
-  --primary: #c8860a;
-  --primary-foreground: #0a0c0f;
-  --secondary: #1c2b3a;
-  --secondary-foreground: #f0f2f4;
-  --muted: #2d3f50;
-  --muted-foreground: #8c97a0;
-  --accent: #2d3f50;
-  --accent-foreground: #f0f2f4;
+  --radius: 0.25rem;
+  --background: #050608;
+  --foreground: #f0f1f2;
+  --card: #13161b;
+  --card-foreground: #f0f1f2;
+  --popover: #13161b;
+  --popover-foreground: #f0f1f2;
+  --primary: #c4a040;
+  --primary-foreground: #050608;
+  --secondary: #1c2028;
+  --secondary-foreground: #f0f1f2;
+  --muted: #1c2028;
+  --muted-foreground: #8a9199;
+  --accent: #1c2028;
+  --accent-foreground: #f0f1f2;
   --destructive: #ef4444;
-  --border: #2d3f50;
-  --input: #2d3f50;
-  --ring: #c8860a;
+  --border: rgba(255,255,255,0.07);
+  --input: #1c2028;
+  --ring: #c4a040;
 }
 
 /* ── Base ─────────────────────────────────────────── */
@@ -86,65 +96,63 @@
 
 html {
   scroll-behavior: smooth;
-  /* Prevent layout shift from scrollbar appearing */
   scrollbar-gutter: stable;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: #050608;
+  color: #f0f1f2;
   font-family: var(--font-sans, system-ui, sans-serif);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
 }
 
-/* ── Scrollbar — global ─────────────────────────── */
-::-webkit-scrollbar {
-  width: 5px;
-  height: 5px;
-}
-::-webkit-scrollbar-track {
-  background: transparent;
-}
+/* ── Scrollbar ──────────────────────────────────── */
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(255,255,255,0.10);
   border-radius: 99px;
 }
-::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.15);
-}
+::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.18); }
 
-/* ── Selection ─────────────────────────────────── */
+/* ── Selection ──────────────────────────────────── */
 ::selection {
-  background: rgba(200, 134, 10, 0.25);
-  color: #f0f2f4;
+  background: rgba(196,160,64,0.25);
+  color: #f0f1f2;
 }
 
-/* ── Focus ring — only keyboard users ─────────── */
+/* ── Focus ──────────────────────────────────────── */
 :focus-visible {
-  outline: 2px solid rgba(200, 134, 10, 0.6);
+  outline: 2px solid rgba(196,160,64,0.6);
   outline-offset: 2px;
 }
 
 /* ── Keyframes ──────────────────────────────────── */
 @keyframes marquee {
-  0% { transform: translateX(0); }
+  0%   { transform: translateX(0); }
   100% { transform: translateX(-50%); }
 }
 
 @keyframes fadeIn {
-  0% { opacity: 0; }
+  0%   { opacity: 0; }
   100% { opacity: 1; }
 }
 
 @keyframes slideUp {
-  0% { opacity: 0; transform: translateY(40px); }
+  0%   { opacity: 0; transform: translateY(50px); }
   100% { opacity: 1; transform: translateY(0); }
 }
 
-/* ── Admin area overrides ──────────────────────── */
-/* Thinner scrollbar inside admin */
-.admin-scroll::-webkit-scrollbar {
-  width: 3px;
+/* ── Section label style ─────────────────────────── */
+.section-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.45em;
+  text-transform: uppercase;
+  color: rgba(196,160,64,0.8);
 }
+
+/* ── Admin scroll ───────────────────────────────── */
+.admin-scroll::-webkit-scrollbar { width: 3px; }

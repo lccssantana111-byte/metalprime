@@ -1,170 +1,185 @@
 'use client'
 
-import Link from 'next/link'
-import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
+import { motion, useInView } from 'framer-motion'
+import Link from 'next/link'
 import { ArrowUpRight } from 'lucide-react'
+import { PHOTOS } from '@/lib/images'
 
 const services = [
   {
     slug: 'portoes',
     name: 'Portões',
-    tagline: 'Segurança e elegância na entrada',
-    number: '01',
+    tagline: 'Automáticos, basculantes e deslizantes',
     href: '/servicos/portoes',
-    keywords: ['Ferro', 'Alumínio', 'Inox', 'Automação'],
+    photo: PHOTOS.services.portoes,
+    tag: 'Residencial · Comercial',
   },
   {
-    slug: 'grades-e-cercas',
+    slug: 'grades_e_cercas',
     name: 'Grades e Cercas',
-    tagline: 'Proteção com design premium',
-    number: '02',
+    tagline: 'Segurança perimetral com design industrial',
     href: '/servicos/grades-e-cercas',
-    keywords: ['Janelas', 'Muros', 'Perímetro'],
+    photo: PHOTOS.services.grades_e_cercas,
+    tag: 'Proteção · Perímetro',
   },
   {
     slug: 'escadas',
     name: 'Escadas Metálicas',
-    tagline: 'Arquitetura e engenharia unidas',
-    number: '03',
+    tagline: 'Retas, helicoidais e flutuantes',
     href: '/servicos/escadas',
-    keywords: ['Retas', 'Helicoidais', 'Flutuantes'],
+    photo: PHOTOS.services.escadas,
+    tag: 'Arquitetônicas · Industriais',
   },
   {
     slug: 'corrimoes',
     name: 'Corrimões',
-    tagline: 'Segurança em cada detalhe',
-    number: '04',
+    tagline: 'Inox, ferro e alumínio — ART inclusa',
     href: '/servicos/corrimoes',
-    keywords: ['Inox', 'Ferro', 'Guarda-corpos'],
+    photo: PHOTOS.services.corrimoes,
+    tag: 'Inox · Ferro · Alumínio',
   },
   {
-    slug: 'estruturas-metalicas',
+    slug: 'estruturas_metalicas',
     name: 'Estruturas Metálicas',
-    tagline: 'Engenharia de alto desempenho',
-    number: '05',
+    tagline: 'Galpões, coberturas e mezaninos',
     href: '/servicos/estruturas-metalicas',
-    keywords: ['Galpões', 'Coberturas', 'Mezaninos'],
+    photo: PHOTOS.services.estruturas_metalicas,
+    tag: 'Industrial · Comercial',
   },
   {
-    slug: 'sob-medida',
-    name: 'Sob Medida',
-    tagline: 'Sua ideia, nossa execução',
-    number: '06',
+    slug: 'sob_medida',
+    name: 'Projetos Sob Medida',
+    tagline: 'Do conceito à instalação — qualquer metal',
     href: '/servicos/sob-medida',
-    keywords: ['Projetos únicos', 'Qualquer metal'],
+    photo: PHOTOS.services.sob_medida,
+    tag: 'Único · Personalizado',
   },
 ]
 
 export default function ServicesGrid() {
   const ref = useRef(null)
-  const inView = useInView(ref, { once: true, margin: '-80px' })
+  const inView = useInView(ref, { once: true, margin: '-60px' })
 
   return (
-    <section className="py-28 bg-carbon relative overflow-hidden" ref={ref}>
-      {/* Background text */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none select-none">
-        <span
-          className="font-display font-black text-[20vw] leading-none text-transparent whitespace-nowrap"
-          style={{ WebkitTextStroke: '1px rgba(44,55,66,0.5)' }}
-        >
-          SERVIÇOS
-        </span>
-      </div>
+    <section
+      ref={ref}
+      className="py-28 sm:py-36 overflow-hidden"
+      style={{ background: '#050608' }}
+    >
+      <div className="container mx-auto px-5 sm:px-8">
 
-      <div className="container mx-auto px-4 sm:px-8 relative z-10">
         {/* Section header */}
         <motion.div
-          className="flex flex-col sm:flex-row sm:items-end justify-between gap-8 mb-16"
-          initial={{ opacity: 0, y: 24 }}
+          className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-8 mb-16"
+          initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7 }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
           <div>
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-8 h-px bg-amber-brand" />
-              <span className="text-amber-brand text-xs font-semibold tracking-[0.35em] uppercase">
-                O que fazemos
-              </span>
-            </div>
-            <h2 className="font-display font-black text-4xl sm:text-5xl lg:text-6xl text-white leading-none">
-              Serviços<br />
-              <span className="text-metal/40">especializados</span>
+            <span className="font-mono text-[10px] tracking-[0.45em] uppercase block mb-6" style={{ color: 'rgba(196,160,64,0.7)' }}>
+              Especialidades
+            </span>
+            <h2
+              className="font-display font-black leading-[0.88]"
+              style={{ fontSize: 'clamp(3rem, 6vw, 6.5rem)', color: '#f0f1f2', letterSpacing: '-0.02em' }}
+            >
+              O que<br />
+              fabricamos
             </h2>
           </div>
-          <p className="text-metal max-w-xs leading-relaxed text-sm">
-            Do projeto à instalação, entregamos soluções completas em estruturas metálicas com
-            padrão de engenharia de alto nível.
-          </p>
+          <Link
+            href="/servicos"
+            className="group self-start sm:self-auto inline-flex items-center gap-2 text-[12px] font-mono tracking-widest uppercase transition-colors"
+            style={{ color: '#5a6470' }}
+            onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = '#c4a040' }}
+            onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = '#5a6470' }}
+          >
+            Ver todos
+            <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+          </Link>
         </motion.div>
 
-        {/* Services list */}
-        <div className="divide-y divide-metal-dark/20">
+        {/* 3×2 photo grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px" style={{ background: 'rgba(255,255,255,0.05)' }}>
           {services.map((service, i) => (
             <motion.div
               key={service.slug}
-              initial={{ opacity: 0, y: 20 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: i * 0.07 }}
+              initial={{ opacity: 0 }}
+              animate={inView ? { opacity: 1 } : {}}
+              transition={{ duration: 0.7, delay: i * 0.09 }}
             >
-              <Link href={service.href} className="group block py-6 sm:py-8">
-                <div className="flex items-center gap-6 sm:gap-10">
-                  {/* Number */}
-                  <span className="font-display text-xs text-metal-dark font-semibold tracking-widest w-6 shrink-0 group-hover:text-amber-brand transition-colors duration-300">
-                    {service.number}
-                  </span>
-
-                  {/* Name */}
-                  <h3 className="font-display font-bold text-xl sm:text-2xl lg:text-3xl text-metal-light group-hover:text-white transition-colors duration-300 flex-1 leading-none">
-                    {service.name}
-                  </h3>
-
-                  {/* Keywords — hidden on mobile */}
-                  <div className="hidden lg:flex gap-2 flex-1 justify-center">
-                    {service.keywords.map((kw) => (
-                      <span
-                        key={kw}
-                        className="text-[11px] text-metal-dark border border-metal-dark/30 px-2.5 py-1 group-hover:border-amber-brand/30 group-hover:text-metal transition-all duration-300"
-                      >
-                        {kw}
-                      </span>
-                    ))}
-                  </div>
-
-                  {/* Tagline */}
-                  <span className="hidden sm:block text-sm text-metal max-w-[200px] text-right leading-snug">
-                    {service.tagline}
-                  </span>
-
-                  {/* Arrow */}
-                  <div className="ml-auto shrink-0 w-10 h-10 border border-metal-dark/40 rounded-full flex items-center justify-center text-metal group-hover:bg-amber-brand group-hover:border-amber-brand group-hover:text-carbon transition-all duration-300">
-                    <ArrowUpRight className="w-4 h-4 group-hover:rotate-12 transition-transform duration-300" />
-                  </div>
-                </div>
-
-                {/* Progress line on hover */}
-                <div className="h-px bg-amber-brand/20 mt-0 max-h-0 overflow-hidden group-hover:max-h-px transition-all duration-500" />
-              </Link>
+              <ServiceCard service={service} />
             </motion.div>
           ))}
         </div>
-
-        {/* Bottom CTA */}
-        <motion.div
-          className="mt-14 flex justify-center"
-          initial={{ opacity: 0 }}
-          animate={inView ? { opacity: 1 } : {}}
-          transition={{ duration: 0.7, delay: 0.6 }}
-        >
-          <Link
-            href="/servicos"
-            className="group inline-flex items-center gap-3 text-sm text-metal hover:text-white border border-metal-dark/40 hover:border-amber-brand/50 px-8 py-4 transition-all duration-300"
-          >
-            Ver todos os serviços em detalhe
-            <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-          </Link>
-        </motion.div>
       </div>
     </section>
+  )
+}
+
+function ServiceCard({ service }: { service: (typeof services)[0] }) {
+  return (
+    <Link href={service.href} className="group block relative overflow-hidden aspect-[4/3]" style={{ background: '#13161b' }}>
+      {/* Photo */}
+      <div
+        className="absolute inset-0 transition-transform duration-700 ease-out group-hover:scale-105"
+        style={{
+          backgroundImage: `url("${service.photo}")`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}
+      />
+
+      {/* Permanent dark overlay */}
+      <div className="absolute inset-0" style={{ background: 'rgba(5,6,8,0.5)' }} />
+
+      {/* Gradient bottom */}
+      <div
+        className="absolute inset-0 transition-opacity duration-400"
+        style={{ background: 'linear-gradient(to top, rgba(5,6,8,0.92) 0%, rgba(5,6,8,0.2) 55%, transparent 100%)' }}
+      />
+
+      {/* Tag — top right, appears on hover */}
+      <div className="absolute top-5 right-5">
+        <span
+          className="text-[9px] font-mono tracking-[0.3em] uppercase px-2.5 py-1.5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+          style={{
+            background: 'rgba(5,6,8,0.85)',
+            border: '1px solid rgba(196,160,64,0.3)',
+            color: 'rgba(196,160,64,0.9)',
+            backdropFilter: 'blur(8px)',
+          }}
+        >
+          {service.tag}
+        </span>
+      </div>
+
+      {/* Bottom content */}
+      <div className="absolute inset-0 p-7 sm:p-8 flex flex-col justify-end">
+        <div className="flex items-end justify-between gap-4">
+          <div>
+            <p
+              className="text-[10px] font-mono tracking-wider uppercase mb-2"
+              style={{ color: 'rgba(196,160,64,0.75)' }}
+            >
+              {service.tagline}
+            </p>
+            <h3
+              className="font-display font-black leading-none"
+              style={{ fontSize: 'clamp(1.35rem, 2.5vw, 1.9rem)', color: '#f0f1f2' }}
+            >
+              {service.name}
+            </h3>
+          </div>
+          <div
+            className="w-10 h-10 flex items-center justify-center shrink-0 transition-all duration-200 group-hover:bg-[#c4a040] group-hover:border-[#c4a040]"
+            style={{ border: '1px solid rgba(255,255,255,0.18)', color: '#f0f1f2' }}
+          >
+            <ArrowUpRight className="w-4 h-4 group-hover:text-[#050608] group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all" />
+          </div>
+        </div>
+      </div>
+    </Link>
   )
 }

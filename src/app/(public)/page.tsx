@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import HeroSection from '@/components/home/HeroSection'
 import StatsBar from '@/components/home/StatsBar'
+import SegmentSection from '@/components/home/SegmentSection'
 import ServicesGrid from '@/components/home/ServicesGrid'
 import FeaturedProjects from '@/components/home/FeaturedProjects'
 import ProcessSection from '@/components/home/ProcessSection'
@@ -45,6 +46,7 @@ export default async function HomePage() {
       />
       <HeroSection />
       <StatsBar />
+      <SegmentSection />
       <ServicesGrid />
       <FeaturedProjects items={featuredItems} />
       <ProcessSection />

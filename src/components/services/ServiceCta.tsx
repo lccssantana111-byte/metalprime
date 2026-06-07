@@ -1,6 +1,8 @@
+'use client'
+
 import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
-import { WHATSAPP_NUMBER } from '@/lib/constants'
+import { COMPANY_PHONE, WHATSAPP_NUMBER } from '@/lib/constants'
 
 interface Props {
   serviceName: string
@@ -8,49 +10,68 @@ interface Props {
 
 export default function ServiceCta({ serviceName }: Props) {
   return (
-    <section className="py-24 bg-graphite relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-steel/20 to-transparent" />
-
-      {/* Corner marks */}
-      <div className="absolute top-8 left-8 w-10 h-10">
-        <div className="absolute top-0 left-0 w-4 h-px bg-amber-brand/50" />
-        <div className="absolute top-0 left-0 w-px h-4 bg-amber-brand/50" />
-      </div>
-      <div className="absolute top-8 right-8 w-10 h-10">
-        <div className="absolute top-0 right-0 w-4 h-px bg-amber-brand/50" />
-        <div className="absolute top-0 right-0 w-px h-4 bg-amber-brand/50" />
-      </div>
-
-      <div className="container mx-auto px-4 sm:px-8 relative z-10 text-center max-w-2xl">
-        <div className="flex items-center justify-center gap-3 mb-6">
-          <div className="w-8 h-px bg-amber-brand" />
-          <span className="text-amber-brand text-xs font-semibold tracking-[0.35em] uppercase">Próximo passo</span>
-          <div className="w-8 h-px bg-amber-brand" />
-        </div>
-        <h2 className="font-display font-black text-4xl lg:text-5xl text-white leading-none mb-6">
-          Pronto para seu projeto<br />
-          <span className="text-metal/40">de {serviceName.toLowerCase()}?</span>
-        </h2>
-        <p className="text-metal leading-relaxed mb-12 max-w-md mx-auto">
-          Orçamento gratuito, visita técnica sem compromisso e entrega com ART de
-          engenheiro responsável.
-        </p>
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <Link
-            href="/orcamento"
-            className="group inline-flex items-center gap-3 bg-amber-brand hover:bg-amber-light text-carbon font-bold text-sm tracking-wide px-10 py-4 transition-colors duration-200"
+    <section
+      className="py-28 sm:py-40 overflow-hidden relative"
+      style={{ background: '#050608', borderTop: '1px solid rgba(255,255,255,0.05)' }}
+    >
+      <div className="container mx-auto px-5 sm:px-8">
+        <div className="max-w-2xl">
+          <span className="font-mono text-[10px] tracking-[0.45em] uppercase block mb-10" style={{ color: 'rgba(196,160,64,0.7)' }}>
+            Próximo passo
+          </span>
+          <h2
+            className="font-display font-black leading-[0.88] mb-10"
+            style={{ fontSize: 'clamp(3rem, 7vw, 7rem)', color: '#f0f1f2', letterSpacing: '-0.025em' }}
           >
-            Solicitar Orçamento Gratuito
-            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-          </Link>
+            Pronto para<br />
+            <span style={{ color: '#c4a040' }}>começar?</span>
+          </h2>
+
           <a
-            href={`https://wa.me/${WHATSAPP_NUMBER}?text=Olá! Tenho interesse em ${serviceName.toLowerCase()}.`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 border border-white/15 hover:border-white/30 text-metal-light hover:text-white text-sm px-8 py-4 transition-all duration-200"
+            href={`tel:${COMPANY_PHONE}`}
+            className="block font-display font-black leading-none mb-12 transition-colors"
+            style={{ fontSize: 'clamp(1.75rem, 4vw, 3.5rem)', color: 'rgba(240,241,242,0.2)', letterSpacing: '-0.02em' }}
+            onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = '#c4a040' }}
+            onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = 'rgba(240,241,242,0.2)' }}
           >
-            Falar pelo WhatsApp
+            {COMPANY_PHONE}
           </a>
+
+          <div className="flex flex-col sm:flex-row gap-4">
+            <Link
+              href="/orcamento"
+              className="group inline-flex items-center gap-3 font-bold text-[13px] tracking-[0.1em] uppercase px-10 py-[18px] transition-all duration-200"
+              style={{ background: '#c4a040', color: '#050608' }}
+              onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = '#d4b454' }}
+              onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = '#c4a040' }}
+            >
+              Solicitar Orçamento Gratuito
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </Link>
+            <a
+              href={`https://wa.me/${WHATSAPP_NUMBER}?text=Olá! Tenho interesse em ${serviceName.toLowerCase()}.`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 text-[13px] px-9 py-[18px] transition-all duration-200"
+              style={{ border: '1px solid rgba(255,255,255,0.12)', color: 'rgba(180,188,198,0.7)' }}
+              onMouseEnter={(e) => {
+                const el = e.currentTarget as HTMLElement
+                el.style.borderColor = 'rgba(255,255,255,0.25)'
+                el.style.color = '#f0f1f2'
+              }}
+              onMouseLeave={(e) => {
+                const el = e.currentTarget as HTMLElement
+                el.style.borderColor = 'rgba(255,255,255,0.12)'
+                el.style.color = 'rgba(180,188,198,0.7)'
+              }}
+            >
+              Falar pelo WhatsApp
+            </a>
+          </div>
+
+          <p className="mt-10 text-[12px] font-mono" style={{ color: 'rgba(180,188,198,0.25)' }}>
+            Orçamento em 24h · Visita técnica gratuita · ART inclusa em todos os projetos
+          </p>
         </div>
       </div>
     </section>

@@ -1,20 +1,20 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X, ChevronDown, Phone } from 'lucide-react'
+import { Menu, X, ArrowUpRight, ChevronRight } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { BRAND_NAME, COMPANY_PHONE, WHATSAPP_NUMBER } from '@/lib/constants'
 
 const services = [
-  { label: 'Portões', href: '/servicos/portoes' },
-  { label: 'Grades e Cercas', href: '/servicos/grades-e-cercas' },
-  { label: 'Escadas', href: '/servicos/escadas' },
-  { label: 'Corrimões', href: '/servicos/corrimoes' },
-  { label: 'Estruturas Metálicas', href: '/servicos/estruturas-metalicas' },
-  { label: 'Sob Medida', href: '/servicos/sob-medida' },
+  { label: 'Portões', href: '/servicos/portoes', desc: 'Automáticos, basculantes e deslizantes' },
+  { label: 'Grades e Cercas', href: '/servicos/grades-e-cercas', desc: 'Segurança com design industrial' },
+  { label: 'Escadas Metálicas', href: '/servicos/escadas', desc: 'Retas, helicoidais e flutuantes' },
+  { label: 'Corrimões', href: '/servicos/corrimoes', desc: 'Inox, ferro e alumínio' },
+  { label: 'Estruturas Metálicas', href: '/servicos/estruturas-metalicas', desc: 'Galpões, coberturas e mezaninos' },
+  { label: 'Projetos Sob Medida', href: '/servicos/sob-medida', desc: 'Qualquer metal, qualquer forma' },
 ]
 
 const nav = [
@@ -25,20 +25,30 @@ const nav = [
   { label: 'Contato', href: '/contato' },
 ]
 
+const LOGO_MARK = (
+  <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+    <path d="M14 2L26 8V20L14 26L2 20V8L14 2Z" stroke="#c4a040" strokeWidth="1.5" fill="none" />
+    <path d="M14 7L21 11V17L14 21L7 17V11L14 7Z" fill="#c4a040" fillOpacity="0.15" stroke="#c4a040" strokeWidth="1" />
+    <circle cx="14" cy="14" r="2.5" fill="#c4a040" />
+  </svg>
+)
+
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
   const [servicesOpen, setServicesOpen] = useState(false)
   const pathname = usePathname()
+  const dropdownRef = useRef<HTMLLIElement>(null)
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 30)
+    const handleScroll = () => setScrolled(window.scrollY > 40)
     window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
   useEffect(() => {
     setMobileOpen(false)
+    setServicesOpen(false)
   }, [pathname])
 
   useEffect(() => {
@@ -52,72 +62,124 @@ export default function Navbar() {
   return (
     <header
       className={cn(
-        'fixed top-0 left-0 right-0 z-40 transition-all duration-500',
+        'fixed top-0 left-0 right-0 z-50 transition-all duration-500',
         scrolled
-          ? 'bg-carbon/98 backdrop-blur-md border-b border-white/5 py-0'
-          : 'bg-transparent py-0',
+          ? 'bg-[#050608]/97 backdrop-blur-xl border-b'
+          : 'bg-transparent',
       )}
+      style={{
+        borderBottomColor: scrolled ? 'rgba(255,255,255,0.06)' : 'transparent',
+      }}
     >
-      <nav className="container mx-auto px-4 sm:px-8 h-16 flex items-center justify-between">
+      <nav className="container mx-auto px-5 sm:px-8 h-[72px] flex items-center justify-between gap-8">
 
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2.5 group shrink-0">
-          <div className="relative w-7 h-7 shrink-0">
-            <div className="absolute inset-0 bg-amber-brand rotate-45 group-hover:scale-110 transition-transform duration-300" />
-            <div className="absolute inset-[3px] bg-carbon rotate-45" />
-            <div className="absolute inset-[6px] bg-amber-brand rotate-45" />
+        <Link href="/" className="flex items-center gap-3 shrink-0 group">
+          <div className="transition-transform duration-300 group-hover:scale-105">
+            {LOGO_MARK}
           </div>
-          <span className="font-display font-bold text-base tracking-wider text-white uppercase">
+          <span className="font-display font-black text-[15px] tracking-[0.12em] uppercase text-[#f0f1f2]">
             {BRAND_NAME.split(' ')[0]}
-            <span className="text-amber-brand">.</span>
+            <span style={{ color: '#c4a040' }}>.</span>
           </span>
         </Link>
 
-        {/* Desktop nav — centered */}
+        {/* Desktop nav */}
         <ul className="hidden lg:flex items-center gap-1 absolute left-1/2 -translate-x-1/2">
           {nav.map((item) =>
             item.children ? (
-              <li key={item.href} className="relative"
+              <li
+                key={item.href}
+                ref={dropdownRef}
+                className="relative"
                 onMouseEnter={() => setServicesOpen(true)}
                 onMouseLeave={() => setServicesOpen(false)}
               >
                 <button
                   className={cn(
-                    'flex items-center gap-1 px-4 py-2 text-sm transition-colors duration-200 relative',
-                    isActive(item.href) ? 'text-white' : 'text-metal hover:text-white',
+                    'flex items-center gap-1.5 px-4 py-2.5 text-[13px] font-medium transition-colors duration-200 tracking-wide',
+                    isActive(item.href)
+                      ? 'text-[#f0f1f2]'
+                      : 'text-[#b4bcc6] hover:text-[#f0f1f2]',
                   )}
                 >
                   {item.label}
-                  <ChevronDown className={cn('w-3 h-3 transition-transform duration-200', servicesOpen && 'rotate-180')} />
+                  <ChevronRight
+                    className={cn(
+                      'w-3 h-3 transition-transform duration-200',
+                      servicesOpen ? 'rotate-90' : '',
+                    )}
+                  />
                   {isActive(item.href) && (
-                    <span className="absolute bottom-0 left-4 right-4 h-px bg-amber-brand" />
+                    <span
+                      className="absolute bottom-0 left-4 right-4 h-px"
+                      style={{ background: '#c4a040' }}
+                    />
                   )}
                 </button>
 
                 <AnimatePresence>
                   {servicesOpen && (
                     <motion.div
-                      className="absolute top-full left-0 pt-3"
-                      initial={{ opacity: 0, y: -6 }}
+                      className="absolute top-full left-1/2 -translate-x-1/2 pt-4"
+                      initial={{ opacity: 0, y: -8 }}
                       animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -6 }}
-                      transition={{ duration: 0.15 }}
+                      exit={{ opacity: 0, y: -8 }}
+                      transition={{ duration: 0.18 }}
                     >
-                      <div className="bg-carbon/98 backdrop-blur-md border border-white/8 shadow-2xl py-2 min-w-[220px]">
-                        {/* Top accent */}
-                        <div className="absolute top-0 left-6 right-6 h-px bg-amber-brand/60" />
-                        {item.children.map((child, i) => (
+                      <div
+                        className="shadow-2xl overflow-hidden"
+                        style={{
+                          background: '#0c0e11',
+                          border: '1px solid rgba(255,255,255,0.07)',
+                          minWidth: '480px',
+                        }}
+                      >
+                        <div className="h-px w-full" style={{ background: 'linear-gradient(90deg, transparent, #c4a040, transparent)' }} />
+                        <div className="grid grid-cols-2 gap-px p-1">
+                          {item.children.map((child, i) => (
+                            <Link
+                              key={child.href}
+                              href={child.href}
+                              className="group flex flex-col gap-0.5 px-5 py-4 transition-colors duration-150"
+                              style={{}}
+                              onMouseEnter={(e) => {
+                                e.currentTarget.style.background = 'rgba(255,255,255,0.04)'
+                              }}
+                              onMouseLeave={(e) => {
+                                e.currentTarget.style.background = 'transparent'
+                              }}
+                            >
+                              <span className="flex items-center gap-2 text-[13px] font-medium text-[#f0f1f2]">
+                                <span
+                                  className="font-mono text-[9px] tracking-widest"
+                                  style={{ color: 'rgba(196,160,64,0.6)' }}
+                                >
+                                  0{i + 1}
+                                </span>
+                                {child.label}
+                              </span>
+                              <span className="text-[11px]" style={{ color: '#5a6470' }}>
+                                {child.desc}
+                              </span>
+                            </Link>
+                          ))}
+                        </div>
+                        <div className="px-6 py-3 flex items-center justify-between" style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}>
+                          <span className="text-[11px] font-mono" style={{ color: '#5a6470' }}>
+                            Todos os serviços
+                          </span>
                           <Link
-                            key={child.href}
-                            href={child.href}
-                            className="flex items-center gap-3 px-5 py-2.5 text-sm text-metal hover:text-white hover:bg-white/4 transition-all duration-150 group/item"
+                            href="/servicos"
+                            className="flex items-center gap-1.5 text-[11px] font-semibold tracking-wide transition-colors"
+                            style={{ color: '#c4a040' }}
+                            onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = '#d4b454' }}
+                            onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = '#c4a040' }}
                           >
-                            <span className="text-[10px] text-metal-dark font-mono group-hover/item:text-amber-brand transition-colors">
-                              0{i + 1}
-                            </span>
-                            {child.label}
+                            Ver todos
+                            <ArrowUpRight className="w-3 h-3" />
                           </Link>
-                        ))}
+                        </div>
                       </div>
                     </motion.div>
                   )}
@@ -128,13 +190,18 @@ export default function Navbar() {
                 <Link
                   href={item.href}
                   className={cn(
-                    'relative px-4 py-2 text-sm transition-colors duration-200 block',
-                    isActive(item.href) ? 'text-white' : 'text-metal hover:text-white',
+                    'relative px-4 py-2.5 text-[13px] font-medium transition-colors duration-200 block tracking-wide',
+                    isActive(item.href)
+                      ? 'text-[#f0f1f2]'
+                      : 'text-[#b4bcc6] hover:text-[#f0f1f2]',
                   )}
                 >
                   {item.label}
                   {isActive(item.href) && (
-                    <span className="absolute bottom-0 left-4 right-4 h-px bg-amber-brand" />
+                    <span
+                      className="absolute bottom-0 left-4 right-4 h-px"
+                      style={{ background: '#c4a040' }}
+                    />
                   )}
                 </Link>
               </li>
@@ -143,35 +210,53 @@ export default function Navbar() {
         </ul>
 
         {/* Desktop right */}
-        <div className="hidden lg:flex items-center gap-5">
+        <div className="hidden lg:flex items-center gap-5 shrink-0">
           <a
             href={`tel:${COMPANY_PHONE}`}
-            className="flex items-center gap-2 text-xs text-metal hover:text-white transition-colors duration-200 tracking-wide"
+            className="text-[12px] font-mono transition-colors duration-200"
+            style={{ color: '#b4bcc6' }}
+            onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = '#f0f1f2' }}
+            onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = '#b4bcc6' }}
           >
-            <Phone className="w-3.5 h-3.5 text-amber-brand" />
             {COMPANY_PHONE}
           </a>
           <Link
             href="/orcamento"
-            className="bg-amber-brand hover:bg-amber-light text-carbon font-bold text-xs tracking-wide uppercase px-5 py-2.5 transition-colors duration-200"
+            className="text-[12px] font-bold tracking-[0.1em] uppercase px-6 py-2.5 transition-all duration-200"
+            style={{ background: '#c4a040', color: '#050608' }}
+            onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = '#d4b454' }}
+            onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = '#c4a040' }}
           >
-            Orçamento
+            Orçamento Gratuito
           </Link>
         </div>
 
         {/* Mobile toggle */}
         <button
-          className="lg:hidden w-10 h-10 flex items-center justify-center text-metal-light hover:text-white transition-colors"
+          className="lg:hidden w-10 h-10 flex items-center justify-center transition-colors"
+          style={{ color: '#b4bcc6' }}
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Menu"
+          onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = '#f0f1f2' }}
+          onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = '#b4bcc6' }}
         >
           <AnimatePresence mode="wait">
             {mobileOpen ? (
-              <motion.span key="x" initial={{ rotate: -90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: 90, opacity: 0 }} transition={{ duration: 0.15 }}>
+              <motion.span key="x"
+                initial={{ rotate: -90, opacity: 0 }}
+                animate={{ rotate: 0, opacity: 1 }}
+                exit={{ rotate: 90, opacity: 0 }}
+                transition={{ duration: 0.15 }}
+              >
                 <X className="w-5 h-5" />
               </motion.span>
             ) : (
-              <motion.span key="menu" initial={{ rotate: 90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: -90, opacity: 0 }} transition={{ duration: 0.15 }}>
+              <motion.span key="menu"
+                initial={{ rotate: 90, opacity: 0 }}
+                animate={{ rotate: 0, opacity: 1 }}
+                exit={{ rotate: -90, opacity: 0 }}
+                transition={{ duration: 0.15 }}
+              >
                 <Menu className="w-5 h-5" />
               </motion.span>
             )}
@@ -183,37 +268,45 @@ export default function Navbar() {
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
-            className="lg:hidden fixed inset-0 top-16 bg-carbon z-30"
-            initial={{ opacity: 0, x: '100%' }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: '100%' }}
-            transition={{ duration: 0.3, ease: [0.76, 0, 0.24, 1] }}
+            className="lg:hidden fixed inset-0 top-[72px] z-40"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            style={{ background: '#050608' }}
           >
-            <div className="h-full overflow-y-auto px-6 py-10 flex flex-col">
-              <nav className="flex-1">
+            {/* Top gold line */}
+            <div className="h-px w-full" style={{ background: 'linear-gradient(90deg, transparent, #c4a040, transparent)' }} />
+
+            <div className="h-full overflow-y-auto px-6 pt-8 pb-16 flex flex-col">
+              <nav className="flex-1 space-y-0">
                 {nav.map((item, i) => (
                   <motion.div
                     key={item.href}
-                    initial={{ opacity: 0, x: 30 }}
+                    initial={{ opacity: 0, x: 24 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: i * 0.06, duration: 0.4 }}
+                    transition={{ delay: i * 0.07, duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
                   >
                     <Link
                       href={item.href}
-                      className={cn(
-                        'block py-5 font-display font-bold text-3xl border-b border-white/6 transition-colors',
-                        isActive(item.href) ? 'text-amber-brand' : 'text-white/80 hover:text-white',
-                      )}
+                      className="block py-5 font-display font-black text-[2rem] transition-colors leading-none"
+                      style={{
+                        color: isActive(item.href) ? '#c4a040' : 'rgba(240,241,242,0.85)',
+                        borderBottom: '1px solid rgba(255,255,255,0.05)',
+                      }}
                     >
                       {item.label}
                     </Link>
                     {item.children && (
-                      <div className="pl-4 py-3 flex flex-col gap-0">
+                      <div className="py-3 pl-4 grid grid-cols-2 gap-x-4 gap-y-1">
                         {item.children.map((child) => (
                           <Link
                             key={child.href}
                             href={child.href}
-                            className="py-2 text-sm text-metal hover:text-metal-light transition-colors"
+                            className="py-1.5 text-[13px] transition-colors"
+                            style={{ color: '#5a6470' }}
+                            onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = '#b4bcc6' }}
+                            onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = '#5a6470' }}
                           >
                             {child.label}
                           </Link>
@@ -225,23 +318,24 @@ export default function Navbar() {
               </nav>
 
               <motion.div
-                className="pt-8 space-y-4"
+                className="pt-8 space-y-3"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ delay: 0.4 }}
+                transition={{ delay: 0.42 }}
               >
                 <a
                   href={`https://wa.me/${WHATSAPP_NUMBER}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-3 text-metal-light text-sm"
+                  className="block text-center py-4 text-[14px] font-mono"
+                  style={{ color: '#5a6470', border: '1px solid rgba(255,255,255,0.07)' }}
                 >
-                  <Phone className="w-4 h-4 text-amber-brand" />
                   {COMPANY_PHONE}
                 </a>
                 <Link
                   href="/orcamento"
-                  className="block w-full bg-amber-brand hover:bg-amber-light text-carbon font-bold text-center py-4 text-sm tracking-wide uppercase transition-colors"
+                  className="block w-full text-center py-4 text-[13px] font-bold tracking-[0.12em] uppercase transition-colors"
+                  style={{ background: '#c4a040', color: '#050608' }}
                 >
                   Solicitar Orçamento Gratuito
                 </Link>

@@ -4,63 +4,76 @@ import { useEffect, useRef, useState } from 'react'
 import { useInView } from 'framer-motion'
 
 const stats = [
-  { value: 20, suffix: '+', unit: 'anos', label: 'no mercado paulistano' },
-  { value: 5000, suffix: '+', unit: 'projetos', label: 'executados com ART' },
-  { value: 500, suffix: '+', unit: 'condomínios', label: 'atendidos em SP' },
-  { value: 100, suffix: '%', unit: '', label: 'satisfação garantida' },
+  { value: 20,  suffix: '+', label: 'Anos de mercado',       prefix: '' },
+  { value: 5000,suffix: '+', label: 'Obras entregues',       prefix: '' },
+  { value: 500, suffix: '+', label: 'Condomínios atendidos', prefix: '' },
+  { value: 100, suffix: '%', label: 'Projetos com ART',      prefix: '' },
 ]
 
-function CountUp({ target, suffix, duration = 1800 }: { target: number; suffix: string; duration?: number }) {
-  const [count, setCount] = useState(0)
-  const ref = useRef(false)
-  const inViewRef = useRef(null)
-  const inView = useInView(inViewRef, { once: true })
+function CountUp({ target, duration = 1800, suffix = '', prefix = '' }: {
+  target: number; duration?: number; suffix?: string; prefix?: string
+}) {
+  const [value, setValue] = useState(0)
+  const ref = useRef(null)
+  const inView = useInView(ref, { once: true })
 
   useEffect(() => {
-    if (!inView || ref.current) return
-    ref.current = true
+    if (!inView) return
     const start = performance.now()
-    const step = (now: number) => {
+    const raf = (now: number) => {
       const elapsed = now - start
-      const progress = Math.min(elapsed / duration, 1)
-      const eased = 1 - Math.pow(1 - progress, 3)
-      setCount(Math.round(eased * target))
-      if (progress < 1) requestAnimationFrame(step)
+      const t = Math.min(elapsed / duration, 1)
+      const eased = 1 - Math.pow(1 - t, 3)
+      setValue(Math.round(eased * target))
+      if (t < 1) requestAnimationFrame(raf)
     }
-    requestAnimationFrame(step)
+    requestAnimationFrame(raf)
   }, [inView, target, duration])
 
+  const formatted = target >= 1000
+    ? value.toLocaleString('pt-BR')
+    : value.toString()
+
   return (
-    <span ref={inViewRef}>
-      {count.toLocaleString('pt-BR')}{suffix}
+    <span ref={ref}>
+      {prefix}{formatted}{suffix}
     </span>
   )
 }
 
 export default function StatsBar() {
   return (
-    <section className="bg-graphite border-y border-white/5 py-0 overflow-hidden">
-      <div className="container mx-auto px-4 sm:px-8">
-        <div className="grid grid-cols-2 lg:grid-cols-4 divide-x divide-white/5">
+    <section
+      className="relative overflow-hidden"
+      style={{ background: '#0c0e11', borderTop: '1px solid rgba(255,255,255,0.05)', borderBottom: '1px solid rgba(255,255,255,0.05)' }}
+    >
+      <div className="container mx-auto px-5 sm:px-8">
+        <div className="grid grid-cols-2 lg:grid-cols-4">
           {stats.map((stat, i) => (
             <div
               key={stat.label}
-              className="relative py-10 px-6 flex flex-col justify-center"
+              className="py-14 sm:py-20 px-8 sm:px-12 flex flex-col justify-center"
+              style={{
+                borderRight: i < stats.length - 1 ? '1px solid rgba(255,255,255,0.05)' : 'none',
+                borderBottom: i < 2 ? '1px solid rgba(255,255,255,0.05)' : 'none',
+              }}
             >
-              {/* Subtle top accent on first */}
-              {i === 0 && (
-                <div className="absolute top-0 left-6 w-12 h-0.5 bg-amber-brand" />
-              )}
-
-              <div className="font-display font-black text-4xl lg:text-5xl text-white leading-none mb-1">
-                <CountUp target={stat.value} suffix={stat.suffix} />
-                {stat.unit && (
-                  <span className="text-amber-brand text-xl lg:text-2xl ml-1 font-bold">{stat.unit}</span>
-                )}
+              <div
+                className="font-display font-black tabular-nums leading-none mb-3"
+                style={{ fontSize: 'clamp(3rem, 6vw, 5.5rem)', color: '#f0f1f2', letterSpacing: '-0.03em' }}
+              >
+                <CountUp target={stat.value} suffix={stat.suffix} prefix={stat.prefix} />
               </div>
-              <p className="text-xs text-metal-dark tracking-wide leading-tight mt-2">
+              <div
+                className="font-mono text-[10px] tracking-[0.35em] uppercase"
+                style={{ color: 'rgba(180,188,198,0.35)' }}
+              >
                 {stat.label}
-              </p>
+              </div>
+              <div
+                className="mt-4 w-8 h-px"
+                style={{ background: 'rgba(196,160,64,0.4)' }}
+              />
             </div>
           ))}
         </div>
