@@ -55,9 +55,9 @@ export default function CtaBanner() {
             <a
               href={`tel:${COMPANY_PHONE}`}
               className="block font-display font-black leading-none mb-12 transition-colors"
-              style={{ fontSize: 'clamp(2rem, 5vw, 4rem)', color: 'rgba(240,241,242,0.25)', letterSpacing: '-0.02em' }}
+              style={{ fontSize: 'clamp(2rem, 5vw, 4rem)', color: 'rgba(240,241,242,0.45)', letterSpacing: '-0.02em' }}
               onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = '#c4a040' }}
-              onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = 'rgba(240,241,242,0.25)' }}
+              onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = 'rgba(240,241,242,0.45)' }}
             >
               {COMPANY_PHONE}
             </a>
@@ -95,7 +95,7 @@ export default function CtaBanner() {
             </div>
 
             {/* Trust line */}
-            <p className="mt-10 text-[12px] font-mono" style={{ color: 'rgba(180,188,198,0.3)' }}>
+            <p className="mt-10 text-[12px] font-mono" style={{ color: 'rgba(180,188,198,0.6)' }}>
               Orçamento em 24h · Visita técnica gratuita · ART inclusa · +5.000 obras entregues
             </p>
           </motion.div>

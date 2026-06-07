@@ -44,9 +44,18 @@ export default function HeroSection() {
         <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(5,6,8,0.9) 0%, transparent 50%)' }} />
       </motion.div>
 
+      {/* Structural grid */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          backgroundImage: `linear-gradient(rgba(255,255,255,0.022) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.022) 1px, transparent 1px)`,
+          backgroundSize: '80px 80px',
+        }}
+      />
+
       {/* Grain */}
       <div
-        className="absolute inset-0 pointer-events-none opacity-[0.04]"
+        className="absolute inset-0 pointer-events-none opacity-[0.055]"
         style={{
           backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`,
           backgroundSize: '180px',
@@ -205,7 +214,7 @@ export default function HeroSection() {
                   </div>
                   <div
                     className="text-[10px] font-mono tracking-wider mt-1 uppercase"
-                    style={{ color: 'rgba(180,188,198,0.4)' }}
+                    style={{ color: 'rgba(180,188,198,0.65)' }}
                   >
                     {stat.label}
                   </div>
@@ -224,8 +233,12 @@ export default function HeroSection() {
         transition={{ delay: 1.4, duration: 0.8 }}
       >
         <div
+          className="w-1 h-1 rounded-full"
+          style={{ background: '#c4a040', animation: 'pulse 2.4s ease-in-out infinite' }}
+        />
+        <div
           className="w-px h-12"
-          style={{ background: 'linear-gradient(to bottom, rgba(196,160,64,0.5), transparent)' }}
+          style={{ background: 'linear-gradient(to bottom, rgba(196,160,64,0.6), transparent)' }}
         />
       </motion.div>
     </section>

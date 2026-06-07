@@ -137,16 +137,19 @@ export default function TestimonialsCarousel() {
             >
               {/* Large quote mark */}
               <div
-                className="font-display font-black leading-none mb-8 select-none"
-                style={{ fontSize: 'clamp(5rem, 10vw, 9rem)', color: 'rgba(196,160,64,0.07)', lineHeight: 1 }}
+                className="font-display font-black leading-none mb-6 select-none"
+                style={{ fontSize: 'clamp(5rem, 10vw, 9rem)', color: 'rgba(196,160,64,0.18)', lineHeight: 1 }}
                 aria-hidden
               >
                 "
               </div>
 
+              {/* Gold rule before quote */}
+              <div className="w-12 h-px mb-8" style={{ background: 'rgba(196,160,64,0.4)' }} />
+
               <blockquote
                 className="font-display font-medium leading-[1.35] mb-12"
-                style={{ fontSize: 'clamp(1.5rem, 3vw, 2.5rem)', color: '#f0f1f2', maxWidth: '900px' }}
+                style={{ fontSize: 'clamp(1.5rem, 3vw, 2.6rem)', color: '#f0f1f2', maxWidth: '900px' }}
               >
                 {t.content}
               </blockquote>
@@ -162,7 +165,7 @@ export default function TestimonialsCarousel() {
                   </div>
                   <div>
                     <p className="font-semibold text-[15px]" style={{ color: '#f0f1f2' }}>{t.name}</p>
-                    <p className="text-[12px] mt-0.5" style={{ color: '#5a6470' }}>
+                    <p className="text-[12px] mt-0.5" style={{ color: '#8a9199' }}>
                       {t.role} · {t.company}
                     </p>
                   </div>

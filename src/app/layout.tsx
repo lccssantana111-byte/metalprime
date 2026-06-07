@@ -1,11 +1,11 @@
 import type { Metadata } from 'next'
-import { Inter, Outfit } from 'next/font/google'
+import { DM_Sans, Outfit, IBM_Plex_Mono } from 'next/font/google'
 import { Toaster } from '@/components/ui/sonner'
 import './globals.css'
 import { BRAND_NAME, COMPANY_TAGLINE, SITE_URL } from '@/lib/constants'
 
-const inter = Inter({
-  variable: '--font-inter',
+const dmSans = DM_Sans({
+  variable: '--font-dm-sans',
   subsets: ['latin'],
   display: 'swap',
 })
@@ -14,6 +14,13 @@ const outfit = Outfit({
   variable: '--font-outfit',
   subsets: ['latin'],
   display: 'swap',
+})
+
+const ibmPlexMono = IBM_Plex_Mono({
+  variable: '--font-ibm-mono',
+  subsets: ['latin'],
+  display: 'swap',
+  weight: ['400', '500', '700'],
 })
 
 export const metadata: Metadata = {
@@ -33,7 +40,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="pt-BR" className={`${inter.variable} ${outfit.variable}`}>
+    <html lang="pt-BR" className={`${dmSans.variable} ${outfit.variable} ${ibmPlexMono.variable}`}>
       <body className="min-h-screen bg-carbon text-foreground antialiased">
         {children}
         <Toaster richColors position="top-right" />

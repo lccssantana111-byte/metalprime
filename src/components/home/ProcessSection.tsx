@@ -36,7 +36,7 @@ export default function ProcessSection() {
   const inView = useInView(ref, { once: true, margin: '-60px' })
 
   return (
-    <section ref={ref} className="overflow-hidden" style={{ background: '#0c0e11' }}>
+    <section ref={ref} className="overflow-hidden bg-cross" style={{ background: '#0c0e11' }}>
       <div className="grid grid-cols-1 lg:grid-cols-2">
 
         {/* Left — content */}
@@ -67,31 +67,31 @@ export default function ProcessSection() {
                 animate={inView ? { opacity: 1, x: 0 } : {}}
                 transition={{ duration: 0.7, delay: 0.1 + i * 0.12, ease: [0.16, 1, 0.3, 1] }}
               >
-                <div className="flex flex-col items-center shrink-0 pt-1">
+                <div className="flex flex-col items-center shrink-0 pt-1 self-stretch">
                   <div
-                    className="w-9 h-9 flex items-center justify-center shrink-0 font-mono font-bold text-[11px]"
-                    style={{ background: 'rgba(196,160,64,0.08)', border: '1px solid rgba(196,160,64,0.2)', color: '#c4a040' }}
+                    className="w-10 h-10 flex items-center justify-center shrink-0 font-mono font-bold text-[12px]"
+                    style={{ background: 'rgba(196,160,64,0.08)', border: '1px solid rgba(196,160,64,0.25)', color: '#c4a040' }}
                   >
                     {step.number}
                   </div>
                   {i < steps.length - 1 && (
-                    <div className="w-px mt-3 mb-3" style={{ background: 'rgba(255,255,255,0.06)', height: '40px' }} />
+                    <div className="w-px flex-1 mt-3 min-h-[36px]" style={{ background: 'rgba(255,255,255,0.08)' }} />
                   )}
                 </div>
 
-                <div className="pb-10">
+                <div className="pb-12">
                   <div className="flex items-center gap-3 mb-3 flex-wrap">
-                    <h3 className="font-display font-bold" style={{ fontSize: '1.1rem', color: '#f0f1f2' }}>
+                    <h3 className="font-display font-bold" style={{ fontSize: '1.15rem', color: '#f0f1f2' }}>
                       {step.title}
                     </h3>
                     <span
-                      className="text-[9px] font-mono tracking-widest uppercase px-2 py-1 shrink-0"
-                      style={{ background: 'rgba(196,160,64,0.08)', border: '1px solid rgba(196,160,64,0.15)', color: 'rgba(196,160,64,0.7)' }}
+                      className="text-[9px] font-mono tracking-widest uppercase px-2.5 py-1 shrink-0"
+                      style={{ background: 'rgba(196,160,64,0.1)', border: '1px solid rgba(196,160,64,0.25)', color: 'rgba(196,160,64,0.85)' }}
                     >
                       {step.badge}
                     </span>
                   </div>
-                  <p className="text-[14px] leading-[1.8]" style={{ color: 'rgba(180,188,198,0.5)' }}>
+                  <p className="text-[14px] leading-[1.8]" style={{ color: '#8a9199' }}>
                     {step.description}
                   </p>
                 </div>

@@ -192,7 +192,7 @@ function ProjectCard({
           </div>
         </div>
         {item.city && (
-          <p className="text-[11px] font-mono mt-2" style={{ color: 'rgba(180,188,198,0.35)' }}>
+          <p className="text-[11px] font-mono mt-2" style={{ color: 'rgba(180,188,198,0.65)' }}>
             {item.city}{item.year ? ` · ${item.year}` : ''}
           </p>
         )}

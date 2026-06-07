@@ -328,7 +328,7 @@ export default function Navbar() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="block text-center py-4 text-[14px] font-mono"
-                  style={{ color: '#5a6470', border: '1px solid rgba(255,255,255,0.07)' }}
+                  style={{ color: '#8a9199', border: '1px solid rgba(255,255,255,0.10)' }}
                 >
                   {COMPANY_PHONE}
                 </a>

@@ -5,9 +5,9 @@
 
 @theme inline {
   /* ── Typography ──────────────────────────────────── */
-  --font-sans: var(--font-inter);
+  --font-sans: var(--font-dm-sans);
   --font-display: var(--font-outfit);
-  --font-mono: var(--font-geist-mono);
+  --font-mono: var(--font-ibm-mono);
 
   /* ── Premium Industrial palette ─────────────────── */
   --color-obsidian: #050608;
@@ -152,6 +152,33 @@ body {
   letter-spacing: 0.45em;
   text-transform: uppercase;
   color: rgba(196,160,64,0.8);
+}
+
+/* ── Industrial grid texture ─────────────────────── */
+.bg-grid {
+  background-image:
+    linear-gradient(rgba(255,255,255,0.028) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.028) 1px, transparent 1px);
+  background-size: 72px 72px;
+}
+
+.bg-cross {
+  background-image:
+    linear-gradient(rgba(196,160,64,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(196,160,64,0.04) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+/* ── Gold rule ───────────────────────────────────── */
+.gold-rule {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(196,160,64,0.55) 25%, rgba(196,160,64,0.55) 75%, transparent);
+}
+
+/* ── Section divider ─────────────────────────────── */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.06) 30%, rgba(255,255,255,0.06) 70%, transparent);
 }
 
 /* ── Admin scroll ───────────────────────────────── */
