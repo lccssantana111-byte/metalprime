@@ -8,10 +8,11 @@ import {
   FileText,
   FolderOpen,
   Image,
+  Building2,
   Settings,
   UserCog,
   LogOut,
-  Building2,
+  ExternalLink,
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { createClient } from '@/lib/supabase/client'
@@ -43,12 +44,11 @@ const navGroups = [
   },
 ]
 
-interface AdminSidebarProps {
-  isOpen?: boolean
+interface Props {
   onClose?: () => void
 }
 
-export default function AdminSidebar({ isOpen = false, onClose }: AdminSidebarProps) {
+export default function AdminSidebar({ onClose }: Props) {
   const pathname = usePathname()
   const router = useRouter()
 
@@ -59,88 +59,137 @@ export default function AdminSidebar({ isOpen = false, onClose }: AdminSidebarPr
     router.refresh()
   }
 
-  function handleLinkClick() {
-    onClose?.()
-  }
-
   return (
     <aside
-      className={cn(
-        'fixed lg:sticky inset-y-0 left-0 z-30',
-        'w-60 shrink-0 bg-graphite border-r border-metal-dark/30 flex flex-col h-screen',
-        'transition-transform duration-300 ease-[cubic-bezier(0.76,0,0.24,1)]',
-        isOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0',
-      )}
+      className="w-[220px] h-full flex flex-col"
+      style={{
+        background: '#0b0d10',
+        borderRight: '1px solid rgba(255,255,255,0.06)',
+      }}
     >
-      {/* Logo */}
-      <div className="p-5 border-b border-metal-dark/20 shrink-0">
-        <Link href="/admin" onClick={handleLinkClick} className="flex items-center gap-3">
-          <div className="relative w-8 h-8 shrink-0">
-            <div className="absolute inset-0 border border-amber-brand/40 rounded-sm rotate-45" />
-            <div className="absolute inset-1.5 bg-amber-brand rounded-sm rotate-45" />
-          </div>
-          <div>
-            <span className="font-display font-semibold text-white text-sm">
-              {BRAND_NAME.split(' ')[0]}
-              <span className="text-amber-brand">.</span>
-            </span>
-            <p className="text-[10px] font-normal text-metal-dark tracking-widest uppercase leading-none mt-0.5">
-              admin
-            </p>
-          </div>
-        </Link>
+      {/* Logo — height matches header */}
+      <div
+        className="h-[52px] flex items-center gap-2.5 px-4 shrink-0"
+        style={{ borderBottom: '1px solid rgba(255,255,255,0.06)' }}
+      >
+        <div className="relative w-5 h-5 shrink-0">
+          <div className="absolute inset-0 bg-amber-brand rotate-45" />
+          <div className="absolute inset-[2px] rotate-45" style={{ background: '#0b0d10' }} />
+          <div className="absolute inset-[4px] bg-amber-brand rotate-45" />
+        </div>
+        <div className="flex items-baseline gap-1.5 min-w-0">
+          <span className="font-display font-bold text-[13px] text-white tracking-wider truncate">
+            {BRAND_NAME.split(' ')[0]}
+            <span className="text-amber-brand">.</span>
+          </span>
+          <span className="text-[9px] font-mono tracking-[0.2em] uppercase shrink-0" style={{ color: 'rgba(255,255,255,0.22)' }}>
+            admin
+          </span>
+        </div>
       </div>
 
       {/* Nav */}
-      <nav className="flex-1 p-3 overflow-y-auto space-y-5">
+      <nav className="flex-1 overflow-y-auto py-3 px-2 space-y-5">
         {navGroups.map((group) => (
           <div key={group.label}>
-            <p className="text-[10px] font-semibold tracking-[0.2em] uppercase text-metal-dark px-3 mb-1.5">
+            <p
+              className="px-2 pb-1 text-[10px] font-semibold tracking-[0.18em] uppercase select-none"
+              style={{ color: 'rgba(255,255,255,0.2)' }}
+            >
               {group.label}
             </p>
-            <ul className="space-y-0.5">
+            <div className="space-y-0.5">
               {group.items.map((item) => {
                 const active = item.exact
                   ? pathname === item.href
                   : pathname.startsWith(item.href)
                 return (
-                  <li key={item.href}>
-                    <Link
-                      href={item.href}
-                      onClick={handleLinkClick}
-                      className={cn(
-                        'flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-150',
-                        active
-                          ? 'bg-amber-brand/10 text-amber-brand'
-                          : 'text-metal hover:text-white hover:bg-steel/40',
-                      )}
-                    >
-                      <item.icon
-                        className={cn(
-                          'w-4 h-4 shrink-0 transition-colors',
-                          active ? 'text-amber-brand' : 'text-metal-dark group-hover:text-metal',
-                        )}
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    onClick={onClose}
+                    className={cn(
+                      'relative flex items-center gap-2.5 px-2.5 py-[7px] rounded-md text-[13px] font-medium transition-all duration-100',
+                      active
+                        ? 'text-white'
+                        : 'hover:text-white/75',
+                    )}
+                    style={{
+                      background: active ? 'rgba(255,255,255,0.06)' : undefined,
+                      color: active ? '#fff' : 'rgba(255,255,255,0.4)',
+                    }}
+                    onMouseEnter={(e) => {
+                      if (!active) {
+                        e.currentTarget.style.background = 'rgba(255,255,255,0.04)'
+                      }
+                    }}
+                    onMouseLeave={(e) => {
+                      if (!active) {
+                        e.currentTarget.style.background = 'transparent'
+                      }
+                    }}
+                  >
+                    {/* Active indicator */}
+                    {active && (
+                      <span
+                        className="absolute left-0 rounded-r-full"
+                        style={{
+                          top: '6px',
+                          bottom: '6px',
+                          width: '2px',
+                          background: '#c8860a',
+                        }}
                       />
-                      {item.label}
-                      {active && (
-                        <span className="ml-auto w-1 h-1 rounded-full bg-amber-brand shrink-0" />
-                      )}
-                    </Link>
-                  </li>
+                    )}
+                    <item.icon
+                      className="w-3.5 h-3.5 shrink-0 transition-colors"
+                      style={{ color: active ? '#c8860a' : 'rgba(255,255,255,0.25)' }}
+                    />
+                    {item.label}
+                  </Link>
                 )
               })}
-            </ul>
+            </div>
           </div>
         ))}
       </nav>
 
       {/* Footer */}
-      <div className="p-3 border-t border-metal-dark/20 shrink-0">
+      <div
+        className="px-2 py-2 shrink-0 space-y-0.5"
+        style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}
+      >
+        <Link
+          href="/"
+          target="_blank"
+          className="flex items-center gap-2.5 px-2.5 py-[7px] rounded-md text-[13px] transition-all duration-100"
+          style={{ color: 'rgba(255,255,255,0.3)' }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.color = 'rgba(255,255,255,0.6)'
+            e.currentTarget.style.background = 'rgba(255,255,255,0.04)'
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.color = 'rgba(255,255,255,0.3)'
+            e.currentTarget.style.background = 'transparent'
+          }}
+        >
+          <ExternalLink className="w-3.5 h-3.5 shrink-0" />
+          Ver site
+        </Link>
         <button
           onClick={handleLogout}
-          className="flex items-center gap-3 px-3 py-2.5 text-sm text-metal hover:text-red-400 transition-colors w-full rounded-lg hover:bg-red-500/10"
+          className="flex items-center gap-2.5 px-2.5 py-[7px] rounded-md text-[13px] transition-all duration-100 w-full text-left"
+          style={{ color: 'rgba(255,255,255,0.3)' }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.color = '#f87171'
+            e.currentTarget.style.background = 'rgba(239,68,68,0.06)'
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.color = 'rgba(255,255,255,0.3)'
+            e.currentTarget.style.background = 'transparent'
+          }}
         >
-          <LogOut className="w-4 h-4 shrink-0" />
+          <LogOut className="w-3.5 h-3.5 shrink-0" />
           Sair
         </button>
       </div>
