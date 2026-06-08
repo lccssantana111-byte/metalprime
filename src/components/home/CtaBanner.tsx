@@ -39,7 +39,7 @@ export default function CtaBanner() {
             transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
           >
             <span className="font-mono text-[10px] tracking-[0.45em] uppercase block mb-10" style={{ color: 'rgba(196,160,64,0.7)' }}>
-              Próximo passo
+              Vamos começar
             </span>
 
             <h2
@@ -96,7 +96,7 @@ export default function CtaBanner() {
 
             {/* Trust line */}
             <p className="mt-10 text-[12px] font-mono" style={{ color: 'rgba(180,188,198,0.6)' }}>
-              Orçamento em 24h · Visita técnica gratuita · ART inclusa · +5.000 obras entregues
+              Resposta em 24h úteis · Visita técnica gratuita · ART em 100% dos projetos estruturais · +5.000 obras na Grande SP
             </p>
           </motion.div>
         </div>

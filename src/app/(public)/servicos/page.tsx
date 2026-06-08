@@ -14,8 +14,8 @@ const services = [
     href: '/servicos/portoes',
     name: 'Portões',
     number: '01',
-    tagline: 'Segurança e elegância na entrada da sua propriedade',
-    desc: 'Portões automáticos e manuais em ferro, alumínio e aço inox para residências, condomínios e empresas. Motorização de todas as marcas.',
+    tagline: 'Automático, manual ou de correr. Instalado com ART.',
+    desc: 'Portões em ferro, alumínio e aço inox para residências, condomínios e empresas. Motorização de todas as marcas, instalação com ART.',
     tags: ['Ferro', 'Alumínio', 'Inox', 'Automação'],
   },
   {
@@ -30,7 +30,7 @@ const services = [
     href: '/servicos/escadas',
     name: 'Escadas Metálicas',
     number: '03',
-    tagline: 'Estruturas que unem funcionalidade e arquitetura',
+    tagline: 'Projeto estrutural incluso. Do reto ao helicoidal.',
     desc: 'Escadas retas, em L, em U, helicoidais e flutuantes. Combinadas com madeira, vidro e concreto. Projeto estrutural incluso.',
     tags: ['Retas', 'Helicoidais', 'Flutuantes', 'Com vidro'],
   },
@@ -38,7 +38,7 @@ const services = [
     href: '/servicos/corrimoes',
     name: 'Corrimões e Guarda-corpos',
     number: '04',
-    tagline: 'Segurança em cada detalhe com elegância',
+    tagline: 'Conformidade ABNT. Acabamento impecável.',
     desc: 'Corrimões e guarda-corpos em aço inox, ferro e alumínio. Conformidade com normas ABNT. Acabamento polido, escovado ou pintado.',
     tags: ['Inox', 'Ferro', 'Alumínio', 'ABNT'],
   },
@@ -46,7 +46,7 @@ const services = [
     href: '/servicos/estruturas-metalicas',
     name: 'Estruturas Metálicas',
     number: '05',
-    tagline: 'Engenharia de alto desempenho',
+    tagline: 'ART inclusa. Fabricação própria.',
     desc: 'Galpões industriais, coberturas, mezaninos, marquises, pérgolas e estruturas para fachadas. ART de engenheiro responsável inclusa.',
     tags: ['Galpões', 'Coberturas', 'Mezaninos', 'ART'],
   },
@@ -79,11 +79,11 @@ export default function ServicosPage() {
             <span className="text-amber-brand text-xs font-semibold tracking-[0.35em] uppercase">O que fazemos</span>
           </div>
           <h1 className="font-display font-black text-5xl sm:text-6xl lg:text-8xl text-white leading-none mb-6 max-w-2xl">
-            Serviços<br />
-            <span className="text-metal/30">especializados</span>
+            6 especialidades.<br />
+            <span className="text-metal/30">Um padrão.</span>
           </h1>
           <p className="text-metal text-lg max-w-xl leading-relaxed">
-            Soluções completas em estruturas metálicas para cada necessidade — do projeto à instalação com engenharia de alto nível.
+            Do projeto à ART — tudo em casa, sem terceirizar. Fabricação própria, equipe certificada, entrega no prazo.
           </p>
         </div>
 
@@ -151,10 +151,10 @@ export default function ServicosPage() {
       <section className="py-24 bg-graphite border-t border-white/5">
         <div className="container mx-auto px-4 sm:px-8 text-center">
           <h2 className="font-display font-black text-4xl lg:text-5xl text-white leading-none mb-6">
-            Não encontrou o que procura?
+            Tem um projeto fora do padrão?
           </h2>
           <p className="text-metal max-w-md mx-auto mb-10">
-            Fazemos qualquer projeto em metal. Entre em contato e nos conte sua ideia.
+            Nossa especialidade são justamente os projetos complexos. Nos diga o que você precisa.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link

@@ -56,8 +56,8 @@ export default function QuoteStep3Contact({ data, onChange, onNext, onBack }: Pr
 
   return (
     <div className="bg-graphite border border-metal-dark/30 rounded-2xl p-8">
-      <h2 className="font-display text-2xl font-bold text-white mb-2">Seus dados de contato</h2>
-      <p className="text-metal text-sm mb-8">Para retornarmos com o orçamento</p>
+      <h2 className="font-display text-2xl font-bold text-white mb-2">Como entramos em contato</h2>
+      <p className="text-metal text-sm mb-8">Retornamos em até 24h com a proposta</p>
 
       <div className="space-y-5 mb-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">

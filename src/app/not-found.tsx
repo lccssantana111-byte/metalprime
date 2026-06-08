@@ -42,12 +42,12 @@ export default function NotFound() {
         </div>
 
         <h1 className="font-display font-black text-4xl sm:text-5xl text-white leading-none mb-5">
-          Página<br />
-          <span className="text-metal/40">não encontrada</span>
+          Ops. Essa página<br />
+          <span className="text-metal/40">não existe.</span>
         </h1>
 
         <p className="text-metal text-base leading-relaxed mb-10">
-          A página que você buscou não existe ou foi movida. Explore nosso site para encontrar o que precisa.
+          Mas o que você precisa provavelmente está aqui.
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">

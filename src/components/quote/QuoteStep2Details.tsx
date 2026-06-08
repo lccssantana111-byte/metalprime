@@ -25,9 +25,9 @@ export default function QuoteStep2Details({
 }: Props) {
   return (
     <div className="bg-graphite border border-metal-dark/30 rounded-2xl p-8">
-      <h2 className="font-display text-2xl font-bold text-white mb-2">Detalhes do projeto</h2>
+      <h2 className="font-display text-2xl font-bold text-white mb-2">Descreva com suas palavras</h2>
       <p className="text-metal text-sm mb-8">
-        Descreva o que você precisa com o máximo de detalhes possível.
+        Sem precisar usar termos técnicos — nosso engenheiro interpreta. Foque no que você quer.
       </p>
 
       <div className="space-y-6 mb-8">
@@ -51,8 +51,8 @@ export default function QuoteStep2Details({
         <div className="bg-steel/20 border border-metal-dark/20 rounded-xl p-5">
           <p className="text-sm font-medium text-metal-light mb-2">💡 Dica</p>
           <p className="text-sm text-metal">
-            Na visita técnica, nosso engenheiro realiza medições precisas. Por hora, uma descrição
-            geral já é suficiente para montarmos um orçamento estimado.
+            Na visita técnica, nosso engenheiro tira todas as medidas. Por agora, uma descrição
+            geral já basta para montarmos um orçamento inicial.
           </p>
         </div>
       </div>

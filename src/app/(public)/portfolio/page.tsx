@@ -32,11 +32,11 @@ export default async function PortfolioPage() {
             <span className="text-amber-brand text-xs font-semibold tracking-[0.35em] uppercase">Nossos projetos</span>
           </div>
           <h1 className="font-display font-black text-5xl sm:text-6xl lg:text-8xl text-white leading-none mb-6 max-w-2xl">
-            Portfólio<br />
-            <span className="text-metal/30">de obras</span>
+            Projetos<br />
+            <span className="text-metal/30">executados</span>
           </h1>
           <p className="text-metal text-lg max-w-lg leading-relaxed">
-            Mais de 5.000 projetos executados. Veja uma seleção dos trabalhos que mais nos orgulhamos.
+            Cada obra aqui foi entregue no prazo, com ART e com o padrão que nossos clientes reconhecem como diferencial.
           </p>
         </div>
 

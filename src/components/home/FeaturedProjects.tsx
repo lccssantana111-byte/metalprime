@@ -81,8 +81,8 @@ export default function FeaturedProjects({ items }: Props) {
               className="font-display font-black leading-[0.88]"
               style={{ fontSize: 'clamp(3rem, 6vw, 6.5rem)', color: '#f0f1f2', letterSpacing: '-0.02em' }}
             >
-              Projetos<br />
-              <span style={{ color: 'rgba(240,241,242,0.2)' }}>em destaque</span>
+              Obras que<br />
+              <span style={{ color: 'rgba(240,241,242,0.2)' }}>falam por si</span>
             </h2>
           </div>
           <Link
@@ -92,7 +92,7 @@ export default function FeaturedProjects({ items }: Props) {
             onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = '#c4a040' }}
             onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = '#5a6470' }}
           >
-            Portfólio completo
+            Ver todo o portfólio
             <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
           </Link>
         </motion.div>

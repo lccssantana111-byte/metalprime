@@ -8,25 +8,25 @@ const steps = [
   {
     number: '01',
     title: 'Consulta e Visita Técnica',
-    description: 'Nosso engenheiro visita o local, faz medições precisas e elabora o projeto executivo. Sem custo, sem compromisso.',
+    description: 'Nosso engenheiro vai até você, tira medidas, entende o projeto. Gratuito, sem compromisso e sem pressão para fechar na hora.',
     badge: 'Gratuita',
   },
   {
     number: '02',
-    title: 'Projeto e Orçamento',
-    description: 'Desenvolvemos o projeto técnico detalhado com memorial descritivo, cronograma e proposta formal em até 48h.',
+    title: 'Proposta Técnica em 48h',
+    description: 'Proposta com valor fixo, cronograma detalhado e memorial descritivo. Sem letra miúda — o que está escrito é o que você paga.',
     badge: '48h',
   },
   {
     number: '03',
     title: 'Fabricação Industrial',
-    description: 'Produzimos em estrutura industrial própria com controle rigoroso de qualidade e rastreabilidade de materiais.',
+    description: 'Produzimos em oficina própria, sem terceirizar. Aço certificado, solda rastreável e inspeção em cada etapa — nada sai da fábrica fora do padrão.',
     badge: 'ISO 9001',
   },
   {
     number: '04',
     title: 'Instalação com ART',
-    description: 'Equipe especializada instala no prazo combinado. Entregamos ART do engenheiro responsável em todos os projetos.',
+    description: 'Nossa equipe instala no prazo acordado em contrato. ART do engenheiro responsável entregue em 100% dos projetos estruturais — sem exceção.',
     badge: 'ART inclusa',
   },
 ]
@@ -47,14 +47,14 @@ export default function ProcessSection() {
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           >
             <span className="font-mono text-[10px] tracking-[0.45em] uppercase block mb-8" style={{ color: 'rgba(196,160,64,0.7)' }}>
-              Como trabalhamos
+              Nosso processo
             </span>
             <h2
               className="font-display font-black leading-[0.88] mb-16"
               style={{ fontSize: 'clamp(2.5rem, 5vw, 5rem)', color: '#f0f1f2', letterSpacing: '-0.02em' }}
             >
-              Do orçamento<br />
-              <span style={{ color: 'rgba(240,241,242,0.18)' }}>à entrega</span>
+              Quatro etapas.<br />
+              <span style={{ color: 'rgba(240,241,242,0.18)' }}>Zero improviso.</span>
             </h2>
           </motion.div>
 
@@ -123,7 +123,7 @@ export default function ProcessSection() {
             >
               <div className="font-display font-black text-[2.5rem] leading-none" style={{ color: '#c4a040' }}>20+</div>
               <div className="font-mono text-[10px] tracking-[0.3em] uppercase mt-1" style={{ color: 'rgba(180,188,198,0.4)' }}>
-                Anos de expertise
+                anos de obra
               </div>
             </div>
           </div>

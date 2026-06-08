@@ -35,12 +35,12 @@ export default function QuoteSuccess({ state }: Props) {
       </div>
 
       <h2 className="font-display text-3xl font-bold text-white mb-3">
-        Pedido enviado com sucesso!
+        Recebemos! Você está em boas mãos.
       </h2>
       <p className="text-metal mb-6 leading-relaxed">
-        Recebemos seu orçamento, <strong className="text-white">{state.name}</strong>. Nossa equipe
-        entrará em contato em até <strong className="text-white">24 horas</strong> para detalhar a
-        proposta e agendar visita técnica.
+        <strong className="text-white">{state.name}</strong>, sua solicitação está com nossa equipe.
+        Em até <strong className="text-white">24 horas úteis</strong> você recebe a proposta e
+        confirmamos a visita técnica gratuita.
       </p>
 
       {/* Price range estimate */}

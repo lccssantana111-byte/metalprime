@@ -14,25 +14,25 @@ const values = [
     icon: Award,
     number: '01',
     title: 'Excelência',
-    description: 'Cada peça entregue reflete nosso compromisso com a qualidade máxima, sem concessões.',
+    description: 'Não sai da fábrica se não estiver do jeito certo. Simples assim.',
   },
   {
     icon: Target,
     number: '02',
     title: 'Precisão',
-    description: 'Engenharia rigorosa em cada milímetro. Projetos com ART de engenheiro responsável.',
+    description: 'Cada milímetro é calculado. ART em 100% dos projetos estruturais — sem exceção, sem negociação.',
   },
   {
     icon: Users,
     number: '03',
     title: 'Parceria',
-    description: 'Trabalhamos lado a lado com arquitetos, construtoras e clientes em cada etapa.',
+    description: 'Tratamos o projeto do cliente como se fosse nosso. Do primeiro contato ao parafuso final.',
   },
   {
     icon: Wrench,
     number: '04',
     title: 'Inovação',
-    description: 'Tecnologia de fabricação moderna para soluções que unem funcionalidade e design.',
+    description: 'Equipamentos modernos a serviço de uma exigência artesanal. Sempre os dois.',
   },
 ]
 
@@ -46,11 +46,11 @@ const milestones = [
 
 const differentials = [
   'Equipe própria de engenheiros e soldadores certificados',
-  'Estrutura industrial com controle de qualidade em cada etapa',
-  'ART (Anotação de Responsabilidade Técnica) em projetos estruturais',
+  'Fabricação própria — sem terceirizar nenhuma etapa',
+  'ART em 100% dos projetos estruturais (você não se preocupa com a vistoria)',
   'Atendemos toda Grande São Paulo e interior',
   'Garantia de 5 anos em peças estruturais',
-  'Mais de 500 condomínios atendidos',
+  '+500 condomínios que renovam contratos conosco',
 ]
 
 export default function SobrePage() {
@@ -74,13 +74,13 @@ export default function SobrePage() {
           </div>
 
           <h1 className="font-display font-black text-5xl sm:text-6xl lg:text-8xl text-white leading-none mb-8 max-w-3xl">
-            Transformando aço em arte<br />
-            <span className="text-metal/30">há 20 anos</span>
+            Começamos com uma oficina.<br />
+            <span className="text-metal/30">Viramos referência.</span>
           </h1>
 
           <p className="text-metal-light text-lg sm:text-xl leading-relaxed max-w-xl">
-            Fundada em São Paulo, crescemos de uma pequena oficina para uma das principais
-            referências em serralheria premium do estado.
+            Em 20 anos de obra feita direito, construímos reputação junto com condomínios,
+            construtoras e arquitetos que precisam de um parceiro confiável — não de mais um fornecedor.
           </p>
         </div>
 
@@ -131,18 +131,19 @@ export default function SobrePage() {
               </h2>
               <div className="space-y-5 text-metal leading-relaxed">
                 <p>
-                  Fundada em 2004 por um engenheiro mecânico apaixonado por design industrial,
-                  a Metalprime começou atendendo residências de alto padrão no bairro do Morumbi.
+                  Em 2004, um engenheiro mecânico com zero tolerância para trabalho ruim
+                  fundou a Metalprime no Morumbi. O objetivo era simples: fazer em metal
+                  o que ninguém fazia direito.
                 </p>
                 <p>
-                  A qualidade do trabalho e o rigor técnico abriram portas para condomínios de
-                  luxo, construtoras e escritórios de arquitetura que buscavam um parceiro
-                  confiável para projetos estruturais complexos.
+                  A qualidade falou mais alto. Condomínios, construtoras e escritórios de
+                  arquitetura passaram a nos chamar porque sabiam o que iam receber —
+                  entrega no prazo, ART em dia e sem surpresas na nota.
                 </p>
                 <p>
-                  Hoje, com mais de 5.000 projetos entregues, contamos com estrutura industrial
-                  própria, equipe de engenheiros e soldadores certificados, atendendo clientes
-                  em toda a Grande São Paulo e interior.
+                  Hoje somos mais de 30 especialistas, com estrutura industrial própria
+                  e mais de 5.000 obras executadas. A escala mudou. A obsessão com
+                  qualidade continua a mesma.
                 </p>
               </div>
             </div>
@@ -181,7 +182,7 @@ export default function SobrePage() {
             <span className="text-amber-brand text-xs font-semibold tracking-[0.35em] uppercase">O que nos move</span>
           </div>
           <h2 className="font-display font-black text-4xl lg:text-5xl text-white leading-none mb-16">
-            Nossos valores
+            O que não abrimos mão
           </h2>
 
           <div className="divide-y divide-white/5">
@@ -213,12 +214,11 @@ export default function SobrePage() {
                 <span className="text-amber-brand text-xs font-semibold tracking-[0.35em] uppercase">Por que a Metalprime</span>
               </div>
               <h2 className="font-display font-black text-4xl lg:text-5xl text-white leading-none mb-6">
-                Nossos<br />
-                <span className="text-metal/40">diferenciais</span>
+                O que você não encontra<br />
+                <span className="text-metal/40">em qualquer serralheria</span>
               </h2>
               <p className="text-metal leading-relaxed mb-12">
-                Mais do que executar projetos, entregamos tranquilidade, precisão e parceria
-                duradoura em cada obra.
+                A maioria terceiriza, improvisa e entrega sem ART. Aqui é diferente.
               </p>
               <Link
                 href="/orcamento"
@@ -246,10 +246,10 @@ export default function SobrePage() {
         <div className="absolute inset-0 bg-gradient-to-br from-steel/20 to-transparent" />
         <div className="container mx-auto px-4 sm:px-8 relative z-10 text-center">
           <h2 className="font-display font-black text-4xl lg:text-5xl text-white leading-none mb-6">
-            Vamos trabalhar juntos?
+            Pronto para começar?
           </h2>
           <p className="text-metal max-w-md mx-auto mb-10">
-            Solicite um orçamento gratuito ou entre em contato pelo WhatsApp.
+            Fale com um engenheiro. Visita técnica gratuita, orçamento em 24h, sem compromisso.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link

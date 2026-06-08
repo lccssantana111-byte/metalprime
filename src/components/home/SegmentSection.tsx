@@ -10,9 +10,9 @@ const segments = [
   {
     icon: Building2,
     label: 'Condomínios',
-    headline: 'O parceiro oficial de +500 condomínios em São Paulo',
+    headline: 'O parceiro de +500 condomínios em São Paulo',
     description:
-      'Portões automáticos, grades, guaritas e estruturas de segurança. Atendemos síndicos e administradoras com contratos de manutenção e suporte 24h.',
+      'Portões automáticos, grades, guaritas e estruturas de segurança. Entregamos ART em todos os itens estruturais — o síndico fica tranquilo com a vistoria.',
     items: [
       'Portões automáticos com ART',
       'Grades e cercas de segurança',
@@ -25,9 +25,9 @@ const segments = [
   {
     icon: HardHat,
     label: 'Construtoras',
-    headline: 'Fornecedor certificado para obras de médio e grande porte',
+    headline: 'Certificado e no cronograma — sempre',
     description:
-      'Escadas metálicas, estruturas, mezaninos e guarda-corpos. Cumprimos cronogramas e entregamos ART em todos os projetos estruturais.',
+      'Escadas, estruturas, mezaninos e guarda-corpos. Fabricação própria, sem terceirizar. ART em 100% dos projetos — a obra não para por nossa causa.',
     items: [
       'Estruturas metálicas certificadas',
       'Escadas e guarda-corpos',
@@ -40,9 +40,9 @@ const segments = [
   {
     icon: Factory,
     label: 'Indústrias',
-    headline: 'Galpões, coberturas e estruturas de alto desempenho',
+    headline: 'Estrutura própria para projetos de grande porte',
     description:
-      'Projetamos e fabricamos estruturas metálicas industriais com capacidade para obras de grande porte. Da fundação à cobertura.',
+      'Galpões, coberturas e mezaninos industriais. Projetamos, fabricamos e instalamos com equipe própria — da fundação ao acabamento.',
     items: [
       'Galpões industriais',
       'Coberturas metálicas',
@@ -90,22 +90,22 @@ export default function SegmentSection() {
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           >
             <span className="font-mono text-[10px] tracking-[0.45em] uppercase block mb-6" style={{ color: 'rgba(196,160,64,0.7)' }}>
-              Nossos clientes
+              Para quem fazemos
             </span>
             <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
               <h2
                 className="font-display font-black leading-[0.88]"
                 style={{ fontSize: 'clamp(3rem, 6vw, 6rem)', color: '#f0f1f2', letterSpacing: '-0.02em' }}
               >
-                Soluções para cada<br />
-                <span style={{ color: '#c4a040' }}>segmento</span>
+                O parceiro certo<br />
+                <span style={{ color: '#c4a040' }}>para cada projeto</span>
               </h2>
               <p
                 className="text-[15px] leading-[1.7] max-w-sm lg:text-right"
                 style={{ color: 'rgba(180,188,198,0.6)' }}
               >
-                Mais de 20 anos atendendo condomínios, construtoras e indústrias
-                com excelência e responsabilidade técnica.
+                Condomínios, construtoras ou projetos residenciais — a estrutura e o processo
+                são os mesmos. O que muda é a escala.
               </p>
             </div>
           </motion.div>

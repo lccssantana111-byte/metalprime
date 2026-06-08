@@ -7,10 +7,10 @@ import { ArrowRight } from 'lucide-react'
 import { PHOTOS } from '@/lib/images'
 
 const STATS = [
-  { value: '+20', label: 'Anos de mercado' },
-  { value: '+5.000', label: 'Obras entregues' },
-  { value: '+500', label: 'Condomínios atendidos' },
-  { value: '100%', label: 'Projetos com ART' },
+  { value: '+20', label: 'anos no mercado' },
+  { value: '+5.000', label: 'obras executadas' },
+  { value: '+500', label: 'condomínios parceiros' },
+  { value: '100%', label: 'com ART' },
 ]
 
 export default function HeroSection() {
@@ -136,10 +136,9 @@ export default function HeroSection() {
               className="text-[16px] sm:text-[18px] leading-[1.7] max-w-md"
               style={{ color: 'rgba(180,188,198,0.75)' }}
             >
-              Estruturas metálicas para condomínios, construtoras e indústrias.
-              Mais de{' '}
-              <strong style={{ color: '#f0f1f2', fontWeight: 500 }}>5.000 obras entregues</strong>{' '}
-              com ART de engenheiro responsável.
+              Fabricação própria, sem terceirizar. Mais de{' '}
+              <strong style={{ color: '#f0f1f2', fontWeight: 500 }}>5.000 obras executadas</strong>{' '}
+              na Grande São Paulo — com ART de engenheiro responsável em 100% dos projetos estruturais.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3 lg:ml-auto">
@@ -150,7 +149,7 @@ export default function HeroSection() {
                 onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = '#d4b454' }}
                 onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = '#c4a040' }}
               >
-                Solicitar Orçamento
+                Solicitar Orçamento Gratuito
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
               <Link

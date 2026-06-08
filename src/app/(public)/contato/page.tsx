@@ -25,11 +25,11 @@ export default function ContatoPage() {
             <span className="text-amber-brand text-xs font-semibold tracking-[0.35em] uppercase">Fale conosco</span>
           </div>
           <h1 className="font-display font-black text-5xl sm:text-6xl lg:text-8xl text-white leading-none mb-6">
-            Entre em<br />
-            <span className="text-metal/30">contato</span>
+            Fale com um<br />
+            <span className="text-metal/30">engenheiro</span>
           </h1>
           <p className="text-metal text-lg max-w-md leading-relaxed">
-            Respondemos em até 24 horas. Para urgências, fale diretamente pelo WhatsApp.
+            Nossa equipe responde em até 24h nos dias úteis. Para agilizar, fale direto pelo WhatsApp — resposta imediata.
           </p>
         </div>
       </section>
@@ -119,10 +119,10 @@ export default function ContatoPage() {
             <div className="lg:col-span-8">
               <div className="mb-8">
                 <h2 className="font-display font-bold text-2xl text-white mb-2">
-                  Envie uma mensagem
+                  Descreva o que você precisa
                 </h2>
                 <p className="text-metal text-sm">
-                  Preencha o formulário abaixo e retornaremos em até 24 horas.
+                  Nome, telefone e o que você precisa. Sem formulário longo — nossa equipe entra em contato.
                 </p>
               </div>
               <ContactForm />

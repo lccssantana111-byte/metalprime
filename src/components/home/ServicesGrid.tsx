@@ -10,7 +10,7 @@ const services = [
   {
     slug: 'portoes',
     name: 'Portões',
-    tagline: 'Automáticos, basculantes e deslizantes',
+    tagline: 'Automático, manual ou de correr — instalado com ART',
     href: '/servicos/portoes',
     photo: PHOTOS.services.portoes,
     tag: 'Residencial · Comercial',
@@ -26,7 +26,7 @@ const services = [
   {
     slug: 'escadas',
     name: 'Escadas Metálicas',
-    tagline: 'Retas, helicoidais e flutuantes',
+    tagline: 'Retas, helicoidais e flutuantes — projeto estrutural incluso',
     href: '/servicos/escadas',
     photo: PHOTOS.services.escadas,
     tag: 'Arquitetônicas · Industriais',
@@ -34,7 +34,7 @@ const services = [
   {
     slug: 'corrimoes',
     name: 'Corrimões',
-    tagline: 'Inox, ferro e alumínio — ART inclusa',
+    tagline: 'Inox, ferro e alumínio — conformidade ABNT inclusa',
     href: '/servicos/corrimoes',
     photo: PHOTOS.services.corrimoes,
     tag: 'Inox · Ferro · Alumínio',
@@ -42,7 +42,7 @@ const services = [
   {
     slug: 'estruturas_metalicas',
     name: 'Estruturas Metálicas',
-    tagline: 'Galpões, coberturas e mezaninos',
+    tagline: 'Galpões, coberturas e mezaninos — fabricação própria',
     href: '/servicos/estruturas-metalicas',
     photo: PHOTOS.services.estruturas_metalicas,
     tag: 'Industrial · Comercial',
@@ -78,14 +78,15 @@ export default function ServicesGrid() {
         >
           <div>
             <span className="font-mono text-[10px] tracking-[0.45em] uppercase block mb-6" style={{ color: 'rgba(196,160,64,0.7)' }}>
-              Especialidades
+              O que fazemos
             </span>
             <h2
               className="font-display font-black leading-[0.88]"
               style={{ fontSize: 'clamp(3rem, 6vw, 6.5rem)', color: '#f0f1f2', letterSpacing: '-0.02em' }}
             >
-              O que<br />
-              fabricamos
+              Fabricamos.<br />
+              Instalamos.<br />
+              Garantimos.
             </h2>
           </div>
           <Link
@@ -95,7 +96,7 @@ export default function ServicesGrid() {
             onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = '#c4a040' }}
             onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = '#5a6470' }}
           >
-            Ver todos
+            Ver todos os serviços
             <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
           </Link>
         </motion.div>

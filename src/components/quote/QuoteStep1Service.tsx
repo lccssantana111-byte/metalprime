@@ -28,9 +28,9 @@ export default function QuoteStep1Service({ selected, onChange, onNext }: Props)
   return (
     <div className="bg-graphite border border-metal-dark/30 rounded-2xl p-8">
       <h2 className="font-display text-2xl font-bold text-white mb-2">
-        Qual serviço você precisa?
+        O que você quer executar?
       </h2>
-      <p className="text-metal text-sm mb-8">Selecione um ou mais serviços</p>
+      <p className="text-metal text-sm mb-8">Pode marcar mais de um</p>
 
       <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-8">
         {services.map((s) => {

@@ -13,10 +13,10 @@ export const metadata: Metadata = {
 }
 
 const benefits = [
-  'Orçamento 100% gratuito',
-  'Visita técnica sem compromisso',
-  'Resposta em até 24 horas',
-  'ART inclusa em projetos estruturais',
+  '100% gratuito, sem compromisso',
+  'Visita técnica no local, grátis',
+  'Retorno em até 24 horas úteis',
+  'ART em 100% dos projetos estruturais',
 ]
 
 export default function OrcamentoPage() {
@@ -32,7 +32,7 @@ export default function OrcamentoPage() {
                 <span className="text-amber-brand text-xs font-semibold tracking-[0.35em] uppercase">Orçamento gratuito</span>
               </div>
               <h1 className="font-display font-black text-3xl sm:text-4xl text-white leading-none">
-                Solicite seu orçamento
+                Orçamento em 3 minutos
               </h1>
             </div>
 

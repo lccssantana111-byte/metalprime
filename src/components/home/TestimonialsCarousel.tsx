@@ -69,14 +69,14 @@ export default function TestimonialsCarousel() {
         >
           <div>
             <span className="font-mono text-[10px] tracking-[0.45em] uppercase block mb-6" style={{ color: 'rgba(196,160,64,0.7)' }}>
-              Quem confia em nós
+              Clientes reais
             </span>
             <h2
               className="font-display font-black leading-[0.88]"
               style={{ fontSize: 'clamp(3rem, 6vw, 6.5rem)', color: '#f0f1f2', letterSpacing: '-0.02em' }}
             >
-              O que nossos<br />
-              <span style={{ color: 'rgba(240,241,242,0.18)' }}>clientes dizem</span>
+              Quem confiou<br />
+              <span style={{ color: 'rgba(240,241,242,0.18)' }}>no nosso trabalho</span>
             </h2>
           </div>
 
