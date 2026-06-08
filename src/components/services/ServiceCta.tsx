@@ -12,7 +12,7 @@ export default function ServiceCta({ serviceName }: Props) {
   return (
     <section
       className="py-28 sm:py-40 overflow-hidden relative"
-      style={{ background: '#050608', borderTop: '1px solid rgba(255,255,255,0.05)' }}
+      style={{ background: '#f7f5f2', borderTop: '1px solid rgba(0,0,0,0.07)' }}
     >
       <div className="container mx-auto px-5 sm:px-8">
         <div className="max-w-2xl">
@@ -21,7 +21,7 @@ export default function ServiceCta({ serviceName }: Props) {
           </span>
           <h2
             className="font-display font-black leading-[0.88] mb-10"
-            style={{ fontSize: 'clamp(3rem, 7vw, 7rem)', color: '#f0f1f2', letterSpacing: '-0.025em' }}
+            style={{ fontSize: 'clamp(3rem, 7vw, 7rem)', color: '#1e2328', letterSpacing: '-0.025em' }}
           >
             Pronto para<br />
             <span style={{ color: '#c4a040' }}>começar?</span>
@@ -53,16 +53,16 @@ export default function ServiceCta({ serviceName }: Props) {
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-3 text-[13px] px-9 py-[18px] transition-all duration-200"
-              style={{ border: '1px solid rgba(255,255,255,0.12)', color: 'rgba(180,188,198,0.7)' }}
+              style={{ border: '1px solid rgba(0,0,0,0.12)', color: 'rgba(60,74,88,0.7)' }}
               onMouseEnter={(e) => {
                 const el = e.currentTarget as HTMLElement
-                el.style.borderColor = 'rgba(255,255,255,0.25)'
-                el.style.color = '#f0f1f2'
+                el.style.borderColor = 'rgba(0,0,0,0.20)'
+                el.style.color = '#1e2328'
               }}
               onMouseLeave={(e) => {
                 const el = e.currentTarget as HTMLElement
-                el.style.borderColor = 'rgba(255,255,255,0.12)'
-                el.style.color = 'rgba(180,188,198,0.7)'
+                el.style.borderColor = 'rgba(0,0,0,0.12)'
+                el.style.color = 'rgba(60,74,88,0.7)'
               }}
             >
               Falar pelo WhatsApp

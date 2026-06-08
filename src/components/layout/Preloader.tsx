@@ -74,7 +74,7 @@ export default function Preloader() {
                 {'METALPRIME'.split('').map((char, i) => (
                   <motion.span
                     key={i}
-                    className="font-display font-black text-lg tracking-[0.4em] text-white/80"
+                    className="font-display font-black text-lg tracking-[0.4em] text-foreground/70"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.5 + i * 0.04, duration: 0.3 }}
@@ -87,7 +87,7 @@ export default function Preloader() {
 
             {/* Loading bar */}
             <motion.div
-              className="w-40 h-px bg-white/5 overflow-hidden"
+              className="w-40 h-px bg-foreground/5 overflow-hidden"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.7 }}

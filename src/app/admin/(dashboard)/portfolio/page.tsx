@@ -24,7 +24,7 @@ export default async function AdminPortfolioPage() {
     <div>
       <div className="flex items-center justify-between mb-8">
         <div>
-          <h1 className="font-display text-3xl font-bold text-white">Portfólio</h1>
+          <h1 className="font-display text-3xl font-bold text-foreground">Portfólio</h1>
           <p className="text-metal mt-1">{list.length} itens · {list.filter((i) => i.published).length} publicados</p>
         </div>
         <Button asChild className="bg-amber-brand hover:bg-amber-light text-carbon font-semibold">
@@ -64,15 +64,15 @@ export default async function AdminPortfolioPage() {
                 )}
                 <span className={`rounded-full p-1 ${item.published ? 'bg-green-500' : 'bg-metal-dark'}`}>
                   {item.published ? (
-                    <Eye className="w-3 h-3 text-white" />
+                    <Eye className="w-3 h-3 text-foreground" />
                   ) : (
-                    <EyeOff className="w-3 h-3 text-white" />
+                    <EyeOff className="w-3 h-3 text-foreground" />
                   )}
                 </span>
               </div>
             </div>
             <div className="p-4">
-              <p className="text-sm font-medium text-white group-hover:text-amber-brand transition-colors truncate">
+              <p className="text-sm font-medium text-foreground group-hover:text-amber-brand transition-colors truncate">
                 {item.title}
               </p>
               <div className="flex items-center justify-between mt-1.5">

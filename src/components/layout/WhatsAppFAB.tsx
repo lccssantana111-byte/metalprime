@@ -42,7 +42,7 @@ export default function WhatsAppFAB() {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: 10 }}
                 transition={{ duration: 0.2 }}
-                className="bg-carbon/95 border border-white/10 text-white text-xs font-medium px-3 py-2 whitespace-nowrap backdrop-blur-sm"
+                className="bg-carbon/95 border border-foreground/12 text-foreground text-xs font-medium px-3 py-2 whitespace-nowrap backdrop-blur-sm"
               >
                 Fale conosco agora
                 <div className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-full w-0 h-0 border-y-4 border-y-transparent border-l-4 border-l-carbon/95" />
@@ -65,7 +65,7 @@ export default function WhatsAppFAB() {
             {/* Button */}
             <div className="relative w-14 h-14 bg-[#25D366] hover:bg-[#20ba59] rounded-full flex items-center justify-center shadow-lg shadow-[#25D366]/20 group-hover:scale-105 transition-transform duration-200">
               <svg
-                className="w-6 h-6 text-white"
+                className="w-6 h-6 text-foreground"
                 fill="currentColor"
                 viewBox="0 0 24 24"
               >

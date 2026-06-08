@@ -36,7 +36,7 @@ export default async function CorporateDashboardPage() {
     return (
       <div className="text-center py-20">
         <FolderOpen className="w-12 h-12 text-metal-dark mx-auto mb-4" />
-        <h2 className="text-lg font-semibold text-white mb-2">Conta não associada</h2>
+        <h2 className="text-lg font-semibold text-foreground mb-2">Conta não associada</h2>
         <p className="text-metal text-sm max-w-sm mx-auto">
           Seu acesso ainda não foi vinculado a uma conta de cliente. Entre em contato com nossa equipe.
         </p>
@@ -57,7 +57,7 @@ export default async function CorporateDashboardPage() {
   return (
     <div>
       <div className="mb-8">
-        <h1 className="font-display text-3xl font-bold text-white">Olá, {clientData.name}</h1>
+        <h1 className="font-display text-3xl font-bold text-foreground">Olá, {clientData.name}</h1>
         <p className="text-metal mt-1">
           {active.length} projeto{active.length !== 1 ? 's' : ''} em andamento · {concluded.length} concluído{concluded.length !== 1 ? 's' : ''}
         </p>
@@ -65,7 +65,7 @@ export default async function CorporateDashboardPage() {
 
       {active.length > 0 && (
         <div className="mb-8">
-          <h2 className="text-lg font-semibold text-white mb-4">Em andamento</h2>
+          <h2 className="text-lg font-semibold text-foreground mb-4">Em andamento</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {active.map((p) => (
               <ProjectCard key={p.id} project={p} />
@@ -76,7 +76,7 @@ export default async function CorporateDashboardPage() {
 
       {concluded.length > 0 && (
         <div>
-          <h2 className="text-lg font-semibold text-white mb-4">Concluídos</h2>
+          <h2 className="text-lg font-semibold text-foreground mb-4">Concluídos</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {concluded.map((p) => (
               <ProjectCard key={p.id} project={p} />
@@ -107,7 +107,7 @@ function ProjectCard({ project: p }: { project: Project }) {
     >
       <div className="flex items-start justify-between gap-3 mb-3">
         <div>
-          <p className="font-medium text-white group-hover:text-amber-brand transition-colors">{p.name}</p>
+          <p className="font-medium text-foreground group-hover:text-amber-brand transition-colors">{p.name}</p>
           <p className="text-xs text-metal mt-0.5">{SERVICE_LABELS[p.service]}</p>
         </div>
         <Badge variant="outline" className={`text-xs border shrink-0 ${STATUS_COLORS[p.status] ?? ''}`}>

@@ -31,7 +31,7 @@ export default async function PortfolioPage() {
             <div className="w-8 h-px bg-amber-brand" />
             <span className="text-amber-brand text-xs font-semibold tracking-[0.35em] uppercase">Nossos projetos</span>
           </div>
-          <h1 className="font-display font-black text-5xl sm:text-6xl lg:text-8xl text-white leading-none mb-6 max-w-2xl">
+          <h1 className="font-display font-black text-5xl sm:text-6xl lg:text-8xl text-foreground leading-none mb-6 max-w-2xl">
             Projetos<br />
             <span className="text-metal/30">executados</span>
           </h1>
@@ -43,7 +43,7 @@ export default async function PortfolioPage() {
         <div className="absolute right-8 bottom-0 pointer-events-none select-none overflow-hidden">
           <span
             className="font-display font-black text-[18vw] leading-none text-transparent"
-            style={{ WebkitTextStroke: '1px rgba(30,35,40,0.8)' }}
+            style={{ WebkitTextStroke: '1px rgba(210,205,198,0.8)' }}
           >
             5K+
           </span>
@@ -60,7 +60,7 @@ export default async function PortfolioPage() {
               <div className="w-16 h-16 border border-amber-brand/20 flex items-center justify-center mx-auto mb-6">
                 <div className="w-6 h-6 bg-amber-brand/20 rotate-45" />
               </div>
-              <h2 className="font-display font-bold text-2xl text-white mb-3">Portfólio em construção</h2>
+              <h2 className="font-display font-bold text-2xl text-foreground mb-3">Portfólio em construção</h2>
               <p className="text-metal">Em breve novos projetos serão publicados.</p>
             </div>
           )}

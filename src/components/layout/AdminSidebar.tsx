@@ -64,13 +64,13 @@ export default function AdminSidebar({ onClose }: Props) {
       className="w-[220px] h-full flex flex-col"
       style={{
         background: '#0b0d10',
-        borderRight: '1px solid rgba(255,255,255,0.06)',
+        borderRight: '1px solid rgba(0,0,0,0.08)',
       }}
     >
       {/* Logo — height matches header */}
       <div
         className="h-[52px] flex items-center gap-2.5 px-4 shrink-0"
-        style={{ borderBottom: '1px solid rgba(255,255,255,0.06)' }}
+        style={{ borderBottom: '1px solid rgba(0,0,0,0.08)' }}
       >
         <div className="relative w-5 h-5 shrink-0">
           <div className="absolute inset-0 bg-amber-brand rotate-45" />
@@ -78,11 +78,11 @@ export default function AdminSidebar({ onClose }: Props) {
           <div className="absolute inset-[4px] bg-amber-brand rotate-45" />
         </div>
         <div className="flex items-baseline gap-1.5 min-w-0">
-          <span className="font-display font-bold text-[13px] text-white tracking-wider truncate">
+          <span className="font-display font-bold text-[13px] text-foreground tracking-wider truncate">
             {BRAND_NAME.split(' ')[0]}
             <span className="text-amber-brand">.</span>
           </span>
-          <span className="text-[9px] font-mono tracking-[0.2em] uppercase shrink-0" style={{ color: 'rgba(255,255,255,0.22)' }}>
+          <span className="text-[9px] font-mono tracking-[0.2em] uppercase shrink-0" style={{ color: 'rgba(0,0,0,0.20)' }}>
             admin
           </span>
         </div>
@@ -94,7 +94,7 @@ export default function AdminSidebar({ onClose }: Props) {
           <div key={group.label}>
             <p
               className="px-2 pb-1 text-[10px] font-semibold tracking-[0.18em] uppercase select-none"
-              style={{ color: 'rgba(255,255,255,0.2)' }}
+              style={{ color: 'rgba(0,0,0,0.20)' }}
             >
               {group.label}
             </p>
@@ -111,16 +111,16 @@ export default function AdminSidebar({ onClose }: Props) {
                     className={cn(
                       'relative flex items-center gap-2.5 px-2.5 py-[7px] rounded-md text-[13px] font-medium transition-all duration-100',
                       active
-                        ? 'text-white'
-                        : 'hover:text-white/75',
+                        ? 'text-foreground'
+                        : 'hover:text-foreground/75',
                     )}
                     style={{
-                      background: active ? 'rgba(255,255,255,0.06)' : undefined,
-                      color: active ? '#fff' : 'rgba(255,255,255,0.4)',
+                      background: active ? 'rgba(0,0,0,0.08)' : undefined,
+                      color: active ? '#fff' : 'rgba(0,0,0,0.35)',
                     }}
                     onMouseEnter={(e) => {
                       if (!active) {
-                        e.currentTarget.style.background = 'rgba(255,255,255,0.04)'
+                        e.currentTarget.style.background = 'rgba(0,0,0,0.05)'
                       }
                     }}
                     onMouseLeave={(e) => {
@@ -143,7 +143,7 @@ export default function AdminSidebar({ onClose }: Props) {
                     )}
                     <item.icon
                       className="w-3.5 h-3.5 shrink-0 transition-colors"
-                      style={{ color: active ? '#c8860a' : 'rgba(255,255,255,0.25)' }}
+                      style={{ color: active ? '#c8860a' : 'rgba(0,0,0,0.20)' }}
                     />
                     {item.label}
                   </Link>
@@ -157,19 +157,19 @@ export default function AdminSidebar({ onClose }: Props) {
       {/* Footer */}
       <div
         className="px-2 py-2 shrink-0 space-y-0.5"
-        style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}
+        style={{ borderTop: '1px solid rgba(0,0,0,0.08)' }}
       >
         <Link
           href="/"
           target="_blank"
           className="flex items-center gap-2.5 px-2.5 py-[7px] rounded-md text-[13px] transition-all duration-100"
-          style={{ color: 'rgba(255,255,255,0.3)' }}
+          style={{ color: 'rgba(0,0,0,0.25)' }}
           onMouseEnter={(e) => {
-            e.currentTarget.style.color = 'rgba(255,255,255,0.6)'
-            e.currentTarget.style.background = 'rgba(255,255,255,0.04)'
+            e.currentTarget.style.color = 'rgba(0,0,0,0.55)'
+            e.currentTarget.style.background = 'rgba(0,0,0,0.05)'
           }}
           onMouseLeave={(e) => {
-            e.currentTarget.style.color = 'rgba(255,255,255,0.3)'
+            e.currentTarget.style.color = 'rgba(0,0,0,0.25)'
             e.currentTarget.style.background = 'transparent'
           }}
         >
@@ -179,13 +179,13 @@ export default function AdminSidebar({ onClose }: Props) {
         <button
           onClick={handleLogout}
           className="flex items-center gap-2.5 px-2.5 py-[7px] rounded-md text-[13px] transition-all duration-100 w-full text-left"
-          style={{ color: 'rgba(255,255,255,0.3)' }}
+          style={{ color: 'rgba(0,0,0,0.25)' }}
           onMouseEnter={(e) => {
             e.currentTarget.style.color = '#f87171'
             e.currentTarget.style.background = 'rgba(239,68,68,0.06)'
           }}
           onMouseLeave={(e) => {
-            e.currentTarget.style.color = 'rgba(255,255,255,0.3)'
+            e.currentTarget.style.color = 'rgba(0,0,0,0.25)'
             e.currentTarget.style.background = 'transparent'
           }}
         >

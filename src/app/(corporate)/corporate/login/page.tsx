@@ -72,12 +72,12 @@ export default function CorporateLoginPage() {
               <div className="absolute inset-0 border border-amber-brand/20 rotate-45" />
               <div className="w-4 h-4 bg-amber-brand" style={{ clipPath: 'polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)' }} />
             </div>
-            <span className="font-display font-bold text-white text-lg">
+            <span className="font-display font-bold text-foreground text-lg">
               {BRAND_NAME.split(' ')[0]}
               <span className="text-amber-brand">.</span>
             </span>
           </div>
-          <h1 className="font-display text-2xl font-bold text-white">Portal Corporativo</h1>
+          <h1 className="font-display text-2xl font-bold text-foreground">Portal Corporativo</h1>
           <p className="text-metal text-sm mt-2">Acesso exclusivo para clientes</p>
         </div>
 
@@ -88,7 +88,7 @@ export default function CorporateLoginPage() {
           <div className="p-8">
             {!sent ? (
               <>
-                <h2 className="text-lg font-semibold text-white mb-1">Entrar com e-mail</h2>
+                <h2 className="text-lg font-semibold text-foreground mb-1">Entrar com e-mail</h2>
                 <p className="text-metal text-sm mb-6 leading-relaxed">
                   Insira seu e-mail cadastrado e enviaremos um link de acesso direto — sem senha.
                 </p>
@@ -106,7 +106,7 @@ export default function CorporateLoginPage() {
                       placeholder="seuemail@empresa.com.br"
                       required
                       autoComplete="email"
-                      className="bg-carbon/60 border-metal-dark/50 focus:border-amber-brand/60 text-white h-11 placeholder:text-metal-dark"
+                      className="bg-carbon/60 border-metal-dark/50 focus:border-amber-brand/60 text-foreground h-11 placeholder:text-metal-dark"
                     />
                   </div>
 
@@ -132,10 +132,10 @@ export default function CorporateLoginPage() {
                 <div className="w-14 h-14 rounded-full bg-green-500/10 border border-green-500/20 flex items-center justify-center mx-auto mb-5">
                   <CheckCircle className="w-7 h-7 text-green-400" />
                 </div>
-                <h2 className="text-lg font-semibold text-white mb-2">Link enviado!</h2>
+                <h2 className="text-lg font-semibold text-foreground mb-2">Link enviado!</h2>
                 <p className="text-metal text-sm leading-relaxed">
                   Verifique sua caixa de entrada em{' '}
-                  <span className="text-white font-medium">{email}</span>{' '}
+                  <span className="text-foreground font-medium">{email}</span>{' '}
                   e clique no link para acessar o portal.
                 </p>
                 <button

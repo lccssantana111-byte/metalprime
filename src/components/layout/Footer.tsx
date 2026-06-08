@@ -38,7 +38,7 @@ export default function Footer() {
   const year = new Date().getFullYear()
 
   return (
-    <footer style={{ background: '#050608' }}>
+    <footer style={{ background: '#f7f5f2' }}>
 
       {/* Gold accent rule */}
       <div className="gold-rule" />
@@ -53,13 +53,13 @@ export default function Footer() {
               <div className="transition-transform duration-300 group-hover:scale-105">
                 {LOGO_MARK}
               </div>
-              <span className="font-display font-black text-[14px] tracking-[0.12em] uppercase" style={{ color: '#f0f1f2' }}>
+              <span className="font-display font-black text-[14px] tracking-[0.12em] uppercase" style={{ color: '#1e2328' }}>
                 {BRAND_NAME.split(' ')[0]}
                 <span style={{ color: '#c4a040' }}>.</span>
               </span>
             </Link>
 
-            <p className="text-[14px] leading-[1.8] mb-10 max-w-xs" style={{ color: '#8a9199' }}>
+            <p className="text-[14px] leading-[1.8] mb-10 max-w-xs" style={{ color: '#607080' }}>
               Excelência em engenharia metálica há mais de 20 anos.
               Estruturas para residências, condomínios, construtoras e indústrias em São Paulo.
             </p>
@@ -86,9 +86,9 @@ export default function Footer() {
                 <a
                   href={`mailto:${COMPANY_EMAIL}`}
                   className="text-[13px] font-mono transition-colors"
-                  style={{ color: '#8a9199' }}
-                  onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = '#f0f1f2' }}
-                  onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = '#8a9199' }}
+                  style={{ color: '#607080' }}
+                  onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = '#1e2328' }}
+                  onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = '#607080' }}
                 >
                   {COMPANY_EMAIL}
                 </a>
@@ -96,7 +96,7 @@ export default function Footer() {
 
               <div className="flex items-start gap-2.5">
                 <MapPin className="w-3.5 h-3.5 shrink-0 mt-0.5" style={{ color: 'rgba(196,160,64,0.45)' }} />
-                <p className="text-[12px] font-mono leading-relaxed" style={{ color: '#5a6470' }}>
+                <p className="text-[12px] font-mono leading-relaxed" style={{ color: '#8a9199' }}>
                   {COMPANY_ADDRESS}
                 </p>
               </div>
@@ -105,7 +105,7 @@ export default function Footer() {
 
           {/* Services — 2 cols */}
           <div className="lg:col-span-2">
-            <h3 className="font-mono text-[9px] tracking-[0.4em] uppercase mb-7" style={{ color: '#5a6470' }}>
+            <h3 className="font-mono text-[9px] tracking-[0.4em] uppercase mb-7" style={{ color: '#8a9199' }}>
               Serviços
             </h3>
             <ul className="space-y-3.5">
@@ -114,9 +114,9 @@ export default function Footer() {
                   <Link
                     href={s.href}
                     className="text-[13px] transition-colors duration-200 block"
-                    style={{ color: '#8a9199' }}
-                    onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = '#f0f1f2' }}
-                    onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = '#8a9199' }}
+                    style={{ color: '#607080' }}
+                    onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = '#1e2328' }}
+                    onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = '#607080' }}
                   >
                     {s.label}
                   </Link>
@@ -127,7 +127,7 @@ export default function Footer() {
 
           {/* Company — 2 cols */}
           <div className="lg:col-span-2">
-            <h3 className="font-mono text-[9px] tracking-[0.4em] uppercase mb-7" style={{ color: '#5a6470' }}>
+            <h3 className="font-mono text-[9px] tracking-[0.4em] uppercase mb-7" style={{ color: '#8a9199' }}>
               Empresa
             </h3>
             <ul className="space-y-3.5">
@@ -136,9 +136,9 @@ export default function Footer() {
                   <Link
                     href={c.href}
                     className="text-[13px] transition-colors duration-200 block"
-                    style={{ color: '#8a9199' }}
-                    onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = '#f0f1f2' }}
-                    onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = '#8a9199' }}
+                    style={{ color: '#607080' }}
+                    onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = '#1e2328' }}
+                    onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = '#607080' }}
                   >
                     {c.label}
                   </Link>
@@ -148,9 +148,9 @@ export default function Footer() {
                 <Link
                   href="/admin"
                   className="text-[11px] font-mono transition-colors duration-200 block mt-6"
-                  style={{ color: '#2a3038' }}
-                  onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = '#5a6470' }}
-                  onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = '#2a3038' }}
+                  style={{ color: '#8a9199' }}
+                  onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = '#8a9199' }}
+                  onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = '#8a9199' }}
                 >
                   Área Admin
                 </Link>
@@ -160,13 +160,13 @@ export default function Footer() {
 
           {/* Atendimento — 4 cols */}
           <div className="lg:col-span-4">
-            <h3 className="font-mono text-[9px] tracking-[0.4em] uppercase mb-7" style={{ color: '#5a6470' }}>
+            <h3 className="font-mono text-[9px] tracking-[0.4em] uppercase mb-7" style={{ color: '#8a9199' }}>
               Atendimento
             </h3>
 
             <div className="flex items-start gap-2.5 mb-8">
               <Clock className="w-3.5 h-3.5 shrink-0 mt-0.5" style={{ color: 'rgba(196,160,64,0.45)' }} />
-              <p className="text-[13px] leading-[1.75]" style={{ color: '#8a9199' }}>
+              <p className="text-[13px] leading-[1.75]" style={{ color: '#607080' }}>
                 Seg–Sex das 8h às 18h<br />
                 Sáb das 8h às 13h
               </p>
@@ -196,7 +196,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-[11px] font-mono tracking-wide transition-colors pb-px"
-                  style={{ color: '#5a6470', borderBottom: '1px solid transparent' }}
+                  style={{ color: '#8a9199', borderBottom: '1px solid transparent' }}
                   onMouseEnter={(e) => {
                     const el = e.currentTarget as HTMLElement
                     el.style.color = '#c4a040'
@@ -204,7 +204,7 @@ export default function Footer() {
                   }}
                   onMouseLeave={(e) => {
                     const el = e.currentTarget as HTMLElement
-                    el.style.color = '#5a6470'
+                    el.style.color = '#8a9199'
                     el.style.borderBottomColor = 'transparent'
                   }}
                 >
@@ -217,16 +217,16 @@ export default function Footer() {
       </div>
 
       {/* Bottom bar */}
-      <div style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}>
+      <div style={{ borderTop: '1px solid rgba(0,0,0,0.08)' }}>
         <div className="container mx-auto px-5 sm:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="text-[11px] font-mono" style={{ color: '#3a424c' }}>
+          <p className="text-[11px] font-mono" style={{ color: '#607080' }}>
             © {year} {BRAND_NAME}. Todos os direitos reservados.
           </p>
           <div className="flex items-center gap-6">
-            <span className="text-[10px] font-mono" style={{ color: '#2a3038' }}>
+            <span className="text-[10px] font-mono" style={{ color: '#8a9199' }}>
               CREA-SP 000000000
             </span>
-            <p className="text-[11px] font-mono" style={{ color: '#2a3038' }}>
+            <p className="text-[11px] font-mono" style={{ color: '#8a9199' }}>
               São Paulo, SP — Brasil
             </p>
           </div>

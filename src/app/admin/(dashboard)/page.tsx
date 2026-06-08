@@ -14,7 +14,7 @@ function Trend({ current, previous }: { current: number; previous: number }) {
   const diff = current - previous
   const pct = Math.round((diff / previous) * 100)
   const base = 'inline-flex items-center gap-0.5 text-[11px] font-mono tabular-nums'
-  if (diff === 0) return <span className={base} style={{ color: 'rgba(255,255,255,0.3)' }}><Minus className="w-3 h-3" />0%</span>
+  if (diff === 0) return <span className={base} style={{ color: 'rgba(0,0,0,0.25)' }}><Minus className="w-3 h-3" />0%</span>
   if (diff > 0) return <span className={`${base} text-emerald-400`}><TrendingUp className="w-3 h-3" />+{pct}%</span>
   return <span className={`${base} text-red-400`}><TrendingDown className="w-3 h-3" />{pct}%</span>
 }
@@ -91,14 +91,14 @@ export default async function AdminDashboardPage() {
       {/* Page header */}
       <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-8">
         <div>
-          <p className="text-[11px] font-mono tracking-[0.15em] uppercase mb-1" style={{ color: 'rgba(255,255,255,0.25)' }}>
+          <p className="text-[11px] font-mono tracking-[0.15em] uppercase mb-1" style={{ color: 'rgba(0,0,0,0.22)' }}>
             {greeting}
           </p>
-          <h1 className="font-display font-black text-[2rem] text-white leading-none">
+          <h1 className="font-display font-black text-[2rem] text-foreground leading-none">
             Dashboard
           </h1>
         </div>
-        <p className="text-[12px] font-mono capitalize" style={{ color: 'rgba(255,255,255,0.25)' }}>
+        <p className="text-[12px] font-mono capitalize" style={{ color: 'rgba(0,0,0,0.22)' }}>
           {dateLabel}
         </p>
       </div>
@@ -118,7 +118,7 @@ export default async function AdminDashboardPage() {
                 <AlertTriangle className="w-3.5 h-3.5 text-orange-400" />
               </div>
               <div className="min-w-0">
-                <p className="text-[13px] font-semibold text-white">
+                <p className="text-[13px] font-semibold text-foreground">
                   {stale} lead{stale > 1 ? 's' : ''} sem resposta
                 </p>
                 <p className="text-[11px]" style={{ color: 'rgba(251,146,60,0.6)' }}>
@@ -140,7 +140,7 @@ export default async function AdminDashboardPage() {
                 <UserX className="w-3.5 h-3.5 text-yellow-400" />
               </div>
               <div className="min-w-0">
-                <p className="text-[13px] font-semibold text-white">
+                <p className="text-[13px] font-semibold text-foreground">
                   {unassigned} lead{unassigned > 1 ? 's' : ''} sem responsável
                 </p>
                 <p className="text-[11px]" style={{ color: 'rgba(250,204,21,0.55)' }}>
@@ -160,25 +160,25 @@ export default async function AdminDashboardPage() {
             <div
               className="rounded-xl p-5 transition-all duration-200 h-full relative overflow-hidden"
               style={{
-                background: kpi.primary ? 'rgba(200,134,10,0.06)' : 'rgba(255,255,255,0.025)',
+                background: kpi.primary ? 'rgba(200,134,10,0.06)' : 'rgba(0,0,0,0.04)',
                 border: kpi.primary
                   ? '1px solid rgba(200,134,10,0.25)'
-                  : '1px solid rgba(255,255,255,0.06)',
+                  : '1px solid rgba(0,0,0,0.08)',
               }}
               onMouseEnter={(e) => {
                 const el = e.currentTarget as HTMLElement
-                el.style.borderColor = kpi.primary ? 'rgba(200,134,10,0.5)' : 'rgba(255,255,255,0.12)'
+                el.style.borderColor = kpi.primary ? 'rgba(200,134,10,0.5)' : 'rgba(0,0,0,0.12)'
               }}
               onMouseLeave={(e) => {
                 const el = e.currentTarget as HTMLElement
-                el.style.borderColor = kpi.primary ? 'rgba(200,134,10,0.25)' : 'rgba(255,255,255,0.06)'
+                el.style.borderColor = kpi.primary ? 'rgba(200,134,10,0.25)' : 'rgba(0,0,0,0.08)'
               }}
             >
               {/* Label row */}
               <div className="flex items-center justify-between mb-3.5">
                 <span
                   className="text-[10px] font-semibold font-mono tracking-[0.15em] uppercase"
-                  style={{ color: kpi.primary ? 'rgba(200,134,10,0.8)' : 'rgba(255,255,255,0.3)' }}
+                  style={{ color: kpi.primary ? 'rgba(200,134,10,0.8)' : 'rgba(0,0,0,0.25)' }}
                 >
                   {kpi.label}
                 </span>
@@ -186,7 +186,7 @@ export default async function AdminDashboardPage() {
               </div>
 
               {/* Divider */}
-              <div className="h-px mb-3.5" style={{ background: 'rgba(255,255,255,0.05)' }} />
+              <div className="h-px mb-3.5" style={{ background: 'rgba(0,0,0,0.07)' }} />
 
               {/* Value */}
               <div
@@ -200,7 +200,7 @@ export default async function AdminDashboardPage() {
               </div>
 
               {/* Sub */}
-              <p className="text-[11px]" style={{ color: 'rgba(255,255,255,0.25)' }}>
+              <p className="text-[11px]" style={{ color: 'rgba(0,0,0,0.22)' }}>
                 {kpi.sub}
               </p>
             </div>
@@ -212,18 +212,18 @@ export default async function AdminDashboardPage() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-2.5 mb-2.5">
         <div
           className="lg:col-span-2 rounded-xl p-5"
-          style={{ background: 'rgba(255,255,255,0.025)', border: '1px solid rgba(255,255,255,0.06)' }}
+          style={{ background: 'rgba(0,0,0,0.04)', border: '1px solid rgba(0,0,0,0.08)' }}
         >
           <div className="flex items-start justify-between mb-5">
             <div>
-              <p className="text-[10px] font-mono font-semibold tracking-[0.15em] uppercase mb-0.5" style={{ color: 'rgba(255,255,255,0.28)' }}>
+              <p className="text-[10px] font-mono font-semibold tracking-[0.15em] uppercase mb-0.5" style={{ color: 'rgba(0,0,0,0.25)' }}>
                 Tendência
               </p>
-              <h3 className="font-display font-semibold text-[14px] text-white">
+              <h3 className="font-display font-semibold text-[14px] text-foreground">
                 Leads — últimos 30 dias
               </h3>
             </div>
-            <span className="font-mono text-[12px] tabular-nums" style={{ color: 'rgba(255,255,255,0.25)' }}>
+            <span className="font-mono text-[12px] tabular-nums" style={{ color: 'rgba(0,0,0,0.22)' }}>
               {leads30dTotal} total
             </span>
           </div>
@@ -236,14 +236,14 @@ export default async function AdminDashboardPage() {
 
         <div
           className="rounded-xl p-5"
-          style={{ background: 'rgba(255,255,255,0.025)', border: '1px solid rgba(255,255,255,0.06)' }}
+          style={{ background: 'rgba(0,0,0,0.04)', border: '1px solid rgba(0,0,0,0.08)' }}
         >
           <div className="flex items-start justify-between mb-5">
             <div>
-              <p className="text-[10px] font-mono font-semibold tracking-[0.15em] uppercase mb-0.5" style={{ color: 'rgba(255,255,255,0.28)' }}>
+              <p className="text-[10px] font-mono font-semibold tracking-[0.15em] uppercase mb-0.5" style={{ color: 'rgba(0,0,0,0.25)' }}>
                 Recentes
               </p>
-              <h3 className="font-display font-semibold text-[14px] text-white">Leads recentes</h3>
+              <h3 className="font-display font-semibold text-[14px] text-foreground">Leads recentes</h3>
             </div>
             <Link
               href="/admin/leads"
@@ -263,13 +263,13 @@ export default async function AdminDashboardPage() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-2.5">
         <div
           className="rounded-xl p-5"
-          style={{ background: 'rgba(255,255,255,0.025)', border: '1px solid rgba(255,255,255,0.06)' }}
+          style={{ background: 'rgba(0,0,0,0.04)', border: '1px solid rgba(0,0,0,0.08)' }}
         >
           <div className="mb-5">
-            <p className="text-[10px] font-mono font-semibold tracking-[0.15em] uppercase mb-0.5" style={{ color: 'rgba(255,255,255,0.28)' }}>
+            <p className="text-[10px] font-mono font-semibold tracking-[0.15em] uppercase mb-0.5" style={{ color: 'rgba(0,0,0,0.25)' }}>
               Pipeline
             </p>
-            <h3 className="font-display font-semibold text-[14px] text-white">Funil de conversão</h3>
+            <h3 className="font-display font-semibold text-[14px] text-foreground">Funil de conversão</h3>
           </div>
           {metrics?.leads_by_status && metrics.leads_by_status.length > 0 ? (
             <ConversionFunnel data={metrics.leads_by_status as Parameters<typeof ConversionFunnel>[0]['data']} />
@@ -280,13 +280,13 @@ export default async function AdminDashboardPage() {
 
         <div
           className="rounded-xl p-5"
-          style={{ background: 'rgba(255,255,255,0.025)', border: '1px solid rgba(255,255,255,0.06)' }}
+          style={{ background: 'rgba(0,0,0,0.04)', border: '1px solid rgba(0,0,0,0.08)' }}
         >
           <div className="mb-5">
-            <p className="text-[10px] font-mono font-semibold tracking-[0.15em] uppercase mb-0.5" style={{ color: 'rgba(255,255,255,0.28)' }}>
+            <p className="text-[10px] font-mono font-semibold tracking-[0.15em] uppercase mb-0.5" style={{ color: 'rgba(0,0,0,0.25)' }}>
               Distribuição
             </p>
-            <h3 className="font-display font-semibold text-[14px] text-white">Leads por serviço</h3>
+            <h3 className="font-display font-semibold text-[14px] text-foreground">Leads por serviço</h3>
           </div>
           {metrics?.leads_by_service && metrics.leads_by_service.length > 0 ? (
             <ServicesPieChart data={metrics.leads_by_service as Parameters<typeof ServicesPieChart>[0]['data']} />
@@ -302,8 +302,8 @@ export default async function AdminDashboardPage() {
 function EmptyState({ label }: { label: string }) {
   return (
     <div className="h-[180px] flex flex-col items-center justify-center gap-2">
-      <div className="w-6 h-px" style={{ background: 'rgba(255,255,255,0.12)' }} />
-      <p className="text-[12px] font-mono" style={{ color: 'rgba(255,255,255,0.2)' }}>
+      <div className="w-6 h-px" style={{ background: 'rgba(0,0,0,0.12)' }} />
+      <p className="text-[12px] font-mono" style={{ color: 'rgba(0,0,0,0.20)' }}>
         {label}
       </p>
     </div>

@@ -73,7 +73,7 @@ export default function SobrePage() {
             <span className="text-amber-brand text-xs font-semibold tracking-[0.35em] uppercase">Quem somos</span>
           </div>
 
-          <h1 className="font-display font-black text-5xl sm:text-6xl lg:text-8xl text-white leading-none mb-8 max-w-3xl">
+          <h1 className="font-display font-black text-5xl sm:text-6xl lg:text-8xl text-foreground leading-none mb-8 max-w-3xl">
             Começamos com uma oficina.<br />
             <span className="text-metal/30">Viramos referência.</span>
           </h1>
@@ -88,7 +88,7 @@ export default function SobrePage() {
         <div className="absolute right-8 bottom-0 pointer-events-none select-none overflow-hidden">
           <span
             className="font-display font-black text-[20vw] leading-none text-transparent"
-            style={{ WebkitTextStroke: '1px rgba(30,35,40,0.9)' }}
+            style={{ WebkitTextStroke: '1px rgba(210,205,198,0.9)' }}
           >
             2004
           </span>
@@ -96,7 +96,7 @@ export default function SobrePage() {
       </section>
 
       {/* Stats */}
-      <section className="bg-graphite border-y border-white/5">
+      <section className="bg-graphite border-y border-foreground/8">
         <div className="container mx-auto px-4 sm:px-8">
           <div className="grid grid-cols-2 lg:grid-cols-4 divide-x divide-white/5">
             {[
@@ -106,7 +106,7 @@ export default function SobrePage() {
               { value: '100%', label: 'Com ART' },
             ].map((stat, i) => (
               <div key={i} className="py-10 px-6 sm:px-10">
-                <div className="font-display font-black text-4xl lg:text-5xl text-white leading-none mb-1.5">
+                <div className="font-display font-black text-4xl lg:text-5xl text-foreground leading-none mb-1.5">
                   {stat.value}
                 </div>
                 <p className="text-xs text-metal-dark tracking-wide">{stat.label}</p>
@@ -125,7 +125,7 @@ export default function SobrePage() {
                 <div className="w-8 h-px bg-amber-brand" />
                 <span className="text-amber-brand text-xs font-semibold tracking-[0.35em] uppercase">Nossa história</span>
               </div>
-              <h2 className="font-display font-black text-4xl lg:text-5xl text-white leading-none mb-8">
+              <h2 className="font-display font-black text-4xl lg:text-5xl text-foreground leading-none mb-8">
                 Uma oficina.<br />
                 <span className="text-metal/40">Uma obsessão.</span>
               </h2>
@@ -157,7 +157,7 @@ export default function SobrePage() {
                     <div className="absolute left-0 top-1 w-12 h-12 border border-amber-brand/30 bg-carbon flex items-center justify-center">
                       <span className="font-display font-bold text-[11px] text-amber-brand">{m.year}</span>
                     </div>
-                    <h3 className="font-display font-bold text-white text-lg mb-2">{m.title}</h3>
+                    <h3 className="font-display font-bold text-foreground text-lg mb-2">{m.title}</h3>
                     <p className="text-sm text-metal leading-relaxed">{m.desc}</p>
                   </div>
                 ))}
@@ -181,20 +181,20 @@ export default function SobrePage() {
             <div className="w-8 h-px bg-amber-brand" />
             <span className="text-amber-brand text-xs font-semibold tracking-[0.35em] uppercase">O que nos move</span>
           </div>
-          <h2 className="font-display font-black text-4xl lg:text-5xl text-white leading-none mb-16">
+          <h2 className="font-display font-black text-4xl lg:text-5xl text-foreground leading-none mb-16">
             O que não abrimos mão
           </h2>
 
           <div className="divide-y divide-white/5">
             {values.map((v) => (
               <div key={v.title} className="py-8 flex flex-col sm:flex-row gap-6 sm:gap-12 items-start">
-                <span className="font-display font-black text-5xl text-white/10 leading-none shrink-0 w-16">{v.number}</span>
+                <span className="font-display font-black text-5xl text-foreground/10 leading-none shrink-0 w-16">{v.number}</span>
                 <div className="flex items-start gap-6 flex-1">
                   <div className="w-10 h-10 border border-amber-brand/30 flex items-center justify-center shrink-0 mt-1">
                     <v.icon className="w-5 h-5 text-amber-brand" />
                   </div>
                   <div>
-                    <h3 className="font-display font-bold text-xl text-white mb-2">{v.title}</h3>
+                    <h3 className="font-display font-bold text-xl text-foreground mb-2">{v.title}</h3>
                     <p className="text-metal text-sm leading-relaxed">{v.description}</p>
                   </div>
                 </div>
@@ -213,7 +213,7 @@ export default function SobrePage() {
                 <div className="w-8 h-px bg-amber-brand" />
                 <span className="text-amber-brand text-xs font-semibold tracking-[0.35em] uppercase">Por que a Metalprime</span>
               </div>
-              <h2 className="font-display font-black text-4xl lg:text-5xl text-white leading-none mb-6">
+              <h2 className="font-display font-black text-4xl lg:text-5xl text-foreground leading-none mb-6">
                 O que você não encontra<br />
                 <span className="text-metal/40">em qualquer serralheria</span>
               </h2>
@@ -231,7 +231,7 @@ export default function SobrePage() {
 
             <div className="space-y-4">
               {differentials.map((d, i) => (
-                <div key={i} className="flex items-start gap-4 py-4 border-b border-white/5 last:border-0">
+                <div key={i} className="flex items-start gap-4 py-4 border-b border-foreground/8 last:border-0">
                   <CheckCircle className="w-5 h-5 text-amber-brand shrink-0 mt-0.5" />
                   <span className="text-metal-light text-sm leading-relaxed">{d}</span>
                 </div>
@@ -245,7 +245,7 @@ export default function SobrePage() {
       <section className="py-24 bg-graphite relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-steel/20 to-transparent" />
         <div className="container mx-auto px-4 sm:px-8 relative z-10 text-center">
-          <h2 className="font-display font-black text-4xl lg:text-5xl text-white leading-none mb-6">
+          <h2 className="font-display font-black text-4xl lg:text-5xl text-foreground leading-none mb-6">
             Pronto para começar?
           </h2>
           <p className="text-metal max-w-md mx-auto mb-10">
@@ -263,7 +263,7 @@ export default function SobrePage() {
               href={`https://wa.me/${WHATSAPP_NUMBER}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 border border-white/15 hover:border-white/30 text-metal-light hover:text-white text-sm px-8 py-4 transition-all duration-200"
+              className="inline-flex items-center gap-2 border border-foreground/15 hover:border-foreground/22 text-metal-light hover:text-foreground text-sm px-8 py-4 transition-all duration-200"
             >
               Falar pelo WhatsApp
             </a>

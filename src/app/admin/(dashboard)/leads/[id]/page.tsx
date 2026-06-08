@@ -73,7 +73,7 @@ export default async function LeadDetailPage({ params }: { params: Promise<{ id:
       <div className="mb-6">
         <Link
           href="/admin/leads"
-          className="inline-flex items-center gap-2 text-sm text-metal hover:text-white transition-colors mb-4"
+          className="inline-flex items-center gap-2 text-sm text-metal hover:text-foreground transition-colors mb-4"
         >
           <ArrowLeft className="w-4 h-4" />
           Voltar para leads
@@ -81,7 +81,7 @@ export default async function LeadDetailPage({ params }: { params: Promise<{ id:
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
             <div className="flex items-center gap-3 mb-1">
-              <h1 className="font-display text-3xl font-bold text-white">{typedLead.name}</h1>
+              <h1 className="font-display text-3xl font-bold text-foreground">{typedLead.name}</h1>
               {/* Lead score badge */}
               <span className={`inline-flex items-center gap-1 text-xs px-2.5 py-1 rounded-full border font-semibold ${score.color}`}>
                 <Flame className="w-3 h-3" />
@@ -132,7 +132,7 @@ export default async function LeadDetailPage({ params }: { params: Promise<{ id:
         <div className="lg:col-span-1 space-y-4">
           {/* Info */}
           <div className="bg-graphite border border-metal-dark/30 rounded-xl p-5">
-            <h3 className="text-sm font-semibold text-white mb-4">Informações</h3>
+            <h3 className="text-sm font-semibold text-foreground mb-4">Informações</h3>
             <div className="space-y-3">
               {[
                 { label: 'Serviço', value: typedLead.service ? SERVICE_LABELS[typedLead.service] : '—' },
@@ -151,7 +151,7 @@ export default async function LeadDetailPage({ params }: { params: Promise<{ id:
 
           {/* Score breakdown */}
           <div className="bg-graphite border border-metal-dark/30 rounded-xl p-5">
-            <h3 className="text-sm font-semibold text-white mb-3 flex items-center gap-2">
+            <h3 className="text-sm font-semibold text-foreground mb-3 flex items-center gap-2">
               <Flame className="w-4 h-4 text-amber-brand" />
               Lead Score — {score.total}pts
             </h3>
@@ -167,7 +167,7 @@ export default async function LeadDetailPage({ params }: { params: Promise<{ id:
 
           {/* Status */}
           <div className="bg-graphite border border-metal-dark/30 rounded-xl p-5">
-            <h3 className="text-sm font-semibold text-white mb-4">Status</h3>
+            <h3 className="text-sm font-semibold text-foreground mb-4">Status</h3>
             <Badge
               className={`text-xs border mb-4 ${LEAD_STATUS_COLORS[typedLead.status] ?? ''}`}
               variant="outline"
@@ -217,7 +217,7 @@ export default async function LeadDetailPage({ params }: { params: Promise<{ id:
         {/* Timeline */}
         <div className="lg:col-span-2">
           <div className="bg-graphite border border-metal-dark/30 rounded-xl p-5">
-            <h3 className="text-sm font-semibold text-white mb-5">
+            <h3 className="text-sm font-semibold text-foreground mb-5">
               Timeline de interações
               <span className="ml-2 text-xs text-metal-dark font-normal">
                 ({(interactions ?? []).length} registro{(interactions ?? []).length !== 1 ? 's' : ''})

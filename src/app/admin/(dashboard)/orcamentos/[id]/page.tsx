@@ -18,7 +18,7 @@ export default async function OrcamentoDetailPage({ params }: { params: Promise<
 
   return (
     <div>
-      <Link href="/admin/orcamentos" className="inline-flex items-center gap-2 text-sm text-metal hover:text-white mb-6">
+      <Link href="/admin/orcamentos" className="inline-flex items-center gap-2 text-sm text-metal hover:text-foreground mb-6">
         <ArrowLeft className="w-4 h-4" />
         Voltar
       </Link>
@@ -26,14 +26,14 @@ export default async function OrcamentoDetailPage({ params }: { params: Promise<
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div className="lg:col-span-2 space-y-5">
           <div className="bg-graphite border border-metal-dark/30 rounded-xl p-6">
-            <h1 className="font-display text-2xl font-bold text-white mb-1">
+            <h1 className="font-display text-2xl font-bold text-foreground mb-1">
               Orçamento — {SERVICE_LABELS[q.service]}
             </h1>
             <p className="text-metal text-sm">{formatDateTime(q.created_at)}</p>
           </div>
 
           <div className="bg-graphite border border-metal-dark/30 rounded-xl p-6">
-            <h3 className="font-semibold text-white mb-4">Dados do cliente</h3>
+            <h3 className="font-semibold text-foreground mb-4">Dados do cliente</h3>
             <div className="grid grid-cols-2 gap-4">
               {[
                 { label: 'Nome', value: q.name },
@@ -51,7 +51,7 @@ export default async function OrcamentoDetailPage({ params }: { params: Promise<
 
           {q.description && (
             <div className="bg-graphite border border-metal-dark/30 rounded-xl p-6">
-              <h3 className="font-semibold text-white mb-3">Descrição do projeto</h3>
+              <h3 className="font-semibold text-foreground mb-3">Descrição do projeto</h3>
               <p className="text-metal text-sm leading-relaxed">{q.description}</p>
             </div>
           )}
@@ -59,7 +59,7 @@ export default async function OrcamentoDetailPage({ params }: { params: Promise<
 
         <div className="space-y-4">
           <div className="bg-graphite border border-metal-dark/30 rounded-xl p-5">
-            <h3 className="font-semibold text-white mb-4">Status</h3>
+            <h3 className="font-semibold text-foreground mb-4">Status</h3>
             <Badge variant="outline" className="text-xs border-metal-dark/40 text-metal">
               {QUOTE_STATUS_LABELS[q.status]}
             </Badge>
@@ -67,7 +67,7 @@ export default async function OrcamentoDetailPage({ params }: { params: Promise<
 
           {(q.estimated_value || q.final_value) && (
             <div className="bg-graphite border border-metal-dark/30 rounded-xl p-5">
-              <h3 className="font-semibold text-white mb-4">Valores</h3>
+              <h3 className="font-semibold text-foreground mb-4">Valores</h3>
               {q.estimated_value && (
                 <div className="mb-2">
                   <p className="text-xs text-metal-dark">Valor Estimado</p>

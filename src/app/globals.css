@@ -9,30 +9,30 @@
   --font-display: var(--font-outfit);
   --font-mono: var(--font-ibm-mono);
 
-  /* ── Premium Industrial palette ─────────────────── */
-  --color-obsidian: #050608;
-  --color-iron: #0c0e11;
-  --color-forge: #13161b;
-  --color-alloy: #1c2028;
+  /* ── Light Industrial palette ───────────────────── */
+  --color-obsidian: #1e2328;
+  --color-iron: #2a3038;
+  --color-forge: #3a4250;
+  --color-alloy: #4a5560;
 
   --color-gold: #c4a040;
   --color-gold-light: #d4b454;
-  --color-gold-dim: rgba(196,160,64,0.12);
+  --color-gold-dim: rgba(196,160,64,0.14);
 
-  --color-platinum: #b4bcc6;
-  --color-off-white: #f0f1f2;
+  --color-platinum: #1e2328;
+  --color-off-white: #1e2328;
 
-  /* ── Legacy aliases (keep for admin components) ── */
-  --color-steel-DEFAULT: #1c2b3a;
-  --color-steel-light: #2d3f50;
-  --color-steel-dark: #0f1924;
-  --color-metal-DEFAULT: #8c97a0;
-  --color-metal-light: #b8c0c8;
-  --color-metal-dark: #5a6470;
+  /* ── Legacy aliases (light values) ──────────────── */
+  --color-steel-DEFAULT: #e0ddd6;
+  --color-steel-light: #eceae4;
+  --color-steel-dark: #d4d0c8;
+  --color-metal-DEFAULT: #607080;
+  --color-metal-light: #3b4a58;
+  --color-metal-dark: #8a9199;
   --color-amber-brand: #c4a040;
   --color-amber-light: #d4b454;
-  --color-carbon: #050608;
-  --color-graphite: #13161b;
+  --color-carbon: #f7f5f2;
+  --color-graphite: #eeeae3;
 
   /* ── Shadcn CSS variable bridge ──────────────────── */
   --color-background: var(--background);
@@ -69,23 +69,23 @@
 /* ── Shadcn theme tokens ───────────────────────────── */
 :root {
   --radius: 0.25rem;
-  --background: #050608;
-  --foreground: #f0f1f2;
-  --card: #13161b;
-  --card-foreground: #f0f1f2;
-  --popover: #13161b;
-  --popover-foreground: #f0f1f2;
+  --background: #f7f5f2;
+  --foreground: #1e2328;
+  --card: #eeeae3;
+  --card-foreground: #1e2328;
+  --popover: #eeeae3;
+  --popover-foreground: #1e2328;
   --primary: #c4a040;
   --primary-foreground: #050608;
-  --secondary: #1c2028;
-  --secondary-foreground: #f0f1f2;
-  --muted: #1c2028;
-  --muted-foreground: #8a9199;
-  --accent: #1c2028;
-  --accent-foreground: #f0f1f2;
+  --secondary: #e2ded6;
+  --secondary-foreground: #1e2328;
+  --muted: #e2ded6;
+  --muted-foreground: #607080;
+  --accent: #e2ded6;
+  --accent-foreground: #1e2328;
   --destructive: #ef4444;
-  --border: rgba(255,255,255,0.07);
-  --input: #1c2028;
+  --border: rgba(0,0,0,0.09);
+  --input: #e2ded6;
   --ring: #c4a040;
 }
 
@@ -100,8 +100,8 @@ html {
 }
 
 body {
-  background: #050608;
-  color: #f0f1f2;
+  background: #f7f5f2;
+  color: #1e2328;
   font-family: var(--font-sans, system-ui, sans-serif);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -112,15 +112,15 @@ body {
 ::-webkit-scrollbar { width: 4px; height: 4px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb {
-  background: rgba(255,255,255,0.10);
+  background: rgba(0,0,0,0.12);
   border-radius: 99px;
 }
-::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.18); }
+::-webkit-scrollbar-thumb:hover { background: rgba(0,0,0,0.20); }
 
 /* ── Selection ──────────────────────────────────── */
 ::selection {
   background: rgba(196,160,64,0.25);
-  color: #f0f1f2;
+  color: #1e2328;
 }
 
 /* ── Focus ──────────────────────────────────────── */
@@ -157,8 +157,8 @@ body {
 /* ── Industrial grid texture ─────────────────────── */
 .bg-grid {
   background-image:
-    linear-gradient(rgba(255,255,255,0.028) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.028) 1px, transparent 1px);
+    linear-gradient(rgba(0,0,0,0.030) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,0,0,0.030) 1px, transparent 1px);
   background-size: 72px 72px;
 }
 
@@ -178,7 +178,7 @@ body {
 /* ── Section divider ─────────────────────────────── */
 .section-divider {
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.06) 30%, rgba(255,255,255,0.06) 70%, transparent);
+  background: linear-gradient(90deg, transparent, rgba(0,0,0,0.07) 30%, rgba(0,0,0,0.07) 70%, transparent);
 }
 
 /* ── Admin scroll ───────────────────────────────── */

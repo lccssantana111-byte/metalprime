@@ -30,7 +30,7 @@ export default async function AdminProjetosPage() {
     <div>
       <div className="flex items-center justify-between mb-8">
         <div>
-          <h1 className="font-display text-3xl font-bold text-white">Projetos</h1>
+          <h1 className="font-display text-3xl font-bold text-foreground">Projetos</h1>
           <p className="text-metal mt-1">{(projects ?? []).length} projetos</p>
         </div>
         <Button asChild className="bg-amber-brand hover:bg-amber-light text-carbon font-semibold">
@@ -58,7 +58,7 @@ export default async function AdminProjetosPage() {
                 <tr key={project.id} className="hover:bg-steel/20 transition-colors">
                   <td className="px-5 py-4">
                     <Link href={`/admin/projetos/${project.id}`} className="block">
-                      <p className="text-sm font-medium text-white hover:text-amber-brand transition-colors">
+                      <p className="text-sm font-medium text-foreground hover:text-amber-brand transition-colors">
                         {project.name}
                       </p>
                       <p className="text-xs text-metal mt-0.5">{SERVICE_LABELS[project.service]}</p>

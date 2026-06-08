@@ -78,7 +78,7 @@ export default function ServicosPage() {
             <div className="w-8 h-px bg-amber-brand" />
             <span className="text-amber-brand text-xs font-semibold tracking-[0.35em] uppercase">O que fazemos</span>
           </div>
-          <h1 className="font-display font-black text-5xl sm:text-6xl lg:text-8xl text-white leading-none mb-6 max-w-2xl">
+          <h1 className="font-display font-black text-5xl sm:text-6xl lg:text-8xl text-foreground leading-none mb-6 max-w-2xl">
             6 especialidades.<br />
             <span className="text-metal/30">Um padrão.</span>
           </h1>
@@ -90,7 +90,7 @@ export default function ServicosPage() {
         <div className="absolute right-8 bottom-0 pointer-events-none select-none overflow-hidden">
           <span
             className="font-display font-black text-[18vw] leading-none text-transparent"
-            style={{ WebkitTextStroke: '1px rgba(30,35,40,0.8)' }}
+            style={{ WebkitTextStroke: '1px rgba(210,205,198,0.8)' }}
           >
             06
           </span>
@@ -106,14 +106,14 @@ export default function ServicosPage() {
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 items-start">
                   {/* Number */}
                   <div className="lg:col-span-1">
-                    <span className="font-display font-black text-5xl text-white/10 group-hover:text-amber-brand/20 transition-colors leading-none">
+                    <span className="font-display font-black text-5xl text-foreground/10 group-hover:text-amber-brand/25 transition-colors leading-none">
                       {s.number}
                     </span>
                   </div>
 
                   {/* Name + tagline */}
                   <div className="lg:col-span-4">
-                    <h2 className="font-display font-black text-3xl lg:text-4xl text-metal-light group-hover:text-white transition-colors duration-300 leading-none mb-3">
+                    <h2 className="font-display font-black text-3xl lg:text-4xl text-metal-light group-hover:text-foreground transition-colors duration-300 leading-none mb-3">
                       {s.name}
                     </h2>
                     <p className="text-amber-brand text-sm font-semibold leading-snug">{s.tagline}</p>
@@ -136,7 +136,7 @@ export default function ServicosPage() {
 
                   {/* Arrow */}
                   <div className="lg:col-span-2 flex justify-end items-start">
-                    <div className="w-12 h-12 border border-white/10 group-hover:bg-amber-brand group-hover:border-amber-brand flex items-center justify-center transition-all duration-300">
+                    <div className="w-12 h-12 border border-foreground/12 group-hover:bg-amber-brand group-hover:border-amber-brand flex items-center justify-center transition-all duration-300">
                       <ArrowUpRight className="w-5 h-5 text-metal group-hover:text-carbon transition-colors" />
                     </div>
                   </div>
@@ -148,9 +148,9 @@ export default function ServicosPage() {
       </section>
 
       {/* Bottom CTA */}
-      <section className="py-24 bg-graphite border-t border-white/5">
+      <section className="py-24 bg-graphite border-t border-foreground/8">
         <div className="container mx-auto px-4 sm:px-8 text-center">
-          <h2 className="font-display font-black text-4xl lg:text-5xl text-white leading-none mb-6">
+          <h2 className="font-display font-black text-4xl lg:text-5xl text-foreground leading-none mb-6">
             Tem um projeto fora do padrão?
           </h2>
           <p className="text-metal max-w-md mx-auto mb-10">
@@ -168,7 +168,7 @@ export default function ServicosPage() {
               href={`https://wa.me/${WHATSAPP_NUMBER}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 border border-white/15 hover:border-white/30 text-metal-light hover:text-white text-sm px-8 py-4 transition-all duration-200"
+              className="inline-flex items-center gap-2 border border-foreground/15 hover:border-foreground/22 text-metal-light hover:text-foreground text-sm px-8 py-4 transition-all duration-200"
             >
               Falar pelo WhatsApp
             </a>

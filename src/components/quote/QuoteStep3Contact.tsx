@@ -56,7 +56,7 @@ export default function QuoteStep3Contact({ data, onChange, onNext, onBack }: Pr
 
   return (
     <div className="bg-graphite border border-metal-dark/30 rounded-2xl p-8">
-      <h2 className="font-display text-2xl font-bold text-white mb-2">Como entramos em contato</h2>
+      <h2 className="font-display text-2xl font-bold text-foreground mb-2">Como entramos em contato</h2>
       <p className="text-metal text-sm mb-8">Retornamos em até 24h com a proposta</p>
 
       <div className="space-y-5 mb-8">
@@ -68,7 +68,7 @@ export default function QuoteStep3Contact({ data, onChange, onNext, onBack }: Pr
               value={data.name}
               onChange={(e) => onChange({ name: e.target.value })}
               placeholder="Seu nome"
-              className="bg-steel/30 border-metal-dark/40 focus:border-amber-brand/60 text-white placeholder:text-metal-dark"
+              className="bg-steel/30 border-metal-dark/40 focus:border-amber-brand/60 text-foreground placeholder:text-metal-dark"
             />
             {errors.name && <p className="text-red-400 text-xs mt-1">{errors.name}</p>}
           </div>
@@ -79,7 +79,7 @@ export default function QuoteStep3Contact({ data, onChange, onNext, onBack }: Pr
               value={data.phone}
               onChange={(e) => onChange({ phone: e.target.value.replace(/\D/g, '') })}
               placeholder="(11) 99999-9999"
-              className="bg-steel/30 border-metal-dark/40 focus:border-amber-brand/60 text-white placeholder:text-metal-dark"
+              className="bg-steel/30 border-metal-dark/40 focus:border-amber-brand/60 text-foreground placeholder:text-metal-dark"
             />
             {errors.phone && <p className="text-red-400 text-xs mt-1">{errors.phone}</p>}
           </div>
@@ -93,7 +93,7 @@ export default function QuoteStep3Contact({ data, onChange, onNext, onBack }: Pr
             value={data.email}
             onChange={(e) => onChange({ email: e.target.value })}
             placeholder="seu@email.com"
-            className="bg-steel/30 border-metal-dark/40 focus:border-amber-brand/60 text-white placeholder:text-metal-dark"
+            className="bg-steel/30 border-metal-dark/40 focus:border-amber-brand/60 text-foreground placeholder:text-metal-dark"
           />
         </div>
 
@@ -107,7 +107,7 @@ export default function QuoteStep3Contact({ data, onChange, onNext, onBack }: Pr
                 onChange={(e) => onChange({ cep: e.target.value.replace(/\D/g, '').slice(0, 8) })}
                 onBlur={(e) => handleCepBlur(e.target.value)}
                 placeholder="00000-000"
-                className="bg-steel/30 border-metal-dark/40 focus:border-amber-brand/60 text-white placeholder:text-metal-dark"
+                className="bg-steel/30 border-metal-dark/40 focus:border-amber-brand/60 text-foreground placeholder:text-metal-dark"
               />
               {cepLoading && (
                 <Loader2 className="w-4 h-4 animate-spin text-amber-brand absolute right-3 top-3" />
@@ -122,7 +122,7 @@ export default function QuoteStep3Contact({ data, onChange, onNext, onBack }: Pr
               value={data.city}
               onChange={(e) => onChange({ city: e.target.value })}
               placeholder="São Paulo"
-              className="bg-steel/30 border-metal-dark/40 focus:border-amber-brand/60 text-white placeholder:text-metal-dark"
+              className="bg-steel/30 border-metal-dark/40 focus:border-amber-brand/60 text-foreground placeholder:text-metal-dark"
             />
             {errors.city && <p className="text-red-400 text-xs mt-1">{errors.city}</p>}
           </div>
@@ -135,7 +135,7 @@ export default function QuoteStep3Contact({ data, onChange, onNext, onBack }: Pr
             value={data.address}
             onChange={(e) => onChange({ address: e.target.value })}
             placeholder="Rua, número, bairro"
-            className="bg-steel/30 border-metal-dark/40 focus:border-amber-brand/60 text-white placeholder:text-metal-dark"
+            className="bg-steel/30 border-metal-dark/40 focus:border-amber-brand/60 text-foreground placeholder:text-metal-dark"
           />
         </div>
       </div>

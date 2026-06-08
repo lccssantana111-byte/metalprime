@@ -48,7 +48,7 @@ export default function LeadNoteForm({ leadId }: Props) {
         onChange={(e) => setNote(e.target.value)}
         placeholder="Registre uma ligação, visita, e-mail ou qualquer interação..."
         rows={3}
-        className="bg-steel/20 border-metal-dark/30 focus:border-amber-brand/40 text-white placeholder:text-metal-dark resize-none mb-3"
+        className="bg-steel/20 border-metal-dark/30 focus:border-amber-brand/40 text-foreground placeholder:text-metal-dark resize-none mb-3"
       />
       <Button
         type="submit"

@@ -17,15 +17,15 @@ export default function ClientLogos() {
   return (
     <section
       className="py-20 overflow-hidden"
-      style={{ background: '#0c0e11', borderTop: '1px solid rgba(255,255,255,0.05)' }}
+      style={{ background: '#eeeae3', borderTop: '1px solid rgba(0,0,0,0.07)' }}
     >
       <div className="container mx-auto px-5 sm:px-8 mb-12">
         <div className="flex items-center gap-4">
-          <div className="h-px flex-1" style={{ background: 'rgba(255,255,255,0.06)' }} />
+          <div className="h-px flex-1" style={{ background: 'rgba(0,0,0,0.08)' }} />
           <span className="font-mono text-[10px] tracking-[0.45em] uppercase shrink-0" style={{ color: 'rgba(180,188,198,0.25)' }}>
             Empresas que confiam na Metalprime
           </span>
-          <div className="h-px flex-1" style={{ background: 'rgba(255,255,255,0.06)' }} />
+          <div className="h-px flex-1" style={{ background: 'rgba(0,0,0,0.08)' }} />
         </div>
       </div>
 
@@ -42,7 +42,7 @@ export default function ClientLogos() {
             <div
               key={i}
               className="px-12 py-4 flex items-center gap-3 shrink-0"
-              style={{ borderRight: '1px solid rgba(255,255,255,0.05)' }}
+              style={{ borderRight: '1px solid rgba(0,0,0,0.07)' }}
             >
               <div className="w-1.5 h-1.5 shrink-0" style={{ background: 'rgba(196,160,64,0.3)', transform: 'rotate(45deg)' }} />
               <div>

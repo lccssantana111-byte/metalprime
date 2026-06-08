@@ -23,7 +23,7 @@ export default function OrcamentoPage() {
   return (
     <div className="min-h-screen pt-16 bg-carbon">
       {/* Hero strip */}
-      <div className="bg-graphite border-b border-white/5 py-10">
+      <div className="bg-graphite border-b border-foreground/8 py-10">
         <div className="container mx-auto px-4 sm:px-8">
           <div className="flex flex-col lg:flex-row lg:items-center gap-8 justify-between">
             <div>
@@ -31,7 +31,7 @@ export default function OrcamentoPage() {
                 <div className="w-6 h-px bg-amber-brand" />
                 <span className="text-amber-brand text-xs font-semibold tracking-[0.35em] uppercase">Orçamento gratuito</span>
               </div>
-              <h1 className="font-display font-black text-3xl sm:text-4xl text-white leading-none">
+              <h1 className="font-display font-black text-3xl sm:text-4xl text-foreground leading-none">
                 Orçamento em 3 minutos
               </h1>
             </div>

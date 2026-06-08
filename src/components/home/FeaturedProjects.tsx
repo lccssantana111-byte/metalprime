@@ -62,7 +62,7 @@ export default function FeaturedProjects({ items }: Props) {
     <section
       ref={ref}
       className="py-28 sm:py-36 overflow-hidden"
-      style={{ background: '#050608' }}
+      style={{ background: '#f7f5f2' }}
     >
       <div className="container mx-auto px-5 sm:px-8">
 
@@ -79,7 +79,7 @@ export default function FeaturedProjects({ items }: Props) {
             </span>
             <h2
               className="font-display font-black leading-[0.88]"
-              style={{ fontSize: 'clamp(3rem, 6vw, 6.5rem)', color: '#f0f1f2', letterSpacing: '-0.02em' }}
+              style={{ fontSize: 'clamp(3rem, 6vw, 6.5rem)', color: '#1e2328', letterSpacing: '-0.02em' }}
             >
               Obras que<br />
               <span style={{ color: 'rgba(240,241,242,0.2)' }}>falam por si</span>
@@ -98,7 +98,7 @@ export default function FeaturedProjects({ items }: Props) {
         </motion.div>
 
         {/* Asymmetric grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-px" style={{ background: 'rgba(255,255,255,0.05)' }}>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-px" style={{ background: 'rgba(0,0,0,0.07)' }}>
           {/* Large item */}
           {first && (
             <motion.div
@@ -112,7 +112,7 @@ export default function FeaturedProjects({ items }: Props) {
           )}
 
           {/* Two stacked */}
-          <div className="lg:col-span-5 flex flex-col gap-px" style={{ background: 'rgba(255,255,255,0.05)' }}>
+          <div className="lg:col-span-5 flex flex-col gap-px" style={{ background: 'rgba(0,0,0,0.07)' }}>
             {second && (
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
@@ -153,7 +153,7 @@ function ProjectCard({
   const href = item.slug ? `/portfolio/${item.slug}` : '/portfolio'
 
   return (
-    <Link href={href} className="group block relative overflow-hidden h-full" style={{ minHeight: large ? '480px' : '240px', background: '#13161b' }}>
+    <Link href={href} className="group block relative overflow-hidden h-full" style={{ minHeight: large ? '480px' : '240px', background: '#e4e1db' }}>
       {/* Photo */}
       <div
         className="absolute inset-0 transition-transform duration-700 ease-out group-hover:scale-104"
@@ -179,20 +179,20 @@ function ProjectCard({
         </span>
         <div className="flex items-end justify-between gap-4">
           <h3
-            className="font-display font-bold text-[#f0f1f2] leading-tight"
+            className="font-display font-bold text-[#1e2328] leading-tight"
             style={{ fontSize: large ? 'clamp(1.4rem, 2.5vw, 2rem)' : '1.15rem' }}
           >
             {item.title}
           </h3>
           <div
             className="w-10 h-10 flex items-center justify-center shrink-0 transition-all duration-200 group-hover:bg-[#c4a040] group-hover:border-[#c4a040]"
-            style={{ border: '1px solid rgba(255,255,255,0.18)' }}
+            style={{ border: '1px solid rgba(0,0,0,0.15)' }}
           >
-            <ArrowUpRight className="w-4 h-4 text-[#f0f1f2] group-hover:text-[#050608] group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all" />
+            <ArrowUpRight className="w-4 h-4 text-[#1e2328] group-hover:text-[#050608] group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all" />
           </div>
         </div>
         {item.city && (
-          <p className="text-[11px] font-mono mt-2" style={{ color: 'rgba(180,188,198,0.65)' }}>
+          <p className="text-[11px] font-mono mt-2" style={{ color: 'rgba(60,74,88,0.65)' }}>
             {item.city}{item.year ? ` · ${item.year}` : ''}
           </p>
         )}

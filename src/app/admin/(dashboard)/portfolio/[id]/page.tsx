@@ -18,7 +18,7 @@ export default async function EditPortfolioPage({ params }: { params: Promise<{ 
   return (
     <div>
       <div className="flex items-center justify-between mb-6">
-        <Link href="/admin/portfolio" className="inline-flex items-center gap-2 text-sm text-metal hover:text-white">
+        <Link href="/admin/portfolio" className="inline-flex items-center gap-2 text-sm text-metal hover:text-foreground">
           <ArrowLeft className="w-4 h-4" />
           Voltar ao portfólio
         </Link>
@@ -35,7 +35,7 @@ export default async function EditPortfolioPage({ params }: { params: Promise<{ 
       </div>
 
       <div className="mb-8">
-        <h1 className="font-display text-2xl font-bold text-white">{item.title}</h1>
+        <h1 className="font-display text-2xl font-bold text-foreground">{item.title}</h1>
         <p className="text-metal text-sm mt-1">{SERVICE_LABELS[item.service]}</p>
       </div>
 

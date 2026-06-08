@@ -34,12 +34,12 @@ export default function QuoteSuccess({ state }: Props) {
         <CheckCircle className="w-8 h-8 text-green-400" />
       </div>
 
-      <h2 className="font-display text-3xl font-bold text-white mb-3">
+      <h2 className="font-display text-3xl font-bold text-foreground mb-3">
         Recebemos! Você está em boas mãos.
       </h2>
       <p className="text-metal mb-6 leading-relaxed">
-        <strong className="text-white">{state.name}</strong>, sua solicitação está com nossa equipe.
-        Em até <strong className="text-white">24 horas úteis</strong> você recebe a proposta e
+        <strong className="text-foreground">{state.name}</strong>, sua solicitação está com nossa equipe.
+        Em até <strong className="text-foreground">24 horas úteis</strong> você recebe a proposta e
         confirmamos a visita técnica gratuita.
       </p>
 
@@ -49,7 +49,7 @@ export default function QuoteSuccess({ state }: Props) {
           <p className="text-xs text-amber-brand/70 uppercase font-semibold tracking-wider mb-1.5">
             Estimativa de investimento
           </p>
-          <p className="text-2xl font-bold text-white">
+          <p className="text-2xl font-bold text-foreground">
             {formatBRL(priceRange.min)} — {formatBRL(priceRange.max)}
           </p>
           <p className="text-xs text-metal mt-1">{priceRange.note}</p>

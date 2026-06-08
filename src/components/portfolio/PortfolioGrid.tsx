@@ -29,14 +29,14 @@ export default function PortfolioGrid({ items }: Props) {
   return (
     <div>
       {/* Filters */}
-      <div className="flex flex-wrap gap-0 mb-12 border-b border-white/5 pb-0">
+      <div className="flex flex-wrap gap-0 mb-12 border-b border-foreground/8 pb-0">
         {filters.map((f) => (
           <button
             key={f.value}
             onClick={() => setActive(f.value)}
             className={`relative px-5 py-3 text-sm font-medium transition-all duration-200 ${
               active === f.value
-                ? 'text-white'
+                ? 'text-foreground'
                 : 'text-metal hover:text-metal-light'
             }`}
           >
@@ -95,11 +95,11 @@ export default function PortfolioGrid({ items }: Props) {
                         {SERVICE_LABELS[item.service]}
                       </span>
                       <div className="flex items-end justify-between gap-3 mt-1.5">
-                        <h3 className="font-display font-bold text-white text-base leading-tight">
+                        <h3 className="font-display font-bold text-foreground text-base leading-tight">
                           {item.title}
                         </h3>
-                        <div className="w-8 h-8 border border-white/20 group-hover:bg-amber-brand group-hover:border-amber-brand flex items-center justify-center shrink-0 transition-all duration-200 mb-0.5">
-                          <ArrowUpRight className="w-3.5 h-3.5 text-white group-hover:text-carbon" />
+                        <div className="w-8 h-8 border border-foreground/18 group-hover:bg-amber-brand group-hover:border-amber-brand flex items-center justify-center shrink-0 transition-all duration-200 mb-0.5">
+                          <ArrowUpRight className="w-3.5 h-3.5 text-foreground group-hover:text-carbon" />
                         </div>
                       </div>
                       {(item.city || item.year) && (

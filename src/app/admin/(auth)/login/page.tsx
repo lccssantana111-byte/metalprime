@@ -41,7 +41,7 @@ export default function AdminLoginPage() {
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
-          backgroundImage: 'linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px)',
+          backgroundImage: 'linear-gradient(rgba(0,0,0,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.04) 1px, transparent 1px)',
           backgroundSize: '80px 80px',
         }}
       />
@@ -85,13 +85,13 @@ export default function AdminLoginPage() {
               <div className="absolute inset-[6px] bg-amber-brand rotate-45" />
             </div>
           </div>
-          <h1 className="font-display text-[22px] font-black text-white tracking-tight">
+          <h1 className="font-display text-[22px] font-black text-foreground tracking-tight">
             {BRAND_NAME.split(' ')[0]}
             <span className="text-amber-brand">.</span>
           </h1>
           <p
             className="text-[10px] font-mono tracking-[0.25em] uppercase mt-1"
-            style={{ color: 'rgba(255,255,255,0.2)' }}
+            style={{ color: 'rgba(0,0,0,0.20)' }}
           >
             Área Administrativa
           </p>
@@ -101,8 +101,8 @@ export default function AdminLoginPage() {
         <div
           className="rounded-2xl overflow-hidden"
           style={{
-            background: 'rgba(255,255,255,0.025)',
-            border: '1px solid rgba(255,255,255,0.07)',
+            background: 'rgba(0,0,0,0.04)',
+            border: '1px solid rgba(0,0,0,0.08)',
           }}
         >
           {/* Top accent */}
@@ -117,7 +117,7 @@ export default function AdminLoginPage() {
                 <label
                   htmlFor="email"
                   className="block text-[10px] font-mono font-semibold tracking-[0.2em] uppercase mb-2"
-                  style={{ color: 'rgba(255,255,255,0.35)' }}
+                  style={{ color: 'rgba(0,0,0,0.35)' }}
                 >
                   E-mail
                 </label>
@@ -129,10 +129,10 @@ export default function AdminLoginPage() {
                   required
                   autoComplete="email"
                   placeholder="admin@metalprime.com.br"
-                  className="h-11 text-white placeholder:text-white/20 font-mono text-[13px]"
+                  className="h-11 text-foreground placeholder:text-foreground/20 font-mono text-[13px]"
                   style={{
-                    background: 'rgba(255,255,255,0.04)',
-                    border: '1px solid rgba(255,255,255,0.08)',
+                    background: 'rgba(0,0,0,0.05)',
+                    border: '1px solid rgba(0,0,0,0.09)',
                   }}
                 />
               </div>
@@ -141,7 +141,7 @@ export default function AdminLoginPage() {
                 <label
                   htmlFor="password"
                   className="block text-[10px] font-mono font-semibold tracking-[0.2em] uppercase mb-2"
-                  style={{ color: 'rgba(255,255,255,0.35)' }}
+                  style={{ color: 'rgba(0,0,0,0.35)' }}
                 >
                   Senha
                 </label>
@@ -152,10 +152,10 @@ export default function AdminLoginPage() {
                   onChange={(e) => setPassword(e.target.value)}
                   required
                   autoComplete="current-password"
-                  className="h-11 text-white font-mono text-[13px]"
+                  className="h-11 text-foreground font-mono text-[13px]"
                   style={{
-                    background: 'rgba(255,255,255,0.04)',
-                    border: '1px solid rgba(255,255,255,0.08)',
+                    background: 'rgba(0,0,0,0.05)',
+                    border: '1px solid rgba(0,0,0,0.09)',
                   }}
                 />
               </div>
@@ -198,13 +198,13 @@ export default function AdminLoginPage() {
           {/* Bottom accent */}
           <div
             className="h-px w-full"
-            style={{ background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent)' }}
+            style={{ background: 'linear-gradient(90deg, transparent, rgba(0,0,0,0.07), transparent)' }}
           />
         </div>
 
         <p
           className="text-center text-[11px] font-mono mt-6"
-          style={{ color: 'rgba(255,255,255,0.15)' }}
+          style={{ color: 'rgba(0,0,0,0.10)' }}
         >
           {BRAND_NAME} · Sistema interno
         </p>

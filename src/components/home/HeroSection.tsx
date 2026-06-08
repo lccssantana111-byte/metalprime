@@ -24,7 +24,7 @@ export default function HeroSection() {
     <section
       ref={ref}
       className="relative min-h-screen flex items-center overflow-hidden"
-      style={{ background: '#050608' }}
+      style={{ background: '#f7f5f2' }}
     >
       {/* Background photo with parallax */}
       <motion.div
@@ -48,7 +48,7 @@ export default function HeroSection() {
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
-          backgroundImage: `linear-gradient(rgba(255,255,255,0.022) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.022) 1px, transparent 1px)`,
+          backgroundImage: `linear-gradient(rgba(0,0,0,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.025) 1px, transparent 1px)`,
           backgroundSize: '80px 80px',
         }}
       />
@@ -85,7 +85,7 @@ export default function HeroSection() {
           {/* Headline — each line slides in independently */}
           <div className="overflow-hidden mb-2">
             <motion.h1
-              className="font-display font-black text-[#f0f1f2] leading-[0.85]"
+              className="font-display font-black text-[#1e2328] leading-[0.85]"
               style={{ fontSize: 'clamp(4rem, 12vw, 13rem)', letterSpacing: '-0.025em' }}
               initial={{ y: '110%' }}
               animate={{ y: '0%' }}
@@ -115,7 +115,7 @@ export default function HeroSection() {
               style={{
                 fontSize: 'clamp(4rem, 12vw, 13rem)',
                 letterSpacing: '-0.025em',
-                color: 'rgba(240,241,242,0.12)',
+                color: 'rgba(30,35,40,0.10)',
               }}
               initial={{ y: '110%' }}
               animate={{ y: '0%' }}
@@ -137,7 +137,7 @@ export default function HeroSection() {
               style={{ color: 'rgba(180,188,198,0.75)' }}
             >
               Fabricação própria, sem terceirizar. Mais de{' '}
-              <strong style={{ color: '#f0f1f2', fontWeight: 500 }}>5.000 obras executadas</strong>{' '}
+              <strong style={{ color: '#1e2328', fontWeight: 500 }}>5.000 obras executadas</strong>{' '}
               na Grande São Paulo — com ART de engenheiro responsável em 100% dos projetos estruturais.
             </p>
 
@@ -155,16 +155,16 @@ export default function HeroSection() {
               <Link
                 href="/portfolio"
                 className="group inline-flex items-center gap-3 text-[13px] tracking-wide px-9 py-[18px] transition-all duration-200"
-                style={{ border: '1px solid rgba(255,255,255,0.12)', color: 'rgba(180,188,198,0.7)' }}
+                style={{ border: '1px solid rgba(0,0,0,0.12)', color: 'rgba(60,74,88,0.7)' }}
                 onMouseEnter={(e) => {
                   const el = e.currentTarget as HTMLElement
-                  el.style.borderColor = 'rgba(255,255,255,0.25)'
-                  el.style.color = '#f0f1f2'
+                  el.style.borderColor = 'rgba(0,0,0,0.20)'
+                  el.style.color = '#1e2328'
                 }}
                 onMouseLeave={(e) => {
                   const el = e.currentTarget as HTMLElement
-                  el.style.borderColor = 'rgba(255,255,255,0.12)'
-                  el.style.color = 'rgba(180,188,198,0.7)'
+                  el.style.borderColor = 'rgba(0,0,0,0.12)'
+                  el.style.color = 'rgba(60,74,88,0.7)'
                 }}
               >
                 Ver Portfólio
@@ -185,7 +185,7 @@ export default function HeroSection() {
         <div
           className="container mx-auto px-5 sm:px-8"
           style={{
-            borderTop: '1px solid rgba(255,255,255,0.07)',
+            borderTop: '1px solid rgba(0,0,0,0.08)',
             background: 'rgba(5,6,8,0.85)',
             backdropFilter: 'blur(16px)',
           }}
@@ -196,8 +196,8 @@ export default function HeroSection() {
                 key={i}
                 className="py-6 px-4 sm:px-8 flex items-center gap-4"
                 style={{
-                  borderRight: i < 3 ? '1px solid rgba(255,255,255,0.05)' : 'none',
-                  borderBottom: i < 2 ? '1px solid rgba(255,255,255,0.05)' : 'none',
+                  borderRight: i < 3 ? '1px solid rgba(0,0,0,0.07)' : 'none',
+                  borderBottom: i < 2 ? '1px solid rgba(0,0,0,0.07)' : 'none',
                 }}
               >
                 <div
@@ -207,13 +207,13 @@ export default function HeroSection() {
                 <div>
                   <div
                     className="font-display font-black text-[1.5rem] sm:text-[1.75rem] leading-none"
-                    style={{ color: '#f0f1f2' }}
+                    style={{ color: '#1e2328' }}
                   >
                     {stat.value}
                   </div>
                   <div
                     className="text-[10px] font-mono tracking-wider mt-1 uppercase"
-                    style={{ color: 'rgba(180,188,198,0.65)' }}
+                    style={{ color: 'rgba(60,74,88,0.65)' }}
                   >
                     {stat.label}
                   </div>

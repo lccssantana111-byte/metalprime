@@ -56,7 +56,7 @@ export default function TestimonialsCarousel() {
     <section
       ref={ref}
       className="py-28 sm:py-36 overflow-hidden"
-      style={{ background: '#13161b' }}
+      style={{ background: '#e4e1db' }}
     >
       <div className="container mx-auto px-5 sm:px-8">
 
@@ -73,7 +73,7 @@ export default function TestimonialsCarousel() {
             </span>
             <h2
               className="font-display font-black leading-[0.88]"
-              style={{ fontSize: 'clamp(3rem, 6vw, 6.5rem)', color: '#f0f1f2', letterSpacing: '-0.02em' }}
+              style={{ fontSize: 'clamp(3rem, 6vw, 6.5rem)', color: '#1e2328', letterSpacing: '-0.02em' }}
             >
               Quem confiou<br />
               <span style={{ color: 'rgba(240,241,242,0.18)' }}>no nosso trabalho</span>
@@ -88,16 +88,16 @@ export default function TestimonialsCarousel() {
             <button
               onClick={() => navigate(-1)}
               className="w-11 h-11 flex items-center justify-center transition-all duration-200"
-              style={{ border: '1px solid rgba(255,255,255,0.1)', color: '#b4bcc6' }}
+              style={{ border: '1px solid rgba(0,0,0,0.10)', color: '#607080' }}
               onMouseEnter={(e) => {
                 const el = e.currentTarget as HTMLElement
                 el.style.borderColor = 'rgba(196,160,64,0.4)'
-                el.style.color = '#f0f1f2'
+                el.style.color = '#1e2328'
               }}
               onMouseLeave={(e) => {
                 const el = e.currentTarget as HTMLElement
-                el.style.borderColor = 'rgba(255,255,255,0.1)'
-                el.style.color = '#b4bcc6'
+                el.style.borderColor = 'rgba(0,0,0,0.10)'
+                el.style.color = '#607080'
               }}
               aria-label="Anterior"
             >
@@ -106,16 +106,16 @@ export default function TestimonialsCarousel() {
             <button
               onClick={() => navigate(1)}
               className="w-11 h-11 flex items-center justify-center transition-all duration-200"
-              style={{ border: '1px solid rgba(255,255,255,0.1)', color: '#b4bcc6' }}
+              style={{ border: '1px solid rgba(0,0,0,0.10)', color: '#607080' }}
               onMouseEnter={(e) => {
                 const el = e.currentTarget as HTMLElement
                 el.style.borderColor = 'rgba(196,160,64,0.4)'
-                el.style.color = '#f0f1f2'
+                el.style.color = '#1e2328'
               }}
               onMouseLeave={(e) => {
                 const el = e.currentTarget as HTMLElement
-                el.style.borderColor = 'rgba(255,255,255,0.1)'
-                el.style.color = '#b4bcc6'
+                el.style.borderColor = 'rgba(0,0,0,0.10)'
+                el.style.color = '#607080'
               }}
               aria-label="Próximo"
             >
@@ -149,7 +149,7 @@ export default function TestimonialsCarousel() {
 
               <blockquote
                 className="font-display font-medium leading-[1.35] mb-12"
-                style={{ fontSize: 'clamp(1.5rem, 3vw, 2.6rem)', color: '#f0f1f2', maxWidth: '900px' }}
+                style={{ fontSize: 'clamp(1.5rem, 3vw, 2.6rem)', color: '#1e2328', maxWidth: '900px' }}
               >
                 {t.content}
               </blockquote>
@@ -164,7 +164,7 @@ export default function TestimonialsCarousel() {
                     {t.initial}
                   </div>
                   <div>
-                    <p className="font-semibold text-[15px]" style={{ color: '#f0f1f2' }}>{t.name}</p>
+                    <p className="font-semibold text-[15px]" style={{ color: '#1e2328' }}>{t.name}</p>
                     <p className="text-[12px] mt-0.5" style={{ color: '#8a9199' }}>
                       {t.role} · {t.company}
                     </p>
@@ -191,7 +191,7 @@ export default function TestimonialsCarousel() {
                 className="h-px transition-all duration-300"
                 style={{
                   width: i === current ? '48px' : '20px',
-                  background: i === current ? '#c4a040' : 'rgba(255,255,255,0.12)',
+                  background: i === current ? '#c4a040' : 'rgba(0,0,0,0.12)',
                 }}
                 aria-label={`Depoimento ${i + 1}`}
               />

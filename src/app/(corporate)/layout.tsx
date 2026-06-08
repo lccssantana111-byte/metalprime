@@ -27,7 +27,7 @@ export default async function CorporateLayout({
                 />
               </div>
               <div className="flex flex-col leading-none">
-                <span className="font-display font-bold text-white text-sm">
+                <span className="font-display font-bold text-foreground text-sm">
                   {BRAND_NAME.split(' ')[0]}
                   <span className="text-amber-brand">.</span>
                 </span>
@@ -45,7 +45,7 @@ export default async function CorporateLayout({
               <form action="/api/auth/signout" method="post">
                 <button
                   type="submit"
-                  className="text-xs text-metal hover:text-white transition-colors px-3 py-1.5 rounded-lg hover:bg-steel/40"
+                  className="text-xs text-metal hover:text-foreground transition-colors px-3 py-1.5 rounded-lg hover:bg-steel/40"
                 >
                   Sair
                 </button>

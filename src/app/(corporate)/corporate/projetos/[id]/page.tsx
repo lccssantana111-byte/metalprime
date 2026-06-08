@@ -46,7 +46,7 @@ export default async function CorporateProjetoPage({ params }: { params: Promise
 
   return (
     <div>
-      <Link href="/corporate/dashboard" className="inline-flex items-center gap-2 text-sm text-metal hover:text-white mb-6">
+      <Link href="/corporate/dashboard" className="inline-flex items-center gap-2 text-sm text-metal hover:text-foreground mb-6">
         <ArrowLeft className="w-4 h-4" />
         Meus projetos
       </Link>
@@ -55,7 +55,7 @@ export default async function CorporateProjetoPage({ params }: { params: Promise
         <div className="lg:col-span-2 space-y-5">
           <div className="bg-graphite border border-metal-dark/30 rounded-xl p-6">
             <div className="flex items-start justify-between gap-4 mb-2">
-              <h1 className="font-display text-2xl font-bold text-white">{p.name}</h1>
+              <h1 className="font-display text-2xl font-bold text-foreground">{p.name}</h1>
               <Badge variant="outline" className="text-xs border-metal-dark/40 text-metal shrink-0">
                 {PROJECT_STATUS_LABELS[p.status]}
               </Badge>
@@ -67,7 +67,7 @@ export default async function CorporateProjetoPage({ params }: { params: Promise
           {totalMilestones > 0 && (
             <div className="bg-graphite border border-metal-dark/30 rounded-xl p-6">
               <div className="flex items-center justify-between mb-4">
-                <h3 className="font-semibold text-white">Progresso da obra</h3>
+                <h3 className="font-semibold text-foreground">Progresso da obra</h3>
                 <span className="text-sm font-medium text-amber-brand">{progressPct}%</span>
               </div>
               <div className="h-2 bg-steel rounded-full overflow-hidden mb-5">
@@ -85,7 +85,7 @@ export default async function CorporateProjetoPage({ params }: { params: Promise
                       <Circle className="w-5 h-5 text-metal-dark shrink-0 mt-0.5" />
                     )}
                     <div className="flex-1">
-                      <p className={`text-sm font-medium ${m.completed_at ? 'text-metal line-through' : 'text-white'}`}>
+                      <p className={`text-sm font-medium ${m.completed_at ? 'text-metal line-through' : 'text-foreground'}`}>
                         {m.title}
                       </p>
                       {m.completed_at ? (
@@ -108,7 +108,7 @@ export default async function CorporateProjetoPage({ params }: { params: Promise
 
         <div className="space-y-4">
           <div className="bg-graphite border border-metal-dark/30 rounded-xl p-5">
-            <h3 className="font-semibold text-white mb-4">Financeiro</h3>
+            <h3 className="font-semibold text-foreground mb-4">Financeiro</h3>
             <div className="space-y-3">
               <div>
                 <p className="text-xs text-metal-dark">Valor do contrato</p>
@@ -120,7 +120,7 @@ export default async function CorporateProjetoPage({ params }: { params: Promise
               </div>
               <div>
                 <p className="text-xs text-metal-dark">Saldo restante</p>
-                <p className="text-lg font-semibold text-white">{formatBRL(p.contract_value - p.amount_paid)}</p>
+                <p className="text-lg font-semibold text-foreground">{formatBRL(p.contract_value - p.amount_paid)}</p>
               </div>
               <div className="h-1.5 bg-steel rounded-full overflow-hidden">
                 <div
@@ -134,7 +134,7 @@ export default async function CorporateProjetoPage({ params }: { params: Promise
 
           {(p.start_date || p.estimated_end) && (
             <div className="bg-graphite border border-metal-dark/30 rounded-xl p-5">
-              <h3 className="font-semibold text-white mb-4">Datas</h3>
+              <h3 className="font-semibold text-foreground mb-4">Datas</h3>
               {p.start_date && (
                 <div className="mb-3">
                   <p className="text-xs text-metal-dark">Início</p>
@@ -151,7 +151,7 @@ export default async function CorporateProjetoPage({ params }: { params: Promise
           )}
 
           <div className="bg-graphite border border-metal-dark/30 rounded-xl p-5">
-            <h3 className="font-semibold text-white mb-3">Dúvidas?</h3>
+            <h3 className="font-semibold text-foreground mb-3">Dúvidas?</h3>
             <a
               href={`https://wa.me/${WHATSAPP_NUMBER}`}
               target="_blank"

@@ -75,7 +75,7 @@ export default function ServiceQuoteForm({ serviceName, serviceSlug }: Props) {
     <section
       ref={ref}
       className="py-28 sm:py-36 overflow-hidden"
-      style={{ background: '#0c0e11', borderTop: '1px solid rgba(255,255,255,0.04)' }}
+      style={{ background: '#eeeae3', borderTop: '1px solid rgba(0,0,0,0.05)' }}
     >
       <div className="container mx-auto px-5 sm:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-start">
@@ -92,7 +92,7 @@ export default function ServiceQuoteForm({ serviceName, serviceSlug }: Props) {
             </span>
             <h2
               className="font-display font-black leading-[0.88] mb-8"
-              style={{ fontSize: 'clamp(2.5rem, 4vw, 4rem)', color: '#f0f1f2', letterSpacing: '-0.02em' }}
+              style={{ fontSize: 'clamp(2.5rem, 4vw, 4rem)', color: '#1e2328', letterSpacing: '-0.02em' }}
             >
               Receba uma<br />
               <span style={{ color: '#c4a040' }}>proposta</span>
@@ -119,7 +119,7 @@ export default function ServiceQuoteForm({ serviceName, serviceSlug }: Props) {
               ))}
             </ul>
 
-            <div className="mt-10 pt-10" style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}>
+            <div className="mt-10 pt-10" style={{ borderTop: '1px solid rgba(0,0,0,0.07)' }}>
               <p className="text-[11px] font-mono mb-3" style={{ color: 'rgba(180,188,198,0.2)' }}>
                 Prefere falar agora?
               </p>
@@ -147,7 +147,7 @@ export default function ServiceQuoteForm({ serviceName, serviceSlug }: Props) {
             {status === 'success' ? (
               <div
                 className="p-10 sm:p-14 flex flex-col items-start"
-                style={{ background: '#13161b', border: '1px solid rgba(196,160,64,0.15)' }}
+                style={{ background: '#f0ede7', border: '1px solid rgba(196,160,64,0.15)' }}
               >
                 <div
                   className="w-12 h-12 flex items-center justify-center mb-8"
@@ -155,7 +155,7 @@ export default function ServiceQuoteForm({ serviceName, serviceSlug }: Props) {
                 >
                   <Check className="w-5 h-5" style={{ color: '#c4a040' }} />
                 </div>
-                <h3 className="font-display font-bold text-[1.5rem] mb-4" style={{ color: '#f0f1f2' }}>
+                <h3 className="font-display font-bold text-[1.5rem] mb-4" style={{ color: '#1e2328' }}>
                   Solicitação recebida
                 </h3>
                 <p className="text-[14px] leading-[1.8] mb-8" style={{ color: 'rgba(180,188,198,0.5)' }}>
@@ -178,7 +178,7 @@ export default function ServiceQuoteForm({ serviceName, serviceSlug }: Props) {
               <form
                 onSubmit={handleSubmit}
                 className="p-8 sm:p-12 space-y-6"
-                style={{ background: '#13161b', border: '1px solid rgba(255,255,255,0.05)' }}
+                style={{ background: '#f0ede7', border: '1px solid rgba(0,0,0,0.07)' }}
               >
                 {/* Service badge */}
                 <div
@@ -208,12 +208,12 @@ export default function ServiceQuoteForm({ serviceName, serviceSlug }: Props) {
                       placeholder="Seu nome"
                       className="w-full px-4 py-3 text-[14px] outline-none transition-colors"
                       style={{
-                        background: '#0c0e11',
-                        border: '1px solid rgba(255,255,255,0.08)',
-                        color: '#f0f1f2',
+                        background: '#eeeae3',
+                        border: '1px solid rgba(0,0,0,0.09)',
+                        color: '#1e2328',
                       }}
                       onFocus={(e) => { (e.currentTarget as HTMLElement).style.borderColor = 'rgba(196,160,64,0.4)' }}
-                      onBlur={(e) => { (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.08)' }}
+                      onBlur={(e) => { (e.currentTarget as HTMLElement).style.borderColor = 'rgba(0,0,0,0.09)' }}
                     />
                   </div>
 
@@ -230,12 +230,12 @@ export default function ServiceQuoteForm({ serviceName, serviceSlug }: Props) {
                       placeholder="11 99999-9999"
                       className="w-full px-4 py-3 text-[14px] outline-none transition-colors"
                       style={{
-                        background: '#0c0e11',
-                        border: '1px solid rgba(255,255,255,0.08)',
-                        color: '#f0f1f2',
+                        background: '#eeeae3',
+                        border: '1px solid rgba(0,0,0,0.09)',
+                        color: '#1e2328',
                       }}
                       onFocus={(e) => { (e.currentTarget as HTMLElement).style.borderColor = 'rgba(196,160,64,0.4)' }}
-                      onBlur={(e) => { (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.08)' }}
+                      onBlur={(e) => { (e.currentTarget as HTMLElement).style.borderColor = 'rgba(0,0,0,0.09)' }}
                     />
                   </div>
                 </div>
@@ -252,12 +252,12 @@ export default function ServiceQuoteForm({ serviceName, serviceSlug }: Props) {
                     placeholder="seu@email.com"
                     className="w-full px-4 py-3 text-[14px] outline-none transition-colors"
                     style={{
-                      background: '#0c0e11',
-                      border: '1px solid rgba(255,255,255,0.08)',
-                      color: '#f0f1f2',
+                      background: '#eeeae3',
+                      border: '1px solid rgba(0,0,0,0.09)',
+                      color: '#1e2328',
                     }}
                     onFocus={(e) => { (e.currentTarget as HTMLElement).style.borderColor = 'rgba(196,160,64,0.4)' }}
-                    onBlur={(e) => { (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.08)' }}
+                    onBlur={(e) => { (e.currentTarget as HTMLElement).style.borderColor = 'rgba(0,0,0,0.09)' }}
                   />
                 </div>
 
@@ -273,12 +273,12 @@ export default function ServiceQuoteForm({ serviceName, serviceSlug }: Props) {
                     rows={4}
                     className="w-full px-4 py-3 text-[14px] outline-none transition-colors resize-none"
                     style={{
-                      background: '#0c0e11',
-                      border: '1px solid rgba(255,255,255,0.08)',
-                      color: '#f0f1f2',
+                      background: '#eeeae3',
+                      border: '1px solid rgba(0,0,0,0.09)',
+                      color: '#1e2328',
                     }}
                     onFocus={(e) => { (e.currentTarget as HTMLElement).style.borderColor = 'rgba(196,160,64,0.4)' }}
-                    onBlur={(e) => { (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.08)' }}
+                    onBlur={(e) => { (e.currentTarget as HTMLElement).style.borderColor = 'rgba(0,0,0,0.09)' }}
                   />
                 </div>
 

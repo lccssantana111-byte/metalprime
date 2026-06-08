@@ -25,7 +25,7 @@ export default function QuoteStep2Details({
 }: Props) {
   return (
     <div className="bg-graphite border border-metal-dark/30 rounded-2xl p-8">
-      <h2 className="font-display text-2xl font-bold text-white mb-2">Descreva com suas palavras</h2>
+      <h2 className="font-display text-2xl font-bold text-foreground mb-2">Descreva com suas palavras</h2>
       <p className="text-metal text-sm mb-8">
         Sem precisar usar termos técnicos — nosso engenheiro interpreta. Foque no que você quer.
       </p>
@@ -41,7 +41,7 @@ export default function QuoteStep2Details({
             onChange={(e) => onDescriptionChange(e.target.value)}
             placeholder="Ex: Preciso de um portão de ferro de 3m de largura por 2,2m de altura com motor para uma residência. Gosto do estilo moderno com barras horizontais..."
             rows={6}
-            className="bg-steel/30 border-metal-dark/40 focus:border-amber-brand/60 text-white placeholder:text-metal-dark resize-none"
+            className="bg-steel/30 border-metal-dark/40 focus:border-amber-brand/60 text-foreground placeholder:text-metal-dark resize-none"
           />
           <p className="text-xs text-metal-dark mt-2">
             Inclua dimensões aproximadas, material preferido e referências visuais se tiver

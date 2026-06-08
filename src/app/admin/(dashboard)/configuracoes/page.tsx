@@ -11,7 +11,7 @@ export default async function ConfiguracoesPage() {
   return (
     <div>
       <div className="mb-8">
-        <h1 className="font-display text-3xl font-bold text-white">Configurações</h1>
+        <h1 className="font-display text-3xl font-bold text-foreground">Configurações</h1>
         <p className="text-metal mt-1">Informações da empresa e redes sociais</p>
       </div>
       <ConfiguracoesForm settings={settings} />

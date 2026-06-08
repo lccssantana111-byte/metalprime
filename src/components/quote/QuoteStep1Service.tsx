@@ -27,7 +27,7 @@ export default function QuoteStep1Service({ selected, onChange, onNext }: Props)
 
   return (
     <div className="bg-graphite border border-metal-dark/30 rounded-2xl p-8">
-      <h2 className="font-display text-2xl font-bold text-white mb-2">
+      <h2 className="font-display text-2xl font-bold text-foreground mb-2">
         O que você quer executar?
       </h2>
       <p className="text-metal text-sm mb-8">Pode marcar mais de um</p>
@@ -43,7 +43,7 @@ export default function QuoteStep1Service({ selected, onChange, onNext }: Props)
               className={cn(
                 'flex flex-col items-start gap-2 p-4 rounded-xl border text-left transition-all duration-200',
                 isSelected
-                  ? 'border-amber-brand bg-amber-brand/10 text-white'
+                  ? 'border-amber-brand bg-amber-brand/10 text-foreground'
                   : 'border-metal-dark/30 bg-steel/20 text-metal-light hover:border-amber-brand/40 hover:bg-steel/40',
               )}
             >

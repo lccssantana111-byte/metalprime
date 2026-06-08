@@ -16,7 +16,7 @@ export default function NotFound() {
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none">
         <span
           className="font-display font-black text-[30vw] leading-none text-transparent"
-          style={{ WebkitTextStroke: '1px rgba(30,35,40,0.9)' }}
+          style={{ WebkitTextStroke: '1px rgba(210,205,198,0.9)' }}
         >
           404
         </span>
@@ -41,7 +41,7 @@ export default function NotFound() {
           <div className="w-8 h-px bg-amber-brand" />
         </div>
 
-        <h1 className="font-display font-black text-4xl sm:text-5xl text-white leading-none mb-5">
+        <h1 className="font-display font-black text-4xl sm:text-5xl text-foreground leading-none mb-5">
           Ops. Essa página<br />
           <span className="text-metal/40">não existe.</span>
         </h1>
@@ -60,7 +60,7 @@ export default function NotFound() {
           </Link>
           <Link
             href="/orcamento"
-            className="inline-flex items-center gap-2 border border-white/15 hover:border-white/30 text-metal-light hover:text-white text-sm px-8 py-4 transition-all duration-200"
+            className="inline-flex items-center gap-2 border border-foreground/15 hover:border-foreground/22 text-metal-light hover:text-foreground text-sm px-8 py-4 transition-all duration-200"
           >
             Solicitar orçamento
           </Link>

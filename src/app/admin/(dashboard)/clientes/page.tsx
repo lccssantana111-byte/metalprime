@@ -38,7 +38,7 @@ export default async function AdminClientesPage({
     <div>
       <div className="flex items-center justify-between mb-8">
         <div>
-          <h1 className="font-display text-3xl font-bold text-white">Clientes</h1>
+          <h1 className="font-display text-3xl font-bold text-foreground">Clientes</h1>
           <p className="text-metal mt-1">{count ?? 0} clientes</p>
         </div>
       </div>
@@ -57,7 +57,7 @@ export default async function AdminClientesPage({
             className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${
               (params.type ?? '') === f.value
                 ? 'bg-amber-brand text-carbon'
-                : 'bg-graphite border border-metal-dark/30 text-metal hover:text-white'
+                : 'bg-graphite border border-metal-dark/30 text-metal hover:text-foreground'
             }`}
           >
             {f.icon}
@@ -84,7 +84,7 @@ export default async function AdminClientesPage({
                 <tr key={client.id} className="hover:bg-steel/20 transition-colors">
                   <td className="px-5 py-4">
                     <Link href={`/admin/clientes/${client.id}`} className="block">
-                      <p className="text-sm font-medium text-white hover:text-amber-brand transition-colors">
+                      <p className="text-sm font-medium text-foreground hover:text-amber-brand transition-colors">
                         {client.name}
                       </p>
                       {client.document && (

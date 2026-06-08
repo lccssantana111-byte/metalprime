@@ -28,7 +28,7 @@ export default async function ClienteDetailPage({ params }: { params: Promise<{ 
 
   return (
     <div>
-      <Link href="/admin/clientes" className="inline-flex items-center gap-2 text-sm text-metal hover:text-white mb-6">
+      <Link href="/admin/clientes" className="inline-flex items-center gap-2 text-sm text-metal hover:text-foreground mb-6">
         <ArrowLeft className="w-4 h-4" />
         Voltar aos clientes
       </Link>
@@ -37,7 +37,7 @@ export default async function ClienteDetailPage({ params }: { params: Promise<{ 
         <div className="lg:col-span-2 space-y-5">
           {projectList.length > 0 && (
             <div className="bg-graphite border border-metal-dark/30 rounded-xl p-6">
-              <h3 className="font-semibold text-white mb-4">Projetos ({projectList.length})</h3>
+              <h3 className="font-semibold text-foreground mb-4">Projetos ({projectList.length})</h3>
               <div className="space-y-3">
                 {projectList.map((p) => (
                   <Link
@@ -46,7 +46,7 @@ export default async function ClienteDetailPage({ params }: { params: Promise<{ 
                     className="flex items-center justify-between py-2.5 border-b border-metal-dark/20 last:border-0 hover:bg-steel/10 -mx-2 px-2 rounded transition-colors"
                   >
                     <div>
-                      <p className="text-sm font-medium text-white hover:text-amber-brand transition-colors">{p.name}</p>
+                      <p className="text-sm font-medium text-foreground hover:text-amber-brand transition-colors">{p.name}</p>
                       <p className="text-xs text-metal-dark mt-0.5">
                         {p.estimated_end ? `Prazo: ${formatDate(p.estimated_end)}` : 'Sem prazo definido'}
                       </p>
@@ -65,7 +65,7 @@ export default async function ClienteDetailPage({ params }: { params: Promise<{ 
 
           {quoteList.length > 0 && (
             <div className="bg-graphite border border-metal-dark/30 rounded-xl p-6">
-              <h3 className="font-semibold text-white mb-4">Orçamentos recentes</h3>
+              <h3 className="font-semibold text-foreground mb-4">Orçamentos recentes</h3>
               <div className="space-y-2">
                 {quoteList.map((q) => (
                   <Link
@@ -74,7 +74,7 @@ export default async function ClienteDetailPage({ params }: { params: Promise<{ 
                     className="flex items-center justify-between py-2 border-b border-metal-dark/20 last:border-0 hover:bg-steel/10 -mx-2 px-2 rounded transition-colors"
                   >
                     <div>
-                      <p className="text-sm text-white">{SERVICE_LABELS[q.service]}</p>
+                      <p className="text-sm text-foreground">{SERVICE_LABELS[q.service]}</p>
                       <p className="text-xs text-metal-dark">{formatDate(q.created_at)}</p>
                     </div>
                     <div className="flex items-center gap-3 shrink-0">
@@ -93,7 +93,7 @@ export default async function ClienteDetailPage({ params }: { params: Promise<{ 
 
           {c.notes && (
             <div className="bg-graphite border border-metal-dark/30 rounded-xl p-6">
-              <h3 className="font-semibold text-white mb-3">Observações internas</h3>
+              <h3 className="font-semibold text-foreground mb-3">Observações internas</h3>
               <p className="text-metal text-sm leading-relaxed whitespace-pre-wrap">{c.notes}</p>
             </div>
           )}
@@ -106,7 +106,7 @@ export default async function ClienteDetailPage({ params }: { params: Promise<{ 
                 <Building2 className="w-5 h-5 text-metal" />
               </div>
               <div>
-                <h2 className="font-semibold text-white">{c.name}</h2>
+                <h2 className="font-semibold text-foreground">{c.name}</h2>
                 <p className="text-xs text-metal mt-0.5">{CLIENT_TYPE_LABELS[c.type]}</p>
               </div>
             </div>
@@ -141,19 +141,19 @@ export default async function ClienteDetailPage({ params }: { params: Promise<{ 
           </div>
 
           <div className="bg-graphite border border-metal-dark/30 rounded-xl p-5">
-            <h3 className="font-semibold text-white mb-4">Financeiro</h3>
+            <h3 className="font-semibold text-foreground mb-4">Financeiro</h3>
             <div>
               <p className="text-xs text-metal-dark">Volume total de contratos</p>
               <p className="text-xl font-bold text-amber-brand">{formatBRL(totalContractValue)}</p>
             </div>
             <div className="mt-3">
               <p className="text-xs text-metal-dark">Total de projetos</p>
-              <p className="text-lg font-semibold text-white">{projectList.length}</p>
+              <p className="text-lg font-semibold text-foreground">{projectList.length}</p>
             </div>
           </div>
 
           <div className="bg-graphite border border-metal-dark/30 rounded-xl p-5">
-            <h3 className="font-semibold text-white mb-3">Portal corporativo</h3>
+            <h3 className="font-semibold text-foreground mb-3">Portal corporativo</h3>
             <Badge
               variant="outline"
               className={`text-xs border ${

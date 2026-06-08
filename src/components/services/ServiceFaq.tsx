@@ -35,7 +35,7 @@ export default function ServiceFaq({ faq }: Props) {
               <div className="w-8 h-px bg-amber-brand" />
               <span className="text-amber-brand text-xs font-semibold tracking-[0.35em] uppercase">FAQ</span>
             </div>
-            <h2 className="font-display font-black text-4xl lg:text-5xl text-white leading-none">
+            <h2 className="font-display font-black text-4xl lg:text-5xl text-foreground leading-none">
               Perguntas<br />
               <span className="text-metal/40">frequentes</span>
             </h2>
@@ -53,9 +53,9 @@ export default function ServiceFaq({ faq }: Props) {
                 <AccordionItem
                   key={i}
                   value={`item-${i}`}
-                  className="border-b border-white/8 last:border-b-0 data-[state=open]:border-amber-brand/20"
+                  className="border-b border-foreground/10 last:border-b-0 data-[state=open]:border-amber-brand/20"
                 >
-                  <AccordionTrigger className="text-left text-metal-light hover:text-white hover:no-underline py-6 text-base font-medium gap-4">
+                  <AccordionTrigger className="text-left text-metal-light hover:text-foreground hover:no-underline py-6 text-base font-medium gap-4">
                     <span className="text-metal-dark/50 font-mono text-xs mr-2 shrink-0">{String(i + 1).padStart(2, '0')}</span>
                     {item.question}
                   </AccordionTrigger>

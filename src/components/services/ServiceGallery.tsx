@@ -33,7 +33,7 @@ export default function ServiceGallery({ images, serviceSlug }: Props) {
       <section
         ref={ref}
         className="py-28 sm:py-36 overflow-hidden"
-        style={{ background: '#050608' }}
+        style={{ background: '#f7f5f2' }}
       >
         <div className="container mx-auto px-5 sm:px-8">
           <motion.div
@@ -47,7 +47,7 @@ export default function ServiceGallery({ images, serviceSlug }: Props) {
             </span>
             <h2
               className="font-display font-black leading-[0.88]"
-              style={{ fontSize: 'clamp(2.5rem, 5vw, 5rem)', color: '#f0f1f2', letterSpacing: '-0.02em' }}
+              style={{ fontSize: 'clamp(2.5rem, 5vw, 5rem)', color: '#1e2328', letterSpacing: '-0.02em' }}
             >
               Projetos<br />
               <span style={{ color: 'rgba(240,241,242,0.18)' }}>executados</span>
@@ -55,7 +55,7 @@ export default function ServiceGallery({ images, serviceSlug }: Props) {
           </motion.div>
 
           {/* Masonry-style grid */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-px" style={{ background: 'rgba(255,255,255,0.05)' }}>
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-px" style={{ background: 'rgba(0,0,0,0.07)' }}>
             {photos.map((photo, i) => (
               <motion.button
                 key={i}
@@ -63,7 +63,7 @@ export default function ServiceGallery({ images, serviceSlug }: Props) {
                 style={{
                   aspectRatio: i === 0 ? '4/3' : '1/1',
                   gridColumn: i === 0 ? 'span 2' : 'span 1',
-                  background: '#13161b',
+                  background: '#eeeae3',
                 }}
                 initial={{ opacity: 0 }}
                 animate={inView ? { opacity: 1 } : {}}
@@ -103,9 +103,9 @@ export default function ServiceGallery({ images, serviceSlug }: Props) {
           >
             <button
               className="absolute top-6 right-6 w-10 h-10 flex items-center justify-center transition-colors"
-              style={{ border: '1px solid rgba(255,255,255,0.12)', color: '#b4bcc6' }}
+              style={{ border: '1px solid rgba(0,0,0,0.12)', color: '#607080' }}
               onClick={() => setLightbox(null)}
-              onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = '#f0f1f2' }}
+              onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = '#1e2328' }}
               onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = '#b4bcc6' }}
               aria-label="Fechar"
             >

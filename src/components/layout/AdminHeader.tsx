@@ -47,18 +47,18 @@ export default function AdminHeader({ onMenuToggle }: { onMenuToggle: () => void
   return (
     <header
       className="h-[52px] shrink-0 flex items-center gap-3 px-4 sm:px-6"
-      style={{ borderBottom: '1px solid rgba(255,255,255,0.06)' }}
+      style={{ borderBottom: '1px solid rgba(0,0,0,0.08)' }}
     >
       {/* Mobile hamburger */}
       <button
         className="lg:hidden w-8 h-8 flex items-center justify-center rounded-md transition-all shrink-0"
-        style={{ color: 'rgba(255,255,255,0.35)' }}
+        style={{ color: 'rgba(0,0,0,0.30)' }}
         onMouseEnter={(e) => {
-          e.currentTarget.style.color = 'rgba(255,255,255,0.8)'
-          e.currentTarget.style.background = 'rgba(255,255,255,0.06)'
+          e.currentTarget.style.color = 'rgba(0,0,0,0.70)'
+          e.currentTarget.style.background = 'rgba(0,0,0,0.08)'
         }}
         onMouseLeave={(e) => {
-          e.currentTarget.style.color = 'rgba(255,255,255,0.35)'
+          e.currentTarget.style.color = 'rgba(0,0,0,0.30)'
           e.currentTarget.style.background = 'transparent'
         }}
         onClick={onMenuToggle}
@@ -68,7 +68,7 @@ export default function AdminHeader({ onMenuToggle }: { onMenuToggle: () => void
       </button>
 
       {/* Page title */}
-      <h1 className="font-display font-semibold text-[15px] text-white truncate">
+      <h1 className="font-display font-semibold text-[15px] text-foreground truncate">
         {getTitle(pathname)}
       </h1>
 
@@ -77,7 +77,7 @@ export default function AdminHeader({ onMenuToggle }: { onMenuToggle: () => void
         {email && (
           <span
             className="hidden md:block text-[12px] font-mono truncate max-w-[180px]"
-            style={{ color: 'rgba(255,255,255,0.28)' }}
+            style={{ color: 'rgba(0,0,0,0.20)' }}
           >
             {email}
           </span>

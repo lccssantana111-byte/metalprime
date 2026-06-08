@@ -12,7 +12,7 @@ export function LeadCard({ lead }: LeadCardProps) {
   return (
     <Link href={`/admin/leads/${lead.id}`} className="block group">
       <div className="bg-carbon border border-metal-dark/30 rounded-lg p-3.5 hover:border-amber-brand/40 transition-colors cursor-pointer">
-        <p className="text-sm font-medium text-white group-hover:text-amber-brand transition-colors truncate mb-1">
+        <p className="text-sm font-medium text-foreground group-hover:text-amber-brand transition-colors truncate mb-1">
           {lead.name}
         </p>
 

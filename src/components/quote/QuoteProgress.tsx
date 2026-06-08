@@ -33,7 +33,7 @@ export default function QuoteProgress({ currentStep }: { currentStep: number }) 
             </div>
             <span
               className={`text-xs font-medium hidden sm:block transition-colors ${
-                active ? 'text-white' : done ? 'text-amber-brand' : 'text-metal-dark'
+                active ? 'text-foreground' : done ? 'text-amber-brand' : 'text-metal-dark'
               }`}
             >
               {step.label}

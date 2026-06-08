@@ -64,7 +64,7 @@ export default function QuoteStep4Confirm({ state, onEdit, onSuccess, onBack }: 
 
   return (
     <div className="bg-graphite border border-metal-dark/30 rounded-2xl p-8">
-      <h2 className="font-display text-2xl font-bold text-white mb-2">Tudo certo?</h2>
+      <h2 className="font-display text-2xl font-bold text-foreground mb-2">Tudo certo?</h2>
       <p className="text-metal text-sm mb-8">Revise e confirme — você pode editar qualquer item</p>
 
       <div className="space-y-3 mb-8">
@@ -90,7 +90,7 @@ export default function QuoteStep4Confirm({ state, onEdit, onSuccess, onBack }: 
 
       <div className="bg-steel/20 border border-amber-brand/20 rounded-xl p-4 mb-8">
         <p className="text-sm text-metal-light">
-          Nossa equipe analisa seu pedido e retorna em até <strong className="text-white">24 horas úteis</strong> com a proposta detalhada e agendamento da visita técnica.
+          Nossa equipe analisa seu pedido e retorna em até <strong className="text-foreground">24 horas úteis</strong> com a proposta detalhada e agendamento da visita técnica.
         </p>
       </div>
 

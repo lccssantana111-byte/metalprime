@@ -86,7 +86,7 @@ export function WhatsAppTemplates({ name, phone, service, status, whatsappNumber
     <div className="bg-graphite border border-metal-dark/30 rounded-xl overflow-hidden">
       <button
         onClick={() => setOpen((o) => !o)}
-        className="w-full flex items-center justify-between px-5 py-4 text-sm font-semibold text-white hover:bg-steel/20 transition-colors"
+        className="w-full flex items-center justify-between px-5 py-4 text-sm font-semibold text-foreground hover:bg-steel/20 transition-colors"
       >
         <span className="flex items-center gap-2">
           <MessageCircle className="w-4 h-4 text-[#25D366]" />

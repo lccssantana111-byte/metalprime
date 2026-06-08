@@ -53,7 +53,7 @@ export default async function AdminLeadsPage({
     <div>
       <div className="flex items-center justify-between mb-6">
         <div>
-          <h1 className="font-display text-3xl font-bold text-white">CRM — Pipeline</h1>
+          <h1 className="font-display text-3xl font-bold text-foreground">CRM — Pipeline</h1>
           <p className="text-metal mt-1">
             {view === 'kanban'
               ? `${kanbanLeads?.length ?? 0} leads no pipeline`
@@ -68,7 +68,7 @@ export default async function AdminLeadsPage({
               className={`inline-flex items-center gap-1.5 px-3 py-2 text-sm transition-colors ${
                 view === 'list'
                   ? 'bg-amber-brand text-carbon font-semibold'
-                  : 'text-metal hover:text-white'
+                  : 'text-metal hover:text-foreground'
               }`}
             >
               <LayoutList className="w-4 h-4" />
@@ -79,7 +79,7 @@ export default async function AdminLeadsPage({
               className={`inline-flex items-center gap-1.5 px-3 py-2 text-sm transition-colors ${
                 view === 'kanban'
                   ? 'bg-amber-brand text-carbon font-semibold'
-                  : 'text-metal hover:text-white'
+                  : 'text-metal hover:text-foreground'
               }`}
             >
               <Columns className="w-4 h-4" />
@@ -117,7 +117,7 @@ export default async function AdminLeadsPage({
                 className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${
                   (statusFilter ?? '') === f.value
                     ? 'bg-amber-brand text-carbon'
-                    : 'bg-graphite border border-metal-dark/30 text-metal hover:text-white'
+                    : 'bg-graphite border border-metal-dark/30 text-metal hover:text-foreground'
                 }`}
               >
                 {f.label}
@@ -143,7 +143,7 @@ export default async function AdminLeadsPage({
                     <tr key={lead.id} className="hover:bg-steel/20 transition-colors">
                       <td className="px-5 py-4">
                         <Link href={`/admin/leads/${lead.id}`} className="block">
-                          <p className="text-sm font-medium text-white hover:text-amber-brand transition-colors">
+                          <p className="text-sm font-medium text-foreground hover:text-amber-brand transition-colors">
                             {lead.name}
                           </p>
                           <p className="text-xs text-metal mt-0.5">{lead.phone}</p>

@@ -27,7 +27,7 @@ export default function ServiceHero({ name, tagline, heroImage, slug }: Props) {
   const photo = heroImage || (slug ? SLUG_PHOTOS[slug] : null) || PHOTOS.hero
 
   return (
-    <section className="relative min-h-[80vh] flex items-end overflow-hidden" style={{ background: '#050608' }}>
+    <section className="relative min-h-[80vh] flex items-end overflow-hidden" style={{ background: '#f7f5f2' }}>
       {/* Photo */}
       <div className="absolute inset-0">
         <div
@@ -64,7 +64,7 @@ export default function ServiceHero({ name, tagline, heroImage, slug }: Props) {
         <div className="overflow-hidden mb-4">
           <motion.h1
             className="font-display font-black leading-[0.88]"
-            style={{ fontSize: 'clamp(3.5rem, 9vw, 9rem)', color: '#f0f1f2', letterSpacing: '-0.025em' }}
+            style={{ fontSize: 'clamp(3.5rem, 9vw, 9rem)', color: '#1e2328', letterSpacing: '-0.025em' }}
             initial={{ y: '110%' }}
             animate={{ y: '0%' }}
             transition={{ duration: 1, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
@@ -106,16 +106,16 @@ export default function ServiceHero({ name, tagline, heroImage, slug }: Props) {
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-3 text-[13px] px-8 py-[17px] transition-all duration-200"
-            style={{ border: '1px solid rgba(255,255,255,0.12)', color: 'rgba(180,188,198,0.7)' }}
+            style={{ border: '1px solid rgba(0,0,0,0.12)', color: 'rgba(60,74,88,0.7)' }}
             onMouseEnter={(e) => {
               const el = e.currentTarget as HTMLElement
-              el.style.borderColor = 'rgba(255,255,255,0.25)'
-              el.style.color = '#f0f1f2'
+              el.style.borderColor = 'rgba(0,0,0,0.20)'
+              el.style.color = '#1e2328'
             }}
             onMouseLeave={(e) => {
               const el = e.currentTarget as HTMLElement
-              el.style.borderColor = 'rgba(255,255,255,0.12)'
-              el.style.color = 'rgba(180,188,198,0.7)'
+              el.style.borderColor = 'rgba(0,0,0,0.12)'
+              el.style.color = 'rgba(60,74,88,0.7)'
             }}
           >
             Falar pelo WhatsApp

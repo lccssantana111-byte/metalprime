@@ -40,7 +40,7 @@ export default function ContactForm() {
     return (
       <div className="bg-graphite border border-green-500/20 rounded-xl p-10 text-center">
         <CheckCircle className="w-12 h-12 text-green-400 mx-auto mb-4" />
-        <h3 className="font-display text-2xl font-bold text-white mb-3">Mensagem enviada!</h3>
+        <h3 className="font-display text-2xl font-bold text-foreground mb-3">Mensagem enviada!</h3>
         <p className="text-metal">Retornaremos em até 24 horas. Obrigado pelo contato.</p>
       </div>
     )
@@ -58,7 +58,7 @@ export default function ContactForm() {
             id="name"
             {...register('name')}
             placeholder="Seu nome completo"
-            className="bg-steel/30 border-metal-dark/40 focus:border-amber-brand/60 text-white placeholder:text-metal-dark"
+            className="bg-steel/30 border-metal-dark/40 focus:border-amber-brand/60 text-foreground placeholder:text-metal-dark"
           />
           {errors.name && <p className="text-red-400 text-xs mt-1">{errors.name.message}</p>}
         </div>
@@ -68,7 +68,7 @@ export default function ContactForm() {
             id="phone"
             {...register('phone')}
             placeholder="(11) 99999-9999"
-            className="bg-steel/30 border-metal-dark/40 focus:border-amber-brand/60 text-white placeholder:text-metal-dark"
+            className="bg-steel/30 border-metal-dark/40 focus:border-amber-brand/60 text-foreground placeholder:text-metal-dark"
           />
           {errors.phone && <p className="text-red-400 text-xs mt-1">{errors.phone.message}</p>}
         </div>
@@ -81,14 +81,14 @@ export default function ContactForm() {
           type="email"
           {...register('email')}
           placeholder="seu@email.com"
-          className="bg-steel/30 border-metal-dark/40 focus:border-amber-brand/60 text-white placeholder:text-metal-dark"
+          className="bg-steel/30 border-metal-dark/40 focus:border-amber-brand/60 text-foreground placeholder:text-metal-dark"
         />
       </div>
 
       <div>
         <Label className="text-metal-light mb-2 block">Serviço de interesse</Label>
         <Select onValueChange={(v) => setValue('service', v)}>
-          <SelectTrigger className="bg-steel/30 border-metal-dark/40 text-white">
+          <SelectTrigger className="bg-steel/30 border-metal-dark/40 text-foreground">
             <SelectValue placeholder="Selecione um serviço" />
           </SelectTrigger>
           <SelectContent className="bg-graphite border-metal-dark/40">
@@ -109,7 +109,7 @@ export default function ContactForm() {
           {...register('message')}
           placeholder="Descreva brevemente o que você precisa..."
           rows={5}
-          className="bg-steel/30 border-metal-dark/40 focus:border-amber-brand/60 text-white placeholder:text-metal-dark resize-none"
+          className="bg-steel/30 border-metal-dark/40 focus:border-amber-brand/60 text-foreground placeholder:text-metal-dark resize-none"
         />
         {errors.message && <p className="text-red-400 text-xs mt-1">{errors.message.message}</p>}
       </div>

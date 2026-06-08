@@ -65,7 +65,7 @@ export default function ServicesGrid() {
     <section
       ref={ref}
       className="py-28 sm:py-36 overflow-hidden"
-      style={{ background: '#050608' }}
+      style={{ background: '#f7f5f2' }}
     >
       <div className="container mx-auto px-5 sm:px-8">
 
@@ -82,7 +82,7 @@ export default function ServicesGrid() {
             </span>
             <h2
               className="font-display font-black leading-[0.88]"
-              style={{ fontSize: 'clamp(3rem, 6vw, 6.5rem)', color: '#f0f1f2', letterSpacing: '-0.02em' }}
+              style={{ fontSize: 'clamp(3rem, 6vw, 6.5rem)', color: '#1e2328', letterSpacing: '-0.02em' }}
             >
               Fabricamos.<br />
               Instalamos.<br />
@@ -102,7 +102,7 @@ export default function ServicesGrid() {
         </motion.div>
 
         {/* 3×2 photo grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px" style={{ background: 'rgba(255,255,255,0.05)' }}>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px" style={{ background: 'rgba(0,0,0,0.07)' }}>
           {services.map((service, i) => (
             <motion.div
               key={service.slug}
@@ -121,7 +121,7 @@ export default function ServicesGrid() {
 
 function ServiceCard({ service }: { service: (typeof services)[0] }) {
   return (
-    <Link href={service.href} className="group block relative overflow-hidden aspect-[4/3]" style={{ background: '#13161b' }}>
+    <Link href={service.href} className="group block relative overflow-hidden aspect-[4/3]" style={{ background: '#e4e1db' }}>
       {/* Photo */}
       <div
         className="absolute inset-0 transition-transform duration-700 ease-out group-hover:scale-105"
@@ -168,14 +168,14 @@ function ServiceCard({ service }: { service: (typeof services)[0] }) {
             </p>
             <h3
               className="font-display font-black leading-none"
-              style={{ fontSize: 'clamp(1.35rem, 2.5vw, 1.9rem)', color: '#f0f1f2' }}
+              style={{ fontSize: 'clamp(1.35rem, 2.5vw, 1.9rem)', color: '#1e2328' }}
             >
               {service.name}
             </h3>
           </div>
           <div
             className="w-10 h-10 flex items-center justify-center shrink-0 transition-all duration-200 group-hover:bg-[#c4a040] group-hover:border-[#c4a040]"
-            style={{ border: '1px solid rgba(255,255,255,0.18)', color: '#f0f1f2' }}
+            style={{ border: '1px solid rgba(0,0,0,0.15)', color: '#1e2328' }}
           >
             <ArrowUpRight className="w-4 h-4 group-hover:text-[#050608] group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all" />
           </div>

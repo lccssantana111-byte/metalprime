@@ -62,7 +62,7 @@ export default function SegmentSection() {
     <section
       ref={ref}
       className="relative py-0 overflow-hidden"
-      style={{ background: '#0c0e11' }}
+      style={{ background: '#eeeae3' }}
     >
       {/* Photo background */}
       <div className="absolute inset-0">
@@ -95,7 +95,7 @@ export default function SegmentSection() {
             <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
               <h2
                 className="font-display font-black leading-[0.88]"
-                style={{ fontSize: 'clamp(3rem, 6vw, 6rem)', color: '#f0f1f2', letterSpacing: '-0.02em' }}
+                style={{ fontSize: 'clamp(3rem, 6vw, 6rem)', color: '#1e2328', letterSpacing: '-0.02em' }}
               >
                 O parceiro certo<br />
                 <span style={{ color: '#c4a040' }}>para cada projeto</span>
@@ -114,7 +114,7 @@ export default function SegmentSection() {
         {/* Segments grid */}
         <div
           className="grid grid-cols-1 lg:grid-cols-3"
-          style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}
+          style={{ borderTop: '1px solid rgba(0,0,0,0.08)' }}
         >
           {segments.map((seg, i) => {
             const Icon = seg.icon
@@ -123,8 +123,8 @@ export default function SegmentSection() {
                 key={seg.label}
                 className="p-10 sm:p-14 flex flex-col group relative overflow-hidden"
                 style={{
-                  borderRight: i < 2 ? '1px solid rgba(255,255,255,0.06)' : 'none',
-                  borderBottom: '1px solid rgba(255,255,255,0.06)',
+                  borderRight: i < 2 ? '1px solid rgba(0,0,0,0.08)' : 'none',
+                  borderBottom: '1px solid rgba(0,0,0,0.08)',
                 }}
                 initial={{ opacity: 0, y: 40 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -152,7 +152,7 @@ export default function SegmentSection() {
                 {/* Headline */}
                 <h3
                   className="font-display font-bold mb-5 leading-[1.15]"
-                  style={{ fontSize: 'clamp(1.3rem, 2.5vw, 1.75rem)', color: '#f0f1f2' }}
+                  style={{ fontSize: 'clamp(1.3rem, 2.5vw, 1.75rem)', color: '#1e2328' }}
                 >
                   {seg.headline}
                 </h3>

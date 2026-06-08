@@ -64,11 +64,11 @@ export default function Navbar() {
       className={cn(
         'fixed top-0 left-0 right-0 z-50 transition-all duration-500',
         scrolled
-          ? 'bg-[#050608]/97 backdrop-blur-xl border-b'
+          ? 'bg-[#f7f5f2]/97 backdrop-blur-xl border-b'
           : 'bg-transparent',
       )}
       style={{
-        borderBottomColor: scrolled ? 'rgba(255,255,255,0.06)' : 'transparent',
+        borderBottomColor: scrolled ? 'rgba(0,0,0,0.09)' : 'transparent',
       }}
     >
       <nav className="container mx-auto px-5 sm:px-8 h-[72px] flex items-center justify-between gap-8">
@@ -78,7 +78,7 @@ export default function Navbar() {
           <div className="transition-transform duration-300 group-hover:scale-105">
             {LOGO_MARK}
           </div>
-          <span className="font-display font-black text-[15px] tracking-[0.12em] uppercase text-[#f0f1f2]">
+          <span className="font-display font-black text-[15px] tracking-[0.12em] uppercase text-[#1e2328]">
             {BRAND_NAME.split(' ')[0]}
             <span style={{ color: '#c4a040' }}>.</span>
           </span>
@@ -99,8 +99,8 @@ export default function Navbar() {
                   className={cn(
                     'flex items-center gap-1.5 px-4 py-2.5 text-[13px] font-medium transition-colors duration-200 tracking-wide',
                     isActive(item.href)
-                      ? 'text-[#f0f1f2]'
-                      : 'text-[#b4bcc6] hover:text-[#f0f1f2]',
+                      ? 'text-[#1e2328]'
+                      : 'text-[#607080] hover:text-[#1e2328]',
                   )}
                 >
                   {item.label}
@@ -130,8 +130,8 @@ export default function Navbar() {
                       <div
                         className="shadow-2xl overflow-hidden"
                         style={{
-                          background: '#0c0e11',
-                          border: '1px solid rgba(255,255,255,0.07)',
+                          background: '#eeeae3',
+                          border: '1px solid rgba(0,0,0,0.10)',
                           minWidth: '480px',
                         }}
                       >
@@ -144,13 +144,13 @@ export default function Navbar() {
                               className="group flex flex-col gap-0.5 px-5 py-4 transition-colors duration-150"
                               style={{}}
                               onMouseEnter={(e) => {
-                                e.currentTarget.style.background = 'rgba(255,255,255,0.04)'
+                                e.currentTarget.style.background = 'rgba(0,0,0,0.05)'
                               }}
                               onMouseLeave={(e) => {
                                 e.currentTarget.style.background = 'transparent'
                               }}
                             >
-                              <span className="flex items-center gap-2 text-[13px] font-medium text-[#f0f1f2]">
+                              <span className="flex items-center gap-2 text-[13px] font-medium text-[#1e2328]">
                                 <span
                                   className="font-mono text-[9px] tracking-widest"
                                   style={{ color: 'rgba(196,160,64,0.6)' }}
@@ -159,14 +159,14 @@ export default function Navbar() {
                                 </span>
                                 {child.label}
                               </span>
-                              <span className="text-[11px]" style={{ color: '#5a6470' }}>
+                              <span className="text-[11px]" style={{ color: '#8a9199' }}>
                                 {child.desc}
                               </span>
                             </Link>
                           ))}
                         </div>
-                        <div className="px-6 py-3 flex items-center justify-between" style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}>
-                          <span className="text-[11px] font-mono" style={{ color: '#5a6470' }}>
+                        <div className="px-6 py-3 flex items-center justify-between" style={{ borderTop: '1px solid rgba(0,0,0,0.08)' }}>
+                          <span className="text-[11px] font-mono" style={{ color: '#8a9199' }}>
                             Todos os serviços
                           </span>
                           <Link
@@ -192,8 +192,8 @@ export default function Navbar() {
                   className={cn(
                     'relative px-4 py-2.5 text-[13px] font-medium transition-colors duration-200 block tracking-wide',
                     isActive(item.href)
-                      ? 'text-[#f0f1f2]'
-                      : 'text-[#b4bcc6] hover:text-[#f0f1f2]',
+                      ? 'text-[#1e2328]'
+                      : 'text-[#607080] hover:text-[#1e2328]',
                   )}
                 >
                   {item.label}
@@ -214,9 +214,9 @@ export default function Navbar() {
           <a
             href={`tel:${COMPANY_PHONE}`}
             className="text-[12px] font-mono transition-colors duration-200"
-            style={{ color: '#b4bcc6' }}
-            onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = '#f0f1f2' }}
-            onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = '#b4bcc6' }}
+            style={{ color: '#607080' }}
+            onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = '#1e2328' }}
+            onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = '#1e2328' }}
           >
             {COMPANY_PHONE}
           </a>
@@ -234,11 +234,11 @@ export default function Navbar() {
         {/* Mobile toggle */}
         <button
           className="lg:hidden w-10 h-10 flex items-center justify-center transition-colors"
-          style={{ color: '#b4bcc6' }}
+          style={{ color: '#607080' }}
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Menu"
-          onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = '#f0f1f2' }}
-          onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = '#b4bcc6' }}
+          onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = '#1e2328' }}
+          onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = '#1e2328' }}
         >
           <AnimatePresence mode="wait">
             {mobileOpen ? (
@@ -273,7 +273,7 @@ export default function Navbar() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            style={{ background: '#050608' }}
+            style={{ background: '#f7f5f2' }}
           >
             {/* Top gold line */}
             <div className="h-px w-full" style={{ background: 'linear-gradient(90deg, transparent, #c4a040, transparent)' }} />
@@ -291,8 +291,8 @@ export default function Navbar() {
                       href={item.href}
                       className="block py-5 font-display font-black text-[2rem] transition-colors leading-none"
                       style={{
-                        color: isActive(item.href) ? '#c4a040' : 'rgba(240,241,242,0.85)',
-                        borderBottom: '1px solid rgba(255,255,255,0.05)',
+                        color: isActive(item.href) ? '#c4a040' : '#1e2328',
+                        borderBottom: '1px solid rgba(0,0,0,0.08)',
                       }}
                     >
                       {item.label}
@@ -304,9 +304,9 @@ export default function Navbar() {
                             key={child.href}
                             href={child.href}
                             className="py-1.5 text-[13px] transition-colors"
-                            style={{ color: '#5a6470' }}
-                            onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = '#b4bcc6' }}
-                            onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = '#5a6470' }}
+                            style={{ color: '#8a9199' }}
+                            onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = '#1e2328' }}
+                            onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = '#8a9199' }}
                           >
                             {child.label}
                           </Link>
@@ -328,7 +328,7 @@ export default function Navbar() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="block text-center py-4 text-[14px] font-mono"
-                  style={{ color: '#8a9199', border: '1px solid rgba(255,255,255,0.10)' }}
+                  style={{ color: '#8a9199', border: '1px solid rgba(0,0,0,0.10)' }}
                 >
                   {COMPANY_PHONE}
                 </a>

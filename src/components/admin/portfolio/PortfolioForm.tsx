@@ -103,14 +103,14 @@ export function PortfolioForm({ item }: PortfolioFormProps) {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div className="lg:col-span-2 space-y-5">
           <div className="bg-graphite border border-metal-dark/30 rounded-xl p-6 space-y-4">
-            <h3 className="font-semibold text-white">Informações</h3>
+            <h3 className="font-semibold text-foreground">Informações</h3>
 
             <div>
               <Label htmlFor="title" className="text-metal text-sm">Título *</Label>
               <Input
                 id="title"
                 {...register('title')}
-                className="mt-1 bg-steel border-metal-dark/40 text-white"
+                className="mt-1 bg-steel border-metal-dark/40 text-foreground"
                 placeholder="Ex: Portão deslizante em aço inox"
                 onBlur={(e) => {
                   if (!item) setValue('slug', slugify(e.target.value))
@@ -124,7 +124,7 @@ export function PortfolioForm({ item }: PortfolioFormProps) {
               <Input
                 id="slug"
                 {...register('slug')}
-                className="mt-1 bg-steel border-metal-dark/40 text-white font-mono text-sm"
+                className="mt-1 bg-steel border-metal-dark/40 text-foreground font-mono text-sm"
                 placeholder="portao-deslizante-aco-inox"
               />
               {errors.slug && <p className="text-xs text-red-400 mt-1">{errors.slug.message}</p>}
@@ -136,7 +136,7 @@ export function PortfolioForm({ item }: PortfolioFormProps) {
                 <select
                   id="service"
                   {...register('service')}
-                  className="mt-1 w-full bg-steel border border-metal-dark/40 text-white rounded-md px-3 py-2 text-sm"
+                  className="mt-1 w-full bg-steel border border-metal-dark/40 text-foreground rounded-md px-3 py-2 text-sm"
                 >
                   <option value="">Selecione</option>
                   {Object.entries(SERVICE_LABELS).map(([k, v]) => (
@@ -151,7 +151,7 @@ export function PortfolioForm({ item }: PortfolioFormProps) {
                   id="year"
                   type="number"
                   {...register('year')}
-                  className="mt-1 bg-steel border-metal-dark/40 text-white"
+                  className="mt-1 bg-steel border-metal-dark/40 text-foreground"
                   placeholder="2024"
                 />
               </div>
@@ -163,7 +163,7 @@ export function PortfolioForm({ item }: PortfolioFormProps) {
                 <Input
                   id="client_name"
                   {...register('client_name')}
-                  className="mt-1 bg-steel border-metal-dark/40 text-white"
+                  className="mt-1 bg-steel border-metal-dark/40 text-foreground"
                   placeholder="Nome do cliente"
                 />
               </div>
@@ -172,7 +172,7 @@ export function PortfolioForm({ item }: PortfolioFormProps) {
                 <Input
                   id="city"
                   {...register('city')}
-                  className="mt-1 bg-steel border-metal-dark/40 text-white"
+                  className="mt-1 bg-steel border-metal-dark/40 text-foreground"
                   placeholder="São Paulo - SP"
                 />
               </div>
@@ -183,7 +183,7 @@ export function PortfolioForm({ item }: PortfolioFormProps) {
               <Input
                 id="short_desc"
                 {...register('short_desc')}
-                className="mt-1 bg-steel border-metal-dark/40 text-white"
+                className="mt-1 bg-steel border-metal-dark/40 text-foreground"
                 placeholder="Breve descrição para cards e preview"
               />
             </div>
@@ -194,20 +194,20 @@ export function PortfolioForm({ item }: PortfolioFormProps) {
                 id="description"
                 {...register('description')}
                 rows={5}
-                className="mt-1 bg-steel border-metal-dark/40 text-white resize-none"
+                className="mt-1 bg-steel border-metal-dark/40 text-foreground resize-none"
                 placeholder="Detalhes do projeto, materiais utilizados, desafios..."
               />
             </div>
           </div>
 
           <div className="bg-graphite border border-metal-dark/30 rounded-xl p-6 space-y-4">
-            <h3 className="font-semibold text-white">SEO</h3>
+            <h3 className="font-semibold text-foreground">SEO</h3>
             <div>
               <Label htmlFor="seo_title" className="text-metal text-sm">Título SEO (max 70)</Label>
               <Input
                 id="seo_title"
                 {...register('seo_title')}
-                className="mt-1 bg-steel border-metal-dark/40 text-white"
+                className="mt-1 bg-steel border-metal-dark/40 text-foreground"
                 placeholder={title || 'Título para Google'}
               />
             </div>
@@ -217,7 +217,7 @@ export function PortfolioForm({ item }: PortfolioFormProps) {
                 id="seo_description"
                 {...register('seo_description')}
                 rows={2}
-                className="mt-1 bg-steel border-metal-dark/40 text-white resize-none"
+                className="mt-1 bg-steel border-metal-dark/40 text-foreground resize-none"
                 placeholder="Descrição exibida no Google"
               />
             </div>
@@ -235,11 +235,11 @@ export function PortfolioForm({ item }: PortfolioFormProps) {
 
         <div className="space-y-4">
           <div className="bg-graphite border border-metal-dark/30 rounded-xl p-5 space-y-5">
-            <h3 className="font-semibold text-white">Publicação</h3>
+            <h3 className="font-semibold text-foreground">Publicação</h3>
 
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-white">Publicado</p>
+                <p className="text-sm text-foreground">Publicado</p>
                 <p className="text-xs text-metal-dark">Visível no portfólio público</p>
               </div>
               <Switch
@@ -250,7 +250,7 @@ export function PortfolioForm({ item }: PortfolioFormProps) {
 
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-white">Destaque</p>
+                <p className="text-sm text-foreground">Destaque</p>
                 <p className="text-xs text-metal-dark">Aparece na homepage</p>
               </div>
               <Switch
@@ -271,7 +271,7 @@ export function PortfolioForm({ item }: PortfolioFormProps) {
           <Button
             type="button"
             variant="outline"
-            className="w-full border-metal-dark/40 text-metal hover:text-white"
+            className="w-full border-metal-dark/40 text-metal hover:text-foreground"
             onClick={() => router.back()}
           >
             Cancelar

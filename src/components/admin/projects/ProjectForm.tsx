@@ -117,14 +117,14 @@ export function ProjectForm({ project, clients = [] }: ProjectFormProps) {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div className="lg:col-span-2 space-y-5">
           <div className="bg-graphite border border-metal-dark/30 rounded-xl p-6 space-y-4">
-            <h3 className="font-semibold text-white">Dados do projeto</h3>
+            <h3 className="font-semibold text-foreground">Dados do projeto</h3>
 
             <div>
               <Label htmlFor="name" className="text-metal text-sm">Nome do projeto *</Label>
               <Input
                 id="name"
                 {...register('name')}
-                className="mt-1 bg-steel border-metal-dark/40 text-white"
+                className="mt-1 bg-steel border-metal-dark/40 text-foreground"
                 placeholder="Ex: Portão deslizante Condomínio ABC"
               />
               {errors.name && <p className="text-xs text-red-400 mt-1">{errors.name.message}</p>}
@@ -136,7 +136,7 @@ export function ProjectForm({ project, clients = [] }: ProjectFormProps) {
                 <select
                   id="service"
                   {...register('service')}
-                  className="mt-1 w-full bg-steel border border-metal-dark/40 text-white rounded-md px-3 py-2 text-sm"
+                  className="mt-1 w-full bg-steel border border-metal-dark/40 text-foreground rounded-md px-3 py-2 text-sm"
                 >
                   <option value="">Selecione</option>
                   {Object.entries(SERVICE_LABELS).map(([k, v]) => (
@@ -150,7 +150,7 @@ export function ProjectForm({ project, clients = [] }: ProjectFormProps) {
                 <select
                   id="status"
                   {...register('status')}
-                  className="mt-1 w-full bg-steel border border-metal-dark/40 text-white rounded-md px-3 py-2 text-sm"
+                  className="mt-1 w-full bg-steel border border-metal-dark/40 text-foreground rounded-md px-3 py-2 text-sm"
                 >
                   {Object.entries(PROJECT_STATUS_LABELS).map(([k, v]) => (
                     <option key={k} value={k}>{v}</option>
@@ -165,7 +165,7 @@ export function ProjectForm({ project, clients = [] }: ProjectFormProps) {
                 <select
                   id="client_id"
                   {...register('client_id')}
-                  className="mt-1 w-full bg-steel border border-metal-dark/40 text-white rounded-md px-3 py-2 text-sm"
+                  className="mt-1 w-full bg-steel border border-metal-dark/40 text-foreground rounded-md px-3 py-2 text-sm"
                 >
                   <option value="">Sem cliente vinculado</option>
                   {clients.map((c) => (
@@ -181,25 +181,25 @@ export function ProjectForm({ project, clients = [] }: ProjectFormProps) {
                 id="description"
                 {...register('description')}
                 rows={3}
-                className="mt-1 bg-steel border-metal-dark/40 text-white resize-none"
+                className="mt-1 bg-steel border-metal-dark/40 text-foreground resize-none"
                 placeholder="Detalhes do projeto, especificações técnicas..."
               />
             </div>
           </div>
 
           <div className="bg-graphite border border-metal-dark/30 rounded-xl p-6 space-y-4">
-            <h3 className="font-semibold text-white">Marcos do projeto</h3>
+            <h3 className="font-semibold text-foreground">Marcos do projeto</h3>
 
             <div className="space-y-3">
               {milestones.map((m, i) => (
                 <div key={i} className="flex items-center gap-3">
                   <div className="flex-1 flex items-center gap-2">
-                    <span className="text-sm text-white flex-1">{m.title}</span>
+                    <span className="text-sm text-foreground flex-1">{m.title}</span>
                     <Input
                       type="date"
                       value={m.due_date}
                       onChange={(e) => updateMilestoneDate(i, e.target.value)}
-                      className="w-40 bg-steel border-metal-dark/40 text-white text-sm"
+                      className="w-40 bg-steel border-metal-dark/40 text-foreground text-sm"
                     />
                   </div>
                   <button
@@ -219,13 +219,13 @@ export function ProjectForm({ project, clients = [] }: ProjectFormProps) {
                 onChange={(e) => setNewMilestone(e.target.value)}
                 onKeyDown={(e) => e.key === 'Enter' && (e.preventDefault(), addMilestone())}
                 placeholder="Novo marco (ex: Medição no local)"
-                className="bg-steel border-metal-dark/40 text-white"
+                className="bg-steel border-metal-dark/40 text-foreground"
               />
               <Button
                 type="button"
                 onClick={addMilestone}
                 variant="outline"
-                className="border-metal-dark/40 text-metal hover:text-white shrink-0"
+                className="border-metal-dark/40 text-metal hover:text-foreground shrink-0"
               >
                 <Plus className="w-4 h-4" />
               </Button>
@@ -235,7 +235,7 @@ export function ProjectForm({ project, clients = [] }: ProjectFormProps) {
 
         <div className="space-y-4">
           <div className="bg-graphite border border-metal-dark/30 rounded-xl p-5 space-y-4">
-            <h3 className="font-semibold text-white">Financeiro</h3>
+            <h3 className="font-semibold text-foreground">Financeiro</h3>
             <div>
               <Label htmlFor="contract_value" className="text-metal text-sm">Valor do contrato (R$)</Label>
               <Input
@@ -243,7 +243,7 @@ export function ProjectForm({ project, clients = [] }: ProjectFormProps) {
                 type="number"
                 step="0.01"
                 {...register('contract_value')}
-                className="mt-1 bg-steel border-metal-dark/40 text-white"
+                className="mt-1 bg-steel border-metal-dark/40 text-foreground"
               />
             </div>
             <div>
@@ -253,20 +253,20 @@ export function ProjectForm({ project, clients = [] }: ProjectFormProps) {
                 type="number"
                 step="0.01"
                 {...register('amount_paid')}
-                className="mt-1 bg-steel border-metal-dark/40 text-white"
+                className="mt-1 bg-steel border-metal-dark/40 text-foreground"
               />
             </div>
           </div>
 
           <div className="bg-graphite border border-metal-dark/30 rounded-xl p-5 space-y-4">
-            <h3 className="font-semibold text-white">Datas</h3>
+            <h3 className="font-semibold text-foreground">Datas</h3>
             <div>
               <Label htmlFor="start_date" className="text-metal text-sm">Início</Label>
               <Input
                 id="start_date"
                 type="date"
                 {...register('start_date')}
-                className="mt-1 bg-steel border-metal-dark/40 text-white"
+                className="mt-1 bg-steel border-metal-dark/40 text-foreground"
               />
             </div>
             <div>
@@ -275,7 +275,7 @@ export function ProjectForm({ project, clients = [] }: ProjectFormProps) {
                 id="estimated_end"
                 type="date"
                 {...register('estimated_end')}
-                className="mt-1 bg-steel border-metal-dark/40 text-white"
+                className="mt-1 bg-steel border-metal-dark/40 text-foreground"
               />
             </div>
           </div>
@@ -291,7 +291,7 @@ export function ProjectForm({ project, clients = [] }: ProjectFormProps) {
           <Button
             type="button"
             variant="outline"
-            className="w-full border-metal-dark/40 text-metal hover:text-white"
+            className="w-full border-metal-dark/40 text-metal hover:text-foreground"
             onClick={() => router.back()}
           >
             Cancelar

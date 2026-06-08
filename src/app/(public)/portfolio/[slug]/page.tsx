@@ -94,7 +94,7 @@ export default async function PortfolioDetailPage({ params }: { params: Promise<
                   </span>
                 )}
               </div>
-              <h1 className="font-display text-4xl lg:text-5xl font-bold text-white mb-4">
+              <h1 className="font-display text-4xl lg:text-5xl font-bold text-foreground mb-4">
                 {item.title}
               </h1>
               {item.short_desc && (
@@ -109,7 +109,7 @@ export default async function PortfolioDetailPage({ params }: { params: Promise<
               {/* Contextual service link */}
               <div className="mt-8 p-5 bg-graphite border border-metal-dark/30 rounded-xl">
                 <p className="text-sm text-metal mb-3">
-                  Interessado em <span className="text-white font-medium">{SERVICE_LABELS[item.service]}</span>?
+                  Interessado em <span className="text-foreground font-medium">{SERVICE_LABELS[item.service]}</span>?
                   Veja todos os detalhes do serviço.
                 </p>
                 <Link
@@ -129,7 +129,7 @@ export default async function PortfolioDetailPage({ params }: { params: Promise<
                   <MapPin className="w-5 h-5 text-amber-brand shrink-0" />
                   <div>
                     <p className="text-xs text-metal-dark">Localização</p>
-                    <p className="text-white font-medium">{item.city}</p>
+                    <p className="text-foreground font-medium">{item.city}</p>
                   </div>
                 </div>
               )}
@@ -138,7 +138,7 @@ export default async function PortfolioDetailPage({ params }: { params: Promise<
                   <Calendar className="w-5 h-5 text-amber-brand shrink-0" />
                   <div>
                     <p className="text-xs text-metal-dark">Ano de execução</p>
-                    <p className="text-white font-medium">{item.year}</p>
+                    <p className="text-foreground font-medium">{item.year}</p>
                   </div>
                 </div>
               )}
@@ -170,7 +170,7 @@ export default async function PortfolioDetailPage({ params }: { params: Promise<
           {/* Gallery */}
           {item.images.length > 0 && (
             <div className="mt-12">
-              <h2 className="font-display text-2xl font-bold text-white mb-6">Galeria de imagens</h2>
+              <h2 className="font-display text-2xl font-bold text-foreground mb-6">Galeria de imagens</h2>
               <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                 {item.images.map((img, i) => (
                   <div key={i} className="aspect-square bg-graphite rounded-xl overflow-hidden">
@@ -189,7 +189,7 @@ export default async function PortfolioDetailPage({ params }: { params: Promise<
           {/* Bottom CTA banner */}
           <div className="mt-16 bg-graphite border border-amber-brand/20 rounded-2xl p-8 flex flex-col sm:flex-row items-center justify-between gap-6">
             <div>
-              <h3 className="font-display text-2xl font-bold text-white mb-2">Gostou do resultado?</h3>
+              <h3 className="font-display text-2xl font-bold text-foreground mb-2">Gostou do resultado?</h3>
               <p className="text-metal">Solicite um orçamento gratuito e sem compromisso para seu projeto.</p>
             </div>
             <Button asChild className="bg-amber-brand hover:bg-amber-light text-carbon font-bold px-8 py-4 h-auto shrink-0">

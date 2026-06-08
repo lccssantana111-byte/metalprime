@@ -62,7 +62,7 @@ export function UsuariosClient({ users, currentUserId }: { users: User[]; curren
       {/* Header */}
       <div className="flex items-center justify-between mb-8">
         <div>
-          <h1 className="font-display text-3xl font-bold text-white">Usuários</h1>
+          <h1 className="font-display text-3xl font-bold text-foreground">Usuários</h1>
           <p className="text-metal mt-1">
             {users.length} usuário{users.length !== 1 ? 's' : ''} com acesso ao painel
           </p>
@@ -104,7 +104,7 @@ export function UsuariosClient({ users, currentUserId }: { users: User[]; curren
                             {(u.full_name || u.email)[0]}
                           </span>
                         </div>
-                        <span className="text-sm font-medium text-white">
+                        <span className="text-sm font-medium text-foreground">
                           {u.full_name}
                           {isSelf && <span className="ml-2 text-xs text-metal-dark">(você)</span>}
                         </span>
@@ -163,8 +163,8 @@ export function UsuariosClient({ users, currentUserId }: { users: User[]; curren
             <div className="h-px bg-gradient-to-r from-transparent via-amber-brand/40 to-transparent" />
             <div className="p-6">
               <div className="flex items-center justify-between mb-6">
-                <h2 className="text-lg font-semibold text-white">Adicionar usuário</h2>
-                <button onClick={() => setModalOpen(false)} className="text-metal-dark hover:text-white transition-colors">
+                <h2 className="text-lg font-semibold text-foreground">Adicionar usuário</h2>
+                <button onClick={() => setModalOpen(false)} className="text-metal-dark hover:text-foreground transition-colors">
                   <X className="w-5 h-5" />
                 </button>
               </div>
@@ -177,7 +177,7 @@ export function UsuariosClient({ users, currentUserId }: { users: User[]; curren
                     name="nome"
                     placeholder="Ex: João Silva"
                     required
-                    className="bg-carbon/60 border-metal-dark/50 focus:border-amber-brand/60 text-white placeholder:text-metal-dark h-10"
+                    className="bg-carbon/60 border-metal-dark/50 focus:border-amber-brand/60 text-foreground placeholder:text-metal-dark h-10"
                   />
                 </div>
 
@@ -189,7 +189,7 @@ export function UsuariosClient({ users, currentUserId }: { users: User[]; curren
                     type="email"
                     placeholder="joao@email.com"
                     required
-                    className="bg-carbon/60 border-metal-dark/50 focus:border-amber-brand/60 text-white placeholder:text-metal-dark h-10"
+                    className="bg-carbon/60 border-metal-dark/50 focus:border-amber-brand/60 text-foreground placeholder:text-metal-dark h-10"
                   />
                 </div>
 
@@ -207,7 +207,7 @@ export function UsuariosClient({ users, currentUserId }: { users: User[]; curren
                           className={`flex flex-col items-center gap-1.5 p-3 rounded-lg border text-xs font-medium transition-all ${
                             role === key
                               ? 'border-amber-brand bg-amber-brand/10 text-amber-brand'
-                              : 'border-metal-dark/30 text-metal hover:border-metal-dark hover:text-white'
+                              : 'border-metal-dark/30 text-metal hover:border-metal-dark hover:text-foreground'
                           }`}
                         >
                           <Icon className="w-4 h-4" />
@@ -228,7 +228,7 @@ export function UsuariosClient({ users, currentUserId }: { users: User[]; curren
                     type="button"
                     variant="outline"
                     onClick={() => setModalOpen(false)}
-                    className="flex-1 border-metal-dark/40 text-metal hover:text-white"
+                    className="flex-1 border-metal-dark/40 text-metal hover:text-foreground"
                   >
                     Cancelar
                   </Button>

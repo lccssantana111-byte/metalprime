@@ -43,7 +43,7 @@ export default function ServiceProcess({ steps = DEFAULT_STEPS }: Props) {
     <section
       ref={ref}
       className="py-28 sm:py-36 overflow-hidden"
-      style={{ background: '#050608', borderTop: '1px solid rgba(255,255,255,0.04)' }}
+      style={{ background: '#f7f5f2', borderTop: '1px solid rgba(0,0,0,0.05)' }}
     >
       <div className="container mx-auto px-5 sm:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24">
@@ -60,12 +60,12 @@ export default function ServiceProcess({ steps = DEFAULT_STEPS }: Props) {
             </span>
             <h2
               className="font-display font-black leading-[0.88]"
-              style={{ fontSize: 'clamp(2.5rem, 4vw, 4rem)', color: '#f0f1f2', letterSpacing: '-0.02em' }}
+              style={{ fontSize: 'clamp(2.5rem, 4vw, 4rem)', color: '#1e2328', letterSpacing: '-0.02em' }}
             >
               Do projeto<br />
               <span style={{ color: 'rgba(240,241,242,0.18)' }}>à entrega</span>
             </h2>
-            <p className="mt-8 text-[14px] leading-[1.8]" style={{ color: 'rgba(180,188,198,0.4)' }}>
+            <p className="mt-8 text-[14px] leading-[1.8]" style={{ color: 'rgba(60,74,88,0.4)' }}>
               Cada etapa é documentada e comunicada ao cliente. Sem improvisos.
             </p>
           </motion.div>
@@ -76,7 +76,7 @@ export default function ServiceProcess({ steps = DEFAULT_STEPS }: Props) {
               {/* Vertical rail */}
               <div
                 className="absolute left-[18px] top-0 bottom-0 w-px hidden sm:block"
-                style={{ background: 'rgba(255,255,255,0.05)' }}
+                style={{ background: 'rgba(0,0,0,0.07)' }}
               />
 
               <div className="space-y-0">
@@ -93,9 +93,9 @@ export default function ServiceProcess({ steps = DEFAULT_STEPS }: Props) {
                       <div
                         className="w-9 h-9 flex items-center justify-center font-mono text-[11px] font-bold"
                         style={{
-                          background: i === 0 ? '#c4a040' : '#0c0e11',
-                          border: `1px solid ${i === 0 ? '#c4a040' : 'rgba(255,255,255,0.08)'}`,
-                          color: i === 0 ? '#050608' : 'rgba(180,188,198,0.4)',
+                          background: i === 0 ? '#c4a040' : '#eeeae3',
+                          border: `1px solid ${i === 0 ? '#c4a040' : 'rgba(0,0,0,0.09)'}`,
+                          color: i === 0 ? '#050608' : 'rgba(60,74,88,0.4)',
                         }}
                       >
                         {String(i + 1).padStart(2, '0')}
@@ -103,14 +103,14 @@ export default function ServiceProcess({ steps = DEFAULT_STEPS }: Props) {
                     </div>
 
                     {/* Content */}
-                    <div className="pb-10 last:pb-0" style={{ borderBottom: i < steps.length - 1 ? '1px solid rgba(255,255,255,0.04)' : 'none' }}>
+                    <div className="pb-10 last:pb-0" style={{ borderBottom: i < steps.length - 1 ? '1px solid rgba(0,0,0,0.05)' : 'none' }}>
                       <h3
                         className="font-display font-bold mb-3"
-                        style={{ fontSize: '1.05rem', color: '#f0f1f2', letterSpacing: '-0.01em' }}
+                        style={{ fontSize: '1.05rem', color: '#1e2328', letterSpacing: '-0.01em' }}
                       >
                         {step.title}
                       </h3>
-                      <p className="text-[13px] leading-[1.85]" style={{ color: 'rgba(180,188,198,0.4)' }}>
+                      <p className="text-[13px] leading-[1.85]" style={{ color: 'rgba(60,74,88,0.4)' }}>
                         {step.description}
                       </p>
                     </div>

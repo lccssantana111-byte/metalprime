@@ -36,7 +36,7 @@ export default function ProcessSection() {
   const inView = useInView(ref, { once: true, margin: '-60px' })
 
   return (
-    <section ref={ref} className="overflow-hidden bg-cross" style={{ background: '#0c0e11' }}>
+    <section ref={ref} className="overflow-hidden bg-cross" style={{ background: '#eeeae3' }}>
       <div className="grid grid-cols-1 lg:grid-cols-2">
 
         {/* Left — content */}
@@ -51,7 +51,7 @@ export default function ProcessSection() {
             </span>
             <h2
               className="font-display font-black leading-[0.88] mb-16"
-              style={{ fontSize: 'clamp(2.5rem, 5vw, 5rem)', color: '#f0f1f2', letterSpacing: '-0.02em' }}
+              style={{ fontSize: 'clamp(2.5rem, 5vw, 5rem)', color: '#1e2328', letterSpacing: '-0.02em' }}
             >
               Quatro etapas.<br />
               <span style={{ color: 'rgba(240,241,242,0.18)' }}>Zero improviso.</span>
@@ -75,13 +75,13 @@ export default function ProcessSection() {
                     {step.number}
                   </div>
                   {i < steps.length - 1 && (
-                    <div className="w-px flex-1 mt-3 min-h-[36px]" style={{ background: 'rgba(255,255,255,0.08)' }} />
+                    <div className="w-px flex-1 mt-3 min-h-[36px]" style={{ background: 'rgba(0,0,0,0.09)' }} />
                   )}
                 </div>
 
                 <div className="pb-12">
                   <div className="flex items-center gap-3 mb-3 flex-wrap">
-                    <h3 className="font-display font-bold" style={{ fontSize: '1.15rem', color: '#f0f1f2' }}>
+                    <h3 className="font-display font-bold" style={{ fontSize: '1.15rem', color: '#1e2328' }}>
                       {step.title}
                     </h3>
                     <span

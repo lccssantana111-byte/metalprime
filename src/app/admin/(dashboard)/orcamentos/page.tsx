@@ -33,7 +33,7 @@ export default async function AdminOrcamentosPage({
   return (
     <div>
       <div className="mb-8">
-        <h1 className="font-display text-3xl font-bold text-white">Orçamentos</h1>
+        <h1 className="font-display text-3xl font-bold text-foreground">Orçamentos</h1>
         <p className="text-metal mt-1">{total} orçamentos</p>
       </div>
 
@@ -52,7 +52,7 @@ export default async function AdminOrcamentosPage({
             className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${
               (statusFilter ?? '') === f.value
                 ? 'bg-amber-brand text-carbon'
-                : 'bg-graphite border border-metal-dark/30 text-metal hover:text-white'
+                : 'bg-graphite border border-metal-dark/30 text-metal hover:text-foreground'
             }`}
           >
             {f.label}
@@ -77,7 +77,7 @@ export default async function AdminOrcamentosPage({
                 <tr key={quote.id} className="hover:bg-steel/20 transition-colors">
                   <td className="px-5 py-4">
                     <Link href={`/admin/orcamentos/${quote.id}`} className="block">
-                      <p className="text-sm font-medium text-white hover:text-amber-brand transition-colors">
+                      <p className="text-sm font-medium text-foreground hover:text-amber-brand transition-colors">
                         {quote.name}
                       </p>
                       <p className="text-xs text-metal mt-0.5">{quote.phone}</p>
