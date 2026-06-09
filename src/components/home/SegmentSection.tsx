@@ -139,11 +139,12 @@ export default function SegmentSection() {
           >
             <h2
               style={{
-                fontFamily: 'var(--font-display)',
+                fontFamily: 'var(--font-barlow-condensed)',
                 fontWeight: 900,
                 fontSize: 'clamp(2.5rem, 5vw, 4.5rem)',
                 lineHeight: 0.92,
-                letterSpacing: '-0.03em',
+                letterSpacing: '0.01em',
+                textTransform: 'uppercase',
                 color: '#0f172a',
                 margin: 0,
               }}
@@ -284,10 +285,12 @@ export default function SegmentSection() {
                 {/* Headline */}
                 <h3
                   style={{
-                    fontFamily: 'var(--font-display)',
+                    fontFamily: 'var(--font-barlow-condensed)',
                     fontWeight: 700,
-                    fontSize: 'clamp(1.15rem, 2vw, 1.4rem)',
-                    lineHeight: 1.25,
+                    fontSize: 'clamp(1.3rem, 2vw, 1.6rem)',
+                    letterSpacing: '0.01em',
+                    textTransform: 'uppercase',
+                    lineHeight: 1.15,
                     color: seg.featured ? 'white' : '#0f172a',
                     marginBottom: '0.75rem',
                   }}

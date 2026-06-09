@@ -97,12 +97,13 @@ export default function CtaBanner() {
 
           <h2
             style={{
-              fontFamily: 'var(--font-display)',
+              fontFamily: 'var(--font-barlow-condensed)',
               fontWeight: 900,
               lineHeight: 0.92,
               fontSize: 'clamp(3rem, 6vw, 6.5rem)',
               color: 'white',
-              letterSpacing: '-0.03em',
+              letterSpacing: '0.01em',
+              textTransform: 'uppercase',
               margin: '0 0 2rem',
             }}
           >

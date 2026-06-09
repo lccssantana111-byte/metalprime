@@ -548,11 +548,13 @@ function ProjectCard({
           gap: '1rem',
         }}>
           <h3 style={{
-            fontFamily: 'var(--font-display)',
+            fontFamily: 'var(--font-barlow-condensed)',
             fontWeight: 700,
+            letterSpacing: '0.01em',
+            textTransform: 'uppercase',
             color: 'white',
-            lineHeight: 1.2,
-            fontSize: isLarge ? 'clamp(1.1rem, 2vw, 1.5rem)' : '1rem',
+            lineHeight: 1.1,
+            fontSize: isLarge ? 'clamp(1.2rem, 2vw, 1.6rem)' : '1.1rem',
             margin: 0,
           }}>
             {item.title}
