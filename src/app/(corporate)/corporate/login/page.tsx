@@ -68,10 +68,13 @@ export default function CorporateLoginPage() {
         {/* Brand */}
         <div className="text-center mb-10">
           <div className="inline-flex items-center gap-3 mb-6">
-            <div className="relative w-10 h-10 flex items-center justify-center">
-              <div className="absolute inset-0 border border-amber-brand/20 rotate-45" />
-              <div className="w-4 h-4 bg-amber-brand" style={{ clipPath: 'polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)' }} />
-            </div>
+            <img
+              src="/logo.png"
+              alt="Metalprime logo"
+              width={44}
+              height={44}
+              style={{ objectFit: 'contain', display: 'block' }}
+            />
             <span className="font-display font-bold text-foreground text-lg">
               {BRAND_NAME.split(' ')[0]}
               <span className="text-amber-brand">.</span>

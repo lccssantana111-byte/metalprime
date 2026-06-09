@@ -69,11 +69,13 @@ export default function AdminSidebar({ onClose }: Props) {
         className="h-[52px] flex items-center gap-2.5 px-4 shrink-0"
         style={{ borderBottom: '1px solid #f1f5f9' }}
       >
-        <svg width="20" height="20" viewBox="0 0 28 28" fill="none">
-          <path d="M14 2L26 8V20L14 26L2 20V8L14 2Z" stroke="#0f172a" strokeWidth="1.5" fill="none" />
-          <path d="M14 7L21 11V17L14 21L7 17V11L14 7Z" fill="#f97316" fillOpacity="0.15" stroke="#f97316" strokeWidth="1" />
-          <circle cx="14" cy="14" r="2.5" fill="#f97316" />
-        </svg>
+        <img
+          src="/logo.png"
+          alt="Metalprime logo"
+          width={28}
+          height={28}
+          style={{ objectFit: 'contain', display: 'block' }}
+        />
         <div className="flex items-baseline gap-1.5 min-w-0">
           <span className="font-display font-bold text-[13px] tracking-wider truncate" style={{ color: '#0f172a' }}>
             {BRAND_NAME.split(' ')[0]}

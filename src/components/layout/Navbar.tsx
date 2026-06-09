@@ -67,17 +67,13 @@ export default function Navbar() {
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3 shrink-0 group">
           <div style={{ transition: 'transform 0.3s cubic-bezier(0.32,0.72,0,1)' }} className="group-hover:scale-105">
-            <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-              <path
-                d="M14 2L26 8V20L14 26L2 20V8L14 2Z"
-                stroke={D ? 'rgba(255,255,255,0.45)' : '#0f172a'}
-                strokeWidth="1.5"
-                fill="none"
-                style={{ transition: 'stroke 0.4s' }}
-              />
-              <path d="M14 7L21 11V17L14 21L7 17V11L14 7Z" fill="#f97316" fillOpacity="0.14" stroke="#f97316" strokeWidth="1" />
-              <circle cx="14" cy="14" r="2.5" fill="#f97316" />
-            </svg>
+            <img
+              src="/logo.png"
+              alt="Metalprime logo"
+              width={36}
+              height={36}
+              style={{ objectFit: 'contain', display: 'block' }}
+            />
           </div>
           <span
             className="font-display font-black text-[20px] tracking-[0.08em] uppercase"

@@ -38,6 +38,7 @@ export const metadata: Metadata = {
   },
   description: COMPANY_TAGLINE,
   robots: { index: true, follow: true },
+  icons: { icon: '/logo.png', apple: '/logo.png' },
   openGraph: {
     type: 'website',
     locale: 'pt_BR',

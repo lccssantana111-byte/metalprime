@@ -47,13 +47,14 @@ export default function AdminLoginPage() {
 
         {/* Logo */}
         <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-12 h-12 rounded-2xl mb-4"
-            style={{ background: '#fff7ed', border: '1px solid #fed7aa' }}>
-            <svg width="24" height="24" viewBox="0 0 28 28" fill="none">
-              <path d="M14 2L26 8V20L14 26L2 20V8L14 2Z" stroke="#0f172a" strokeWidth="1.5" fill="none" />
-              <path d="M14 7L21 11V17L14 21L7 17V11L14 7Z" fill="#f97316" fillOpacity="0.15" stroke="#f97316" strokeWidth="1" />
-              <circle cx="14" cy="14" r="2.5" fill="#f97316" />
-            </svg>
+          <div className="inline-flex items-center justify-center mb-4">
+            <img
+              src="/logo.png"
+              alt="Metalprime logo"
+              width={56}
+              height={56}
+              style={{ objectFit: 'contain', display: 'block' }}
+            />
           </div>
           <h1 className="font-display text-[22px] font-black tracking-tight" style={{ color: '#0f172a' }}>
             {BRAND_NAME.split(' ')[0]}

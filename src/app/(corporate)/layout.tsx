@@ -19,13 +19,13 @@ export default async function CorporateLayout({
 
           <div className="max-w-6xl mx-auto px-4 h-14 flex items-center justify-between">
             <Link href="/corporate/dashboard" className="flex items-center gap-3 group">
-              <div className="relative w-7 h-7 flex items-center justify-center">
-                <div className="absolute inset-0 border border-amber-brand/30 rotate-45 transition-colors group-hover:border-amber-brand/60" />
-                <div
-                  className="w-3 h-3 bg-amber-brand"
-                  style={{ clipPath: 'polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)' }}
-                />
-              </div>
+              <img
+                src="/logo.png"
+                alt="Metalprime logo"
+                width={32}
+                height={32}
+                style={{ objectFit: 'contain', display: 'block' }}
+              />
               <div className="flex flex-col leading-none">
                 <span className="font-display font-bold text-foreground text-sm">
                   {BRAND_NAME.split(' ')[0]}
