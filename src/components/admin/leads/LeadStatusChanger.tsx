@@ -51,12 +51,12 @@ export default function LeadStatusChanger({ leadId, currentStatus }: Props) {
   return (
     <div className="space-y-3">
       <Select value={status} onValueChange={(v) => setStatus(v as LeadStatus)}>
-        <SelectTrigger className="bg-steel/30 border-metal-dark/40 text-foreground">
+        <SelectTrigger className="bg-slate-100 border-slate-200 text-foreground">
           <SelectValue />
         </SelectTrigger>
-        <SelectContent className="bg-graphite border-metal-dark/40">
+        <SelectContent className="bg-white border-slate-200">
           {statuses.map((s) => (
-            <SelectItem key={s} value={s} className="text-metal-light focus:text-foreground">
+            <SelectItem key={s} value={s} className="text-slate-600 focus:text-foreground">
               {LEAD_STATUS_LABELS[s]}
             </SelectItem>
           ))}

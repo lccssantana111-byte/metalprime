@@ -83,24 +83,24 @@ export function WhatsAppTemplates({ name, phone, service, status, whatsappNumber
   if (templates.length === 0) return null
 
   return (
-    <div className="bg-graphite border border-metal-dark/30 rounded-xl overflow-hidden">
+    <div className="bg-white border border-slate-200 rounded-xl overflow-hidden">
       <button
         onClick={() => setOpen((o) => !o)}
-        className="w-full flex items-center justify-between px-5 py-4 text-sm font-semibold text-foreground hover:bg-steel/20 transition-colors"
+        className="w-full flex items-center justify-between px-5 py-4 text-sm font-semibold text-foreground hover:bg-slate-100 transition-colors"
       >
         <span className="flex items-center gap-2">
           <MessageCircle className="w-4 h-4 text-[#25D366]" />
           Templates WhatsApp
         </span>
-        {open ? <ChevronUp className="w-4 h-4 text-metal-dark" /> : <ChevronDown className="w-4 h-4 text-metal-dark" />}
+        {open ? <ChevronUp className="w-4 h-4 text-slate-400" /> : <ChevronDown className="w-4 h-4 text-slate-400" />}
       </button>
 
       {open && (
-        <div className="px-5 pb-4 space-y-3 border-t border-metal-dark/20 pt-4">
+        <div className="px-5 pb-4 space-y-3 border-t border-slate-100 pt-4">
           {templates.map((tpl) => (
-            <div key={tpl.label} className="bg-steel/20 rounded-lg p-3">
+            <div key={tpl.label} className="bg-slate-100 rounded-lg p-3">
               <p className="text-xs font-medium text-amber-brand mb-1">{tpl.label}</p>
-              <p className="text-xs text-metal leading-relaxed mb-3">{tpl.message}</p>
+              <p className="text-xs text-slate-500 leading-relaxed mb-3">{tpl.message}</p>
               <a
                 href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(tpl.message)}`}
                 target="_blank"

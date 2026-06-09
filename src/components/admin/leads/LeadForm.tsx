@@ -75,39 +75,39 @@ export function LeadForm({ lead }: LeadFormProps) {
     <form onSubmit={handleSubmit} className="space-y-6">
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div className="lg:col-span-2 space-y-5">
-          <div className="bg-graphite border border-metal-dark/30 rounded-xl p-6 space-y-4">
+          <div className="bg-white border border-slate-200 rounded-xl p-6 space-y-4">
             <h3 className="font-semibold text-foreground">Dados do contato</h3>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <Label htmlFor="name" className="text-metal text-sm">Nome *</Label>
+                <Label htmlFor="name" className="text-slate-500 text-sm">Nome *</Label>
                 <Input id="name" value={fields.name} onChange={set('name')} required
-                  className="mt-1 bg-steel border-metal-dark/40 text-foreground" placeholder="Nome completo" />
+                  className="mt-1 bg-white border-slate-200 text-foreground" placeholder="Nome completo" />
               </div>
               <div>
-                <Label htmlFor="phone" className="text-metal text-sm">Telefone *</Label>
+                <Label htmlFor="phone" className="text-slate-500 text-sm">Telefone *</Label>
                 <Input id="phone" value={fields.phone} onChange={set('phone')} required
-                  className="mt-1 bg-steel border-metal-dark/40 text-foreground" placeholder="(11) 99999-9999" />
+                  className="mt-1 bg-white border-slate-200 text-foreground" placeholder="(11) 99999-9999" />
               </div>
               <div>
-                <Label htmlFor="email" className="text-metal text-sm">E-mail</Label>
+                <Label htmlFor="email" className="text-slate-500 text-sm">E-mail</Label>
                 <Input id="email" type="email" value={fields.email} onChange={set('email')}
-                  className="mt-1 bg-steel border-metal-dark/40 text-foreground" placeholder="email@empresa.com" />
+                  className="mt-1 bg-white border-slate-200 text-foreground" placeholder="email@empresa.com" />
               </div>
               <div>
-                <Label htmlFor="company" className="text-metal text-sm">Empresa</Label>
+                <Label htmlFor="company" className="text-slate-500 text-sm">Empresa</Label>
                 <Input id="company" value={fields.company} onChange={set('company')}
-                  className="mt-1 bg-steel border-metal-dark/40 text-foreground" placeholder="Nome da empresa" />
+                  className="mt-1 bg-white border-slate-200 text-foreground" placeholder="Nome da empresa" />
               </div>
               <div>
-                <Label htmlFor="city" className="text-metal text-sm">Cidade</Label>
+                <Label htmlFor="city" className="text-slate-500 text-sm">Cidade</Label>
                 <Input id="city" value={fields.city} onChange={set('city')}
-                  className="mt-1 bg-steel border-metal-dark/40 text-foreground" placeholder="São Paulo - SP" />
+                  className="mt-1 bg-white border-slate-200 text-foreground" placeholder="São Paulo - SP" />
               </div>
               <div>
-                <Label htmlFor="client_type" className="text-metal text-sm">Tipo de cliente</Label>
+                <Label htmlFor="client_type" className="text-slate-500 text-sm">Tipo de cliente</Label>
                 <select id="client_type" value={fields.client_type} onChange={set('client_type')}
-                  className="mt-1 w-full bg-steel border border-metal-dark/40 text-foreground rounded-md px-3 py-2 text-sm">
+                  className="mt-1 w-full bg-white border border-slate-200 text-foreground rounded-md px-3 py-2 text-sm">
                   {Object.entries(CLIENT_TYPE_LABELS).map(([k, v]) => (
                     <option key={k} value={k}>{v}</option>
                   ))}
@@ -116,13 +116,13 @@ export function LeadForm({ lead }: LeadFormProps) {
             </div>
           </div>
 
-          <div className="bg-graphite border border-metal-dark/30 rounded-xl p-6 space-y-4">
+          <div className="bg-white border border-slate-200 rounded-xl p-6 space-y-4">
             <h3 className="font-semibold text-foreground">Interesse e Observações</h3>
 
             <div>
-              <Label htmlFor="service" className="text-metal text-sm">Tipo de serviço</Label>
+              <Label htmlFor="service" className="text-slate-500 text-sm">Tipo de serviço</Label>
               <select id="service" value={fields.service} onChange={set('service')}
-                className="mt-1 w-full bg-steel border border-metal-dark/40 text-foreground rounded-md px-3 py-2 text-sm">
+                className="mt-1 w-full bg-white border border-slate-200 text-foreground rounded-md px-3 py-2 text-sm">
                 <option value="">Não definido</option>
                 {Object.entries(SERVICE_LABELS).map(([k, v]) => (
                   <option key={k} value={k}>{v}</option>
@@ -131,22 +131,22 @@ export function LeadForm({ lead }: LeadFormProps) {
             </div>
 
             <div>
-              <Label htmlFor="notes" className="text-metal text-sm">Observações</Label>
+              <Label htmlFor="notes" className="text-slate-500 text-sm">Observações</Label>
               <Textarea id="notes" value={fields.notes} onChange={set('notes')} rows={4}
-                className="mt-1 bg-steel border-metal-dark/40 text-foreground resize-none"
+                className="mt-1 bg-white border-slate-200 text-foreground resize-none"
                 placeholder="Anotações internas sobre este lead..." />
             </div>
           </div>
         </div>
 
         <div className="space-y-4">
-          <div className="bg-graphite border border-metal-dark/30 rounded-xl p-5 space-y-4">
+          <div className="bg-white border border-slate-200 rounded-xl p-5 space-y-4">
             <h3 className="font-semibold text-foreground">Pipeline</h3>
 
             <div>
-              <Label htmlFor="status" className="text-metal text-sm">Status</Label>
+              <Label htmlFor="status" className="text-slate-500 text-sm">Status</Label>
               <select id="status" value={fields.status} onChange={set('status')}
-                className="mt-1 w-full bg-steel border border-metal-dark/40 text-foreground rounded-md px-3 py-2 text-sm">
+                className="mt-1 w-full bg-white border border-slate-200 text-foreground rounded-md px-3 py-2 text-sm">
                 {[
                   { v: 'novo', l: 'Novo' },
                   { v: 'em_contato', l: 'Em Contato' },
@@ -159,9 +159,9 @@ export function LeadForm({ lead }: LeadFormProps) {
             </div>
 
             <div>
-              <Label htmlFor="source" className="text-metal text-sm">Origem</Label>
+              <Label htmlFor="source" className="text-slate-500 text-sm">Origem</Label>
               <select id="source" value={fields.source} onChange={set('source')}
-                className="mt-1 w-full bg-steel border border-metal-dark/40 text-foreground rounded-md px-3 py-2 text-sm">
+                className="mt-1 w-full bg-white border border-slate-200 text-foreground rounded-md px-3 py-2 text-sm">
                 {[
                   ['manual', 'Manual'],
                   ['website', 'Site'],
@@ -180,7 +180,7 @@ export function LeadForm({ lead }: LeadFormProps) {
           </Button>
 
           <Button type="button" variant="outline"
-            className="w-full border-metal-dark/40 text-metal hover:text-foreground"
+            className="w-full border-slate-200 text-slate-500 hover:text-foreground"
             onClick={() => router.back()}>
             Cancelar
           </Button>

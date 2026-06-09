@@ -116,15 +116,15 @@ export function ProjectForm({ project, clients = [] }: ProjectFormProps) {
     <form onSubmit={handleSubmit(onSubmit as Parameters<typeof handleSubmit>[0])} className="space-y-6">
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div className="lg:col-span-2 space-y-5">
-          <div className="bg-graphite border border-metal-dark/30 rounded-xl p-6 space-y-4">
+          <div className="bg-white border border-slate-200 rounded-xl p-6 space-y-4">
             <h3 className="font-semibold text-foreground">Dados do projeto</h3>
 
             <div>
-              <Label htmlFor="name" className="text-metal text-sm">Nome do projeto *</Label>
+              <Label htmlFor="name" className="text-slate-500 text-sm">Nome do projeto *</Label>
               <Input
                 id="name"
                 {...register('name')}
-                className="mt-1 bg-steel border-metal-dark/40 text-foreground"
+                className="mt-1 bg-white border-slate-200 text-foreground"
                 placeholder="Ex: Portão deslizante Condomínio ABC"
               />
               {errors.name && <p className="text-xs text-red-400 mt-1">{errors.name.message}</p>}
@@ -132,11 +132,11 @@ export function ProjectForm({ project, clients = [] }: ProjectFormProps) {
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <Label htmlFor="service" className="text-metal text-sm">Serviço *</Label>
+                <Label htmlFor="service" className="text-slate-500 text-sm">Serviço *</Label>
                 <select
                   id="service"
                   {...register('service')}
-                  className="mt-1 w-full bg-steel border border-metal-dark/40 text-foreground rounded-md px-3 py-2 text-sm"
+                  className="mt-1 w-full bg-white border border-slate-200 text-foreground rounded-md px-3 py-2 text-sm"
                 >
                   <option value="">Selecione</option>
                   {Object.entries(SERVICE_LABELS).map(([k, v]) => (
@@ -146,11 +146,11 @@ export function ProjectForm({ project, clients = [] }: ProjectFormProps) {
                 {errors.service && <p className="text-xs text-red-400 mt-1">{errors.service.message}</p>}
               </div>
               <div>
-                <Label htmlFor="status" className="text-metal text-sm">Status *</Label>
+                <Label htmlFor="status" className="text-slate-500 text-sm">Status *</Label>
                 <select
                   id="status"
                   {...register('status')}
-                  className="mt-1 w-full bg-steel border border-metal-dark/40 text-foreground rounded-md px-3 py-2 text-sm"
+                  className="mt-1 w-full bg-white border border-slate-200 text-foreground rounded-md px-3 py-2 text-sm"
                 >
                   {Object.entries(PROJECT_STATUS_LABELS).map(([k, v]) => (
                     <option key={k} value={k}>{v}</option>
@@ -161,11 +161,11 @@ export function ProjectForm({ project, clients = [] }: ProjectFormProps) {
 
             {clients.length > 0 && (
               <div>
-                <Label htmlFor="client_id" className="text-metal text-sm">Cliente</Label>
+                <Label htmlFor="client_id" className="text-slate-500 text-sm">Cliente</Label>
                 <select
                   id="client_id"
                   {...register('client_id')}
-                  className="mt-1 w-full bg-steel border border-metal-dark/40 text-foreground rounded-md px-3 py-2 text-sm"
+                  className="mt-1 w-full bg-white border border-slate-200 text-foreground rounded-md px-3 py-2 text-sm"
                 >
                   <option value="">Sem cliente vinculado</option>
                   {clients.map((c) => (
@@ -176,18 +176,18 @@ export function ProjectForm({ project, clients = [] }: ProjectFormProps) {
             )}
 
             <div>
-              <Label htmlFor="description" className="text-metal text-sm">Descrição</Label>
+              <Label htmlFor="description" className="text-slate-500 text-sm">Descrição</Label>
               <Textarea
                 id="description"
                 {...register('description')}
                 rows={3}
-                className="mt-1 bg-steel border-metal-dark/40 text-foreground resize-none"
+                className="mt-1 bg-white border-slate-200 text-foreground resize-none"
                 placeholder="Detalhes do projeto, especificações técnicas..."
               />
             </div>
           </div>
 
-          <div className="bg-graphite border border-metal-dark/30 rounded-xl p-6 space-y-4">
+          <div className="bg-white border border-slate-200 rounded-xl p-6 space-y-4">
             <h3 className="font-semibold text-foreground">Marcos do projeto</h3>
 
             <div className="space-y-3">
@@ -199,13 +199,13 @@ export function ProjectForm({ project, clients = [] }: ProjectFormProps) {
                       type="date"
                       value={m.due_date}
                       onChange={(e) => updateMilestoneDate(i, e.target.value)}
-                      className="w-40 bg-steel border-metal-dark/40 text-foreground text-sm"
+                      className="w-40 bg-white border-slate-200 text-foreground text-sm"
                     />
                   </div>
                   <button
                     type="button"
                     onClick={() => removeMilestone(i)}
-                    className="text-metal-dark hover:text-red-400 transition-colors"
+                    className="text-slate-400 hover:text-red-400 transition-colors"
                   >
                     <Trash2 className="w-4 h-4" />
                   </button>
@@ -219,13 +219,13 @@ export function ProjectForm({ project, clients = [] }: ProjectFormProps) {
                 onChange={(e) => setNewMilestone(e.target.value)}
                 onKeyDown={(e) => e.key === 'Enter' && (e.preventDefault(), addMilestone())}
                 placeholder="Novo marco (ex: Medição no local)"
-                className="bg-steel border-metal-dark/40 text-foreground"
+                className="bg-white border-slate-200 text-foreground"
               />
               <Button
                 type="button"
                 onClick={addMilestone}
                 variant="outline"
-                className="border-metal-dark/40 text-metal hover:text-foreground shrink-0"
+                className="border-slate-200 text-slate-500 hover:text-foreground shrink-0"
               >
                 <Plus className="w-4 h-4" />
               </Button>
@@ -234,48 +234,48 @@ export function ProjectForm({ project, clients = [] }: ProjectFormProps) {
         </div>
 
         <div className="space-y-4">
-          <div className="bg-graphite border border-metal-dark/30 rounded-xl p-5 space-y-4">
+          <div className="bg-white border border-slate-200 rounded-xl p-5 space-y-4">
             <h3 className="font-semibold text-foreground">Financeiro</h3>
             <div>
-              <Label htmlFor="contract_value" className="text-metal text-sm">Valor do contrato (R$)</Label>
+              <Label htmlFor="contract_value" className="text-slate-500 text-sm">Valor do contrato (R$)</Label>
               <Input
                 id="contract_value"
                 type="number"
                 step="0.01"
                 {...register('contract_value')}
-                className="mt-1 bg-steel border-metal-dark/40 text-foreground"
+                className="mt-1 bg-white border-slate-200 text-foreground"
               />
             </div>
             <div>
-              <Label htmlFor="amount_paid" className="text-metal text-sm">Valor recebido (R$)</Label>
+              <Label htmlFor="amount_paid" className="text-slate-500 text-sm">Valor recebido (R$)</Label>
               <Input
                 id="amount_paid"
                 type="number"
                 step="0.01"
                 {...register('amount_paid')}
-                className="mt-1 bg-steel border-metal-dark/40 text-foreground"
+                className="mt-1 bg-white border-slate-200 text-foreground"
               />
             </div>
           </div>
 
-          <div className="bg-graphite border border-metal-dark/30 rounded-xl p-5 space-y-4">
+          <div className="bg-white border border-slate-200 rounded-xl p-5 space-y-4">
             <h3 className="font-semibold text-foreground">Datas</h3>
             <div>
-              <Label htmlFor="start_date" className="text-metal text-sm">Início</Label>
+              <Label htmlFor="start_date" className="text-slate-500 text-sm">Início</Label>
               <Input
                 id="start_date"
                 type="date"
                 {...register('start_date')}
-                className="mt-1 bg-steel border-metal-dark/40 text-foreground"
+                className="mt-1 bg-white border-slate-200 text-foreground"
               />
             </div>
             <div>
-              <Label htmlFor="estimated_end" className="text-metal text-sm">Previsão de término</Label>
+              <Label htmlFor="estimated_end" className="text-slate-500 text-sm">Previsão de término</Label>
               <Input
                 id="estimated_end"
                 type="date"
                 {...register('estimated_end')}
-                className="mt-1 bg-steel border-metal-dark/40 text-foreground"
+                className="mt-1 bg-white border-slate-200 text-foreground"
               />
             </div>
           </div>
@@ -291,7 +291,7 @@ export function ProjectForm({ project, clients = [] }: ProjectFormProps) {
           <Button
             type="button"
             variant="outline"
-            className="w-full border-metal-dark/40 text-metal hover:text-foreground"
+            className="w-full border-slate-200 text-slate-500 hover:text-foreground"
             onClick={() => router.back()}
           >
             Cancelar

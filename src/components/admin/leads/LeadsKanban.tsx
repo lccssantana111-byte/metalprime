@@ -104,7 +104,7 @@ export function LeadsKanban({ initialLeads }: LeadsKanbanProps) {
                     ref={provided.innerRef}
                     {...provided.droppableProps}
                     className={`flex-1 p-2 space-y-2 transition-colors rounded-b-xl ${
-                      snapshot.isDraggingOver ? 'bg-steel/20' : ''
+                      snapshot.isDraggingOver ? 'bg-slate-100' : ''
                     }`}
                   >
                     {colLeads.map((lead, index) => (
@@ -128,7 +128,7 @@ export function LeadsKanban({ initialLeads }: LeadsKanbanProps) {
 
                     {colLeads.length === 0 && !snapshot.isDraggingOver && (
                       <div className="text-center py-6">
-                        <p className="text-xs text-metal-dark">Sem leads aqui</p>
+                        <p className="text-xs text-slate-400">Sem leads aqui</p>
                       </div>
                     )}
                   </div>

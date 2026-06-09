@@ -10,7 +10,7 @@ interface RecentLeadsProps {
 
 export function RecentLeads({ leads }: RecentLeadsProps) {
   if (leads.length === 0) {
-    return <p className="text-sm text-metal text-center py-6">Nenhum lead ainda.</p>
+    return <p className="text-sm text-slate-500 text-center py-6">Nenhum lead ainda.</p>
   }
 
   return (
@@ -19,16 +19,16 @@ export function RecentLeads({ leads }: RecentLeadsProps) {
         <Link
           key={lead.id}
           href={`/admin/leads/${lead.id}`}
-          className="flex items-center justify-between py-3 hover:bg-steel/10 -mx-2 px-2 rounded transition-colors"
+          className="flex items-center justify-between py-3 hover:bg-slate-50 -mx-2 px-2 rounded transition-colors"
         >
           <div className="min-w-0 flex-1">
             <p className="text-sm font-medium text-foreground truncate hover:text-amber-brand transition-colors">
               {lead.name}
             </p>
             <div className="flex items-center gap-2 mt-0.5">
-              <span className="text-xs text-metal-dark">{formatPhone(lead.phone)}</span>
+              <span className="text-xs text-slate-400">{formatPhone(lead.phone)}</span>
               {lead.service && (
-                <span className="text-xs text-metal-dark">· {SERVICE_LABELS[lead.service]}</span>
+                <span className="text-xs text-slate-400">· {SERVICE_LABELS[lead.service]}</span>
               )}
             </div>
           </div>
@@ -39,7 +39,7 @@ export function RecentLeads({ leads }: RecentLeadsProps) {
             >
               {LEAD_STATUS_LABELS[lead.status]}
             </Badge>
-            <span className="text-xs text-metal-dark">{timeAgo(lead.created_at)}</span>
+            <span className="text-xs text-slate-400">{timeAgo(lead.created_at)}</span>
           </div>
         </Link>
       ))}

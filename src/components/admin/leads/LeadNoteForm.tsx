@@ -39,8 +39,8 @@ export default function LeadNoteForm({ leadId }: Props) {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="border-t border-metal-dark/20 pt-5">
-      <p className="text-xs font-medium text-metal-dark mb-3 uppercase tracking-wider">
+    <form onSubmit={handleSubmit} className="border-t border-slate-100 pt-5">
+      <p className="text-xs font-medium text-slate-400 mb-3 uppercase tracking-wider">
         Adicionar nota
       </p>
       <Textarea
@@ -48,7 +48,7 @@ export default function LeadNoteForm({ leadId }: Props) {
         onChange={(e) => setNote(e.target.value)}
         placeholder="Registre uma ligação, visita, e-mail ou qualquer interação..."
         rows={3}
-        className="bg-steel/20 border-metal-dark/30 focus:border-amber-brand/40 text-foreground placeholder:text-metal-dark resize-none mb-3"
+        className="bg-slate-100 border-slate-200 focus:border-amber-brand/40 text-foreground placeholder:text-slate-400 resize-none mb-3"
       />
       <Button
         type="submit"
