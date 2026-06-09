@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { ArrowUpRight, MapPin, Clock, Mail, Phone } from 'lucide-react'
+import { ArrowUpRight, MapPin, Mail, Phone } from 'lucide-react'
 import {
   BRAND_NAME,
   COMPANY_ADDRESS,
@@ -11,402 +11,139 @@ import {
 } from '@/lib/constants'
 
 const services = [
-  { label: 'Portões', href: '/servicos/portoes', code: 'SRV-01' },
-  { label: 'Grades e Cercas', href: '/servicos/grades-e-cercas', code: 'SRV-02' },
-  { label: 'Escadas Metálicas', href: '/servicos/escadas', code: 'SRV-03' },
-  { label: 'Corrimões', href: '/servicos/corrimoes', code: 'SRV-04' },
-  { label: 'Estruturas Metálicas', href: '/servicos/estruturas-metalicas', code: 'SRV-05' },
-  { label: 'Projetos Sob Medida', href: '/servicos/sob-medida', code: 'SRV-06' },
+  { label: 'Portões', href: '/servicos/portoes' },
+  { label: 'Grades e Cercas', href: '/servicos/grades-e-cercas' },
+  { label: 'Escadas Metálicas', href: '/servicos/escadas' },
+  { label: 'Corrimões', href: '/servicos/corrimoes' },
+  { label: 'Estruturas Metálicas', href: '/servicos/estruturas-metalicas' },
+  { label: 'Projetos Sob Medida', href: '/servicos/sob-medida' },
 ]
 
 const company = [
   { label: 'Sobre Nós', href: '/sobre' },
   { label: 'Portfólio', href: '/portfolio' },
-  { label: 'Solicitar Orçamento', href: '/orcamento' },
+  { label: 'Orçamento', href: '/orcamento' },
   { label: 'Contato', href: '/contato' },
-]
-
-const socials = [
-  { label: 'Instagram', href: 'https://instagram.com/metalprime' },
-  { label: 'Facebook', href: 'https://facebook.com/metalprime' },
-  { label: 'WhatsApp', href: `https://wa.me/${WHATSAPP_NUMBER}` },
 ]
 
 export default function Footer() {
   const year = new Date().getFullYear()
 
   return (
-    <footer style={{
-      background: '#0A0A0A',
-      color: '#EAEAEA',
-      fontFamily: 'var(--font-ibm-mono), monospace',
-      position: 'relative',
-      overflow: 'hidden',
-    }}>
+    <footer className="bg-[#111] text-white">
 
-      {/* Scanlines overlay */}
-      <div style={{
-        position: 'absolute',
-        inset: 0,
-        backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.08) 2px, rgba(0,0,0,0.08) 4px)',
-        pointerEvents: 'none',
-        zIndex: 0,
-      }} />
-
-      {/* CTA strip — laranja industrial */}
-      <div style={{
-        borderBottom: '1px solid #222',
-        position: 'relative',
-        zIndex: 1,
-      }}>
-        <div style={{
-          maxWidth: '1440px',
-          margin: '0 auto',
-          padding: '0 2rem',
-          display: 'grid',
-          gridTemplateColumns: '1fr auto',
-          alignItems: 'center',
-          gap: '2rem',
-          minHeight: '88px',
-        }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '2rem' }}>
-            <span style={{
-              fontFamily: 'var(--font-ibm-mono)',
-              fontSize: '9px',
-              letterSpacing: '0.4em',
-              textTransform: 'uppercase',
-              color: '#f97316',
-              whiteSpace: 'nowrap',
-            }}>[ PROJETO PRONTO ]</span>
-            <span style={{
-              fontFamily: 'var(--font-outfit)',
-              fontWeight: 900,
-              fontSize: 'clamp(1.1rem, 2.5vw, 1.6rem)',
-              letterSpacing: '-0.02em',
-              textTransform: 'uppercase',
-              color: '#EAEAEA',
-              lineHeight: 1,
-            }}>
-              Solicite seu orçamento sem compromisso
-            </span>
-          </div>
+      {/* CTA faixa */}
+      <div className="border-b border-white/10">
+        <div className="container mx-auto px-5 sm:px-8 py-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+          <p className="font-display font-black text-[clamp(1.5rem,3vw,2.2rem)] leading-tight tracking-tight uppercase text-white max-w-xl">
+            Pronto para começar<br />seu projeto?
+          </p>
           <Link
             href="/orcamento"
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '8px',
-              background: '#f97316',
-              color: '#0A0A0A',
-              fontFamily: 'var(--font-ibm-mono)',
-              fontSize: '11px',
-              fontWeight: 700,
-              letterSpacing: '0.15em',
-              textTransform: 'uppercase',
-              padding: '14px 28px',
-              border: 'none',
-              cursor: 'pointer',
-              whiteSpace: 'nowrap',
-              textDecoration: 'none',
-              transition: 'background 0.15s',
-            }}
-            onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = '#ea580c' }}
-            onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = '#f97316' }}
+            className="group inline-flex items-center gap-2 bg-brand text-white font-semibold text-[13px] px-6 py-3.5 transition-colors hover:bg-brand-hover shrink-0"
           >
-            ORÇAMENTO <ArrowUpRight size={12} />
+            Solicitar orçamento
+            <ArrowUpRight className="w-4 h-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
           </Link>
         </div>
       </div>
 
-      {/* Main grid */}
-      <div style={{
-        maxWidth: '1440px',
-        margin: '0 auto',
-        padding: '0 2rem',
-        position: 'relative',
-        zIndex: 1,
-        display: 'grid',
-        gridTemplateColumns: 'repeat(12, 1fr)',
-        gap: '0',
-        borderBottom: '1px solid #222',
-      }}>
+      {/* Main */}
+      <div className="container mx-auto px-5 sm:px-8 py-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-12">
 
-        {/* Brand column — 4 cols */}
-        <div style={{
-          gridColumn: 'span 4',
-          borderRight: '1px solid #222',
-          padding: '3rem 2.5rem 3rem 0',
-        }}>
-          <Link href="/" style={{ display: 'inline-flex', alignItems: 'center', gap: '12px', textDecoration: 'none', marginBottom: '2rem' }}>
-            <img src="/logo.png" alt="Metalprime" width={28} height={28} style={{ objectFit: 'contain', filter: 'brightness(0) invert(1)' }} />
-            <span style={{
-              fontFamily: 'var(--font-outfit)',
-              fontWeight: 900,
-              fontSize: '13px',
-              letterSpacing: '0.1em',
-              textTransform: 'uppercase',
-              color: '#EAEAEA',
-            }}>
-              {BRAND_NAME.split(' ')[0]}<span style={{ color: '#f97316' }}>.</span>
-            </span>
-          </Link>
-
-          {/* Tagline */}
-          <p style={{
-            fontSize: '12px',
-            lineHeight: 1.7,
-            color: '#555',
-            marginBottom: '2.5rem',
-            maxWidth: '260px',
-          }}>
-            Excelência em engenharia metálica há mais de 20 anos. Estruturas para residências, condomínios, construtoras e indústrias em São Paulo.
-          </p>
-
-          {/* Divider */}
-          <div style={{ borderTop: '1px solid #222', marginBottom: '2rem' }} />
-
-          {/* Phone */}
-          <a
-            href={`https://wa.me/${WHATSAPP_NUMBER}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{ textDecoration: 'none', display: 'block', marginBottom: '1.5rem' }}
-          >
-            <span style={{
-              fontFamily: 'var(--font-outfit)',
-              fontWeight: 900,
-              fontSize: 'clamp(1.2rem, 2vw, 1.5rem)',
-              letterSpacing: '-0.02em',
-              color: '#EAEAEA',
-              display: 'block',
-              lineHeight: 1,
-              marginBottom: '4px',
-              transition: 'color 0.15s',
-            }}
-              onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = '#f97316' }}
-              onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = '#EAEAEA' }}
-            >
-              {COMPANY_PHONE}
-            </span>
-            <span style={{ fontSize: '9px', letterSpacing: '0.3em', color: '#444', textTransform: 'uppercase' }}>
-              [ WHATSAPP DISPONÍVEL ]
-            </span>
-          </a>
-
-          {/* Email */}
-          <a
-            href={`mailto:${COMPANY_EMAIL}`}
-            style={{ display: 'flex', alignItems: 'center', gap: '8px', textDecoration: 'none', marginBottom: '1rem' }}
-          >
-            <Mail size={11} style={{ color: '#444' }} />
-            <span style={{ fontSize: '11px', color: '#555', transition: 'color 0.15s' }}
-              onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = '#EAEAEA' }}
-              onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = '#555' }}
-            >
-              {COMPANY_EMAIL}
-            </span>
-          </a>
-
-          {/* Address */}
-          <div style={{ display: 'flex', alignItems: 'flex-start', gap: '8px' }}>
-            <MapPin size={11} style={{ color: '#444', marginTop: '2px', flexShrink: 0 }} />
-            <span style={{ fontSize: '10px', color: '#444', lineHeight: 1.6 }}>
-              {COMPANY_ADDRESS}
-            </span>
-          </div>
-        </div>
-
-        {/* Services — 3 cols */}
-        <div style={{
-          gridColumn: 'span 3',
-          borderRight: '1px solid #222',
-          padding: '3rem 2rem',
-        }}>
-          <div style={{
-            fontSize: '9px',
-            letterSpacing: '0.4em',
-            textTransform: 'uppercase',
-            color: '#f97316',
-            marginBottom: '2rem',
-          }}>
-            — SERVIÇOS
-          </div>
-          <ul style={{ listStyle: 'none', margin: 0, padding: 0 }}>
-            {services.map((s) => (
-              <li key={s.href} style={{ borderBottom: '1px solid #1a1a1a' }}>
-                <Link
-                  href={s.href}
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'space-between',
-                    padding: '10px 0',
-                    textDecoration: 'none',
-                    color: '#555',
-                    fontSize: '12px',
-                    transition: 'color 0.15s',
-                  }}
-                  onMouseEnter={(e) => {
-                    const el = e.currentTarget as HTMLElement
-                    el.style.color = '#EAEAEA'
-                    const code = el.querySelector('[data-code]') as HTMLElement
-                    if (code) code.style.color = '#f97316'
-                  }}
-                  onMouseLeave={(e) => {
-                    const el = e.currentTarget as HTMLElement
-                    el.style.color = '#555'
-                    const code = el.querySelector('[data-code]') as HTMLElement
-                    if (code) code.style.color = '#2a2a2a'
-                  }}
-                >
-                  <span>{s.label}</span>
-                  <span data-code="true" style={{ fontSize: '9px', letterSpacing: '0.15em', color: '#2a2a2a', transition: 'color 0.15s' }}>
-                    {s.code}
-                  </span>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        {/* Company — 2 cols */}
-        <div style={{
-          gridColumn: 'span 2',
-          borderRight: '1px solid #222',
-          padding: '3rem 2rem',
-        }}>
-          <div style={{
-            fontSize: '9px',
-            letterSpacing: '0.4em',
-            textTransform: 'uppercase',
-            color: '#f97316',
-            marginBottom: '2rem',
-          }}>
-            — EMPRESA
-          </div>
-          <ul style={{ listStyle: 'none', margin: 0, padding: 0, marginBottom: '2rem' }}>
-            {company.map((c) => (
-              <li key={c.href} style={{ marginBottom: '12px' }}>
-                <Link
-                  href={c.href}
-                  style={{ textDecoration: 'none', fontSize: '12px', color: '#555', transition: 'color 0.15s' }}
-                  onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = '#EAEAEA' }}
-                  onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = '#555' }}
-                >
-                  {c.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-
-          <div style={{ borderTop: '1px solid #1a1a1a', paddingTop: '1.5rem' }}>
-            <Link
-              href="/admin"
-              style={{ display: 'block', fontSize: '10px', color: '#2a2a2a', textDecoration: 'none', marginBottom: '8px', letterSpacing: '0.1em', transition: 'color 0.15s' }}
-              onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = '#444' }}
-              onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = '#2a2a2a' }}
-            >
-              › ÁREA ADMIN
-            </Link>
-            <Link
-              href="/corporate/dashboard"
-              style={{ display: 'block', fontSize: '10px', color: '#2a2a2a', textDecoration: 'none', letterSpacing: '0.1em', transition: 'color 0.15s' }}
-              onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = '#444' }}
-              onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = '#2a2a2a' }}
-            >
-              › PORTAL CLIENTE
-            </Link>
-          </div>
-        </div>
-
-        {/* Atendimento — 3 cols */}
-        <div style={{
-          gridColumn: 'span 3',
-          padding: '3rem 0 3rem 2rem',
-        }}>
-          <div style={{
-            fontSize: '9px',
-            letterSpacing: '0.4em',
-            textTransform: 'uppercase',
-            color: '#f97316',
-            marginBottom: '2rem',
-          }}>
-            — ATENDIMENTO
-          </div>
-
-          {/* Hours block */}
-          <div style={{
-            border: '1px solid #222',
-            padding: '1.25rem',
-            marginBottom: '2rem',
-          }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px' }}>
-              <Clock size={10} style={{ color: '#f97316' }} />
-              <span style={{ fontSize: '9px', letterSpacing: '0.25em', color: '#555', textTransform: 'uppercase' }}>
-                HORÁRIO COMERCIAL
+          {/* Brand */}
+          <div className="lg:col-span-4">
+            <Link href="/" className="inline-flex items-center gap-3 mb-7">
+              <img src="/logo.png" alt="Metalprime" width={28} height={28} className="object-contain brightness-0 invert" />
+              <span className="font-display font-black text-[13px] tracking-widest uppercase text-white">
+                {BRAND_NAME.split(' ')[0]}<span className="text-brand">.</span>
               </span>
-            </div>
-            <div style={{ fontSize: '11px', color: '#EAEAEA', lineHeight: 1.8 }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                <span style={{ color: '#555' }}>SEG — SEX</span>
-                <span>08:00 — 18:00</span>
-              </div>
-              <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                <span style={{ color: '#555' }}>SÁB</span>
-                <span>08:00 — 13:00</span>
-              </div>
-              <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                <span style={{ color: '#555' }}>DOM</span>
-                <span style={{ color: '#333' }}>FECHADO</span>
+            </Link>
+
+            <p className="text-[13px] leading-relaxed text-white/40 mb-8 max-w-[260px]">
+              Engenharia metálica há mais de 20 anos. Residências, condomínios, construtoras e indústrias em São Paulo.
+            </p>
+
+            <div className="space-y-3">
+              <a href={`https://wa.me/${WHATSAPP_NUMBER}`} target="_blank" rel="noopener noreferrer"
+                className="flex items-center gap-2.5 group">
+                <Phone className="w-3.5 h-3.5 text-white/20" />
+                <span className="font-display font-bold text-[1.1rem] text-white group-hover:text-brand transition-colors">
+                  {COMPANY_PHONE}
+                </span>
+              </a>
+              <a href={`mailto:${COMPANY_EMAIL}`}
+                className="flex items-center gap-2.5 group">
+                <Mail className="w-3.5 h-3.5 text-white/20" />
+                <span className="text-[12px] text-white/40 group-hover:text-white/80 transition-colors font-mono">
+                  {COMPANY_EMAIL}
+                </span>
+              </a>
+              <div className="flex items-start gap-2.5">
+                <MapPin className="w-3.5 h-3.5 text-white/20 mt-0.5 shrink-0" />
+                <span className="text-[12px] text-white/30 font-mono leading-relaxed">
+                  {COMPANY_ADDRESS}
+                </span>
               </div>
             </div>
           </div>
 
-          {/* Status indicator */}
-          <div style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '8px',
-            marginBottom: '2.5rem',
-          }}>
-            <div style={{
-              width: '6px',
-              height: '6px',
-              background: '#4AF626',
-              boxShadow: '0 0 6px #4AF626',
-            }} />
-            <span style={{ fontSize: '9px', letterSpacing: '0.25em', color: '#4AF626', textTransform: 'uppercase' }}>
-              SISTEMA ONLINE
-            </span>
+          {/* Serviços */}
+          <div className="lg:col-span-3">
+            <p className="text-[10px] font-mono tracking-[0.3em] uppercase text-white/30 mb-6">Serviços</p>
+            <ul className="space-y-3">
+              {services.map((s) => (
+                <li key={s.href}>
+                  <Link href={s.href}
+                    className="text-[13px] text-white/50 hover:text-white transition-colors block">
+                    {s.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
 
-          {/* Socials */}
-          <div style={{ borderTop: '1px solid #1a1a1a', paddingTop: '1.5rem' }}>
-            <div style={{ fontSize: '9px', letterSpacing: '0.35em', color: '#333', textTransform: 'uppercase', marginBottom: '1rem' }}>
-              REDES SOCIAIS
+          {/* Empresa */}
+          <div className="lg:col-span-2">
+            <p className="text-[10px] font-mono tracking-[0.3em] uppercase text-white/30 mb-6">Empresa</p>
+            <ul className="space-y-3">
+              {company.map((c) => (
+                <li key={c.href}>
+                  <Link href={c.href}
+                    className="text-[13px] text-white/50 hover:text-white transition-colors block">
+                    {c.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Horários + redes */}
+          <div className="lg:col-span-3">
+            <p className="text-[10px] font-mono tracking-[0.3em] uppercase text-white/30 mb-6">Atendimento</p>
+
+            <div className="space-y-1.5 mb-8">
+              <div className="flex justify-between text-[12px] font-mono">
+                <span className="text-white/30">Seg – Sex</span>
+                <span className="text-white/60">8h – 18h</span>
+              </div>
+              <div className="flex justify-between text-[12px] font-mono">
+                <span className="text-white/30">Sábado</span>
+                <span className="text-white/60">8h – 13h</span>
+              </div>
             </div>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-              {socials.map((s) => (
-                <a
-                  key={s.label}
-                  href={s.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: '6px',
-                    fontSize: '11px',
-                    color: '#444',
-                    textDecoration: 'none',
-                    transition: 'color 0.15s',
-                    letterSpacing: '0.08em',
-                    textTransform: 'uppercase',
-                  }}
-                  onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = '#f97316' }}
-                  onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = '#444' }}
-                >
-                  <span style={{ color: '#2a2a2a' }}>///</span> {s.label}
+
+            <p className="text-[10px] font-mono tracking-[0.3em] uppercase text-white/30 mb-4">Redes</p>
+            <div className="flex flex-col gap-2.5">
+              {[
+                { label: 'Instagram', href: 'https://instagram.com/metalprime' },
+                { label: 'Facebook', href: 'https://facebook.com/metalprime' },
+                { label: 'WhatsApp', href: `https://wa.me/${WHATSAPP_NUMBER}` },
+              ].map((s) => (
+                <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer"
+                  className="text-[13px] text-white/50 hover:text-brand transition-colors w-fit">
+                  {s.label}
                 </a>
               ))}
             </div>
@@ -414,35 +151,20 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Bottom bar */}
-      <div style={{
-        maxWidth: '1440px',
-        margin: '0 auto',
-        padding: '1.25rem 2rem',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        position: 'relative',
-        zIndex: 1,
-      }}>
-        <span style={{ fontSize: '10px', color: '#333', letterSpacing: '0.1em' }}>
-          © {year} {BRAND_NAME.toUpperCase()}. TODOS OS DIREITOS RESERVADOS.
-        </span>
-
-        <div style={{ display: 'flex', alignItems: 'center', gap: '2rem' }}>
-          <span style={{ fontSize: '9px', letterSpacing: '0.15em', color: '#2a2a2a', textTransform: 'uppercase' }}>
-            CREA-SP 000000000
-          </span>
-          <span style={{ color: '#222', fontSize: '10px' }}>|</span>
-          <span style={{ fontSize: '9px', letterSpacing: '0.15em', color: '#2a2a2a', textTransform: 'uppercase' }}>
-            SÃO PAULO, SP — BRASIL
-          </span>
-          <span style={{ color: '#222', fontSize: '10px' }}>|</span>
-          <span style={{ fontSize: '9px', letterSpacing: '0.15em', color: '#2a2a2a', textTransform: 'uppercase' }}>
-            REV 2.6 / BUILD {year}
-          </span>
+      {/* Bottom */}
+      <div className="border-t border-white/10">
+        <div className="container mx-auto px-5 sm:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <p className="text-[11px] font-mono text-white/20">
+            © {year} {BRAND_NAME}. Todos os direitos reservados.
+          </p>
+          <div className="flex items-center gap-5 text-[10px] font-mono text-white/15">
+            <span>CREA-SP 000000000</span>
+            <span className="text-white/10">·</span>
+            <span>São Paulo, SP</span>
+          </div>
         </div>
       </div>
+
     </footer>
   )
 }
