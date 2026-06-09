@@ -5,7 +5,6 @@ import { motion, useInView } from 'framer-motion'
 import Link from 'next/link'
 import { ArrowRight, Phone, MessageCircle, ShieldCheck, Clock, Wrench } from 'lucide-react'
 import { COMPANY_PHONE, WHATSAPP_NUMBER } from '@/lib/constants'
-import { PHOTOS } from '@/lib/images'
 
 const trust = [
   { icon: ShieldCheck, text: 'ART em 100% dos projetos' },
@@ -21,41 +20,64 @@ export default function CtaBanner() {
     <section
       ref={ref}
       style={{
-        colorScheme: 'light',
         position: 'relative',
         overflow: 'hidden',
-        minHeight: '640px',
+        minHeight: '620px',
         display: 'flex',
       }}
     >
-      {/* Full-bleed photo */}
+      {/* Brushed metal texture */}
       <img
-        src={PHOTOS.cta}
-        alt="MetalPrime — estrutura metálica em São Paulo"
+        src="/Brushed Metal Sheets.png"
+        alt=""
+        aria-hidden="true"
         style={{
           position: 'absolute',
           inset: 0,
           width: '100%',
           height: '100%',
           objectFit: 'cover',
-          objectPosition: 'center 40%',
+          objectPosition: 'center center',
         }}
       />
 
-      {/* Gradient overlay — strong left, lighter right */}
+      {/* Dark gradient — left heavy to right lighter, letting texture show on the right */}
       <div
         style={{
           position: 'absolute',
           inset: 0,
-          background: 'linear-gradient(105deg, rgba(2,6,23,0.96) 0%, rgba(2,6,23,0.88) 45%, rgba(2,6,23,0.65) 100%)',
+          background: 'linear-gradient(105deg, rgba(6,8,9,0.96) 0%, rgba(6,8,9,0.85) 45%, rgba(6,8,9,0.60) 100%)',
         }}
       />
-      {/* Bottom vignette */}
+
+      {/* Amber tint — very subtle, ties texture to brand */}
       <div
         style={{
           position: 'absolute',
           inset: 0,
-          background: 'linear-gradient(to top, rgba(2,6,23,0.5) 0%, transparent 50%)',
+          background: 'rgba(249,115,22,0.04)',
+          mixBlendMode: 'screen',
+        }}
+      />
+
+      {/* Bottom vignette for smooth footer transition */}
+      <div
+        style={{
+          position: 'absolute',
+          inset: 0,
+          background: 'linear-gradient(to top, rgba(6,8,9,0.6) 0%, transparent 40%)',
+        }}
+      />
+
+      {/* Grain overlay */}
+      <div
+        style={{
+          position: 'absolute',
+          inset: 0,
+          opacity: 0.02,
+          backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E")`,
+          backgroundSize: '200px 200px',
+          pointerEvents: 'none',
         }}
       />
 
@@ -81,19 +103,15 @@ export default function CtaBanner() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
         >
-          <span
+          {/* Amber rule */}
+          <div
             style={{
-              fontFamily: 'var(--font-mono)',
-              fontSize: '10px',
-              letterSpacing: '0.45em',
-              textTransform: 'uppercase',
-              color: '#f97316',
-              display: 'block',
-              marginBottom: '2rem',
+              width: '40px',
+              height: '2px',
+              background: '#f97316',
+              marginBottom: '1.75rem',
             }}
-          >
-            Vamos conversar
-          </span>
+          />
 
           <h2
             style={{
@@ -104,7 +122,7 @@ export default function CtaBanner() {
               color: 'white',
               letterSpacing: '0.01em',
               textTransform: 'uppercase',
-              margin: '0 0 2rem',
+              margin: '0 0 1.75rem',
             }}
           >
             Seu projeto<br />
@@ -121,24 +139,37 @@ export default function CtaBanner() {
               maxWidth: '400px',
             }}
           >
-            Somos a empresa de serralheria com mais obras entregues na Grande São Paulo —
-            fabricação própria, ART em todos os projetos estruturais.
+            A empresa de serralheria com mais obras entregues na Grande São Paulo.
+            Fabricação própria, ART em todos os projetos estruturais.
           </p>
 
-          {/* Trust badges */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-            {trust.map(({ icon: Icon, text }) => (
+          {/* Trust badges — horizontal row */}
+          <div
+            style={{
+              display: 'flex',
+              flexWrap: 'wrap',
+              gap: '16px 24px',
+              alignItems: 'center',
+            }}
+          >
+            {trust.map(({ icon: Icon, text }, i) => (
               <div
                 key={text}
                 style={{
                   display: 'flex',
                   alignItems: 'center',
-                  gap: '10px',
-                  fontSize: '13px',
-                  color: 'rgba(148,163,184,0.8)',
+                  gap: '7px',
+                  fontSize: '12px',
+                  color: 'rgba(148,163,184,0.75)',
+                  fontFamily: 'var(--font-ibm-mono)',
+                  letterSpacing: '0.04em',
+                  textTransform: 'uppercase',
                 }}
               >
-                <Icon style={{ width: '14px', height: '14px', color: '#f97316', flexShrink: 0 }} />
+                {i > 0 && (
+                  <span style={{ color: 'rgba(249,115,22,0.35)', marginRight: '8px' }}>|</span>
+                )}
+                <Icon style={{ width: '13px', height: '13px', color: '#f97316', flexShrink: 0 }} />
                 {text}
               </div>
             ))}
@@ -148,175 +179,185 @@ export default function CtaBanner() {
         {/* RIGHT: Contact card */}
         <motion.div
           style={{ flex: '0 1 380px', minWidth: 0 }}
-          initial={{ opacity: 0, x: 40 }}
+          initial={{ opacity: 0, x: 60 }}
           animate={inView ? { opacity: 1, x: 0 } : {}}
           transition={{ duration: 0.9, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
         >
           <div
             style={{
-              background: 'rgba(255,255,255,0.05)',
-              border: '1px solid rgba(255,255,255,0.12)',
-              borderRadius: '24px',
-              padding: '2.5rem',
-              backdropFilter: 'blur(12px)',
+              background: 'rgba(6,8,9,0.65)',
+              border: '1px solid rgba(249,115,22,0.25)',
+              borderRadius: '16px',
+              overflow: 'hidden',
+              backdropFilter: 'blur(16px)',
+              WebkitBackdropFilter: 'blur(16px)',
             }}
           >
-            {/* Orange top accent */}
+            {/* Full-width amber top bar */}
             <div
               style={{
                 height: '3px',
-                background: '#f97316',
-                borderRadius: '2px',
-                marginBottom: '2rem',
-                width: '48px',
+                background: 'linear-gradient(90deg, #f97316 0%, #fbbf24 50%, #f97316 100%)',
+                width: '100%',
               }}
             />
 
-            <p
-              style={{
-                fontFamily: 'var(--font-mono)',
-                fontSize: '10px',
-                letterSpacing: '0.35em',
-                textTransform: 'uppercase',
-                color: '#64748b',
-                marginBottom: '1rem',
-              }}
-            >
-              Ligue agora
-            </p>
-
-            {/* Phone number */}
-            <a
-              href={`tel:${COMPANY_PHONE}`}
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '12px',
-                marginBottom: '2rem',
-                textDecoration: 'none',
-                transition: 'opacity 0.2s',
-              }}
-              onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.opacity = '0.8' }}
-              onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.opacity = '1' }}
-            >
-              <div
+            <div style={{ padding: '2rem 2.25rem 2.25rem' }}>
+              <p
                 style={{
-                  width: '44px',
-                  height: '44px',
+                  fontFamily: 'var(--font-ibm-mono)',
+                  fontSize: '10px',
+                  letterSpacing: '0.4em',
+                  textTransform: 'uppercase',
+                  color: '#f97316',
+                  marginBottom: '1rem',
+                }}
+              >
+                Ligue agora
+              </p>
+
+              {/* Phone number */}
+              <a
+                href={`tel:${COMPANY_PHONE}`}
+                style={{
                   display: 'flex',
                   alignItems: 'center',
-                  justifyContent: 'center',
-                  background: '#fff7ed',
-                  borderRadius: '12px',
-                  flexShrink: 0,
-                }}
-              >
-                <Phone style={{ width: '18px', height: '18px', color: '#f97316' }} />
-              </div>
-              <span
-                style={{
-                  fontFamily: 'var(--font-display)',
-                  fontWeight: 900,
-                  fontSize: 'clamp(1.5rem, 3vw, 2rem)',
-                  color: 'white',
-                  letterSpacing: '-0.02em',
-                }}
-              >
-                {COMPANY_PHONE}
-              </span>
-            </a>
-
-            {/* Divider */}
-            <div style={{ height: '1px', background: 'rgba(255,255,255,0.08)', marginBottom: '1.5rem' }} />
-
-            {/* CTAs */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-              <Link
-                href="/orcamento"
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  gap: '10px',
-                  padding: '16px 28px',
-                  borderRadius: '999px',
-                  background: '#f97316',
-                  color: 'white',
-                  fontSize: '14px',
-                  fontWeight: 700,
+                  gap: '12px',
+                  marginBottom: '1.75rem',
                   textDecoration: 'none',
-                  boxShadow: '0 4px 20px rgba(249,115,22,0.4)',
-                  transition: 'background 0.2s, box-shadow 0.2s, transform 0.15s',
-                  cursor: 'pointer',
+                  transition: 'opacity 0.2s',
                 }}
-                onMouseEnter={(e) => {
-                  const el = e.currentTarget as HTMLElement
-                  el.style.background = '#ea580c'
-                  el.style.boxShadow = '0 6px 28px rgba(249,115,22,0.5)'
-                  el.style.transform = 'translateY(-1px)'
-                }}
-                onMouseLeave={(e) => {
-                  const el = e.currentTarget as HTMLElement
-                  el.style.background = '#f97316'
-                  el.style.boxShadow = '0 4px 20px rgba(249,115,22,0.4)'
-                  el.style.transform = 'translateY(0)'
-                }}
+                onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.opacity = '0.75' }}
+                onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.opacity = '1' }}
               >
-                Solicitar Orçamento Gratuito
-                <ArrowRight style={{ width: '16px', height: '16px' }} />
-              </Link>
-
-              <a
-                href={`https://wa.me/${WHATSAPP_NUMBER}?text=Olá! Gostaria de solicitar um orçamento.`}
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  gap: '10px',
-                  padding: '15px 28px',
-                  borderRadius: '999px',
-                  border: '1px solid rgba(255,255,255,0.18)',
-                  background: 'transparent',
-                  color: 'rgba(255,255,255,0.8)',
-                  fontSize: '14px',
-                  fontWeight: 500,
-                  textDecoration: 'none',
-                  transition: 'all 0.2s',
-                  cursor: 'pointer',
-                }}
-                onMouseEnter={(e) => {
-                  const el = e.currentTarget as HTMLElement
-                  el.style.borderColor = 'rgba(255,255,255,0.35)'
-                  el.style.color = 'white'
-                  el.style.background = 'rgba(255,255,255,0.06)'
-                }}
-                onMouseLeave={(e) => {
-                  const el = e.currentTarget as HTMLElement
-                  el.style.borderColor = 'rgba(255,255,255,0.18)'
-                  el.style.color = 'rgba(255,255,255,0.8)'
-                  el.style.background = 'transparent'
-                }}
-              >
-                <MessageCircle style={{ width: '16px', height: '16px' }} />
-                Falar pelo WhatsApp
+                <div
+                  style={{
+                    width: '42px',
+                    height: '42px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    background: 'rgba(249,115,22,0.12)',
+                    border: '1px solid rgba(249,115,22,0.3)',
+                    borderRadius: '10px',
+                    flexShrink: 0,
+                  }}
+                >
+                  <Phone style={{ width: '16px', height: '16px', color: '#f97316' }} />
+                </div>
+                <span
+                  style={{
+                    fontFamily: 'var(--font-barlow-condensed)',
+                    fontWeight: 900,
+                    fontSize: 'clamp(1.5rem, 3vw, 2rem)',
+                    color: 'white',
+                    letterSpacing: '0.02em',
+                  }}
+                >
+                  {COMPANY_PHONE}
+                </span>
               </a>
-            </div>
 
-            {/* Bottom note */}
-            <p
-              style={{
-                marginTop: '1.5rem',
-                fontSize: '11px',
-                fontFamily: 'var(--font-mono)',
-                color: 'rgba(100,116,139,0.7)',
-                textAlign: 'center',
-                lineHeight: 1.6,
-              }}
-            >
-              +5.000 obras entregues · Grande São Paulo
-            </p>
+              {/* Divider */}
+              <div
+                style={{
+                  height: '1px',
+                  background: 'linear-gradient(90deg, rgba(249,115,22,0.2), transparent)',
+                  marginBottom: '1.5rem',
+                }}
+              />
+
+              {/* CTAs */}
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                <Link
+                  href="/orcamento"
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '10px',
+                    padding: '15px 28px',
+                    borderRadius: '10px',
+                    background: '#f97316',
+                    color: 'white',
+                    fontSize: '14px',
+                    fontWeight: 700,
+                    letterSpacing: '0.03em',
+                    textDecoration: 'none',
+                    boxShadow: '0 4px 20px rgba(249,115,22,0.35)',
+                    transition: 'background 0.2s, box-shadow 0.2s, transform 0.15s',
+                    cursor: 'pointer',
+                  }}
+                  onMouseEnter={(e) => {
+                    const el = e.currentTarget as HTMLElement
+                    el.style.background = '#ea580c'
+                    el.style.boxShadow = '0 6px 28px rgba(249,115,22,0.5)'
+                    el.style.transform = 'translateY(-1px)'
+                  }}
+                  onMouseLeave={(e) => {
+                    const el = e.currentTarget as HTMLElement
+                    el.style.background = '#f97316'
+                    el.style.boxShadow = '0 4px 20px rgba(249,115,22,0.35)'
+                    el.style.transform = 'translateY(0)'
+                  }}
+                >
+                  Solicitar Orçamento Gratuito
+                  <ArrowRight style={{ width: '15px', height: '15px' }} />
+                </Link>
+
+                <a
+                  href={`https://wa.me/${WHATSAPP_NUMBER}?text=Olá! Gostaria de solicitar um orçamento.`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '10px',
+                    padding: '14px 28px',
+                    borderRadius: '10px',
+                    border: '1px solid rgba(255,255,255,0.14)',
+                    background: 'rgba(255,255,255,0.04)',
+                    color: 'rgba(255,255,255,0.75)',
+                    fontSize: '14px',
+                    fontWeight: 500,
+                    textDecoration: 'none',
+                    transition: 'all 0.2s',
+                    cursor: 'pointer',
+                  }}
+                  onMouseEnter={(e) => {
+                    const el = e.currentTarget as HTMLElement
+                    el.style.borderColor = 'rgba(34,197,94,0.4)'
+                    el.style.color = 'rgba(134,239,172,0.9)'
+                    el.style.background = 'rgba(34,197,94,0.06)'
+                  }}
+                  onMouseLeave={(e) => {
+                    const el = e.currentTarget as HTMLElement
+                    el.style.borderColor = 'rgba(255,255,255,0.14)'
+                    el.style.color = 'rgba(255,255,255,0.75)'
+                    el.style.background = 'rgba(255,255,255,0.04)'
+                  }}
+                >
+                  <MessageCircle style={{ width: '15px', height: '15px' }} />
+                  Falar pelo WhatsApp
+                </a>
+              </div>
+
+              {/* Bottom note */}
+              <p
+                style={{
+                  marginTop: '1.5rem',
+                  fontSize: '10px',
+                  fontFamily: 'var(--font-ibm-mono)',
+                  color: 'rgba(100,116,139,0.6)',
+                  textAlign: 'center',
+                  letterSpacing: '0.08em',
+                  textTransform: 'uppercase',
+                }}
+              >
+                +5.000 obras entregues / Grande São Paulo
+              </p>
+            </div>
           </div>
         </motion.div>
       </div>
