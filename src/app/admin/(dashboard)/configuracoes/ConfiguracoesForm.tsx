@@ -79,7 +79,7 @@ export function ConfiguracoesForm({ settings }: ConfiguracoesFormProps) {
                   value={values[field.key] ?? ''}
                   onChange={(e) => handleChange(field.key, e.target.value)}
                   placeholder={field.placeholder}
-                  className="mt-1 bg-steel border-slate-200 text-foreground placeholder:text-slate-400"
+                  className="mt-1 bg-white border-slate-200 text-slate-800 placeholder:text-slate-400 focus:border-amber-brand/60"
                 />
                 {field.hint && (
                   <p className="text-xs text-slate-400 mt-1">{field.hint}</p>
