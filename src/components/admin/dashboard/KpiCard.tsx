@@ -1,14 +1,25 @@
 'use client'
 
 import Link from 'next/link'
+import { TrendingUp, TrendingDown, Minus } from 'lucide-react'
 
 interface Props {
   label: string
   value: string | number
   sub: string
-  trend: React.ReactNode
+  trend?: { current: number; previous: number } | null
   href: string
   primary: boolean
+}
+
+function Trend({ current, previous }: { current: number; previous: number }) {
+  if (previous === 0) return null
+  const diff = current - previous
+  const pct = Math.round((diff / previous) * 100)
+  const base = 'inline-flex items-center gap-0.5 text-[11px] font-mono tabular-nums'
+  if (diff === 0) return <span className={base} style={{ color: '#94a3b8' }}><Minus className="w-3 h-3" />0%</span>
+  if (diff > 0) return <span className={base} style={{ color: '#16a34a' }}><TrendingUp className="w-3 h-3" />+{pct}%</span>
+  return <span className={base} style={{ color: '#dc2626' }}><TrendingDown className="w-3 h-3" />{pct}%</span>
 }
 
 export function KpiCard({ label, value, sub, trend, href, primary }: Props) {
@@ -37,7 +48,7 @@ export function KpiCard({ label, value, sub, trend, href, primary }: Props) {
           >
             {label}
           </span>
-          {trend}
+          {trend && <Trend current={trend.current} previous={trend.previous} />}
         </div>
         <div className="h-px mb-3" style={{ background: primary ? '#fed7aa' : '#f1f5f9' }} />
         <div

@@ -1,6 +1,6 @@
 import { getDashboardMetrics } from '@/lib/queries/metrics'
 import { formatBRL } from '@/lib/utils'
-import { TrendingUp, TrendingDown, Minus, AlertTriangle, UserX } from 'lucide-react'
+import { AlertTriangle, UserX } from 'lucide-react'
 import { LeadsLineChart } from '@/components/admin/dashboard/LeadsLineChart'
 import { ConversionFunnel } from '@/components/admin/dashboard/ConversionFunnel'
 import { ServicesPieChart } from '@/components/admin/dashboard/ServicesPieChart'
@@ -11,15 +11,6 @@ import { ViewAllLink } from '@/components/admin/dashboard/ViewAllLink'
 
 export const dynamic = 'force-dynamic'
 
-function Trend({ current, previous }: { current: number; previous: number }) {
-  if (previous === 0) return null
-  const diff = current - previous
-  const pct = Math.round((diff / previous) * 100)
-  const base = 'inline-flex items-center gap-0.5 text-[11px] font-mono tabular-nums'
-  if (diff === 0) return <span className={base} style={{ color: '#94a3b8' }}><Minus className="w-3 h-3" />0%</span>
-  if (diff > 0) return <span className={`${base}`} style={{ color: '#16a34a' }}><TrendingUp className="w-3 h-3" />+{pct}%</span>
-  return <span className={`${base}`} style={{ color: '#dc2626' }}><TrendingDown className="w-3 h-3" />{pct}%</span>
-}
 
 export default async function AdminDashboardPage() {
   const metrics = await getDashboardMetrics().catch(() => null)
@@ -38,7 +29,7 @@ export default async function AdminDashboardPage() {
       label: 'Leads hoje',
       value: metrics?.leads_today ?? 0,
       sub: `${metrics?.leads_this_month ?? 0} este mês`,
-      trend: <Trend current={metrics?.leads_this_month ?? 0} previous={metrics?.leads_prev_month ?? 0} />,
+      trend: { current: metrics?.leads_this_month ?? 0, previous: metrics?.leads_prev_month ?? 0 },
       href: '/admin/leads',
       primary: true,
     },
