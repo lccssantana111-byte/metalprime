@@ -74,7 +74,7 @@ export default function ServicesGrid() {
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          style={{ marginBottom: '3.5rem', display: 'flex', flexWrap: 'wrap', alignItems: 'flex-end', justifyContent: 'space-between', gap: '1.5rem' }}
+          style={{ marginBottom: '3.5rem', display: 'flex', flexWrap: 'wrap', alignItems: 'flex-end', gap: '1.5rem' }}
         >
           <div>
             <span style={{ fontFamily: 'var(--font-mono)', fontSize: '10px', letterSpacing: '0.45em', textTransform: 'uppercase', color: '#f97316', display: 'block', marginBottom: '1.25rem' }}>
@@ -84,15 +84,6 @@ export default function ServicesGrid() {
               Cada obra,<br />uma <span style={{ color: '#f97316' }}>especialidade</span>.
             </h2>
           </div>
-          <Link
-            href="/servicos"
-            style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', fontSize: '11px', fontFamily: 'var(--font-mono)', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(148,163,184,0.6)', textDecoration: 'none', transition: 'color 0.2s' }}
-            onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = '#f97316' }}
-            onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = 'rgba(148,163,184,0.6)' }}
-          >
-            Ver todos os serviços
-            <ArrowUpRight style={{ width: '13px', height: '13px' }} />
-          </Link>
         </motion.div>
 
         {/* Grid: list + image */}
@@ -228,6 +219,59 @@ export default function ServicesGrid() {
           </div>
 
         </div>
+
+        {/* CTA abaixo dos cards */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.55, ease: [0.16, 1, 0.3, 1] }}
+          style={{ display: 'flex', justifyContent: 'center', marginTop: '3.5rem' }}
+        >
+          <Link
+            href="/servicos"
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '10px',
+              padding: '13px 14px 13px 26px',
+              borderRadius: '999px',
+              background: '#f97316',
+              color: 'white',
+              fontSize: '14px',
+              fontWeight: 700,
+              textDecoration: 'none',
+              boxShadow: '0 4px 24px rgba(249,115,22,0.4)',
+              transition: 'background 0.25s, box-shadow 0.25s, transform 0.2s',
+            }}
+            onMouseEnter={(e) => {
+              const el = e.currentTarget as HTMLElement
+              el.style.background = '#ea580c'
+              el.style.boxShadow = '0 8px 36px rgba(249,115,22,0.5)'
+              el.style.transform = 'translateY(-1px)'
+            }}
+            onMouseLeave={(e) => {
+              const el = e.currentTarget as HTMLElement
+              el.style.background = '#f97316'
+              el.style.boxShadow = '0 4px 24px rgba(249,115,22,0.4)'
+              el.style.transform = 'translateY(0)'
+            }}
+          >
+            Ver todos os serviços
+            <span style={{
+              width: '32px',
+              height: '32px',
+              borderRadius: '50%',
+              background: 'rgba(255,255,255,0.2)',
+              display: 'inline-flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              flexShrink: 0,
+            }}>
+              <ArrowUpRight style={{ width: '14px', height: '14px' }} />
+            </span>
+          </Link>
+        </motion.div>
+
       </div>
 
       <style>{`

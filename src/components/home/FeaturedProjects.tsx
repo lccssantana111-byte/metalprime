@@ -148,7 +148,7 @@ export default function FeaturedProjects({ items }: Props) {
             </h2>
           </div>
 
-          {/* Right — counter + link */}
+          {/* Right — counter */}
           <div
             className="fp-header-right"
             style={{
@@ -165,19 +165,16 @@ export default function FeaturedProjects({ items }: Props) {
               flexShrink: 0,
               alignSelf: 'flex-end',
             }} />
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', alignItems: 'flex-end' }}>
-              <span style={{
-                fontFamily: 'var(--font-mono)',
-                fontSize: '9px',
-                letterSpacing: '0.25em',
-                textTransform: 'uppercase',
-                color: 'rgba(148,163,184,0.5)',
-                whiteSpace: 'nowrap',
-              }}>
-                {String(allItems.length).padStart(2, '0')} / OBRAS EM DESTAQUE
-              </span>
-              <HeaderLink />
-            </div>
+            <span style={{
+              fontFamily: 'var(--font-mono)',
+              fontSize: '9px',
+              letterSpacing: '0.25em',
+              textTransform: 'uppercase',
+              color: 'rgba(148,163,184,0.5)',
+              whiteSpace: 'nowrap',
+            }}>
+              {String(allItems.length).padStart(2, '0')} / OBRAS EM DESTAQUE
+            </span>
           </div>
         </motion.div>
 
@@ -270,6 +267,16 @@ export default function FeaturedProjects({ items }: Props) {
           onGoTo={goTo}
         />
 
+        {/* CTA abaixo dos cards */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.55, ease }}
+          style={{ display: 'flex', justifyContent: 'center', marginTop: '3rem' }}
+        >
+          <PortfolioButton />
+        </motion.div>
+
       </div>
 
       <style>{`
@@ -300,28 +307,50 @@ export default function FeaturedProjects({ items }: Props) {
   )
 }
 
-function HeaderLink() {
-  const [hovered, setHovered] = useState(false)
+function PortfolioButton() {
   return (
     <Link
       href="/portfolio"
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
       style={{
-        fontFamily: 'var(--font-mono)',
-        fontSize: '11px',
-        letterSpacing: '0.15em',
-        textTransform: 'uppercase',
-        color: hovered ? '#f97316' : 'rgba(255,255,255,0.6)',
-        textDecoration: 'none',
         display: 'inline-flex',
         alignItems: 'center',
-        gap: '6px',
-        transition: 'color 0.2s ease',
-        whiteSpace: 'nowrap',
+        gap: '10px',
+        padding: '13px 14px 13px 26px',
+        borderRadius: '999px',
+        background: '#f97316',
+        color: 'white',
+        fontSize: '14px',
+        fontWeight: 700,
+        textDecoration: 'none',
+        boxShadow: '0 4px 24px rgba(249,115,22,0.4)',
+        transition: 'background 0.25s, box-shadow 0.25s, transform 0.2s',
+      }}
+      onMouseEnter={(e) => {
+        const el = e.currentTarget as HTMLElement
+        el.style.background = '#ea580c'
+        el.style.boxShadow = '0 8px 36px rgba(249,115,22,0.5)'
+        el.style.transform = 'translateY(-1px)'
+      }}
+      onMouseLeave={(e) => {
+        const el = e.currentTarget as HTMLElement
+        el.style.background = '#f97316'
+        el.style.boxShadow = '0 4px 24px rgba(249,115,22,0.4)'
+        el.style.transform = 'translateY(0)'
       }}
     >
-      VER TODO O PORTFÓLIO →
+      Ver todo o portfólio
+      <span style={{
+        width: '32px',
+        height: '32px',
+        borderRadius: '50%',
+        background: 'rgba(255,255,255,0.2)',
+        display: 'inline-flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        flexShrink: 0,
+      }}>
+        <ArrowUpRight style={{ width: '14px', height: '14px' }} />
+      </span>
     </Link>
   )
 }
