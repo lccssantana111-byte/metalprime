@@ -144,7 +144,7 @@ export default function HeroSection() {
               margin: '0 0 2.5rem',
             }}
           >
-            Fabricação própria, ART em 100% dos projetos estruturais.
+            Fabricação própria, ART em 100% dos projetos estruturais.<br />
             Mais de 5.000 obras entregues na Grande São Paulo.
           </motion.p>
 
