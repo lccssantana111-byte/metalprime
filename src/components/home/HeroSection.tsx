@@ -95,7 +95,7 @@ export default function HeroSection() {
             style={{
               fontFamily: 'var(--font-barlow-condensed)',
               fontWeight: 900,
-              lineHeight: 0.88,
+              lineHeight: 0.92,
               letterSpacing: '0.01em',
               textTransform: 'uppercase',
               fontSize: 'clamp(4.5rem, 8vw, 8.5rem)',
@@ -105,7 +105,7 @@ export default function HeroSection() {
             <motion.span
               style={{
                 display: 'inline-block',
-                padding: '0.08em 0.1em 0.12em 0',
+                padding: '0.04em 0.1em 0.06em 0',
                 background: 'linear-gradient(90deg, #ffffff 0%, #94a3b8 40%, #ffffff 60%, #e2e8f0 80%, #ffffff 100%)',
                 backgroundSize: '300% auto',
                 WebkitBackgroundClip: 'text',
@@ -119,7 +119,7 @@ export default function HeroSection() {
             <motion.span
               style={{
                 display: 'inline-block',
-                padding: '0.08em 0.1em 0.18em 0',
+                padding: '0.04em 0.1em 0.06em 0',
                 background: 'linear-gradient(90deg, #f97316 0%, #fbbf24 35%, #f97316 55%, #ea580c 80%, #f97316 100%)',
                 backgroundSize: '300% auto',
                 WebkitBackgroundClip: 'text',
