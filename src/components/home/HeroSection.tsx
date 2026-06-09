@@ -26,12 +26,10 @@ export default function HeroSection() {
         background: '#0f172a',
       }}
     >
-      {/* ── Video background ── */}
-      <video
-        autoPlay
-        muted
-        loop
-        playsInline
+      {/* ── Image background ── */}
+      <img
+        src="/Robotic Shark Humanoid.png"
+        alt=""
         style={{
           position: 'absolute',
           inset: 0,
@@ -40,9 +38,7 @@ export default function HeroSection() {
           objectFit: 'cover',
           objectPosition: 'center',
         }}
-      >
-        <source src="/hf_20260608_195916_3239efa3-7a74-4f9c-93b5-021be42fc4c8.mp4" type="video/mp4" />
-      </video>
+      />
 
       {/* ── Overlays ── */}
       <div
