@@ -18,23 +18,23 @@ const COLUMNS: LeadStatus[] = [
 ]
 
 const COLUMN_COLORS: Record<LeadStatus, string> = {
-  novo: 'border-blue-500/30',
-  em_contato: 'border-yellow-500/30',
-  proposta_enviada: 'border-purple-500/30',
-  em_negociacao: 'border-orange-500/30',
-  ganho: 'border-green-500/30',
-  perdido: 'border-red-500/30',
-  sem_interesse: 'border-gray-500/30',
+  novo: 'border-blue-200',
+  em_contato: 'border-yellow-200',
+  proposta_enviada: 'border-purple-200',
+  em_negociacao: 'border-orange-200',
+  ganho: 'border-green-200',
+  perdido: 'border-red-200',
+  sem_interesse: 'border-slate-200',
 }
 
 const COLUMN_HEADER_COLORS: Record<LeadStatus, string> = {
-  novo: 'bg-blue-500/10 text-blue-300',
-  em_contato: 'bg-yellow-500/10 text-yellow-300',
-  proposta_enviada: 'bg-purple-500/10 text-purple-300',
-  em_negociacao: 'bg-orange-500/10 text-orange-300',
-  ganho: 'bg-green-500/10 text-green-300',
-  perdido: 'bg-red-500/10 text-red-300',
-  sem_interesse: 'bg-gray-500/10 text-gray-300',
+  novo: 'bg-blue-50 text-blue-600',
+  em_contato: 'bg-yellow-50 text-yellow-700',
+  proposta_enviada: 'bg-purple-50 text-purple-600',
+  em_negociacao: 'bg-orange-50 text-orange-600',
+  ganho: 'bg-green-50 text-green-700',
+  perdido: 'bg-red-50 text-red-600',
+  sem_interesse: 'bg-slate-50 text-slate-500',
 }
 
 interface LeadsKanbanProps {
@@ -87,13 +87,13 @@ export function LeadsKanban({ initialLeads }: LeadsKanbanProps) {
           return (
             <div
               key={col}
-              className={`flex-shrink-0 w-64 bg-graphite border rounded-xl flex flex-col ${COLUMN_COLORS[col]}`}
+              className={`flex-shrink-0 w-64 bg-slate-50 border rounded-xl flex flex-col ${COLUMN_COLORS[col]}`}
             >
               <div className={`flex items-center justify-between px-3 py-2.5 rounded-t-xl ${COLUMN_HEADER_COLORS[col]}`}>
                 <span className="text-xs font-semibold uppercase tracking-wider">
                   {LEAD_STATUS_LABELS[col]}
                 </span>
-                <span className="text-xs font-bold bg-black/20 rounded-full px-2 py-0.5">
+                <span className="text-xs font-bold bg-black/10 rounded-full px-2 py-0.5">
                   {colLeads.length}
                 </span>
               </div>
@@ -104,7 +104,7 @@ export function LeadsKanban({ initialLeads }: LeadsKanbanProps) {
                     ref={provided.innerRef}
                     {...provided.droppableProps}
                     className={`flex-1 p-2 space-y-2 transition-colors rounded-b-xl ${
-                      snapshot.isDraggingOver ? 'bg-slate-100' : ''
+                      snapshot.isDraggingOver ? 'bg-white/80' : ''
                     }`}
                   >
                     {colLeads.map((lead, index) => (
