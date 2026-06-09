@@ -121,7 +121,7 @@ export default function HeroSection() {
               style={{
                 display: 'block',
                 wordSpacing: '-0.12em',
-                paddingBottom: '0.18em',
+                paddingBottom: '0.28em',
                 background: 'linear-gradient(90deg, #f97316 0%, #fbbf24 35%, #f97316 55%, #ea580c 80%, #f97316 100%)',
                 backgroundSize: '300% auto',
                 WebkitBackgroundClip: 'text',
