@@ -72,7 +72,7 @@ export default function HeroSection() {
           variants={container}
           initial="hidden"
           animate="visible"
-          style={{ maxWidth: '460px' }}
+          style={{ maxWidth: '620px' }}
         >
           {/* Eyebrow */}
           <motion.p
