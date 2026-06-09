@@ -31,7 +31,7 @@ export default async function AdminProjetosPage() {
       <div className="flex items-center justify-between mb-8">
         <div>
           <h1 className="font-display text-3xl font-bold text-foreground">Projetos</h1>
-          <p className="text-metal mt-1">{(projects ?? []).length} projetos</p>
+          <p className="text-slate-500 mt-1">{(projects ?? []).length} projetos</p>
         </div>
         <Button asChild className="bg-amber-brand hover:bg-amber-light text-carbon font-semibold">
           <Link href="/admin/projetos/novo">
@@ -41,31 +41,31 @@ export default async function AdminProjetosPage() {
         </Button>
       </div>
 
-      <div className="bg-graphite border border-metal-dark/30 rounded-xl overflow-hidden">
+      <div className="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm">
         <div className="overflow-x-auto">
           <table className="w-full">
             <thead>
-              <tr className="border-b border-metal-dark/30">
-                <th className="text-left px-5 py-4 text-xs font-medium text-metal-dark uppercase">Projeto</th>
-                <th className="text-left px-5 py-4 text-xs font-medium text-metal-dark uppercase hidden md:table-cell">Cliente</th>
-                <th className="text-left px-5 py-4 text-xs font-medium text-metal-dark uppercase">Status</th>
-                <th className="text-left px-5 py-4 text-xs font-medium text-metal-dark uppercase hidden lg:table-cell">Valor</th>
-                <th className="text-left px-5 py-4 text-xs font-medium text-metal-dark uppercase hidden lg:table-cell">Prazo</th>
+              <tr className="border-b border-slate-100 bg-slate-50/70">
+                <th className="text-left px-5 py-4 text-xs font-medium text-slate-400 uppercase tracking-wider">Projeto</th>
+                <th className="text-left px-5 py-4 text-xs font-medium text-slate-400 uppercase tracking-wider hidden md:table-cell">Cliente</th>
+                <th className="text-left px-5 py-4 text-xs font-medium text-slate-400 uppercase tracking-wider">Status</th>
+                <th className="text-left px-5 py-4 text-xs font-medium text-slate-400 uppercase tracking-wider hidden lg:table-cell">Valor</th>
+                <th className="text-left px-5 py-4 text-xs font-medium text-slate-400 uppercase tracking-wider hidden lg:table-cell">Prazo</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-metal-dark/20">
+            <tbody className="divide-y divide-slate-100">
               {(projects ?? []).map((project: Project) => (
-                <tr key={project.id} className="hover:bg-steel/20 transition-colors">
+                <tr key={project.id} className="hover:bg-slate-50 transition-colors">
                   <td className="px-5 py-4">
                     <Link href={`/admin/projetos/${project.id}`} className="block">
                       <p className="text-sm font-medium text-foreground hover:text-amber-brand transition-colors">
                         {project.name}
                       </p>
-                      <p className="text-xs text-metal mt-0.5">{SERVICE_LABELS[project.service]}</p>
+                      <p className="text-xs text-slate-500 mt-0.5">{SERVICE_LABELS[project.service]}</p>
                     </Link>
                   </td>
                   <td className="px-5 py-4 hidden md:table-cell">
-                    <span className="text-sm text-metal">{project.client?.name ?? '—'}</span>
+                    <span className="text-sm text-slate-500">{project.client?.name ?? '—'}</span>
                   </td>
                   <td className="px-5 py-4">
                     <Badge
@@ -76,10 +76,10 @@ export default async function AdminProjetosPage() {
                     </Badge>
                   </td>
                   <td className="px-5 py-4 hidden lg:table-cell">
-                    <span className="text-sm text-metal">{formatBRL(project.contract_value)}</span>
+                    <span className="text-sm text-slate-500">{formatBRL(project.contract_value)}</span>
                   </td>
                   <td className="px-5 py-4 hidden lg:table-cell">
-                    <span className="text-xs text-metal-dark">
+                    <span className="text-xs text-slate-400">
                       {project.estimated_end ? formatDate(project.estimated_end) : '—'}
                     </span>
                   </td>
@@ -90,7 +90,7 @@ export default async function AdminProjetosPage() {
         </div>
         {(projects ?? []).length === 0 && (
           <div className="text-center py-16">
-            <p className="text-metal">Nenhum projeto cadastrado.</p>
+            <p className="text-slate-500">Nenhum projeto cadastrado.</p>
             <Button asChild size="sm" className="mt-4 bg-amber-brand hover:bg-amber-light text-carbon">
               <Link href="/admin/projetos/novo">Criar primeiro projeto</Link>
             </Button>

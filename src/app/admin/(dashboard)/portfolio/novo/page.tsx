@@ -5,7 +5,7 @@ import { PortfolioForm } from '@/components/admin/portfolio/PortfolioForm'
 export default function NovoPortfolioPage() {
   return (
     <div>
-      <Link href="/admin/portfolio" className="inline-flex items-center gap-2 text-sm text-metal hover:text-foreground mb-6">
+      <Link href="/admin/portfolio" className="inline-flex items-center gap-2 text-sm text-slate-500 hover:text-slate-800 mb-6">
         <ArrowLeft className="w-4 h-4" />
         Voltar ao portfólio
       </Link>

@@ -54,7 +54,7 @@ export default async function AdminLeadsPage({
       <div className="flex items-center justify-between mb-6">
         <div>
           <h1 className="font-display text-3xl font-bold text-foreground">CRM — Pipeline</h1>
-          <p className="text-metal mt-1">
+          <p className="text-slate-500 mt-1">
             {view === 'kanban'
               ? `${kanbanLeads?.length ?? 0} leads no pipeline`
               : `${total} leads encontrados`}
@@ -62,13 +62,13 @@ export default async function AdminLeadsPage({
         </div>
         <div className="flex items-center gap-3">
           {/* Toggle Lista / Kanban */}
-          <div className="flex bg-graphite border border-metal-dark/30 rounded-lg overflow-hidden">
+          <div className="flex bg-white border border-slate-200 rounded-lg overflow-hidden">
             <Link
               href={`/admin/leads${statusFilter ? `?status=${statusFilter}` : ''}`}
               className={`inline-flex items-center gap-1.5 px-3 py-2 text-sm transition-colors ${
                 view === 'list'
                   ? 'bg-amber-brand text-carbon font-semibold'
-                  : 'text-metal hover:text-foreground'
+                  : 'text-slate-500 hover:text-slate-800'
               }`}
             >
               <LayoutList className="w-4 h-4" />
@@ -79,7 +79,7 @@ export default async function AdminLeadsPage({
               className={`inline-flex items-center gap-1.5 px-3 py-2 text-sm transition-colors ${
                 view === 'kanban'
                   ? 'bg-amber-brand text-carbon font-semibold'
-                  : 'text-metal hover:text-foreground'
+                  : 'text-slate-500 hover:text-slate-800'
               }`}
             >
               <Columns className="w-4 h-4" />
@@ -117,7 +117,7 @@ export default async function AdminLeadsPage({
                 className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${
                   (statusFilter ?? '') === f.value
                     ? 'bg-amber-brand text-carbon'
-                    : 'bg-graphite border border-metal-dark/30 text-metal hover:text-foreground'
+                    : 'bg-white border border-slate-200 text-slate-500 hover:text-slate-800'
                 }`}
               >
                 {f.label}
@@ -126,34 +126,34 @@ export default async function AdminLeadsPage({
           </div>
 
           {/* Table */}
-          <div className="bg-graphite border border-metal-dark/30 rounded-xl overflow-hidden">
+          <div className="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm">
             <div className="overflow-x-auto">
               <table className="w-full">
                 <thead>
-                  <tr className="border-b border-metal-dark/30">
-                    <th className="text-left px-5 py-4 text-xs font-medium text-metal-dark uppercase tracking-wider">Nome</th>
-                    <th className="text-left px-5 py-4 text-xs font-medium text-metal-dark uppercase tracking-wider hidden md:table-cell">Empresa</th>
-                    <th className="text-left px-5 py-4 text-xs font-medium text-metal-dark uppercase tracking-wider hidden md:table-cell">Serviço</th>
-                    <th className="text-left px-5 py-4 text-xs font-medium text-metal-dark uppercase tracking-wider">Status</th>
-                    <th className="text-left px-5 py-4 text-xs font-medium text-metal-dark uppercase tracking-wider hidden lg:table-cell">Data</th>
+                  <tr className="border-b border-slate-100 bg-slate-50/70">
+                    <th className="text-left px-5 py-4 text-xs font-medium text-slate-400 uppercase tracking-wider tracking-wider">Nome</th>
+                    <th className="text-left px-5 py-4 text-xs font-medium text-slate-400 uppercase tracking-wider tracking-wider hidden md:table-cell">Empresa</th>
+                    <th className="text-left px-5 py-4 text-xs font-medium text-slate-400 uppercase tracking-wider tracking-wider hidden md:table-cell">Serviço</th>
+                    <th className="text-left px-5 py-4 text-xs font-medium text-slate-400 uppercase tracking-wider tracking-wider">Status</th>
+                    <th className="text-left px-5 py-4 text-xs font-medium text-slate-400 uppercase tracking-wider tracking-wider hidden lg:table-cell">Data</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-metal-dark/20">
+                <tbody className="divide-y divide-slate-100">
                   {(listLeads ?? []).map((lead: Lead) => (
-                    <tr key={lead.id} className="hover:bg-steel/20 transition-colors">
+                    <tr key={lead.id} className="hover:bg-slate-50 transition-colors">
                       <td className="px-5 py-4">
                         <Link href={`/admin/leads/${lead.id}`} className="block">
                           <p className="text-sm font-medium text-foreground hover:text-amber-brand transition-colors">
                             {lead.name}
                           </p>
-                          <p className="text-xs text-metal mt-0.5">{lead.phone}</p>
+                          <p className="text-xs text-slate-500 mt-0.5">{lead.phone}</p>
                         </Link>
                       </td>
                       <td className="px-5 py-4 hidden md:table-cell">
-                        <span className="text-sm text-metal">{lead.company ?? '—'}</span>
+                        <span className="text-sm text-slate-500">{lead.company ?? '—'}</span>
                       </td>
                       <td className="px-5 py-4 hidden md:table-cell">
-                        <span className="text-sm text-metal">
+                        <span className="text-sm text-slate-500">
                           {lead.service ? SERVICE_LABELS[lead.service] : '—'}
                         </span>
                       </td>
@@ -163,7 +163,7 @@ export default async function AdminLeadsPage({
                         </Badge>
                       </td>
                       <td className="px-5 py-4 hidden lg:table-cell">
-                        <span className="text-xs text-metal-dark">{formatDateTime(lead.created_at)}</span>
+                        <span className="text-xs text-slate-400">{formatDateTime(lead.created_at)}</span>
                       </td>
                     </tr>
                   ))}
@@ -173,7 +173,7 @@ export default async function AdminLeadsPage({
 
             {(listLeads ?? []).length === 0 && (
               <div className="text-center py-16">
-                <p className="text-metal mb-4">Nenhum lead encontrado.</p>
+                <p className="text-slate-500 mb-4">Nenhum lead encontrado.</p>
                 <Button asChild size="sm" className="bg-amber-brand hover:bg-amber-light text-carbon">
                   <Link href="/admin/leads/novo">Criar primeiro lead</Link>
                 </Button>
@@ -184,12 +184,12 @@ export default async function AdminLeadsPage({
           {/* Pagination */}
           {totalPages > 1 && (
             <div className="flex items-center justify-between mt-6">
-              <p className="text-sm text-metal">Página {page} de {totalPages}</p>
+              <p className="text-sm text-slate-500">Página {page} de {totalPages}</p>
               <div className="flex gap-2">
                 {page > 1 && (
                   <Link
                     href={`/admin/leads?page=${page - 1}${statusFilter ? `&status=${statusFilter}` : ''}`}
-                    className="px-4 py-2 bg-graphite border border-metal-dark/30 text-metal-light rounded-lg text-sm hover:border-amber-brand/40 transition-colors"
+                    className="px-4 py-2 bg-white border border-slate-200 text-slate-600 rounded-lg text-sm hover:border-amber-brand/40 transition-colors"
                   >
                     Anterior
                   </Link>
@@ -197,7 +197,7 @@ export default async function AdminLeadsPage({
                 {page < totalPages && (
                   <Link
                     href={`/admin/leads?page=${page + 1}${statusFilter ? `&status=${statusFilter}` : ''}`}
-                    className="px-4 py-2 bg-graphite border border-metal-dark/30 text-metal-light rounded-lg text-sm hover:border-amber-brand/40 transition-colors"
+                    className="px-4 py-2 bg-white border border-slate-200 text-slate-600 rounded-lg text-sm hover:border-amber-brand/40 transition-colors"
                   >
                     Próxima
                   </Link>

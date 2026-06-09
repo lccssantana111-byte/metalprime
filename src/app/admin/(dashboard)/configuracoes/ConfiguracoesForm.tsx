@@ -68,21 +68,21 @@ export function ConfiguracoesForm({ settings }: ConfiguracoesFormProps) {
   return (
     <div className="space-y-6">
       {SECTIONS.map((section) => (
-        <div key={section.title} className="bg-graphite border border-metal-dark/30 rounded-xl p-6">
+        <div key={section.title} className="bg-white border border-slate-200 rounded-xl p-6">
           <h3 className="font-semibold text-foreground mb-5">{section.title}</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             {section.fields.map((field) => (
               <div key={field.key} className={field.key === 'company_address' || field.key === 'company_tagline' ? 'md:col-span-2' : ''}>
-                <Label htmlFor={field.key} className="text-metal text-sm">{field.label}</Label>
+                <Label htmlFor={field.key} className="text-slate-500 text-sm">{field.label}</Label>
                 <Input
                   id={field.key}
                   value={values[field.key] ?? ''}
                   onChange={(e) => handleChange(field.key, e.target.value)}
                   placeholder={field.placeholder}
-                  className="mt-1 bg-steel border-metal-dark/40 text-foreground placeholder:text-metal-dark"
+                  className="mt-1 bg-steel border-slate-200 text-foreground placeholder:text-slate-400"
                 />
                 {field.hint && (
-                  <p className="text-xs text-metal-dark mt-1">{field.hint}</p>
+                  <p className="text-xs text-slate-400 mt-1">{field.hint}</p>
                 )}
               </div>
             ))}

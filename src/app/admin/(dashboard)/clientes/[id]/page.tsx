@@ -28,7 +28,7 @@ export default async function ClienteDetailPage({ params }: { params: Promise<{ 
 
   return (
     <div>
-      <Link href="/admin/clientes" className="inline-flex items-center gap-2 text-sm text-metal hover:text-foreground mb-6">
+      <Link href="/admin/clientes" className="inline-flex items-center gap-2 text-sm text-slate-500 hover:text-slate-800 mb-6">
         <ArrowLeft className="w-4 h-4" />
         Voltar aos clientes
       </Link>
@@ -36,24 +36,24 @@ export default async function ClienteDetailPage({ params }: { params: Promise<{ 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div className="lg:col-span-2 space-y-5">
           {projectList.length > 0 && (
-            <div className="bg-graphite border border-metal-dark/30 rounded-xl p-6">
+            <div className="bg-white border border-slate-200 rounded-xl p-6">
               <h3 className="font-semibold text-foreground mb-4">Projetos ({projectList.length})</h3>
               <div className="space-y-3">
                 {projectList.map((p) => (
                   <Link
                     key={p.id}
                     href={`/admin/projetos/${p.id}`}
-                    className="flex items-center justify-between py-2.5 border-b border-metal-dark/20 last:border-0 hover:bg-steel/10 -mx-2 px-2 rounded transition-colors"
+                    className="flex items-center justify-between py-2.5 border-b border-slate-100 last:border-0 hover:bg-slate-50/60 -mx-2 px-2 rounded transition-colors"
                   >
                     <div>
                       <p className="text-sm font-medium text-foreground hover:text-amber-brand transition-colors">{p.name}</p>
-                      <p className="text-xs text-metal-dark mt-0.5">
+                      <p className="text-xs text-slate-400 mt-0.5">
                         {p.estimated_end ? `Prazo: ${formatDate(p.estimated_end)}` : 'Sem prazo definido'}
                       </p>
                     </div>
                     <div className="flex items-center gap-3 shrink-0">
-                      <span className="text-sm text-metal">{formatBRL(p.contract_value)}</span>
-                      <Badge variant="outline" className="text-xs border-metal-dark/40 text-metal">
+                      <span className="text-sm text-slate-500">{formatBRL(p.contract_value)}</span>
+                      <Badge variant="outline" className="text-xs border-slate-200 text-slate-500">
                         {PROJECT_STATUS_LABELS[p.status]}
                       </Badge>
                     </div>
@@ -64,24 +64,24 @@ export default async function ClienteDetailPage({ params }: { params: Promise<{ 
           )}
 
           {quoteList.length > 0 && (
-            <div className="bg-graphite border border-metal-dark/30 rounded-xl p-6">
+            <div className="bg-white border border-slate-200 rounded-xl p-6">
               <h3 className="font-semibold text-foreground mb-4">Orçamentos recentes</h3>
               <div className="space-y-2">
                 {quoteList.map((q) => (
                   <Link
                     key={q.id}
                     href={`/admin/orcamentos/${q.id}`}
-                    className="flex items-center justify-between py-2 border-b border-metal-dark/20 last:border-0 hover:bg-steel/10 -mx-2 px-2 rounded transition-colors"
+                    className="flex items-center justify-between py-2 border-b border-slate-100 last:border-0 hover:bg-slate-50/60 -mx-2 px-2 rounded transition-colors"
                   >
                     <div>
                       <p className="text-sm text-foreground">{SERVICE_LABELS[q.service]}</p>
-                      <p className="text-xs text-metal-dark">{formatDate(q.created_at)}</p>
+                      <p className="text-xs text-slate-400">{formatDate(q.created_at)}</p>
                     </div>
                     <div className="flex items-center gap-3 shrink-0">
                       {q.estimated_value && (
-                        <span className="text-sm text-metal">{formatBRL(q.estimated_value)}</span>
+                        <span className="text-sm text-slate-500">{formatBRL(q.estimated_value)}</span>
                       )}
-                      <Badge variant="outline" className="text-xs border-metal-dark/40 text-metal">
+                      <Badge variant="outline" className="text-xs border-slate-200 text-slate-500">
                         {QUOTE_STATUS_LABELS[q.status]}
                       </Badge>
                     </div>
@@ -92,80 +92,80 @@ export default async function ClienteDetailPage({ params }: { params: Promise<{ 
           )}
 
           {c.notes && (
-            <div className="bg-graphite border border-metal-dark/30 rounded-xl p-6">
+            <div className="bg-white border border-slate-200 rounded-xl p-6">
               <h3 className="font-semibold text-foreground mb-3">Observações internas</h3>
-              <p className="text-metal text-sm leading-relaxed whitespace-pre-wrap">{c.notes}</p>
+              <p className="text-slate-500 text-sm leading-relaxed whitespace-pre-wrap">{c.notes}</p>
             </div>
           )}
         </div>
 
         <div className="space-y-4">
-          <div className="bg-graphite border border-metal-dark/30 rounded-xl p-5">
+          <div className="bg-white border border-slate-200 rounded-xl p-5">
             <div className="flex items-start gap-3 mb-4">
               <div className="w-10 h-10 rounded-full bg-steel flex items-center justify-center shrink-0">
-                <Building2 className="w-5 h-5 text-metal" />
+                <Building2 className="w-5 h-5 text-slate-500" />
               </div>
               <div>
                 <h2 className="font-semibold text-foreground">{c.name}</h2>
-                <p className="text-xs text-metal mt-0.5">{CLIENT_TYPE_LABELS[c.type]}</p>
+                <p className="text-xs text-slate-500 mt-0.5">{CLIENT_TYPE_LABELS[c.type]}</p>
               </div>
             </div>
 
             <div className="space-y-3">
               <div className="flex items-center gap-2.5">
-                <Phone className="w-4 h-4 text-metal-dark shrink-0" />
-                <span className="text-sm text-metal">{formatPhone(c.phone)}</span>
+                <Phone className="w-4 h-4 text-slate-400 shrink-0" />
+                <span className="text-sm text-slate-500">{formatPhone(c.phone)}</span>
               </div>
               {c.phone_alt && (
                 <div className="flex items-center gap-2.5">
-                  <Phone className="w-4 h-4 text-metal-dark shrink-0" />
-                  <span className="text-sm text-metal">{formatPhone(c.phone_alt)}</span>
+                  <Phone className="w-4 h-4 text-slate-400 shrink-0" />
+                  <span className="text-sm text-slate-500">{formatPhone(c.phone_alt)}</span>
                 </div>
               )}
               {c.email && (
                 <div className="flex items-center gap-2.5">
-                  <Mail className="w-4 h-4 text-metal-dark shrink-0" />
-                  <span className="text-sm text-metal">{c.email}</span>
+                  <Mail className="w-4 h-4 text-slate-400 shrink-0" />
+                  <span className="text-sm text-slate-500">{c.email}</span>
                 </div>
               )}
               {(c.city || c.address) && (
                 <div className="flex items-start gap-2.5">
-                  <MapPin className="w-4 h-4 text-metal-dark shrink-0 mt-0.5" />
+                  <MapPin className="w-4 h-4 text-slate-400 shrink-0 mt-0.5" />
                   <div>
-                    {c.address && <p className="text-sm text-metal">{c.address}</p>}
-                    {c.city && <p className="text-xs text-metal-dark">{c.city} · {c.state}</p>}
+                    {c.address && <p className="text-sm text-slate-500">{c.address}</p>}
+                    {c.city && <p className="text-xs text-slate-400">{c.city} · {c.state}</p>}
                   </div>
                 </div>
               )}
             </div>
           </div>
 
-          <div className="bg-graphite border border-metal-dark/30 rounded-xl p-5">
+          <div className="bg-white border border-slate-200 rounded-xl p-5">
             <h3 className="font-semibold text-foreground mb-4">Financeiro</h3>
             <div>
-              <p className="text-xs text-metal-dark">Volume total de contratos</p>
+              <p className="text-xs text-slate-400">Volume total de contratos</p>
               <p className="text-xl font-bold text-amber-brand">{formatBRL(totalContractValue)}</p>
             </div>
             <div className="mt-3">
-              <p className="text-xs text-metal-dark">Total de projetos</p>
+              <p className="text-xs text-slate-400">Total de projetos</p>
               <p className="text-lg font-semibold text-foreground">{projectList.length}</p>
             </div>
           </div>
 
-          <div className="bg-graphite border border-metal-dark/30 rounded-xl p-5">
+          <div className="bg-white border border-slate-200 rounded-xl p-5">
             <h3 className="font-semibold text-foreground mb-3">Portal corporativo</h3>
             <Badge
               variant="outline"
               className={`text-xs border ${
                 c.portal_enabled
                   ? 'border-green-500/30 text-green-400'
-                  : 'border-metal-dark/40 text-metal-dark'
+                  : 'border-slate-200 text-slate-400'
               }`}
             >
               {c.portal_enabled ? 'Portal ativo' : 'Portal desativado'}
             </Badge>
             {c.portal_user_id && (
-              <p className="text-xs text-metal-dark mt-2">Usuário vinculado</p>
+              <p className="text-xs text-slate-400 mt-2">Usuário vinculado</p>
             )}
           </div>
         </div>

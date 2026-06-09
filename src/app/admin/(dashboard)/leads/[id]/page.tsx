@@ -73,7 +73,7 @@ export default async function LeadDetailPage({ params }: { params: Promise<{ id:
       <div className="mb-6">
         <Link
           href="/admin/leads"
-          className="inline-flex items-center gap-2 text-sm text-metal hover:text-foreground transition-colors mb-4"
+          className="inline-flex items-center gap-2 text-sm text-slate-500 hover:text-slate-800 transition-colors mb-4"
         >
           <ArrowLeft className="w-4 h-4" />
           Voltar para leads
@@ -88,7 +88,7 @@ export default async function LeadDetailPage({ params }: { params: Promise<{ id:
                 {score.label} · {score.total}pts
               </span>
             </div>
-            <p className="text-metal">
+            <p className="text-slate-500">
               {formatPhone(typedLead.phone)}
               {typedLead.email && ` · ${typedLead.email}`}
               {typedLead.company && (
@@ -131,7 +131,7 @@ export default async function LeadDetailPage({ params }: { params: Promise<{ id:
         {/* Lead details panel */}
         <div className="lg:col-span-1 space-y-4">
           {/* Info */}
-          <div className="bg-graphite border border-metal-dark/30 rounded-xl p-5">
+          <div className="bg-white border border-slate-200 rounded-xl p-5">
             <h3 className="text-sm font-semibold text-foreground mb-4">Informações</h3>
             <div className="space-y-3">
               {[
@@ -142,15 +142,15 @@ export default async function LeadDetailPage({ params }: { params: Promise<{ id:
                 { label: 'Atualizado em', value: formatDateTime(typedLead.updated_at) },
               ].map((row) => (
                 <div key={row.label}>
-                  <p className="text-xs text-metal-dark">{row.label}</p>
-                  <p className="text-sm text-metal-light capitalize">{row.value}</p>
+                  <p className="text-xs text-slate-400">{row.label}</p>
+                  <p className="text-sm text-slate-600 capitalize">{row.value}</p>
                 </div>
               ))}
             </div>
           </div>
 
           {/* Score breakdown */}
-          <div className="bg-graphite border border-metal-dark/30 rounded-xl p-5">
+          <div className="bg-white border border-slate-200 rounded-xl p-5">
             <h3 className="text-sm font-semibold text-foreground mb-3 flex items-center gap-2">
               <Flame className="w-4 h-4 text-amber-brand" />
               Lead Score — {score.total}pts
@@ -158,15 +158,15 @@ export default async function LeadDetailPage({ params }: { params: Promise<{ id:
             <div className="space-y-1.5">
               {score.breakdown.map((b) => (
                 <div key={b.factor} className="flex items-center justify-between text-xs">
-                  <span className="text-metal">{b.factor}</span>
-                  <span className="text-metal-light font-medium">+{b.points}</span>
+                  <span className="text-slate-500">{b.factor}</span>
+                  <span className="text-slate-600 font-medium">+{b.points}</span>
                 </div>
               ))}
             </div>
           </div>
 
           {/* Status */}
-          <div className="bg-graphite border border-metal-dark/30 rounded-xl p-5">
+          <div className="bg-white border border-slate-200 rounded-xl p-5">
             <h3 className="text-sm font-semibold text-foreground mb-4">Status</h3>
             <Badge
               className={`text-xs border mb-4 ${LEAD_STATUS_COLORS[typedLead.status] ?? ''}`}
@@ -178,7 +178,7 @@ export default async function LeadDetailPage({ params }: { params: Promise<{ id:
           </div>
 
           {/* Assignment */}
-          <div className="bg-graphite border border-metal-dark/30 rounded-xl p-5">
+          <div className="bg-white border border-slate-200 rounded-xl p-5">
             <LeadAssign
               leadId={id}
               assignedTo={typedLead.assigned_to}
@@ -188,17 +188,17 @@ export default async function LeadDetailPage({ params }: { params: Promise<{ id:
 
           {/* Message / Notes */}
           {(typedLead.message || typedLead.notes) && (
-            <div className="bg-graphite border border-metal-dark/30 rounded-xl p-5 space-y-3">
+            <div className="bg-white border border-slate-200 rounded-xl p-5 space-y-3">
               {typedLead.message && (
                 <div>
-                  <h3 className="text-xs text-metal-dark mb-1">Mensagem original</h3>
-                  <p className="text-sm text-metal leading-relaxed">{typedLead.message}</p>
+                  <h3 className="text-xs text-slate-400 mb-1">Mensagem original</h3>
+                  <p className="text-sm text-slate-500 leading-relaxed">{typedLead.message}</p>
                 </div>
               )}
               {typedLead.notes && (
                 <div>
-                  <h3 className="text-xs text-metal-dark mb-1">Observações</h3>
-                  <p className="text-sm text-metal leading-relaxed">{typedLead.notes}</p>
+                  <h3 className="text-xs text-slate-400 mb-1">Observações</h3>
+                  <p className="text-sm text-slate-500 leading-relaxed">{typedLead.notes}</p>
                 </div>
               )}
             </div>
@@ -216,37 +216,37 @@ export default async function LeadDetailPage({ params }: { params: Promise<{ id:
 
         {/* Timeline */}
         <div className="lg:col-span-2">
-          <div className="bg-graphite border border-metal-dark/30 rounded-xl p-5">
+          <div className="bg-white border border-slate-200 rounded-xl p-5">
             <h3 className="text-sm font-semibold text-foreground mb-5">
               Timeline de interações
-              <span className="ml-2 text-xs text-metal-dark font-normal">
+              <span className="ml-2 text-xs text-slate-400 font-normal">
                 ({(interactions ?? []).length} registro{(interactions ?? []).length !== 1 ? 's' : ''})
               </span>
             </h3>
 
             {(interactions ?? []).length === 0 ? (
-              <p className="text-sm text-metal text-center py-6">Nenhuma interação registrada.</p>
+              <p className="text-sm text-slate-500 text-center py-6">Nenhuma interação registrada.</p>
             ) : (
               <div className="space-y-4 mb-6 relative">
                 <div className="absolute left-[3px] top-3 bottom-3 w-px bg-metal-dark/30" />
                 {(interactions as LeadInteraction[]).map((interaction) => (
                   <div key={interaction.id} className="flex gap-4 relative">
                     <div className={`w-2 h-2 rounded-full mt-2 shrink-0 z-10 ${INTERACTION_COLORS[interaction.type] ?? 'bg-metal-dark'}`} />
-                    <div className="flex-1 min-w-0 pb-4 border-b border-metal-dark/10 last:border-0">
+                    <div className="flex-1 min-w-0 pb-4 border-b border-slate-100 last:border-0">
                       <div className="flex items-center gap-2 mb-1 flex-wrap">
                         <span className="text-xs font-semibold text-amber-brand">
                           {INTERACTION_TYPE_LABELS[interaction.type] ?? interaction.type}
                         </span>
-                        <span className="text-xs text-metal-dark">
+                        <span className="text-xs text-slate-400">
                           {formatDateTime(interaction.created_at)}
                         </span>
                         {interaction.author && (
-                          <span className="text-xs text-metal-dark">
+                          <span className="text-xs text-slate-400">
                             — {(interaction.author as { full_name: string }).full_name}
                           </span>
                         )}
                       </div>
-                      <p className="text-sm text-metal-light">{interaction.content}</p>
+                      <p className="text-sm text-slate-600">{interaction.content}</p>
                     </div>
                   </div>
                 ))}

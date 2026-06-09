@@ -22,39 +22,39 @@ export default async function ProjetoDetailPage({ params }: { params: Promise<{ 
 
   return (
     <div>
-      <Link href="/admin/projetos" className="inline-flex items-center gap-2 text-sm text-metal hover:text-foreground mb-6">
+      <Link href="/admin/projetos" className="inline-flex items-center gap-2 text-sm text-slate-500 hover:text-slate-800 mb-6">
         <ArrowLeft className="w-4 h-4" />
         Voltar
       </Link>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div className="lg:col-span-2 space-y-5">
-          <div className="bg-graphite border border-metal-dark/30 rounded-xl p-6">
+          <div className="bg-white border border-slate-200 rounded-xl p-6">
             <div className="flex items-start justify-between gap-4 mb-2">
               <h1 className="font-display text-2xl font-bold text-foreground">{p.name}</h1>
-              <Badge variant="outline" className="text-xs border-metal-dark/40 text-metal shrink-0">
+              <Badge variant="outline" className="text-xs border-slate-200 text-slate-500 shrink-0">
                 {PROJECT_STATUS_LABELS[p.status]}
               </Badge>
             </div>
             <p className="text-amber-brand text-sm">{SERVICE_LABELS[p.service]}</p>
-            {p.description && <p className="text-metal text-sm mt-3">{p.description}</p>}
+            {p.description && <p className="text-slate-500 text-sm mt-3">{p.description}</p>}
           </div>
 
           {p.milestones && p.milestones.length > 0 && (
-            <div className="bg-graphite border border-metal-dark/30 rounded-xl p-6">
+            <div className="bg-white border border-slate-200 rounded-xl p-6">
               <h3 className="font-semibold text-foreground mb-4">Marcos do projeto</h3>
               <div className="space-y-3">
                 {p.milestones.map((m) => (
                   <div key={m.id} className="flex items-start gap-3">
                     <div className={`w-4 h-4 rounded-full border-2 mt-0.5 shrink-0 ${
-                      m.completed_at ? 'bg-green-400 border-green-400' : 'border-metal-dark'
+                      m.completed_at ? 'bg-green-400 border-green-400' : 'border-slate-300'
                     }`} />
                     <div>
-                      <p className={`text-sm font-medium ${m.completed_at ? 'text-metal line-through' : 'text-foreground'}`}>
+                      <p className={`text-sm font-medium ${m.completed_at ? 'text-slate-500 line-through' : 'text-foreground'}`}>
                         {m.title}
                       </p>
                       {m.due_date && (
-                        <p className="text-xs text-metal-dark">Prazo: {formatDate(m.due_date)}</p>
+                        <p className="text-xs text-slate-400">Prazo: {formatDate(m.due_date)}</p>
                       )}
                     </div>
                   </div>
@@ -65,19 +65,19 @@ export default async function ProjetoDetailPage({ params }: { params: Promise<{ 
         </div>
 
         <div className="space-y-4">
-          <div className="bg-graphite border border-metal-dark/30 rounded-xl p-5">
+          <div className="bg-white border border-slate-200 rounded-xl p-5">
             <h3 className="font-semibold text-foreground mb-4">Financeiro</h3>
             <div className="space-y-3">
               <div>
-                <p className="text-xs text-metal-dark">Valor do contrato</p>
+                <p className="text-xs text-slate-400">Valor do contrato</p>
                 <p className="text-xl font-bold text-amber-brand">{formatBRL(p.contract_value)}</p>
               </div>
               <div>
-                <p className="text-xs text-metal-dark">Valor recebido</p>
+                <p className="text-xs text-slate-400">Valor recebido</p>
                 <p className="text-lg font-semibold text-green-400">{formatBRL(p.amount_paid)}</p>
               </div>
               <div>
-                <p className="text-xs text-metal-dark">Saldo</p>
+                <p className="text-xs text-slate-400">Saldo</p>
                 <p className="text-lg font-semibold text-foreground">
                   {formatBRL(p.contract_value - p.amount_paid)}
                 </p>
@@ -86,27 +86,27 @@ export default async function ProjetoDetailPage({ params }: { params: Promise<{ 
           </div>
 
           {p.client && (
-            <div className="bg-graphite border border-metal-dark/30 rounded-xl p-5">
+            <div className="bg-white border border-slate-200 rounded-xl p-5">
               <h3 className="font-semibold text-foreground mb-4">Cliente</h3>
               <p className="text-sm font-medium text-foreground">{p.client.name}</p>
-              <p className="text-xs text-metal mt-1">{p.client.phone}</p>
-              <p className="text-xs text-metal capitalize mt-0.5">{p.client.type}</p>
+              <p className="text-xs text-slate-500 mt-1">{p.client.phone}</p>
+              <p className="text-xs text-slate-500 capitalize mt-0.5">{p.client.type}</p>
             </div>
           )}
 
           {(p.start_date || p.estimated_end) && (
-            <div className="bg-graphite border border-metal-dark/30 rounded-xl p-5">
+            <div className="bg-white border border-slate-200 rounded-xl p-5">
               <h3 className="font-semibold text-foreground mb-4">Datas</h3>
               {p.start_date && (
                 <div className="mb-2">
-                  <p className="text-xs text-metal-dark">Início</p>
-                  <p className="text-sm text-metal-light">{formatDate(p.start_date)}</p>
+                  <p className="text-xs text-slate-400">Início</p>
+                  <p className="text-sm text-slate-600">{formatDate(p.start_date)}</p>
                 </div>
               )}
               {p.estimated_end && (
                 <div>
-                  <p className="text-xs text-metal-dark">Previsão de término</p>
-                  <p className="text-sm text-metal-light">{formatDate(p.estimated_end)}</p>
+                  <p className="text-xs text-slate-400">Previsão de término</p>
+                  <p className="text-sm text-slate-600">{formatDate(p.estimated_end)}</p>
                 </div>
               )}
             </div>

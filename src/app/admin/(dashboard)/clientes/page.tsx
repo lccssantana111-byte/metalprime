@@ -39,7 +39,7 @@ export default async function AdminClientesPage({
       <div className="flex items-center justify-between mb-8">
         <div>
           <h1 className="font-display text-3xl font-bold text-foreground">Clientes</h1>
-          <p className="text-metal mt-1">{count ?? 0} clientes</p>
+          <p className="text-slate-500 mt-1">{count ?? 0} clientes</p>
         </div>
       </div>
 
@@ -56,8 +56,8 @@ export default async function AdminClientesPage({
             href={f.value ? `/admin/clientes?type=${f.value}` : '/admin/clientes'}
             className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${
               (params.type ?? '') === f.value
-                ? 'bg-amber-brand text-carbon'
-                : 'bg-graphite border border-metal-dark/30 text-metal hover:text-foreground'
+                ? 'bg-amber-brand text-white'
+                : 'bg-white border border-slate-200 text-slate-500 hover:text-slate-800 hover:border-slate-300'
             }`}
           >
             {f.icon}
@@ -66,59 +66,59 @@ export default async function AdminClientesPage({
         ))}
       </div>
 
-      <div className="bg-graphite border border-metal-dark/30 rounded-xl overflow-hidden">
+      <div className="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm">
         <div className="overflow-x-auto">
           <table className="w-full">
             <thead>
-              <tr className="border-b border-metal-dark/30">
-                <th className="text-left px-5 py-4 text-xs font-medium text-metal-dark uppercase">Nome</th>
-                <th className="text-left px-5 py-4 text-xs font-medium text-metal-dark uppercase hidden md:table-cell">Tipo</th>
-                <th className="text-left px-5 py-4 text-xs font-medium text-metal-dark uppercase hidden md:table-cell">Contato</th>
-                <th className="text-left px-5 py-4 text-xs font-medium text-metal-dark uppercase hidden lg:table-cell">Cidade</th>
-                <th className="text-left px-5 py-4 text-xs font-medium text-metal-dark uppercase hidden lg:table-cell">Portal</th>
-                <th className="text-left px-5 py-4 text-xs font-medium text-metal-dark uppercase hidden lg:table-cell">Desde</th>
+              <tr className="border-b border-slate-100 bg-slate-50/70">
+                <th className="text-left px-5 py-3.5 text-xs font-medium text-slate-400 uppercase tracking-wider">Nome</th>
+                <th className="text-left px-5 py-3.5 text-xs font-medium text-slate-400 uppercase tracking-wider hidden md:table-cell">Tipo</th>
+                <th className="text-left px-5 py-3.5 text-xs font-medium text-slate-400 uppercase tracking-wider hidden md:table-cell">Contato</th>
+                <th className="text-left px-5 py-3.5 text-xs font-medium text-slate-400 uppercase tracking-wider hidden lg:table-cell">Cidade</th>
+                <th className="text-left px-5 py-3.5 text-xs font-medium text-slate-400 uppercase tracking-wider hidden lg:table-cell">Portal</th>
+                <th className="text-left px-5 py-3.5 text-xs font-medium text-slate-400 uppercase tracking-wider hidden lg:table-cell">Desde</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-metal-dark/20">
+            <tbody className="divide-y divide-slate-100">
               {list.map((client) => (
-                <tr key={client.id} className="hover:bg-steel/20 transition-colors">
+                <tr key={client.id} className="hover:bg-slate-50 transition-colors">
                   <td className="px-5 py-4">
                     <Link href={`/admin/clientes/${client.id}`} className="block">
-                      <p className="text-sm font-medium text-foreground hover:text-amber-brand transition-colors">
+                      <p className="text-sm font-medium text-slate-800 hover:text-amber-brand transition-colors">
                         {client.name}
                       </p>
                       {client.document && (
-                        <p className="text-xs text-metal-dark mt-0.5">{client.document}</p>
+                        <p className="text-xs text-slate-400 mt-0.5">{client.document}</p>
                       )}
                     </Link>
                   </td>
                   <td className="px-5 py-4 hidden md:table-cell">
-                    <span className="inline-flex items-center gap-1.5 text-sm text-metal">
+                    <span className="inline-flex items-center gap-1.5 text-sm text-slate-500">
                       {TYPE_ICONS[client.type]}
                       {CLIENT_TYPE_LABELS[client.type]}
                     </span>
                   </td>
                   <td className="px-5 py-4 hidden md:table-cell">
-                    <p className="text-sm text-metal">{client.phone}</p>
-                    {client.email && <p className="text-xs text-metal-dark mt-0.5">{client.email}</p>}
+                    <p className="text-sm text-slate-600">{client.phone}</p>
+                    {client.email && <p className="text-xs text-slate-400 mt-0.5">{client.email}</p>}
                   </td>
                   <td className="px-5 py-4 hidden lg:table-cell">
-                    <span className="text-sm text-metal">{client.city ? `${client.city} · ${client.state}` : '—'}</span>
+                    <span className="text-sm text-slate-500">{client.city ? `${client.city} · ${client.state}` : '—'}</span>
                   </td>
                   <td className="px-5 py-4 hidden lg:table-cell">
                     <Badge
                       variant="outline"
                       className={`text-xs border ${
                         client.portal_enabled
-                          ? 'border-green-500/30 text-green-400'
-                          : 'border-metal-dark/40 text-metal-dark'
+                          ? 'border-green-500/40 text-green-600 bg-green-50'
+                          : 'border-slate-200 text-slate-400 bg-slate-50'
                       }`}
                     >
                       {client.portal_enabled ? 'Ativo' : 'Inativo'}
                     </Badge>
                   </td>
                   <td className="px-5 py-4 hidden lg:table-cell">
-                    <span className="text-xs text-metal-dark">{formatDate(client.created_at)}</span>
+                    <span className="text-xs text-slate-400">{formatDate(client.created_at)}</span>
                   </td>
                 </tr>
               ))}
@@ -127,7 +127,7 @@ export default async function AdminClientesPage({
         </div>
         {list.length === 0 && (
           <div className="text-center py-16">
-            <p className="text-metal">Nenhum cliente encontrado.</p>
+            <p className="text-slate-400">Nenhum cliente encontrado.</p>
           </div>
         )}
       </div>

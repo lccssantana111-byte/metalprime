@@ -25,7 +25,7 @@ export default async function AdminPortfolioPage() {
       <div className="flex items-center justify-between mb-8">
         <div>
           <h1 className="font-display text-3xl font-bold text-foreground">Portfólio</h1>
-          <p className="text-metal mt-1">{list.length} itens · {list.filter((i) => i.published).length} publicados</p>
+          <p className="text-slate-500 mt-1">{list.length} itens · {list.filter((i) => i.published).length} publicados</p>
         </div>
         <Button asChild className="bg-amber-brand hover:bg-amber-light text-carbon font-semibold">
           <Link href="/admin/portfolio/novo">
@@ -40,7 +40,7 @@ export default async function AdminPortfolioPage() {
           <Link
             key={item.id}
             href={`/admin/portfolio/${item.id}`}
-            className="group bg-graphite border border-metal-dark/30 rounded-xl overflow-hidden hover:border-amber-brand/40 transition-colors"
+            className="group bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm hover:border-amber-brand/40 transition-colors"
           >
             <div className="relative aspect-video bg-steel">
               {item.cover_image ? (
@@ -52,7 +52,7 @@ export default async function AdminPortfolioPage() {
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 />
               ) : (
-                <div className="absolute inset-0 flex items-center justify-center text-metal-dark text-xs">
+                <div className="absolute inset-0 flex items-center justify-center text-slate-400 text-xs">
                   Sem imagem
                 </div>
               )}
@@ -76,10 +76,10 @@ export default async function AdminPortfolioPage() {
                 {item.title}
               </p>
               <div className="flex items-center justify-between mt-1.5">
-                <Badge variant="outline" className="text-[10px] border-metal-dark/40 text-metal-dark px-1.5 py-0.5">
+                <Badge variant="outline" className="text-[10px] border-slate-200 text-slate-400 px-1.5 py-0.5">
                   {SERVICE_LABELS[item.service]}
                 </Badge>
-                <span className="text-xs text-metal-dark">{item.year ?? formatDate(item.created_at)}</span>
+                <span className="text-xs text-slate-400">{item.year ?? formatDate(item.created_at)}</span>
               </div>
             </div>
           </Link>
@@ -87,8 +87,8 @@ export default async function AdminPortfolioPage() {
       </div>
 
       {list.length === 0 && (
-        <div className="text-center py-20 bg-graphite border border-metal-dark/30 rounded-xl">
-          <p className="text-metal mb-4">Nenhum item no portfólio.</p>
+        <div className="text-center py-20 bg-white border border-slate-200 rounded-xl">
+          <p className="text-slate-500 mb-4">Nenhum item no portfólio.</p>
           <Button asChild size="sm" className="bg-amber-brand hover:bg-amber-light text-carbon">
             <Link href="/admin/portfolio/novo">Adicionar primeiro projeto</Link>
           </Button>

@@ -14,7 +14,7 @@ export default async function NovoProjetoPage() {
 
   return (
     <div>
-      <Link href="/admin/projetos" className="inline-flex items-center gap-2 text-sm text-metal hover:text-foreground mb-6">
+      <Link href="/admin/projetos" className="inline-flex items-center gap-2 text-sm text-slate-500 hover:text-slate-800 mb-6">
         <ArrowLeft className="w-4 h-4" />
         Voltar aos projetos
       </Link>

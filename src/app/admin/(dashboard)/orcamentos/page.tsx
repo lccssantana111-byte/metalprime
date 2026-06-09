@@ -34,7 +34,7 @@ export default async function AdminOrcamentosPage({
     <div>
       <div className="mb-8">
         <h1 className="font-display text-3xl font-bold text-foreground">Orçamentos</h1>
-        <p className="text-metal mt-1">{total} orçamentos</p>
+        <p className="text-slate-500 mt-1">{total} orçamentos</p>
       </div>
 
       <div className="flex flex-wrap gap-2 mb-6">
@@ -52,7 +52,7 @@ export default async function AdminOrcamentosPage({
             className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${
               (statusFilter ?? '') === f.value
                 ? 'bg-amber-brand text-carbon'
-                : 'bg-graphite border border-metal-dark/30 text-metal hover:text-foreground'
+                : 'bg-white border border-slate-200 text-slate-500 hover:text-slate-800'
             }`}
           >
             {f.label}
@@ -60,44 +60,44 @@ export default async function AdminOrcamentosPage({
         ))}
       </div>
 
-      <div className="bg-graphite border border-metal-dark/30 rounded-xl overflow-hidden">
+      <div className="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm">
         <div className="overflow-x-auto">
           <table className="w-full">
             <thead>
-              <tr className="border-b border-metal-dark/30">
-                <th className="text-left px-5 py-4 text-xs font-medium text-metal-dark uppercase">Cliente</th>
-                <th className="text-left px-5 py-4 text-xs font-medium text-metal-dark uppercase hidden md:table-cell">Serviço</th>
-                <th className="text-left px-5 py-4 text-xs font-medium text-metal-dark uppercase">Status</th>
-                <th className="text-left px-5 py-4 text-xs font-medium text-metal-dark uppercase hidden lg:table-cell">Valor Est.</th>
-                <th className="text-left px-5 py-4 text-xs font-medium text-metal-dark uppercase hidden lg:table-cell">Data</th>
+              <tr className="border-b border-slate-100 bg-slate-50/70">
+                <th className="text-left px-5 py-4 text-xs font-medium text-slate-400 uppercase tracking-wider">Cliente</th>
+                <th className="text-left px-5 py-4 text-xs font-medium text-slate-400 uppercase tracking-wider hidden md:table-cell">Serviço</th>
+                <th className="text-left px-5 py-4 text-xs font-medium text-slate-400 uppercase tracking-wider">Status</th>
+                <th className="text-left px-5 py-4 text-xs font-medium text-slate-400 uppercase tracking-wider hidden lg:table-cell">Valor Est.</th>
+                <th className="text-left px-5 py-4 text-xs font-medium text-slate-400 uppercase tracking-wider hidden lg:table-cell">Data</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-metal-dark/20">
+            <tbody className="divide-y divide-slate-100">
               {(quotes ?? []).map((quote: Quote) => (
-                <tr key={quote.id} className="hover:bg-steel/20 transition-colors">
+                <tr key={quote.id} className="hover:bg-slate-50 transition-colors">
                   <td className="px-5 py-4">
                     <Link href={`/admin/orcamentos/${quote.id}`} className="block">
                       <p className="text-sm font-medium text-foreground hover:text-amber-brand transition-colors">
                         {quote.name}
                       </p>
-                      <p className="text-xs text-metal mt-0.5">{quote.phone}</p>
+                      <p className="text-xs text-slate-500 mt-0.5">{quote.phone}</p>
                     </Link>
                   </td>
                   <td className="px-5 py-4 hidden md:table-cell">
-                    <span className="text-sm text-metal">{SERVICE_LABELS[quote.service]}</span>
+                    <span className="text-sm text-slate-500">{SERVICE_LABELS[quote.service]}</span>
                   </td>
                   <td className="px-5 py-4">
-                    <Badge variant="outline" className="text-xs border border-metal-dark/40 text-metal">
+                    <Badge variant="outline" className="text-xs border border-slate-200 text-slate-500">
                       {QUOTE_STATUS_LABELS[quote.status]}
                     </Badge>
                   </td>
                   <td className="px-5 py-4 hidden lg:table-cell">
-                    <span className="text-sm text-metal">
+                    <span className="text-sm text-slate-500">
                       {quote.estimated_value ? formatBRL(quote.estimated_value) : '—'}
                     </span>
                   </td>
                   <td className="px-5 py-4 hidden lg:table-cell">
-                    <span className="text-xs text-metal-dark">{formatDateTime(quote.created_at)}</span>
+                    <span className="text-xs text-slate-400">{formatDateTime(quote.created_at)}</span>
                   </td>
                 </tr>
               ))}
@@ -106,7 +106,7 @@ export default async function AdminOrcamentosPage({
         </div>
         {(quotes ?? []).length === 0 && (
           <div className="text-center py-16">
-            <p className="text-metal">Nenhum orçamento encontrado.</p>
+            <p className="text-slate-500">Nenhum orçamento encontrado.</p>
           </div>
         )}
       </div>
