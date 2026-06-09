@@ -152,18 +152,6 @@ export default function SegmentSection() {
               <span style={{ color: '#f97316' }}>para cada projeto</span>
             </h2>
 
-            <p
-              style={{
-                fontSize: '15px',
-                lineHeight: 1.75,
-                maxWidth: '340px',
-                color: '#64748b',
-                margin: 0,
-              }}
-            >
-              Condomínios, construtoras ou indústrias — a estrutura e o processo são os mesmos.
-              O que muda é a escala.
-            </p>
           </div>
         </motion.div>
 
