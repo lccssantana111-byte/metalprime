@@ -142,9 +142,11 @@ export default function HeroSection() {
               color: 'rgba(255,255,255,0.65)',
               lineHeight: 1.7,
               margin: '0 0 2.5rem',
+              maxWidth: '420px',
             }}
           >
-            Fabricação própria, ART em 100% dos projetos estruturais.<br />
+            Fabricação própria, ART em 100% dos projetos estruturais.
+            <br />
             Mais de 5.000 obras entregues na Grande São Paulo.
           </motion.p>
 
