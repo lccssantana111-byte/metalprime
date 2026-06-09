@@ -68,18 +68,22 @@ export default function SobrePage() {
 
       {/* ── 1. HERO ──────────────────────────────────────────── */}
       <section
-        className="min-h-[72vh] flex items-center relative overflow-hidden bg-dots"
-        style={{ background: '#ffffff' }}
+        className="min-h-[72vh] flex items-center relative overflow-hidden"
+        style={{
+          backgroundImage: 'url("/Hard Hat and Blueprint.png")',
+          backgroundSize: 'clamp(400px, 55%, 780px)',
+          backgroundPosition: 'right center',
+          backgroundRepeat: 'no-repeat',
+          backgroundColor: '#ffffff',
+        }}
       >
+        {/* Gradiente que cobre o texto com branco e dissolve para a imagem */}
         <div
           aria-hidden="true"
-          className="absolute inset-y-0 left-0 w-40 pointer-events-none"
-          style={{ background: 'linear-gradient(to right, #ffffff, transparent)' }}
-        />
-        <div
-          aria-hidden="true"
-          className="absolute inset-y-0 right-0 w-40 pointer-events-none"
-          style={{ background: 'linear-gradient(to left, #ffffff, transparent)' }}
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background: 'linear-gradient(to right, #ffffff 40%, rgba(255,255,255,0.85) 60%, rgba(255,255,255,0) 80%)',
+          }}
         />
 
         <div className="container mx-auto px-4 sm:px-8 py-28 relative z-10">
@@ -116,23 +120,6 @@ export default function SobrePage() {
             condomínios, construtoras e arquitetos que precisam de um parceiro
             confiável — não de mais um fornecedor.
           </p>
-        </div>
-
-        <div
-          aria-hidden="true"
-          className="absolute right-8 bottom-0 pointer-events-none select-none"
-        >
-          <span style={{
-            fontFamily: 'var(--font-barlow-condensed)',
-            fontWeight: 900,
-            fontSize: 'clamp(8rem, 20vw, 22rem)',
-            lineHeight: 1,
-            color: 'transparent',
-            WebkitTextStroke: '1.5px rgba(249,115,22,0.12)',
-            display: 'block',
-          }}>
-            2004
-          </span>
         </div>
       </section>
 
