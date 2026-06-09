@@ -53,149 +53,307 @@ const differentials = [
   '+500 condomínios que renovam contratos conosco',
 ]
 
+function SectionLabel({ children }: { children: React.ReactNode }) {
+  return (
+    <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '1.5rem' }}>
+      <div style={{ width: '32px', height: '1px', background: '#f97316', flexShrink: 0 }} />
+      <span style={{
+        fontFamily: 'var(--font-mono)',
+        fontSize: '10px',
+        letterSpacing: '0.4em',
+        textTransform: 'uppercase' as const,
+        color: '#f97316',
+      }}>
+        {children}
+      </span>
+    </div>
+  )
+}
+
 export default function SobrePage() {
   return (
     <div className="pt-16">
-      {/* Hero */}
-      <section className="min-h-[70vh] flex items-center relative bg-carbon overflow-hidden">
-        {/* Background diagonal lines */}
+
+      {/* ── 1. HERO ──────────────────────────────────────────── */}
+      <section
+        className="min-h-[72vh] flex items-center relative overflow-hidden bg-dots"
+        style={{ background: '#ffffff' }}
+      >
         <div
-          className="absolute inset-0 opacity-[0.025]"
-          style={{
-            backgroundImage: 'repeating-linear-gradient(135deg, #8c97a0 0px, #8c97a0 1px, transparent 0px, transparent 60px)',
-          }}
+          aria-hidden="true"
+          className="absolute inset-y-0 left-0 w-40 pointer-events-none"
+          style={{ background: 'linear-gradient(to right, #ffffff, transparent)' }}
         />
-        <div className="absolute top-0 bottom-0 right-[20%] w-px bg-gradient-to-b from-amber-brand/20 via-amber-brand/10 to-transparent" />
+        <div
+          aria-hidden="true"
+          className="absolute inset-y-0 right-0 w-40 pointer-events-none"
+          style={{ background: 'linear-gradient(to left, #ffffff, transparent)' }}
+        />
 
         <div className="container mx-auto px-4 sm:px-8 py-28 relative z-10">
-          <div className="flex items-center gap-3 mb-8">
-            <div className="w-8 h-px bg-amber-brand" />
-            <span className="text-amber-brand text-xs font-semibold tracking-[0.35em] uppercase">Quem somos</span>
-          </div>
+          <SectionLabel>Quem somos</SectionLabel>
 
-          <h1 className="font-display font-black text-5xl sm:text-6xl lg:text-8xl text-foreground leading-none mb-8 max-w-3xl">
-            Começamos com uma oficina.<br />
-            <span className="text-metal/30">Viramos referência.</span>
+          <h1
+            style={{
+              fontFamily: 'var(--font-barlow-condensed)',
+              fontWeight: 900,
+              fontSize: 'clamp(3rem, 7vw, 7rem)',
+              lineHeight: 0.95,
+              letterSpacing: '0.01em',
+              textTransform: 'uppercase',
+              color: '#0f172a',
+              maxWidth: '720px',
+              marginBottom: '1.75rem',
+            }}
+          >
+            Começamos com<br />
+            uma oficina.{' '}
+            <span style={{ color: '#f97316' }}>
+              Viramos<br />referência.
+            </span>
           </h1>
 
-          <p className="text-metal-light text-lg sm:text-xl leading-relaxed max-w-xl">
-            Em 20 anos de obra feita direito, construímos reputação junto com condomínios,
-            construtoras e arquitetos que precisam de um parceiro confiável — não de mais um fornecedor.
+          <p style={{
+            fontSize: '1.1rem',
+            lineHeight: 1.75,
+            color: '#64748b',
+            maxWidth: '480px',
+            fontFamily: 'var(--font-sans)',
+          }}>
+            Em 20 anos de obra feita direito, construímos reputação junto com
+            condomínios, construtoras e arquitetos que precisam de um parceiro
+            confiável — não de mais um fornecedor.
           </p>
         </div>
 
-        {/* Large background number */}
-        <div className="absolute right-8 bottom-0 pointer-events-none select-none overflow-hidden">
-          <span
-            className="font-display font-black text-[20vw] leading-none text-transparent"
-            style={{ WebkitTextStroke: '1px rgba(210,205,198,0.9)' }}
-          >
+        <div
+          aria-hidden="true"
+          className="absolute right-8 bottom-0 pointer-events-none select-none"
+        >
+          <span style={{
+            fontFamily: 'var(--font-barlow-condensed)',
+            fontWeight: 900,
+            fontSize: 'clamp(8rem, 20vw, 22rem)',
+            lineHeight: 1,
+            color: 'transparent',
+            WebkitTextStroke: '1.5px rgba(249,115,22,0.12)',
+            display: 'block',
+          }}>
             2004
           </span>
         </div>
       </section>
 
-      {/* Stats */}
-      <section className="bg-graphite border-y border-foreground/8">
+      {/* ── 2. STATS ─────────────────────────────────────────── */}
+      <section style={{
+        background: '#f4f4f0',
+        borderTop: '1px solid #e2e8f0',
+        borderBottom: '1px solid #e2e8f0',
+      }}>
         <div className="container mx-auto px-4 sm:px-8">
-          <div className="grid grid-cols-2 lg:grid-cols-4 divide-x divide-white/5">
+          <div
+            className="grid grid-cols-2 lg:grid-cols-4"
+            style={{ borderLeft: '1px solid #e2e8f0' }}
+          >
             {[
-              { value: '+20', label: 'Anos de mercado' },
+              { value: '+20 Anos', label: 'De mercado' },
               { value: '+5.000', label: 'Projetos entregues' },
               { value: '+500', label: 'Condomínios' },
               { value: '100%', label: 'Com ART' },
             ].map((stat, i) => (
-              <div key={i} className="py-10 px-6 sm:px-10">
-                <div className="font-display font-black text-4xl lg:text-5xl text-foreground leading-none mb-1.5">
+              <div
+                key={i}
+                className="py-10 px-6 sm:px-10"
+                style={{ borderRight: '1px solid #e2e8f0' }}
+              >
+                <div style={{
+                  fontFamily: 'var(--font-barlow-condensed)',
+                  fontWeight: 900,
+                  fontSize: 'clamp(2rem, 4vw, 3.25rem)',
+                  lineHeight: 1,
+                  color: '#0f172a',
+                  marginBottom: '6px',
+                }}>
                   {stat.value}
                 </div>
-                <p className="text-xs text-metal-dark tracking-wide">{stat.label}</p>
+                <p style={{
+                  fontFamily: 'var(--font-mono)',
+                  fontSize: '10px',
+                  letterSpacing: '0.25em',
+                  textTransform: 'uppercase',
+                  color: '#94a3b8',
+                }}>
+                  {stat.label}
+                </p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Story */}
-      <section className="py-28 bg-carbon">
+      {/* ── 3. HISTÓRIA + TIMELINE ───────────────────────────── */}
+      <section style={{ background: '#ffffff', paddingTop: '6rem', paddingBottom: '6rem' }}>
         <div className="container mx-auto px-4 sm:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+
             <div>
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-8 h-px bg-amber-brand" />
-                <span className="text-amber-brand text-xs font-semibold tracking-[0.35em] uppercase">Nossa história</span>
-              </div>
-              <h2 className="font-display font-black text-4xl lg:text-5xl text-foreground leading-none mb-8">
+              <SectionLabel>Nossa história</SectionLabel>
+
+              <h2 style={{
+                fontFamily: 'var(--font-barlow-condensed)',
+                fontWeight: 900,
+                fontSize: 'clamp(2.5rem, 5vw, 4.5rem)',
+                lineHeight: 0.95,
+                letterSpacing: '0.01em',
+                textTransform: 'uppercase',
+                color: '#0f172a',
+                marginBottom: '2rem',
+              }}>
                 Uma oficina.<br />
-                <span className="text-metal/40">Uma obsessão.</span>
+                <span style={{ color: 'rgba(15,23,42,0.25)' }}>Uma obsessão.</span>
               </h2>
-              <div className="space-y-5 text-metal leading-relaxed">
-                <p>
-                  Em 2004, um engenheiro mecânico com zero tolerância para trabalho ruim
-                  fundou a Metalprime no Morumbi. O objetivo era simples: fazer em metal
-                  o que ninguém fazia direito.
-                </p>
-                <p>
-                  A qualidade falou mais alto. Condomínios, construtoras e escritórios de
-                  arquitetura passaram a nos chamar porque sabiam o que iam receber —
-                  entrega no prazo, ART em dia e sem surpresas na nota.
-                </p>
-                <p>
-                  Hoje somos mais de 30 especialistas, com estrutura industrial própria
-                  e mais de 5.000 obras executadas. A escala mudou. A obsessão com
-                  qualidade continua a mesma.
-                </p>
+
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+                {[
+                  'Em 2004, um engenheiro mecânico com zero tolerância para trabalho ruim fundou a Metalprime no Morumbi. O objetivo era simples: fazer em metal o que ninguém fazia direito.',
+                  'A qualidade falou mais alto. Condomínios, construtoras e escritórios de arquitetura passaram a nos chamar porque sabiam o que iam receber — entrega no prazo, ART em dia e sem surpresas na nota.',
+                  'Hoje somos mais de 30 especialistas, com estrutura industrial própria e mais de 5.000 obras executadas. A escala mudou. A obsessão com qualidade continua a mesma.',
+                ].map((p, i) => (
+                  <p key={i} style={{ fontSize: '15px', lineHeight: 1.75, color: '#475569' }}>
+                    {p}
+                  </p>
+                ))}
               </div>
             </div>
 
             {/* Timeline */}
             <div className="relative">
-              <div className="absolute left-6 top-0 bottom-0 w-px bg-gradient-to-b from-amber-brand/40 via-metal-dark/30 to-transparent" />
-              <div className="space-y-0">
+              <div
+                className="absolute top-0 bottom-0"
+                style={{
+                  left: '23px',
+                  width: '1px',
+                  background: 'linear-gradient(to bottom, #f97316, rgba(249,115,22,0.08))',
+                }}
+              />
+              <div>
                 {milestones.map((m, i) => (
-                  <div key={m.year} className="relative pl-16 pb-10 last:pb-0">
-                    <div className="absolute left-0 top-1 w-12 h-12 border border-amber-brand/30 bg-carbon flex items-center justify-center">
-                      <span className="font-display font-bold text-[11px] text-amber-brand">{m.year}</span>
+                  <div
+                    key={m.year}
+                    className="relative"
+                    style={{
+                      paddingLeft: '64px',
+                      paddingBottom: i < milestones.length - 1 ? '2.5rem' : '0',
+                    }}
+                  >
+                    <div
+                      className="absolute left-0 top-1 flex items-center justify-center"
+                      style={{
+                        width: '48px',
+                        height: '48px',
+                        border: '1px solid rgba(249,115,22,0.35)',
+                        background: '#ffffff',
+                      }}
+                    >
+                      <span style={{
+                        fontFamily: 'var(--font-mono)',
+                        fontWeight: 700,
+                        fontSize: '9px',
+                        color: '#f97316',
+                        letterSpacing: '0.05em',
+                      }}>
+                        {m.year}
+                      </span>
                     </div>
-                    <h3 className="font-display font-bold text-foreground text-lg mb-2">{m.title}</h3>
-                    <p className="text-sm text-metal leading-relaxed">{m.desc}</p>
+                    <h3 style={{
+                      fontFamily: 'var(--font-sans)',
+                      fontWeight: 700,
+                      fontSize: '1rem',
+                      color: '#0f172a',
+                      marginBottom: '4px',
+                    }}>
+                      {m.title}
+                    </h3>
+                    <p style={{ fontSize: '14px', color: '#64748b', lineHeight: 1.65 }}>
+                      {m.desc}
+                    </p>
                   </div>
                 ))}
               </div>
             </div>
+
           </div>
         </div>
       </section>
 
-      {/* Values */}
-      <section className="py-28 bg-graphite relative overflow-hidden">
-        <div
-          className="absolute inset-0 opacity-[0.02]"
-          style={{
-            backgroundImage: 'linear-gradient(#8c97a0 1px, transparent 1px), linear-gradient(90deg, #8c97a0 1px, transparent 1px)',
-            backgroundSize: '40px 40px',
-          }}
-        />
-        <div className="container mx-auto px-4 sm:px-8 relative z-10">
-          <div className="flex items-center gap-3 mb-6">
-            <div className="w-8 h-px bg-amber-brand" />
-            <span className="text-amber-brand text-xs font-semibold tracking-[0.35em] uppercase">O que nos move</span>
-          </div>
-          <h2 className="font-display font-black text-4xl lg:text-5xl text-foreground leading-none mb-16">
+      {/* ── 4. VALORES ───────────────────────────────────────── */}
+      <section style={{ background: '#f4f4f0', paddingTop: '6rem', paddingBottom: '6rem' }}>
+        <div className="container mx-auto px-4 sm:px-8">
+          <SectionLabel>O que nos move</SectionLabel>
+
+          <h2 style={{
+            fontFamily: 'var(--font-barlow-condensed)',
+            fontWeight: 900,
+            fontSize: 'clamp(2.5rem, 5vw, 4.5rem)',
+            lineHeight: 0.95,
+            letterSpacing: '0.01em',
+            textTransform: 'uppercase',
+            color: '#0f172a',
+            marginBottom: '3rem',
+          }}>
             O que não abrimos mão
           </h2>
 
-          <div className="divide-y divide-white/5">
-            {values.map((v) => (
-              <div key={v.title} className="py-8 flex flex-col sm:flex-row gap-6 sm:gap-12 items-start">
-                <span className="font-display font-black text-5xl text-foreground/10 leading-none shrink-0 w-16">{v.number}</span>
-                <div className="flex items-start gap-6 flex-1">
-                  <div className="w-10 h-10 border border-amber-brand/30 flex items-center justify-center shrink-0 mt-1">
-                    <v.icon className="w-5 h-5 text-amber-brand" />
+          <div>
+            {values.map((v, i) => (
+              <div
+                key={v.title}
+                className="py-8 flex flex-col sm:flex-row gap-6 sm:gap-10 items-start"
+                style={{ borderBottom: i < values.length - 1 ? '1px solid #e2e8f0' : 'none' }}
+              >
+                <span
+                  aria-hidden="true"
+                  style={{
+                    fontFamily: 'var(--font-barlow-condensed)',
+                    fontWeight: 900,
+                    fontSize: '3.5rem',
+                    lineHeight: 1,
+                    color: 'rgba(15,23,42,0.08)',
+                    flexShrink: 0,
+                    width: '3.5rem',
+                  }}
+                >
+                  {v.number}
+                </span>
+
+                <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1.25rem', flex: 1 }}>
+                  <div style={{
+                    width: '40px',
+                    height: '40px',
+                    border: '1px solid rgba(249,115,22,0.3)',
+                    background: '#fff7ed',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    flexShrink: 0,
+                    marginTop: '2px',
+                  }}>
+                    <v.icon style={{ width: '18px', height: '18px', color: '#f97316' }} />
                   </div>
+
                   <div>
-                    <h3 className="font-display font-bold text-xl text-foreground mb-2">{v.title}</h3>
-                    <p className="text-metal text-sm leading-relaxed">{v.description}</p>
+                    <h3 style={{
+                      fontFamily: 'var(--font-sans)',
+                      fontWeight: 700,
+                      fontSize: '1.1rem',
+                      color: '#0f172a',
+                      marginBottom: '6px',
+                    }}>
+                      {v.title}
+                    </h3>
+                    <p style={{ fontSize: '14px', color: '#64748b', lineHeight: 1.65 }}>
+                      {v.description}
+                    </p>
                   </div>
                 </div>
               </div>
@@ -204,72 +362,93 @@ export default function SobrePage() {
         </div>
       </section>
 
-      {/* Differentials */}
-      <section className="py-28 bg-carbon">
+      {/* ── 5. DIFERENCIAIS + CTA ────────────────────────────── */}
+      <section style={{ background: '#ffffff', paddingTop: '6rem', paddingBottom: '6rem' }}>
         <div className="container mx-auto px-4 sm:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+
             <div>
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-8 h-px bg-amber-brand" />
-                <span className="text-amber-brand text-xs font-semibold tracking-[0.35em] uppercase">Por que a Metalprime</span>
-              </div>
-              <h2 className="font-display font-black text-4xl lg:text-5xl text-foreground leading-none mb-6">
-                O que você não encontra<br />
-                <span className="text-metal/40">em qualquer serralheria</span>
+              <SectionLabel>Por que a Metalprime</SectionLabel>
+
+              <h2 style={{
+                fontFamily: 'var(--font-barlow-condensed)',
+                fontWeight: 900,
+                fontSize: 'clamp(2.5rem, 5vw, 4.5rem)',
+                lineHeight: 0.95,
+                letterSpacing: '0.01em',
+                textTransform: 'uppercase',
+                color: '#0f172a',
+                marginBottom: '1.25rem',
+              }}>
+                O que você não<br />
+                encontra em<br />
+                <span style={{ color: '#f97316' }}>qualquer serralheria</span>
               </h2>
-              <p className="text-metal leading-relaxed mb-12">
+
+              <p style={{
+                fontSize: '15px',
+                lineHeight: 1.75,
+                color: '#64748b',
+                marginBottom: '2.5rem',
+                maxWidth: '380px',
+              }}>
                 A maioria terceiriza, improvisa e entrega sem ART. Aqui é diferente.
+                Fale com um engenheiro: visita técnica gratuita, orçamento em 24h.
               </p>
-              <Link
-                href="/orcamento"
-                className="group inline-flex items-center gap-3 bg-amber-brand hover:bg-amber-light text-carbon font-bold text-sm tracking-wide px-8 py-4 transition-colors duration-200"
-              >
-                Solicitar Orçamento Gratuito
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </Link>
+
+              <div className="flex flex-col sm:flex-row gap-3">
+                <Link
+                  href="/orcamento"
+                  className="group inline-flex items-center gap-3 font-bold text-sm tracking-wide px-8 py-4 transition-colors duration-200"
+                  style={{ background: '#f97316', color: '#ffffff' }}
+                  onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = '#ea580c' }}
+                  onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = '#f97316' }}
+                >
+                  Solicitar Orçamento Gratuito
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </Link>
+
+                <a
+                  href={`https://wa.me/${WHATSAPP_NUMBER}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-sm px-8 py-4 transition-all duration-200"
+                  style={{ border: '1px solid #e2e8f0', color: '#475569' }}
+                  onMouseEnter={(e) => {
+                    const el = e.currentTarget as HTMLElement
+                    el.style.borderColor = '#0f172a'
+                    el.style.color = '#0f172a'
+                  }}
+                  onMouseLeave={(e) => {
+                    const el = e.currentTarget as HTMLElement
+                    el.style.borderColor = '#e2e8f0'
+                    el.style.color = '#475569'
+                  }}
+                >
+                  Falar pelo WhatsApp
+                </a>
+              </div>
             </div>
 
-            <div className="space-y-4">
+            <div>
               {differentials.map((d, i) => (
-                <div key={i} className="flex items-start gap-4 py-4 border-b border-foreground/8 last:border-0">
-                  <CheckCircle className="w-5 h-5 text-amber-brand shrink-0 mt-0.5" />
-                  <span className="text-metal-light text-sm leading-relaxed">{d}</span>
+                <div
+                  key={i}
+                  className="flex items-start gap-4 py-4"
+                  style={{ borderBottom: i < differentials.length - 1 ? '1px solid #e2e8f0' : 'none' }}
+                >
+                  <CheckCircle style={{ width: '18px', height: '18px', color: '#f97316', flexShrink: 0, marginTop: '1px' }} />
+                  <span style={{ fontSize: '14px', color: '#334155', lineHeight: 1.65 }}>
+                    {d}
+                  </span>
                 </div>
               ))}
             </div>
+
           </div>
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-24 bg-graphite relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-steel/20 to-transparent" />
-        <div className="container mx-auto px-4 sm:px-8 relative z-10 text-center">
-          <h2 className="font-display font-black text-4xl lg:text-5xl text-foreground leading-none mb-6">
-            Pronto para começar?
-          </h2>
-          <p className="text-metal max-w-md mx-auto mb-10">
-            Fale com um engenheiro. Visita técnica gratuita, orçamento em 24h, sem compromisso.
-          </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link
-              href="/orcamento"
-              className="group inline-flex items-center gap-3 bg-amber-brand hover:bg-amber-light text-carbon font-bold text-sm tracking-wide px-10 py-4 transition-colors duration-200"
-            >
-              Solicitar Orçamento Gratuito
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </Link>
-            <a
-              href={`https://wa.me/${WHATSAPP_NUMBER}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 border border-foreground/15 hover:border-foreground/22 text-metal-light hover:text-foreground text-sm px-8 py-4 transition-all duration-200"
-            >
-              Falar pelo WhatsApp
-            </a>
-          </div>
-        </div>
-      </section>
     </div>
   )
 }
