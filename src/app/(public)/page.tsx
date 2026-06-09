@@ -1,12 +1,9 @@
 import type { Metadata } from 'next'
 import HeroSection from '@/components/home/HeroSection'
-import StatsBar from '@/components/home/StatsBar'
 import SegmentSection from '@/components/home/SegmentSection'
-import ServicesGrid from '@/components/home/ServicesGrid'
 import FeaturedProjects from '@/components/home/FeaturedProjects'
 import ProcessSection from '@/components/home/ProcessSection'
 import TestimonialsCarousel from '@/components/home/TestimonialsCarousel'
-import ClientLogos from '@/components/home/ClientLogos'
 import CtaBanner from '@/components/home/CtaBanner'
 import { getFeaturedPortfolio } from '@/lib/queries/portfolio'
 import { localBusinessSchema, websiteSchema } from '@/lib/seo'
@@ -45,13 +42,10 @@ export default async function HomePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
       />
       <HeroSection />
-      <StatsBar />
       <SegmentSection />
-      <ServicesGrid />
       <FeaturedProjects items={featuredItems} />
       <ProcessSection />
       <TestimonialsCarousel />
-      <ClientLogos />
       <CtaBanner />
     </>
   )

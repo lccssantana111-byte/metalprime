@@ -16,38 +16,119 @@ const duplicated = [...clients, ...clients]
 export default function ClientLogos() {
   return (
     <section
-      className="py-20 overflow-hidden"
-      style={{ background: '#eeeae3', borderTop: '1px solid rgba(0,0,0,0.07)' }}
+      style={{
+        colorScheme: 'light',
+        background: '#f8fafc',
+        padding: '3.5rem 0',
+        overflow: 'hidden',
+        borderTop: '1px solid #e2e8f0',
+        borderBottom: '1px solid #e2e8f0',
+      }}
     >
-      <div className="container mx-auto px-5 sm:px-8 mb-12">
-        <div className="flex items-center gap-4">
-          <div className="h-px flex-1" style={{ background: 'rgba(0,0,0,0.08)' }} />
-          <span className="font-mono text-[10px] tracking-[0.45em] uppercase shrink-0" style={{ color: 'rgba(180,188,198,0.25)' }}>
+      {/* Label */}
+      <div
+        style={{
+          maxWidth: '1200px',
+          margin: '0 auto 2rem',
+          padding: '0 clamp(1.25rem, 4vw, 2rem)',
+        }}
+      >
+        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+          <div style={{ height: '1px', flex: 1, background: '#e2e8f0' }} />
+          <span
+            style={{
+              fontFamily: 'var(--font-mono)',
+              fontSize: '10px',
+              letterSpacing: '0.4em',
+              textTransform: 'uppercase',
+              color: '#94a3b8',
+              flexShrink: 0,
+            }}
+          >
             Empresas que confiam na Metalprime
           </span>
-          <div className="h-px flex-1" style={{ background: 'rgba(0,0,0,0.08)' }} />
+          <div style={{ height: '1px', flex: 1, background: '#e2e8f0' }} />
         </div>
       </div>
 
-      <div className="relative group/marquee">
+      {/* Marquee */}
+      <div className="group/marquee" style={{ position: 'relative' }}>
         {/* Fade edges */}
-        <div className="absolute left-0 top-0 bottom-0 w-24 z-10 pointer-events-none" style={{ background: 'linear-gradient(to right, #0c0e11, transparent)' }} />
-        <div className="absolute right-0 top-0 bottom-0 w-24 z-10 pointer-events-none" style={{ background: 'linear-gradient(to left, #0c0e11, transparent)' }} />
+        <div
+          style={{
+            position: 'absolute',
+            left: 0,
+            top: 0,
+            bottom: 0,
+            width: '96px',
+            zIndex: 10,
+            pointerEvents: 'none',
+            background: 'linear-gradient(to right, #f8fafc, transparent)',
+          }}
+        />
+        <div
+          style={{
+            position: 'absolute',
+            right: 0,
+            top: 0,
+            bottom: 0,
+            width: '96px',
+            zIndex: 10,
+            pointerEvents: 'none',
+            background: 'linear-gradient(to left, #f8fafc, transparent)',
+          }}
+        />
 
         <div
-          className="flex gap-0 animate-marquee group-hover/marquee:[animation-play-state:paused]"
-          style={{ width: 'max-content' }}
+          className="animate-marquee group-hover/marquee:[animation-play-state:paused]"
+          style={{ display: 'flex', width: 'max-content' }}
         >
           {duplicated.map((client, i) => (
             <div
               key={i}
-              className="px-12 py-4 flex items-center gap-3 shrink-0"
-              style={{ borderRight: '1px solid rgba(0,0,0,0.07)' }}
+              style={{
+                padding: '0 3rem',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '10px',
+                flexShrink: 0,
+                borderRight: '1px solid #e2e8f0',
+              }}
             >
-              <div className="w-1.5 h-1.5 shrink-0" style={{ background: 'rgba(196,160,64,0.3)', transform: 'rotate(45deg)' }} />
+              {/* Diamond */}
+              <div
+                style={{
+                  width: '6px',
+                  height: '6px',
+                  background: '#f97316',
+                  transform: 'rotate(45deg)',
+                  flexShrink: 0,
+                  opacity: 0.5,
+                }}
+              />
               <div>
-                <span className="font-display font-semibold text-[15px] whitespace-nowrap" style={{ color: 'rgba(180,188,198,0.45)' }}>
+                <span
+                  style={{
+                    fontFamily: 'var(--font-display)',
+                    fontWeight: 600,
+                    fontSize: '15px',
+                    whiteSpace: 'nowrap',
+                    color: '#475569',
+                  }}
+                >
                   {client.name}
+                </span>
+                <span
+                  style={{
+                    fontFamily: 'var(--font-mono)',
+                    fontSize: '9px',
+                    letterSpacing: '0.2em',
+                    textTransform: 'uppercase',
+                    color: '#94a3b8',
+                    marginLeft: '8px',
+                  }}
+                >
+                  {client.type}
                 </span>
               </div>
             </div>

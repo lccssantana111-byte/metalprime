@@ -1,20 +1,19 @@
 'use client'
 
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X, ArrowUpRight, ChevronRight } from 'lucide-react'
-import { cn } from '@/lib/utils'
+import { Menu, X, ArrowUpRight, ChevronDown, DoorOpen, ShieldCheck, TrendingUp, GripHorizontal, Building2, Wrench } from 'lucide-react'
 import { BRAND_NAME, COMPANY_PHONE, WHATSAPP_NUMBER } from '@/lib/constants'
 
 const services = [
-  { label: 'Portões', href: '/servicos/portoes', desc: 'Automáticos, basculantes e deslizantes' },
-  { label: 'Grades e Cercas', href: '/servicos/grades-e-cercas', desc: 'Segurança com design industrial' },
-  { label: 'Escadas Metálicas', href: '/servicos/escadas', desc: 'Retas, helicoidais e flutuantes' },
-  { label: 'Corrimões', href: '/servicos/corrimoes', desc: 'Inox, ferro e alumínio' },
-  { label: 'Estruturas Metálicas', href: '/servicos/estruturas-metalicas', desc: 'Galpões, coberturas e mezaninos' },
-  { label: 'Projetos Sob Medida', href: '/servicos/sob-medida', desc: 'Qualquer metal, qualquer forma' },
+  { label: 'Portões', href: '/servicos/portoes', desc: 'Automáticos, basculantes e deslizantes', Icon: DoorOpen },
+  { label: 'Grades e Cercas', href: '/servicos/grades-e-cercas', desc: 'Segurança com design industrial', Icon: ShieldCheck },
+  { label: 'Escadas Metálicas', href: '/servicos/escadas', desc: 'Retas, helicoidais e flutuantes', Icon: TrendingUp },
+  { label: 'Corrimões', href: '/servicos/corrimoes', desc: 'Inox, ferro e alumínio', Icon: GripHorizontal },
+  { label: 'Estruturas Metálicas', href: '/servicos/estruturas-metalicas', desc: 'Galpões, coberturas e mezaninos', Icon: Building2 },
+  { label: 'Projetos Sob Medida', href: '/servicos/sob-medida', desc: 'Qualquer metal, qualquer forma', Icon: Wrench },
 ]
 
 const nav = [
@@ -25,31 +24,19 @@ const nav = [
   { label: 'Contato', href: '/contato' },
 ]
 
-const LOGO_MARK = (
-  <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-    <path d="M14 2L26 8V20L14 26L2 20V8L14 2Z" stroke="#c4a040" strokeWidth="1.5" fill="none" />
-    <path d="M14 7L21 11V17L14 21L7 17V11L14 7Z" fill="#c4a040" fillOpacity="0.15" stroke="#c4a040" strokeWidth="1" />
-    <circle cx="14" cy="14" r="2.5" fill="#c4a040" />
-  </svg>
-)
-
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
   const [servicesOpen, setServicesOpen] = useState(false)
   const pathname = usePathname()
-  const dropdownRef = useRef<HTMLLIElement>(null)
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 40)
+    const handleScroll = () => setScrolled(window.scrollY > 48)
     window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  useEffect(() => {
-    setMobileOpen(false)
-    setServicesOpen(false)
-  }, [pathname])
+  useEffect(() => { setMobileOpen(false); setServicesOpen(false) }, [pathname])
 
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? 'hidden' : ''
@@ -59,122 +46,145 @@ export default function Navbar() {
   const isActive = (href: string) =>
     href === '/' ? pathname === '/' : pathname.startsWith(href)
 
-  return (
-    <header
-      className={cn(
-        'fixed top-0 left-0 right-0 z-50 transition-all duration-500',
-        scrolled
-          ? 'bg-[#f7f5f2]/97 backdrop-blur-xl border-b'
-          : 'bg-transparent',
-      )}
-      style={{
-        borderBottomColor: scrolled ? 'rgba(0,0,0,0.09)' : 'transparent',
-      }}
-    >
-      <nav className="container mx-auto px-5 sm:px-8 h-[72px] flex items-center justify-between gap-8">
+  // D = dark state: at top of page, navbar is dark/glass over the hero
+  const D = !scrolled
 
+  return (
+    <header className="fixed top-0 left-0 right-0 z-50 px-3 sm:px-5 lg:px-6 pt-3 sm:pt-4">
+      <nav
+        className="mx-auto max-w-[1300px] h-[58px] flex items-center justify-between gap-6 px-3 sm:px-5 rounded-2xl"
+        style={{
+          transition: 'background 0.5s cubic-bezier(0.32,0.72,0,1), box-shadow 0.5s cubic-bezier(0.32,0.72,0,1), border-color 0.5s cubic-bezier(0.32,0.72,0,1)',
+          background: D ? 'rgba(15,23,42,0.72)' : 'rgba(255,255,255,0.97)',
+          backdropFilter: 'blur(20px)',
+          WebkitBackdropFilter: 'blur(20px)',
+          border: `1px solid ${D ? 'rgba(255,255,255,0.09)' : 'rgba(226,232,240,0.7)'}`,
+          boxShadow: D
+            ? '0 4px 24px rgba(0,0,0,0.25)'
+            : '0 4px 32px rgba(15,23,42,0.09), inset 0 1px 0 rgba(255,255,255,0.9)',
+        }}
+      >
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3 shrink-0 group">
-          <div className="transition-transform duration-300 group-hover:scale-105">
-            {LOGO_MARK}
+          <div style={{ transition: 'transform 0.3s cubic-bezier(0.32,0.72,0,1)' }} className="group-hover:scale-105">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+              <path
+                d="M14 2L26 8V20L14 26L2 20V8L14 2Z"
+                stroke={D ? 'rgba(255,255,255,0.45)' : '#0f172a'}
+                strokeWidth="1.5"
+                fill="none"
+                style={{ transition: 'stroke 0.4s' }}
+              />
+              <path d="M14 7L21 11V17L14 21L7 17V11L14 7Z" fill="#f97316" fillOpacity="0.14" stroke="#f97316" strokeWidth="1" />
+              <circle cx="14" cy="14" r="2.5" fill="#f97316" />
+            </svg>
           </div>
-          <span className="font-display font-black text-[15px] tracking-[0.12em] uppercase text-[#1e2328]">
+          <span
+            className="font-display font-black text-[20px] tracking-[0.08em] uppercase"
+            style={{ color: D ? 'white' : '#0f172a', transition: 'color 0.4s' }}
+          >
             {BRAND_NAME.split(' ')[0]}
-            <span style={{ color: '#c4a040' }}>.</span>
+            <span style={{ color: '#f97316' }}>.</span>
           </span>
         </Link>
 
-        {/* Desktop nav */}
-        <ul className="hidden lg:flex items-center gap-1 absolute left-1/2 -translate-x-1/2">
+        {/* Desktop nav — centered */}
+        <ul className="hidden lg:flex items-center gap-0.5 absolute left-1/2 -translate-x-1/2">
           {nav.map((item) =>
             item.children ? (
               <li
                 key={item.href}
-                ref={dropdownRef}
                 className="relative"
                 onMouseEnter={() => setServicesOpen(true)}
                 onMouseLeave={() => setServicesOpen(false)}
               >
                 <button
-                  className={cn(
-                    'flex items-center gap-1.5 px-4 py-2.5 text-[13px] font-medium transition-colors duration-200 tracking-wide',
-                    isActive(item.href)
-                      ? 'text-[#1e2328]'
-                      : 'text-[#607080] hover:text-[#1e2328]',
-                  )}
+                  className="flex items-center gap-1.5 px-4 py-2.5 text-[18px] font-medium rounded-xl transition-all duration-200"
+                  style={{
+                    color: isActive(item.href)
+                      ? (D ? 'white' : '#0f172a')
+                      : (D ? 'rgba(255,255,255,0.55)' : '#64748b'),
+                    background: 'transparent',
+                  }}
+                  onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = D ? 'rgba(255,255,255,0.08)' : 'rgba(241,245,249,0.8)'; (e.currentTarget as HTMLElement).style.color = D ? 'white' : '#0f172a' }}
+                  onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = 'transparent'; (e.currentTarget as HTMLElement).style.color = isActive(item.href) ? (D ? 'white' : '#0f172a') : (D ? 'rgba(255,255,255,0.55)' : '#64748b') }}
                 >
                   {item.label}
-                  <ChevronRight
-                    className={cn(
-                      'w-3 h-3 transition-transform duration-200',
-                      servicesOpen ? 'rotate-90' : '',
-                    )}
+                  <ChevronDown
+                    className="w-3.5 h-3.5 transition-transform duration-200"
+                    style={{ transform: servicesOpen ? 'rotate(180deg)' : 'rotate(0deg)' }}
                   />
-                  {isActive(item.href) && (
-                    <span
-                      className="absolute bottom-0 left-4 right-4 h-px"
-                      style={{ background: '#c4a040' }}
-                    />
-                  )}
                 </button>
+
+                {isActive(item.href) && (
+                  <span className="absolute bottom-0 left-4 right-4 h-[2px] rounded-full" style={{ background: '#f97316' }} />
+                )}
 
                 <AnimatePresence>
                   {servicesOpen && (
                     <motion.div
-                      className="absolute top-full left-1/2 -translate-x-1/2 pt-4"
-                      initial={{ opacity: 0, y: -8 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -8 }}
-                      transition={{ duration: 0.18 }}
+                      className="absolute top-full left-1/2 -translate-x-1/2 pt-3"
+                      initial={{ opacity: 0, y: -6, scale: 0.97 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      exit={{ opacity: 0, y: -6, scale: 0.97 }}
+                      transition={{ duration: 0.18, ease: [0.32, 0.72, 0, 1] }}
                     >
                       <div
-                        className="shadow-2xl overflow-hidden"
+                        className="rounded-2xl overflow-hidden"
                         style={{
-                          background: '#eeeae3',
-                          border: '1px solid rgba(0,0,0,0.10)',
-                          minWidth: '480px',
+                          background: 'white',
+                          border: '1px solid #e2e8f0',
+                          minWidth: '540px',
+                          boxShadow: '0 16px 48px rgba(15,23,42,0.14), 0 2px 8px rgba(15,23,42,0.05)',
                         }}
                       >
-                        <div className="h-px w-full" style={{ background: 'linear-gradient(90deg, transparent, #c4a040, transparent)' }} />
-                        <div className="grid grid-cols-2 gap-px p-1">
-                          {item.children.map((child, i) => (
-                            <Link
-                              key={child.href}
-                              href={child.href}
-                              className="group flex flex-col gap-0.5 px-5 py-4 transition-colors duration-150"
-                              style={{}}
-                              onMouseEnter={(e) => {
-                                e.currentTarget.style.background = 'rgba(0,0,0,0.05)'
-                              }}
-                              onMouseLeave={(e) => {
-                                e.currentTarget.style.background = 'transparent'
-                              }}
-                            >
-                              <span className="flex items-center gap-2 text-[13px] font-medium text-[#1e2328]">
-                                <span
-                                  className="font-mono text-[9px] tracking-widest"
-                                  style={{ color: 'rgba(196,160,64,0.6)' }}
+                        <div className="grid grid-cols-2 gap-1 p-2">
+                          {item.children.map((child) => {
+                            const Icon = child.Icon
+                            return (
+                              <Link
+                                key={child.href}
+                                href={child.href}
+                                className="group/item flex items-start gap-3 px-4 py-3.5 rounded-xl transition-all duration-150 hover:bg-[#fff7ed]"
+                              >
+                                <div
+                                  className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 transition-all duration-150 group-hover/item:bg-orange-100"
+                                  style={{ background: '#f1f5f9', marginTop: '1px' }}
                                 >
-                                  0{i + 1}
-                                </span>
-                                {child.label}
-                              </span>
-                              <span className="text-[11px]" style={{ color: '#8a9199' }}>
-                                {child.desc}
-                              </span>
-                            </Link>
-                          ))}
+                                  <Icon
+                                    className="w-[15px] h-[15px] transition-colors duration-150 group-hover/item:text-orange-500"
+                                    style={{ color: '#94a3b8' }}
+                                  />
+                                </div>
+                                <div className="min-w-0">
+                                  <span
+                                    className="text-[13px] font-semibold block leading-snug transition-colors duration-150 group-hover/item:text-[#f97316]"
+                                    style={{ color: '#0f172a' }}
+                                  >
+                                    {child.label}
+                                  </span>
+                                  <span className="text-[11px] block mt-0.5 leading-tight" style={{ color: '#94a3b8' }}>
+                                    {child.desc}
+                                  </span>
+                                </div>
+                              </Link>
+                            )
+                          })}
                         </div>
-                        <div className="px-6 py-3 flex items-center justify-between" style={{ borderTop: '1px solid rgba(0,0,0,0.08)' }}>
-                          <span className="text-[11px] font-mono" style={{ color: '#8a9199' }}>
-                            Todos os serviços
+
+                        <div
+                          className="px-5 py-3 flex items-center justify-between"
+                          style={{ borderTop: '1px solid #f1f5f9', background: '#fafafa' }}
+                        >
+                          <span className="text-[11px]" style={{ fontFamily: 'var(--font-mono)', color: '#94a3b8' }}>
+                            6 especialidades em metal
                           </span>
                           <Link
                             href="/servicos"
-                            className="flex items-center gap-1.5 text-[11px] font-semibold tracking-wide transition-colors"
-                            style={{ color: '#c4a040' }}
-                            onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = '#d4b454' }}
-                            onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = '#c4a040' }}
+                            className="flex items-center gap-1.5 text-[12px] font-semibold transition-colors"
+                            style={{ color: '#f97316' }}
+                            onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = '#ea580c' }}
+                            onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = '#f97316' }}
                           >
                             Ver todos
                             <ArrowUpRight className="w-3 h-3" />
@@ -189,19 +199,14 @@ export default function Navbar() {
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  className={cn(
-                    'relative px-4 py-2.5 text-[13px] font-medium transition-colors duration-200 block tracking-wide',
-                    isActive(item.href)
-                      ? 'text-[#1e2328]'
-                      : 'text-[#607080] hover:text-[#1e2328]',
-                  )}
+                  className="relative px-4 py-2.5 text-[18px] font-medium transition-all duration-200 block rounded-xl"
+                  style={{ color: isActive(item.href) ? (D ? 'white' : '#0f172a') : (D ? 'rgba(255,255,255,0.55)' : '#64748b') }}
+                  onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = D ? 'rgba(255,255,255,0.08)' : 'rgba(241,245,249,0.8)'; (e.currentTarget as HTMLElement).style.color = D ? 'white' : '#0f172a' }}
+                  onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = 'transparent'; (e.currentTarget as HTMLElement).style.color = isActive(item.href) ? (D ? 'white' : '#0f172a') : (D ? 'rgba(255,255,255,0.55)' : '#64748b') }}
                 >
                   {item.label}
                   {isActive(item.href) && (
-                    <span
-                      className="absolute bottom-0 left-4 right-4 h-px"
-                      style={{ background: '#c4a040' }}
-                    />
+                    <span className="absolute bottom-0 left-4 right-4 h-[2px] rounded-full" style={{ background: '#f97316' }} />
                   )}
                 </Link>
               </li>
@@ -210,35 +215,51 @@ export default function Navbar() {
         </ul>
 
         {/* Desktop right */}
-        <div className="hidden lg:flex items-center gap-5 shrink-0">
+        <div className="hidden lg:flex items-center gap-3 shrink-0">
           <a
             href={`tel:${COMPANY_PHONE}`}
-            className="text-[12px] font-mono transition-colors duration-200"
-            style={{ color: '#607080' }}
-            onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = '#1e2328' }}
-            onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = '#1e2328' }}
+            className="text-[12px] transition-colors duration-300"
+            style={{ fontFamily: 'var(--font-mono)', color: D ? 'rgba(255,255,255,0.35)' : '#94a3b8' }}
+            onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = D ? 'rgba(255,255,255,0.8)' : '#0f172a' }}
+            onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = D ? 'rgba(255,255,255,0.35)' : '#94a3b8' }}
           >
             {COMPANY_PHONE}
           </a>
+
           <Link
             href="/orcamento"
-            className="text-[12px] font-bold tracking-[0.1em] uppercase px-6 py-2.5 transition-all duration-200"
-            style={{ background: '#c4a040', color: '#050608' }}
-            onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = '#d4b454' }}
-            onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = '#c4a040' }}
+            className="group inline-flex items-center gap-2 text-[18px] font-semibold px-5 py-2.5 rounded-full transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] active:scale-[0.98]"
+            style={{
+              background: '#f97316',
+              color: 'white',
+              boxShadow: '0 2px 12px rgba(249,115,22,0.3)',
+            }}
+            onMouseEnter={e => {
+              const el = e.currentTarget as HTMLElement
+              el.style.background = '#ea580c'
+              el.style.boxShadow = '0 4px 20px rgba(249,115,22,0.45)'
+            }}
+            onMouseLeave={e => {
+              const el = e.currentTarget as HTMLElement
+              el.style.background = '#f97316'
+              el.style.boxShadow = '0 2px 12px rgba(249,115,22,0.3)'
+            }}
           >
-            Orçamento Gratuito
+            Orçamento
+            <span className="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+              <ArrowUpRight className="w-3 h-3" />
+            </span>
           </Link>
         </div>
 
         {/* Mobile toggle */}
         <button
-          className="lg:hidden w-10 h-10 flex items-center justify-center transition-colors"
-          style={{ color: '#607080' }}
+          className="lg:hidden w-9 h-9 flex items-center justify-center rounded-xl transition-all duration-200"
+          style={{ color: D ? 'rgba(255,255,255,0.7)' : '#64748b' }}
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Menu"
-          onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = '#1e2328' }}
-          onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = '#1e2328' }}
+          onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = D ? 'rgba(255,255,255,0.1)' : '#f1f5f9' }}
+          onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = 'transparent' }}
         >
           <AnimatePresence mode="wait">
             {mobileOpen ? (
@@ -264,49 +285,54 @@ export default function Navbar() {
         </button>
       </nav>
 
-      {/* Mobile menu */}
+      {/* Mobile menu — dark full-screen */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
-            className="lg:hidden fixed inset-0 top-[72px] z-40"
+            className="lg:hidden fixed inset-0 z-40"
+            style={{ background: '#0f172a' }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
-            style={{ background: '#f7f5f2' }}
+            transition={{ duration: 0.22, ease: [0.32, 0.72, 0, 1] }}
           >
-            {/* Top gold line */}
-            <div className="h-px w-full" style={{ background: 'linear-gradient(90deg, transparent, #c4a040, transparent)' }} />
+            <div className="h-[78px]" />
 
-            <div className="h-full overflow-y-auto px-6 pt-8 pb-16 flex flex-col">
-              <nav className="flex-1 space-y-0">
+            {/* Subtle orange rule */}
+            <div style={{ height: '1px', background: 'linear-gradient(90deg, transparent, rgba(249,115,22,0.35) 30%, rgba(249,115,22,0.35) 70%, transparent)' }} />
+
+            <div className="h-full overflow-y-auto px-6 pt-6 pb-16 flex flex-col">
+              <nav className="flex-1">
                 {nav.map((item, i) => (
                   <motion.div
                     key={item.href}
-                    initial={{ opacity: 0, x: 24 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: i * 0.07, duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                    initial={{ opacity: 0, y: 16 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: i * 0.055, duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
                   >
                     <Link
                       href={item.href}
-                      className="block py-5 font-display font-black text-[2rem] transition-colors leading-none"
+                      className="block py-5 font-display font-black text-[2.1rem] leading-none"
                       style={{
-                        color: isActive(item.href) ? '#c4a040' : '#1e2328',
-                        borderBottom: '1px solid rgba(0,0,0,0.08)',
+                        color: isActive(item.href) ? '#f97316' : 'rgba(255,255,255,0.82)',
+                        borderBottom: '1px solid rgba(255,255,255,0.06)',
+                        transition: 'color 0.2s',
                       }}
+                      onMouseEnter={e => { if (!isActive(item.href)) (e.currentTarget as HTMLElement).style.color = 'white' }}
+                      onMouseLeave={e => { if (!isActive(item.href)) (e.currentTarget as HTMLElement).style.color = 'rgba(255,255,255,0.82)' }}
                     >
                       {item.label}
                     </Link>
                     {item.children && (
-                      <div className="py-3 pl-4 grid grid-cols-2 gap-x-4 gap-y-1">
+                      <div className="py-3 pl-3 grid grid-cols-2 gap-x-4 gap-y-1">
                         {item.children.map((child) => (
                           <Link
                             key={child.href}
                             href={child.href}
-                            className="py-1.5 text-[13px] transition-colors"
-                            style={{ color: '#8a9199' }}
-                            onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = '#1e2328' }}
-                            onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = '#8a9199' }}
+                            className="py-1.5 text-[12px] transition-colors duration-200"
+                            style={{ color: 'rgba(148,163,184,0.55)' }}
+                            onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = '#f97316' }}
+                            onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = 'rgba(148,163,184,0.55)' }}
                           >
                             {child.label}
                           </Link>
@@ -319,23 +345,27 @@ export default function Navbar() {
 
               <motion.div
                 className="pt-8 space-y-3"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.42 }}
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.32, duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
               >
                 <a
                   href={`https://wa.me/${WHATSAPP_NUMBER}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block text-center py-4 text-[14px] font-mono"
-                  style={{ color: '#8a9199', border: '1px solid rgba(0,0,0,0.10)' }}
+                  className="block text-center py-4 text-[14px] rounded-2xl border transition-all duration-200"
+                  style={{ fontFamily: 'var(--font-mono)', color: 'rgba(148,163,184,0.7)', borderColor: 'rgba(255,255,255,0.1)' }}
+                  onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.borderColor = '#f97316'; el.style.color = '#f97316' }}
+                  onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.borderColor = 'rgba(255,255,255,0.1)'; el.style.color = 'rgba(148,163,184,0.7)' }}
                 >
                   {COMPANY_PHONE}
                 </a>
                 <Link
                   href="/orcamento"
-                  className="block w-full text-center py-4 text-[13px] font-bold tracking-[0.12em] uppercase transition-colors"
-                  style={{ background: '#c4a040', color: '#050608' }}
+                  className="block w-full text-center py-4 text-[14px] font-semibold rounded-2xl transition-all duration-300 active:scale-[0.98]"
+                  style={{ background: '#f97316', color: 'white', boxShadow: '0 4px 20px rgba(249,115,22,0.32)' }}
+                  onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.background = '#ea580c'; el.style.boxShadow = '0 6px 28px rgba(249,115,22,0.45)' }}
+                  onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.background = '#f97316'; el.style.boxShadow = '0 4px 20px rgba(249,115,22,0.32)' }}
                 >
                   Solicitar Orçamento Gratuito
                 </Link>

@@ -1,11 +1,13 @@
 import { getDashboardMetrics } from '@/lib/queries/metrics'
 import { formatBRL } from '@/lib/utils'
-import { TrendingUp, TrendingDown, Minus, AlertTriangle, UserX, ArrowUpRight } from 'lucide-react'
-import Link from 'next/link'
+import { TrendingUp, TrendingDown, Minus, AlertTriangle, UserX } from 'lucide-react'
 import { LeadsLineChart } from '@/components/admin/dashboard/LeadsLineChart'
 import { ConversionFunnel } from '@/components/admin/dashboard/ConversionFunnel'
 import { ServicesPieChart } from '@/components/admin/dashboard/ServicesPieChart'
 import { RecentLeads } from '@/components/admin/dashboard/RecentLeads'
+import { AlertCard } from '@/components/admin/dashboard/AlertCard'
+import { KpiCard } from '@/components/admin/dashboard/KpiCard'
+import { ViewAllLink } from '@/components/admin/dashboard/ViewAllLink'
 
 export const dynamic = 'force-dynamic'
 
@@ -27,7 +29,6 @@ export default async function AdminDashboardPage() {
   const unassigned = metrics?.unassigned_leads ?? 0
   const staleDays = metrics?.stale_lead_days ?? 3
 
-  // Greeting
   const hour = new Date().getHours()
   const greeting = hour < 12 ? 'Bom dia' : hour < 18 ? 'Boa tarde' : 'Boa noite'
   const dateLabel = new Date().toLocaleDateString('pt-BR', { weekday: 'long', day: 'numeric', month: 'long' })
@@ -107,48 +108,32 @@ export default async function AdminDashboardPage() {
       {hasAlerts && (
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 mb-6">
           {stale > 0 && (
-            <Link
+            <AlertCard
               href="/admin/leads?status=novo"
-              className="flex items-center gap-3 rounded-xl p-3.5 transition-all group"
-              style={{ background: 'rgba(251,146,60,0.06)', border: '1px solid rgba(251,146,60,0.2)' }}
-              onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.borderColor = 'rgba(251,146,60,0.4)' }}
-              onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.borderColor = 'rgba(251,146,60,0.2)' }}
-            >
-              <div className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0" style={{ background: 'rgba(251,146,60,0.12)' }}>
-                <AlertTriangle className="w-3.5 h-3.5 text-orange-400" />
-              </div>
-              <div className="min-w-0">
-                <p className="text-[13px] font-semibold text-foreground">
-                  {stale} lead{stale > 1 ? 's' : ''} sem resposta
-                </p>
-                <p className="text-[11px]" style={{ color: 'rgba(251,146,60,0.6)' }}>
-                  Sem atualização há +{staleDays} dias
-                </p>
-              </div>
-              <ArrowUpRight className="w-3.5 h-3.5 ml-auto shrink-0 text-orange-400 opacity-0 group-hover:opacity-100 transition-opacity" />
-            </Link>
+              bg="rgba(251,146,60,0.06)"
+              border="rgba(251,146,60,0.2)"
+              borderHover="rgba(251,146,60,0.4)"
+              iconBg="rgba(251,146,60,0.12)"
+              Icon={AlertTriangle}
+              iconColor="text-orange-400"
+              title={`${stale} lead${stale > 1 ? 's' : ''} sem resposta`}
+              sub={`Sem atualização há +${staleDays} dias`}
+              subColor="rgba(251,146,60,0.6)"
+            />
           )}
           {unassigned > 0 && (
-            <Link
+            <AlertCard
               href="/admin/leads"
-              className="flex items-center gap-3 rounded-xl p-3.5 transition-all group"
-              style={{ background: 'rgba(250,204,21,0.06)', border: '1px solid rgba(250,204,21,0.18)' }}
-              onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.borderColor = 'rgba(250,204,21,0.35)' }}
-              onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.borderColor = 'rgba(250,204,21,0.18)' }}
-            >
-              <div className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0" style={{ background: 'rgba(250,204,21,0.1)' }}>
-                <UserX className="w-3.5 h-3.5 text-yellow-400" />
-              </div>
-              <div className="min-w-0">
-                <p className="text-[13px] font-semibold text-foreground">
-                  {unassigned} lead{unassigned > 1 ? 's' : ''} sem responsável
-                </p>
-                <p className="text-[11px]" style={{ color: 'rgba(250,204,21,0.55)' }}>
-                  Atribua um vendedor para garantir follow-up
-                </p>
-              </div>
-              <ArrowUpRight className="w-3.5 h-3.5 ml-auto shrink-0 text-yellow-400 opacity-0 group-hover:opacity-100 transition-opacity" />
-            </Link>
+              bg="rgba(250,204,21,0.06)"
+              border="rgba(250,204,21,0.18)"
+              borderHover="rgba(250,204,21,0.35)"
+              iconBg="rgba(250,204,21,0.1)"
+              Icon={UserX}
+              iconColor="text-yellow-400"
+              title={`${unassigned} lead${unassigned > 1 ? 's' : ''} sem responsável`}
+              sub="Atribua um vendedor para garantir follow-up"
+              subColor="rgba(250,204,21,0.55)"
+            />
           )}
         </div>
       )}
@@ -156,55 +141,7 @@ export default async function AdminDashboardPage() {
       {/* KPI cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5 mb-6">
         {kpis.map((kpi) => (
-          <Link key={kpi.label} href={kpi.href} className="group block">
-            <div
-              className="rounded-xl p-5 transition-all duration-200 h-full relative overflow-hidden"
-              style={{
-                background: kpi.primary ? 'rgba(200,134,10,0.06)' : 'rgba(0,0,0,0.04)',
-                border: kpi.primary
-                  ? '1px solid rgba(200,134,10,0.25)'
-                  : '1px solid rgba(0,0,0,0.08)',
-              }}
-              onMouseEnter={(e) => {
-                const el = e.currentTarget as HTMLElement
-                el.style.borderColor = kpi.primary ? 'rgba(200,134,10,0.5)' : 'rgba(0,0,0,0.12)'
-              }}
-              onMouseLeave={(e) => {
-                const el = e.currentTarget as HTMLElement
-                el.style.borderColor = kpi.primary ? 'rgba(200,134,10,0.25)' : 'rgba(0,0,0,0.08)'
-              }}
-            >
-              {/* Label row */}
-              <div className="flex items-center justify-between mb-3.5">
-                <span
-                  className="text-[10px] font-semibold font-mono tracking-[0.15em] uppercase"
-                  style={{ color: kpi.primary ? 'rgba(200,134,10,0.8)' : 'rgba(0,0,0,0.25)' }}
-                >
-                  {kpi.label}
-                </span>
-                {kpi.trend}
-              </div>
-
-              {/* Divider */}
-              <div className="h-px mb-3.5" style={{ background: 'rgba(0,0,0,0.07)' }} />
-
-              {/* Value */}
-              <div
-                className="font-display font-black leading-none mb-2 transition-colors duration-150"
-                style={{
-                  fontSize: 'clamp(1.75rem, 3vw, 2.25rem)',
-                  color: '#fff',
-                }}
-              >
-                {kpi.value}
-              </div>
-
-              {/* Sub */}
-              <p className="text-[11px]" style={{ color: 'rgba(0,0,0,0.22)' }}>
-                {kpi.sub}
-              </p>
-            </div>
-          </Link>
+          <KpiCard key={kpi.label} {...kpi} />
         ))}
       </div>
 
@@ -245,15 +182,7 @@ export default async function AdminDashboardPage() {
               </p>
               <h3 className="font-display font-semibold text-[14px] text-foreground">Leads recentes</h3>
             </div>
-            <Link
-              href="/admin/leads"
-              className="text-[10px] font-mono tracking-widest uppercase transition-colors"
-              style={{ color: '#c8860a' }}
-              onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = '#e8a020' }}
-              onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = '#c8860a' }}
-            >
-              Ver todos
-            </Link>
+            <ViewAllLink href="/admin/leads" />
           </div>
           <RecentLeads leads={metrics?.recent_leads ?? []} />
         </div>

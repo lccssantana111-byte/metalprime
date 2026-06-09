@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { DM_Sans, Outfit, IBM_Plex_Mono } from 'next/font/google'
+import { DM_Sans, Outfit, IBM_Plex_Mono, Barlow_Condensed } from 'next/font/google'
 import { Toaster } from '@/components/ui/sonner'
 import './globals.css'
 import { BRAND_NAME, COMPANY_TAGLINE, SITE_URL } from '@/lib/constants'
@@ -23,6 +23,13 @@ const ibmPlexMono = IBM_Plex_Mono({
   weight: ['400', '500', '700'],
 })
 
+const barlowCondensed = Barlow_Condensed({
+  variable: '--font-barlow-condensed',
+  subsets: ['latin'],
+  display: 'swap',
+  weight: ['600', '700', '800', '900'],
+})
+
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
@@ -40,8 +47,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="pt-BR" className={`${dmSans.variable} ${outfit.variable} ${ibmPlexMono.variable}`}>
-      <body className="min-h-screen bg-carbon text-foreground antialiased">
+    <html lang="pt-BR" className={`${dmSans.variable} ${outfit.variable} ${ibmPlexMono.variable} ${barlowCondensed.variable}`}>
+      <body className="min-h-screen bg-background text-foreground antialiased">
         {children}
         <Toaster richColors position="top-right" />
       </body>

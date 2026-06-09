@@ -1,203 +1,172 @@
 'use client'
 
-import { useState, useRef } from 'react'
-import { motion, AnimatePresence, useInView } from 'framer-motion'
-import { ArrowLeft, ArrowRight } from 'lucide-react'
+import { motion } from 'framer-motion'
+import { TestimonialsColumn } from '@/components/ui/testimonials-columns-1'
 
 const testimonials = [
   {
-    name: 'Carlos Rodrigues',
-    role: 'Síndico',
-    company: 'Condomínio Alphaville Business',
-    content: 'A Metalprime reformou completamente o sistema de portões e grades do nosso condomínio. Pontualidade, qualidade impecável e pós-venda excelente. Já indicamos para outros três condomínios da região.',
-    service: 'Portões e Grades',
-    initial: 'CR',
-  },
-  {
     name: 'Arq. Patricia Lima',
-    role: 'Arquiteta Sênior',
-    company: 'Lima & Associados',
-    content: 'Parceiro indispensável nos nossos projetos residenciais de alto padrão. A Metalprime transforma nossos projetos em peças únicas com precisão e acabamento que os clientes reconhecem como diferencial.',
+    role: 'Arquiteta · Lima & Associados',
     service: 'Projetos Sob Medida',
-    initial: 'PL',
+    image: 'https://randomuser.me/api/portraits/women/44.jpg',
+    text: 'Qualidade impecável do início ao fim. A Metalprime transformou um projeto complexo em realidade com uma precisão que raramente vemos no mercado.',
   },
   {
     name: 'Eng. Roberto Mendes',
-    role: 'Diretor de Obras',
-    company: 'Construtora Mendes & Associados',
-    content: 'Fornecedor oficial para todas as nossas obras em São Paulo há seis anos. Cumprimento rigoroso de cronograma e ART em 100% dos projetos estruturais. Referência no segmento.',
+    role: 'Dir. de Obras · Construtora Mendes',
     service: 'Estruturas Metálicas',
-    initial: 'RM',
+    image: 'https://randomuser.me/api/portraits/men/32.jpg',
+    text: 'Fornecedor oficial em todas as nossas obras por seis anos consecutivos. Cronograma cumprido, ART em 100% dos projetos estruturais. Referência absoluta.',
   },
   {
     name: 'Ana Paula Souza',
-    role: 'Proprietária',
-    company: 'Residência Alto de Pinheiros',
-    content: 'Fizeram a escada helicoidal em aço e vidro da minha casa. O resultado superou todas as expectativas — os visitantes fazem questão de perguntar quem executou a obra.',
+    role: 'Proprietária · Pinheiros, SP',
     service: 'Escadas Metálicas',
-    initial: 'AS',
+    image: 'https://randomuser.me/api/portraits/women/63.jpg',
+    text: 'A escada helicoidal em aço e vidro superou todas as expectativas. Os visitantes fazem questão de perguntar quem executou.',
+  },
+  {
+    name: 'Beatriz Carvalho',
+    role: 'Designer de Interiores · Studio BC',
+    service: 'Projetos Sob Medida',
+    image: 'https://randomuser.me/api/portraits/women/17.jpg',
+    text: 'Parceiro indispensável em todos os projetos residenciais de alto padrão. Peças únicas com precisão e acabamento reconhecido pelos clientes.',
+  },
+  {
+    name: 'Ricardo Yamamoto',
+    role: 'Administrador · Cond. Jardins',
+    service: 'Portões e Grades',
+    image: 'https://randomuser.me/api/portraits/men/52.jpg',
+    text: 'Reformamos toda a área de lazer do condomínio. A qualidade do aço e o acabamento são visíveis. Moradores elogiam sem parar.',
+  },
+  {
+    name: 'Carlos Ferreira',
+    role: 'Construtor · CF Engenharia',
+    service: 'Portões Automáticos',
+    image: 'https://randomuser.me/api/portraits/men/41.jpg',
+    text: 'Instalação impecável e prazo cumprido. O portão automático funciona perfeitamente há três anos sem nenhuma manutenção corretiva.',
+  },
+  {
+    name: 'Marina Santos',
+    role: 'Arq. de Interiores · Santos Studio',
+    service: 'Corrimões',
+    image: 'https://randomuser.me/api/portraits/women/28.jpg',
+    text: 'Os corrimões em inox escovado que encomendei trouxeram um acabamento de altíssimo padrão ao projeto. Clientes sempre elogiam.',
+  },
+  {
+    name: 'Eduardo Costa',
+    role: 'Síndico · Cond. Alto da Lapa',
+    service: 'Grades e Cercas',
+    image: 'https://randomuser.me/api/portraits/men/67.jpg',
+    text: 'Modernizamos toda a grade perimetral do condomínio. Excelente custo-benefício e garantia real. Recomendo a todos os síndicos.',
+  },
+  {
+    name: 'Julia Almeida',
+    role: 'Sócia-Diretora · JA Comércio',
+    service: 'Estruturas Metálicas',
+    image: 'https://randomuser.me/api/portraits/women/55.jpg',
+    text: 'Construímos a cobertura metálica do nosso novo galpão com a Metalprime. Entrega antes do prazo e qualidade acima do esperado.',
   },
 ]
 
+const col1 = testimonials.slice(0, 3)
+const col2 = testimonials.slice(3, 6)
+const col3 = testimonials.slice(6, 9)
+
 export default function TestimonialsCarousel() {
-  const [current, setCurrent] = useState(0)
-  const [direction, setDirection] = useState(1)
-  const ref = useRef(null)
-  const inView = useInView(ref, { once: true, margin: '-60px' })
-
-  const navigate = (dir: 1 | -1) => {
-    setDirection(dir)
-    setCurrent((c) => (c + dir + testimonials.length) % testimonials.length)
-  }
-
-  const t = testimonials[current]
-
   return (
     <section
-      ref={ref}
-      className="py-28 sm:py-36 overflow-hidden"
-      style={{ background: '#e4e1db' }}
+      aria-labelledby="testimonials-heading"
+      style={{ background: 'white', colorScheme: 'light', position: 'relative', overflow: 'hidden' }}
     >
-      <div className="container mx-auto px-5 sm:px-8">
+      {/* Dot grid */}
+      <div style={{
+        position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 0,
+        backgroundImage: 'radial-gradient(#e2e8f0 1px, transparent 1px)',
+        backgroundSize: '28px 28px',
+      }} />
 
-        {/* Header row */}
+      <div style={{
+        position: 'relative', zIndex: 1,
+        maxWidth: '1600px', margin: '0 auto',
+        padding: 'clamp(4rem, 6vw, 6rem) clamp(1.5rem, 2.5vw, 2.5rem) clamp(3rem, 5vw, 5rem)',
+        display: 'grid',
+        gridTemplateColumns: 'minmax(340px, 460px) 1fr',
+        gap: 'clamp(2rem, 4vw, 4rem)',
+        alignItems: 'center',
+      }}>
+
+        {/* LEFT — sticky headline */}
         <motion.div
-          className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-8 mb-20"
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          viewport={{ once: true }}
+          style={{}}
         >
-          <div>
-            <span className="font-mono text-[10px] tracking-[0.45em] uppercase block mb-6" style={{ color: 'rgba(196,160,64,0.7)' }}>
-              Clientes reais
-            </span>
-            <h2
-              className="font-display font-black leading-[0.88]"
-              style={{ fontSize: 'clamp(3rem, 6vw, 6.5rem)', color: '#1e2328', letterSpacing: '-0.02em' }}
-            >
-              Quem confiou<br />
-              <span style={{ color: 'rgba(240,241,242,0.18)' }}>no nosso trabalho</span>
-            </h2>
+          <div style={{
+            display: 'inline-block',
+            fontFamily: 'var(--font-mono)',
+            fontSize: '9px',
+            letterSpacing: '0.4em',
+            textTransform: 'uppercase',
+            color: '#f97316',
+            border: '1px solid rgba(249,115,22,0.3)',
+            borderRadius: '4px',
+            padding: '4px 14px',
+            marginBottom: '1.75rem',
+          }}>
+            O que os clientes dizem
           </div>
 
-          {/* Navigation */}
-          <div className="flex items-center gap-3">
-            <span className="font-mono text-[12px] tabular-nums" style={{ color: 'rgba(180,188,198,0.3)' }}>
-              {String(current + 1).padStart(2, '0')} / {String(testimonials.length).padStart(2, '0')}
-            </span>
-            <button
-              onClick={() => navigate(-1)}
-              className="w-11 h-11 flex items-center justify-center transition-all duration-200"
-              style={{ border: '1px solid rgba(0,0,0,0.10)', color: '#607080' }}
-              onMouseEnter={(e) => {
-                const el = e.currentTarget as HTMLElement
-                el.style.borderColor = 'rgba(196,160,64,0.4)'
-                el.style.color = '#1e2328'
-              }}
-              onMouseLeave={(e) => {
-                const el = e.currentTarget as HTMLElement
-                el.style.borderColor = 'rgba(0,0,0,0.10)'
-                el.style.color = '#607080'
-              }}
-              aria-label="Anterior"
-            >
-              <ArrowLeft className="w-4 h-4" />
-            </button>
-            <button
-              onClick={() => navigate(1)}
-              className="w-11 h-11 flex items-center justify-center transition-all duration-200"
-              style={{ border: '1px solid rgba(0,0,0,0.10)', color: '#607080' }}
-              onMouseEnter={(e) => {
-                const el = e.currentTarget as HTMLElement
-                el.style.borderColor = 'rgba(196,160,64,0.4)'
-                el.style.color = '#1e2328'
-              }}
-              onMouseLeave={(e) => {
-                const el = e.currentTarget as HTMLElement
-                el.style.borderColor = 'rgba(0,0,0,0.10)'
-                el.style.color = '#607080'
-              }}
-              aria-label="Próximo"
-            >
-              <ArrowRight className="w-4 h-4" />
-            </button>
-          </div>
+          <h2
+            id="testimonials-heading"
+            style={{
+              fontFamily: 'var(--font-barlow-condensed)',
+              fontWeight: 900,
+              fontSize: 'clamp(3rem, 5vw, 5rem)',
+              lineHeight: 0.92,
+              letterSpacing: '0.01em',
+              textTransform: 'uppercase',
+              color: '#0f172a',
+              margin: '0 0 1.5rem',
+            }}
+          >
+            Obra entregue,{' '}
+            <span style={{ color: '#f97316' }}>confiança</span>{' '}
+            conquistada.
+          </h2>
+
+          <p style={{
+            fontFamily: 'var(--font-sans)',
+            fontSize: '0.95rem',
+            color: '#64748b',
+            lineHeight: 1.6,
+            margin: '0 0 2.5rem',
+            maxWidth: '340px',
+          }}>
+            Mais de 5.000 obras entregues em São Paulo desde 2004. Veja o que arquitetos, construtoras e proprietários dizem sobre a Metalprime.
+          </p>
+
         </motion.div>
 
-        {/* Quote */}
-        <div className="relative">
-          <AnimatePresence mode="wait" custom={direction}>
-            <motion.div
-              key={current}
-              custom={direction}
-              initial={{ opacity: 0, x: direction * 40 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: direction * -40 }}
-              transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
-            >
-              {/* Large quote mark */}
-              <div
-                className="font-display font-black leading-none mb-6 select-none"
-                style={{ fontSize: 'clamp(5rem, 10vw, 9rem)', color: 'rgba(196,160,64,0.18)', lineHeight: 1 }}
-                aria-hidden
-              >
-                "
-              </div>
-
-              {/* Gold rule before quote */}
-              <div className="w-12 h-px mb-8" style={{ background: 'rgba(196,160,64,0.4)' }} />
-
-              <blockquote
-                className="font-display font-medium leading-[1.35] mb-12"
-                style={{ fontSize: 'clamp(1.5rem, 3vw, 2.6rem)', color: '#1e2328', maxWidth: '900px' }}
-              >
-                {t.content}
-              </blockquote>
-
-              {/* Attribution */}
-              <div className="flex flex-col sm:flex-row sm:items-center gap-5">
-                <div className="flex items-center gap-4">
-                  <div
-                    className="w-12 h-12 flex items-center justify-center shrink-0 font-display font-bold text-[13px]"
-                    style={{ background: 'rgba(196,160,64,0.1)', border: '1px solid rgba(196,160,64,0.25)', color: '#c4a040' }}
-                  >
-                    {t.initial}
-                  </div>
-                  <div>
-                    <p className="font-semibold text-[15px]" style={{ color: '#1e2328' }}>{t.name}</p>
-                    <p className="text-[12px] mt-0.5" style={{ color: '#8a9199' }}>
-                      {t.role} · {t.company}
-                    </p>
-                  </div>
-                </div>
-                <div className="sm:ml-auto">
-                  <span
-                    className="text-[10px] font-mono tracking-[0.3em] uppercase px-3 py-2"
-                    style={{ border: '1px solid rgba(196,160,64,0.2)', color: 'rgba(196,160,64,0.6)' }}
-                  >
-                    {t.service}
-                  </span>
-                </div>
-              </div>
-            </motion.div>
-          </AnimatePresence>
-
-          {/* Progress line */}
-          <div className="flex gap-2 mt-14">
-            {testimonials.map((_, i) => (
-              <button
-                key={i}
-                onClick={() => { setDirection(i > current ? 1 : -1); setCurrent(i) }}
-                className="h-px transition-all duration-300"
-                style={{
-                  width: i === current ? '48px' : '20px',
-                  background: i === current ? '#c4a040' : 'rgba(0,0,0,0.12)',
-                }}
-                aria-label={`Depoimento ${i + 1}`}
-              />
-            ))}
-          </div>
+        {/* RIGHT — two scrolling columns */}
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            gap: '1.25rem',
+            maxHeight: '740px',
+            overflow: 'hidden',
+            maskImage: 'linear-gradient(to bottom, transparent, black 8%, black 92%, transparent)',
+            WebkitMaskImage: 'linear-gradient(to bottom, transparent, black 8%, black 92%, transparent)',
+          }}
+        >
+          <TestimonialsColumn testimonials={col1} duration={30} />
+          <TestimonialsColumn testimonials={col2} duration={38} className="hidden sm:block" />
+          <TestimonialsColumn testimonials={col3} duration={34} className="hidden lg:block" />
         </div>
+
       </div>
     </section>
   )

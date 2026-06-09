@@ -1,18 +1,19 @@
 'use client'
 
 import { useRef } from 'react'
-import { motion, useInView } from 'framer-motion'
+import { motion, useInView, type Variants } from 'framer-motion'
 import Link from 'next/link'
-import { ArrowRight, Building2, HardHat, Factory } from 'lucide-react'
-import { PHOTOS } from '@/lib/images'
+import { ArrowRight, Building2, HardHat, Factory, CheckCircle2 } from 'lucide-react'
 
 const segments = [
   {
     icon: Building2,
     label: 'Condomínios',
-    headline: 'O parceiro de +500 condomínios em São Paulo',
+    metric: '+500',
+    metricLabel: 'condomínios atendidos',
+    headline: 'O parceiro que o síndico confia',
     description:
-      'Portões automáticos, grades, guaritas e estruturas de segurança. Entregamos ART em todos os itens estruturais — o síndico fica tranquilo com a vistoria.',
+      'Portões automáticos, grades, guaritas e estruturas de segurança. Entregamos ART em todos os itens estruturais — a vistoria passa sem surpresas.',
     items: [
       'Portões automáticos com ART',
       'Grades e cercas de segurança',
@@ -25,6 +26,8 @@ const segments = [
   {
     icon: HardHat,
     label: 'Construtoras',
+    metric: '100%',
+    metricLabel: 'de entrega no prazo',
     headline: 'Certificado e no cronograma — sempre',
     description:
       'Escadas, estruturas, mezaninos e guarda-corpos. Fabricação própria, sem terceirizar. ART em 100% dos projetos — a obra não para por nossa causa.',
@@ -36,11 +39,14 @@ const segments = [
     ],
     href: '/orcamento',
     cta: 'Orçamento para construtora',
+    featured: true,
   },
   {
     icon: Factory,
     label: 'Indústrias',
-    headline: 'Estrutura própria para projetos de grande porte',
+    metric: '+20',
+    metricLabel: 'anos de expertise',
+    headline: 'Estrutura própria para grande porte',
     description:
       'Galpões, coberturas e mezaninos industriais. Projetamos, fabricamos e instalamos com equipe própria — da fundação ao acabamento.',
     items: [
@@ -54,6 +60,15 @@ const segments = [
   },
 ]
 
+const cardVariants: Variants = {
+  hidden: { opacity: 0, y: 32 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.7, delay: i * 0.12, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] },
+  }),
+}
+
 export default function SegmentSection() {
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: '-60px' })
@@ -61,117 +76,279 @@ export default function SegmentSection() {
   return (
     <section
       ref={ref}
-      className="relative py-0 overflow-hidden"
-      style={{ background: '#eeeae3' }}
+      style={{
+        colorScheme: 'light',
+        background: 'white',
+        padding: '6rem 0 7rem',
+        position: 'relative',
+        overflow: 'hidden',
+      }}
     >
-      {/* Photo background */}
-      <div className="absolute inset-0">
-        <div
-          className="absolute inset-0"
+      {/* Dot grid */}
+      <div
+        style={{
+          position: 'absolute',
+          inset: 0,
+          backgroundImage: 'radial-gradient(#e2e8f0 1px, transparent 1px)',
+          backgroundSize: '28px 28px',
+          pointerEvents: 'none',
+        }}
+      />
+
+      <div
+        style={{
+          maxWidth: '1200px',
+          margin: '0 auto',
+          padding: '0 clamp(1.25rem, 4vw, 2rem)',
+          position: 'relative',
+          zIndex: 1,
+        }}
+      >
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8 }}
           style={{
-            backgroundImage: `url("${PHOTOS.segment}")`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '1.5rem',
+            marginBottom: '4rem',
           }}
-        />
-        <div
-          className="absolute inset-0"
-          style={{ background: 'rgba(12,14,17,0.93)' }}
-        />
-      </div>
-
-      <div className="relative z-10">
-        {/* Section header */}
-        <div className="container mx-auto px-5 sm:px-8">
-          <motion.div
-            className="pt-28 pb-16"
-            initial={{ opacity: 0, y: 30 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <span
+            style={{
+              fontFamily: 'var(--font-mono)',
+              fontSize: '10px',
+              letterSpacing: '0.4em',
+              textTransform: 'uppercase',
+              color: '#f97316',
+            }}
           >
-            <span className="font-mono text-[10px] tracking-[0.45em] uppercase block mb-6" style={{ color: 'rgba(196,160,64,0.7)' }}>
-              Para quem fazemos
-            </span>
-            <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
-              <h2
-                className="font-display font-black leading-[0.88]"
-                style={{ fontSize: 'clamp(3rem, 6vw, 6rem)', color: '#1e2328', letterSpacing: '-0.02em' }}
-              >
-                O parceiro certo<br />
-                <span style={{ color: '#c4a040' }}>para cada projeto</span>
-              </h2>
-              <p
-                className="text-[15px] leading-[1.7] max-w-sm lg:text-right"
-                style={{ color: 'rgba(180,188,198,0.6)' }}
-              >
-                Condomínios, construtoras ou projetos residenciais — a estrutura e o processo
-                são os mesmos. O que muda é a escala.
-              </p>
-            </div>
-          </motion.div>
-        </div>
+            Para quem fazemos
+          </span>
 
-        {/* Segments grid */}
+          <div
+            style={{
+              display: 'flex',
+              flexWrap: 'wrap',
+              alignItems: 'flex-end',
+              justifyContent: 'space-between',
+              gap: '1.5rem',
+            }}
+          >
+            <h2
+              style={{
+                fontFamily: 'var(--font-display)',
+                fontWeight: 900,
+                fontSize: 'clamp(2.5rem, 5vw, 4.5rem)',
+                lineHeight: 0.92,
+                letterSpacing: '-0.03em',
+                color: '#0f172a',
+                margin: 0,
+              }}
+            >
+              O parceiro certo<br />
+              <span style={{ color: '#f97316' }}>para cada projeto</span>
+            </h2>
+
+            <p
+              style={{
+                fontSize: '15px',
+                lineHeight: 1.75,
+                maxWidth: '340px',
+                color: '#64748b',
+                margin: 0,
+              }}
+            >
+              Condomínios, construtoras ou indústrias — a estrutura e o processo são os mesmos.
+              O que muda é a escala.
+            </p>
+          </div>
+        </motion.div>
+
+        {/* Cards grid */}
         <div
-          className="grid grid-cols-1 lg:grid-cols-3"
-          style={{ borderTop: '1px solid rgba(0,0,0,0.08)' }}
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+            gap: '1.5rem',
+          }}
         >
           {segments.map((seg, i) => {
             const Icon = seg.icon
             return (
               <motion.div
                 key={seg.label}
-                className="p-10 sm:p-14 flex flex-col group relative overflow-hidden"
+                custom={i}
+                variants={cardVariants}
+                initial="hidden"
+                animate={inView ? 'visible' : 'hidden'}
                 style={{
-                  borderRight: i < 2 ? '1px solid rgba(0,0,0,0.08)' : 'none',
-                  borderBottom: '1px solid rgba(0,0,0,0.08)',
+                  background: seg.featured ? '#0f172a' : 'white',
+                  border: seg.featured ? 'none' : '1px solid #e2e8f0',
+                  borderRadius: '20px',
+                  padding: '2.25rem',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: '0',
+                  cursor: 'default',
+                  transition: 'box-shadow 0.2s, transform 0.2s',
+                  position: 'relative',
+                  overflow: 'hidden',
                 }}
-                initial={{ opacity: 0, y: 40 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.8, delay: i * 0.12, ease: [0.16, 1, 0.3, 1] }}
+                whileHover={{
+                  y: -4,
+                  boxShadow: seg.featured
+                    ? '0 24px 60px rgba(15,23,42,0.28)'
+                    : '0 16px 48px rgba(0,0,0,0.10)',
+                }}
               >
-                {/* Hover glow */}
-                <div
-                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-                  style={{ background: 'radial-gradient(ellipse at 50% 0%, rgba(196,160,64,0.05) 0%, transparent 70%)' }}
-                />
+                {/* Featured orange top bar */}
+                {seg.featured && (
+                  <div
+                    style={{
+                      position: 'absolute',
+                      top: 0,
+                      left: 0,
+                      right: 0,
+                      height: '3px',
+                      background: '#f97316',
+                      borderRadius: '20px 20px 0 0',
+                    }}
+                  />
+                )}
 
                 {/* Icon + label */}
-                <div className="flex items-center gap-3 mb-8">
+                <div
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '12px',
+                    marginBottom: '1.75rem',
+                  }}
+                >
                   <div
-                    className="w-10 h-10 flex items-center justify-center shrink-0"
-                    style={{ background: 'rgba(196,160,64,0.1)', border: '1px solid rgba(196,160,64,0.2)' }}
+                    style={{
+                      width: '40px',
+                      height: '40px',
+                      borderRadius: '10px',
+                      background: seg.featured ? 'rgba(249,115,22,0.15)' : '#fff7ed',
+                      border: `1px solid ${seg.featured ? 'rgba(249,115,22,0.3)' : '#fed7aa'}`,
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      flexShrink: 0,
+                    }}
                   >
-                    <Icon className="w-5 h-5" style={{ color: '#c4a040' }} />
+                    <Icon style={{ width: '18px', height: '18px', color: '#f97316' }} />
                   </div>
-                  <span className="font-mono text-[10px] tracking-[0.35em] uppercase" style={{ color: 'rgba(196,160,64,0.7)' }}>
+                  <span
+                    style={{
+                      fontFamily: 'var(--font-mono)',
+                      fontSize: '10px',
+                      letterSpacing: '0.35em',
+                      textTransform: 'uppercase',
+                      color: seg.featured ? '#64748b' : '#94a3b8',
+                    }}
+                  >
                     {seg.label}
                   </span>
                 </div>
 
+                {/* Metric */}
+                <div style={{ marginBottom: '1rem' }}>
+                  <span
+                    style={{
+                      fontFamily: 'var(--font-display)',
+                      fontWeight: 900,
+                      fontSize: '2.75rem',
+                      lineHeight: 1,
+                      color: '#f97316',
+                    }}
+                  >
+                    {seg.metric}
+                  </span>
+                  <span
+                    style={{
+                      display: 'block',
+                      fontSize: '11px',
+                      fontFamily: 'var(--font-mono)',
+                      textTransform: 'uppercase',
+                      letterSpacing: '0.15em',
+                      color: seg.featured ? '#475569' : '#94a3b8',
+                      marginTop: '2px',
+                    }}
+                  >
+                    {seg.metricLabel}
+                  </span>
+                </div>
+
+                {/* Divider */}
+                <div
+                  style={{
+                    height: '1px',
+                    background: seg.featured ? '#1e293b' : '#f1f5f9',
+                    marginBottom: '1.25rem',
+                  }}
+                />
+
                 {/* Headline */}
                 <h3
-                  className="font-display font-bold mb-5 leading-[1.15]"
-                  style={{ fontSize: 'clamp(1.3rem, 2.5vw, 1.75rem)', color: '#1e2328' }}
+                  style={{
+                    fontFamily: 'var(--font-display)',
+                    fontWeight: 700,
+                    fontSize: 'clamp(1.15rem, 2vw, 1.4rem)',
+                    lineHeight: 1.25,
+                    color: seg.featured ? 'white' : '#0f172a',
+                    marginBottom: '0.75rem',
+                  }}
                 >
                   {seg.headline}
                 </h3>
 
                 {/* Description */}
                 <p
-                  className="text-[14px] leading-[1.75] mb-8"
-                  style={{ color: 'rgba(180,188,198,0.55)' }}
+                  style={{
+                    fontSize: '14px',
+                    lineHeight: 1.75,
+                    color: '#64748b',
+                    marginBottom: '1.5rem',
+                    flexGrow: 1,
+                  }}
                 >
                   {seg.description}
                 </p>
 
-                {/* Features list */}
-                <ul className="space-y-3 mb-10 flex-1">
+                {/* Feature list */}
+                <ul
+                  style={{
+                    listStyle: 'none',
+                    padding: 0,
+                    margin: '0 0 1.75rem',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '8px',
+                  }}
+                >
                   {seg.items.map((item) => (
-                    <li key={item} className="flex items-center gap-3 text-[13px]" style={{ color: 'rgba(180,188,198,0.75)' }}>
-                      <div
-                        className="w-1 h-1 shrink-0"
-                        style={{ background: '#c4a040', transform: 'rotate(45deg)' }}
+                    <li
+                      key={item}
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '8px',
+                        fontSize: '13px',
+                        color: seg.featured ? '#94a3b8' : '#475569',
+                      }}
+                    >
+                      <CheckCircle2
+                        style={{
+                          width: '14px',
+                          height: '14px',
+                          color: '#f97316',
+                          flexShrink: 0,
+                        }}
                       />
                       {item}
                     </li>
@@ -181,13 +358,31 @@ export default function SegmentSection() {
                 {/* CTA */}
                 <Link
                   href={seg.href}
-                  className="group/btn inline-flex items-center gap-2 text-[12px] font-semibold tracking-[0.08em] uppercase transition-colors duration-200 mt-auto"
-                  style={{ color: '#c4a040' }}
-                  onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = '#d4b454' }}
-                  onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = '#c4a040' }}
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '6px',
+                    fontSize: '13px',
+                    fontWeight: 700,
+                    letterSpacing: '0.05em',
+                    textTransform: 'uppercase',
+                    color: '#f97316',
+                    textDecoration: 'none',
+                    marginTop: 'auto',
+                    transition: 'gap 0.2s',
+                    cursor: 'pointer',
+                  }}
+                  onMouseEnter={(e) => {
+                    const el = e.currentTarget as HTMLElement
+                    el.style.gap = '10px'
+                  }}
+                  onMouseLeave={(e) => {
+                    const el = e.currentTarget as HTMLElement
+                    el.style.gap = '6px'
+                  }}
                 >
                   {seg.cta}
-                  <ArrowRight className="w-3.5 h-3.5 group-hover/btn:translate-x-1 transition-transform" />
+                  <ArrowRight style={{ width: '14px', height: '14px' }} />
                 </Link>
               </motion.div>
             )

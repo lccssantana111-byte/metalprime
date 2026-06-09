@@ -1,9 +1,9 @@
 'use client'
 
-import { useRef } from 'react'
-import { motion, useInView } from 'framer-motion'
+import { useRef, useState } from 'react'
+import { motion, useInView, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
-import { ArrowUpRight } from 'lucide-react'
+import { ArrowUpRight, ChevronLeft, ChevronRight } from 'lucide-react'
 import type { PortfolioItem } from '@/types'
 import { SERVICE_LABELS } from '@/lib/constants'
 import { PHOTOS } from '@/lib/images'
@@ -28,21 +28,25 @@ interface Props { items: PortfolioItem[] }
 export default function FeaturedProjects({ items }: Props) {
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: '-60px' })
+  const [activeSlide, setActiveSlide] = useState(0)
+  const [direction, setDirection] = useState<1 | -1>(1)
+  const dragStartX = useRef<number | null>(null)
+  const isAnimating = useRef(false)
 
   const makeFallback = (i: number): PortfolioItem => ({
     id: `fallback-${i}`,
     project_id: null,
     slug: '',
-    title: ['Portão Industrial — Cond. Alphaville', 'Escada Helicoidal — Residência Moema', 'Estrutura Metálica — Galpão SP'][i] ?? 'Projeto',
+    title: ['Portão Industrial — Cond. Alphaville', 'Escada Helicoidal — Residência Moema', 'Estrutura Metálica — Galpão SP'][i % 3] ?? 'Projeto',
     short_desc: null,
     description: null,
-    service: (['estruturas_metalicas', 'escadas', 'portoes'] as const)[i] ?? 'portoes',
+    service: (['estruturas_metalicas', 'escadas', 'portoes'] as const)[i % 3] ?? 'portoes',
     client_name: null,
-    city: ['São Paulo', 'São Paulo', 'Guarulhos'][i] ?? 'São Paulo',
-    year: 2024 - i,
+    city: ['São Paulo', 'São Paulo', 'Guarulhos'][i % 3] ?? 'São Paulo',
+    year: 2024 - (i % 3),
     featured: true,
     published: true,
-    cover_image: DEFAULT_FALLBACKS[i] ?? PHOTOS.services.portoes,
+    cover_image: DEFAULT_FALLBACKS[i % 3] ?? PHOTOS.services.portoes,
     images: [],
     seo_title: null,
     seo_description: null,
@@ -52,151 +56,541 @@ export default function FeaturedProjects({ items }: Props) {
     updated_at: new Date().toISOString(),
   })
 
-  const displayItems = items.length >= 3
-    ? items.slice(0, 3)
-    : [...items, ...Array.from({ length: 3 - items.length }, (_, i) => makeFallback(items.length + i))]
+  // Pad items to a multiple of 3
+  const allItems: PortfolioItem[] = (() => {
+    if (items.length === 0) return [makeFallback(0), makeFallback(1), makeFallback(2)]
+    const rem = items.length % 3
+    if (rem === 0) return items
+    return [...items, ...Array.from({ length: 3 - rem }, (_, i) => makeFallback(items.length + i))]
+  })()
 
-  const [first, second, third] = displayItems
+  // Group into slides of 3
+  const slides: [PortfolioItem, PortfolioItem, PortfolioItem][] = []
+  for (let i = 0; i < allItems.length; i += 3) {
+    slides.push([allItems[i], allItems[i + 1], allItems[i + 2]])
+  }
+  const totalSlides = slides.length
+
+  const goTo = (index: number) => {
+    if (isAnimating.current || index === activeSlide) return
+    isAnimating.current = true
+    setDirection(index > activeSlide ? 1 : -1)
+    setActiveSlide(index)
+  }
+  const goNext = () => activeSlide < totalSlides - 1 && goTo(activeSlide + 1)
+  const goPrev = () => activeSlide > 0 && goTo(activeSlide - 1)
+
+  const onPointerDown = (e: React.PointerEvent) => { dragStartX.current = e.clientX }
+  const onPointerUp = (e: React.PointerEvent) => {
+    if (dragStartX.current === null) return
+    const delta = e.clientX - dragStartX.current
+    dragStartX.current = null
+    if (delta < -50) goNext()
+    else if (delta > 50) goPrev()
+  }
+
+  const getFallback = (item: PortfolioItem) =>
+    SERVICE_FALLBACKS[item.service] ?? DEFAULT_FALLBACKS[0]
+
+  const ease = [0.16, 1, 0.3, 1] as const
 
   return (
     <section
       ref={ref}
-      className="py-28 sm:py-36 overflow-hidden"
-      style={{ background: '#f7f5f2' }}
+      style={{
+        background: '#0c1220',
+        backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,0.012) 2px, rgba(255,255,255,0.012) 4px)',
+        borderTop: '3px solid #f97316',
+        padding: '5rem 0 6rem',
+        overflow: 'hidden',
+        colorScheme: 'dark',
+      }}
     >
-      <div className="container mx-auto px-5 sm:px-8">
+      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 clamp(1.25rem, 4vw, 2rem)' }}>
 
         {/* Header */}
         <motion.div
-          className="flex flex-col sm:flex-row sm:items-end justify-between gap-8 mb-16"
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          initial={{ opacity: 0, x: -24 }}
+          animate={inView ? { opacity: 1, x: 0 } : {}}
+          transition={{ duration: 0.8, ease }}
+          style={{
+            display: 'grid',
+            gridTemplateColumns: '1fr auto',
+            alignItems: 'end',
+            gap: '2rem',
+          }}
         >
+          {/* Left — display title */}
           <div>
-            <span className="font-mono text-[10px] tracking-[0.45em] uppercase block mb-6" style={{ color: 'rgba(196,160,64,0.7)' }}>
-              Portfólio
+            <span style={{
+              fontFamily: 'var(--font-mono)',
+              fontSize: '10px',
+              letterSpacing: '0.45em',
+              textTransform: 'uppercase',
+              color: '#f97316',
+              display: 'block',
+              marginBottom: '1.5rem',
+            }}>
+              [ PORTFÓLIO ]
             </span>
-            <h2
-              className="font-display font-black leading-[0.88]"
-              style={{ fontSize: 'clamp(3rem, 6vw, 6.5rem)', color: '#1e2328', letterSpacing: '-0.02em' }}
-            >
-              Obras que<br />
-              <span style={{ color: 'rgba(240,241,242,0.2)' }}>falam por si</span>
+            <h2 style={{
+              fontFamily: 'var(--font-barlow-condensed)',
+              fontWeight: 900,
+              lineHeight: 0.9,
+              fontSize: 'clamp(4rem, 8vw, 8rem)',
+              textTransform: 'uppercase',
+              letterSpacing: '0.01em',
+              margin: 0,
+            }}>
+              <span style={{ display: 'block', color: 'white' }}>OBRAS</span>
+              <span style={{ display: 'block', color: 'white' }}>QUE FALAM.</span>
+              <span style={{ display: 'block', color: '#f97316' }}>POR SI</span>
             </h2>
           </div>
-          <Link
-            href="/portfolio"
-            className="group self-start sm:self-auto inline-flex items-center gap-2 text-[12px] font-mono tracking-widest uppercase transition-colors"
-            style={{ color: '#5a6470' }}
-            onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = '#c4a040' }}
-            onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = '#5a6470' }}
+
+          {/* Right — counter + link */}
+          <div
+            className="fp-header-right"
+            style={{
+              display: 'flex',
+              alignItems: 'flex-end',
+              gap: '2rem',
+              paddingBottom: '6px',
+            }}
           >
-            Ver todo o portfólio
-            <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-          </Link>
+            <div style={{
+              width: '1px',
+              height: '80px',
+              background: 'rgba(255,255,255,0.12)',
+              flexShrink: 0,
+              alignSelf: 'flex-end',
+            }} />
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', alignItems: 'flex-end' }}>
+              <span style={{
+                fontFamily: 'var(--font-mono)',
+                fontSize: '9px',
+                letterSpacing: '0.25em',
+                textTransform: 'uppercase',
+                color: 'rgba(148,163,184,0.5)',
+                whiteSpace: 'nowrap',
+              }}>
+                {String(allItems.length).padStart(2, '0')} / OBRAS EM DESTAQUE
+              </span>
+              <HeaderLink />
+            </div>
+          </div>
         </motion.div>
 
-        {/* Asymmetric grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-px" style={{ background: 'rgba(0,0,0,0.07)' }}>
-          {/* Large item */}
-          {first && (
-            <motion.div
-              className="lg:col-span-7"
-              initial={{ opacity: 0, y: 30 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.7, delay: 0.1 }}
-            >
-              <ProjectCard item={first} large fallbackPhoto={SERVICE_FALLBACKS[first.service] ?? DEFAULT_FALLBACKS[0]} />
-            </motion.div>
-          )}
+        {/* Horizontal rule */}
+        <div style={{
+          height: '1px',
+          background: 'rgba(255,255,255,0.07)',
+          margin: '2.5rem 0',
+        }} />
 
-          {/* Two stacked */}
-          <div className="lg:col-span-5 flex flex-col gap-px" style={{ background: 'rgba(0,0,0,0.07)' }}>
-            {second && (
+        {/* Carousel */}
+        <div
+          className="fp-carousel-track"
+          onPointerDown={onPointerDown}
+          onPointerUp={onPointerUp}
+          style={{ userSelect: 'none' }}
+        >
+          <AnimatePresence
+            mode="wait"
+            custom={direction}
+            onExitComplete={() => { isAnimating.current = false }}
+          >
+            <motion.div
+              key={activeSlide}
+              custom={direction}
+              variants={{
+                enter: (d: number) => ({ x: d > 0 ? '100%' : '-100%', opacity: 0 }),
+                center: { x: 0, opacity: 1 },
+                exit: (d: number) => ({ x: d > 0 ? '-60%' : '60%', opacity: 0 }),
+              }}
+              initial="enter"
+              animate="center"
+              exit="exit"
+              transition={{ duration: 0.55, ease }}
+              className="fp-grid"
+              style={{ display: 'grid', gap: '3px', background: '#0c1220' }}
+            >
+              {/* Card 1 — large, spans 2 rows */}
               <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.7, delay: 0.2 }}
-                className="flex-1"
+                className="fp-card-span"
+                initial={{ clipPath: 'inset(100% 0 0 0)' }}
+                animate={{ clipPath: 'inset(0% 0 0 0)' }}
+                transition={{ duration: 0.75, delay: 0.1, ease }}
+                style={{ gridRow: '1 / 3', willChange: 'clip-path' }}
               >
-                <ProjectCard item={second} fallbackPhoto={SERVICE_FALLBACKS[second.service] ?? DEFAULT_FALLBACKS[1]} />
+                <ProjectCard
+                  item={slides[activeSlide][0]}
+                  isLarge
+                  fallbackPhoto={getFallback(slides[activeSlide][0])}
+                />
               </motion.div>
-            )}
-            {third && (
+
+              {/* Card 2 — top right */}
               <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.7, delay: 0.3 }}
-                className="flex-1"
+                initial={{ clipPath: 'inset(100% 0 0 0)' }}
+                animate={{ clipPath: 'inset(0% 0 0 0)' }}
+                transition={{ duration: 0.75, delay: 0.25, ease }}
+                style={{ willChange: 'clip-path' }}
               >
-                <ProjectCard item={third} fallbackPhoto={SERVICE_FALLBACKS[third.service] ?? DEFAULT_FALLBACKS[2]} />
+                <ProjectCard
+                  item={slides[activeSlide][1]}
+                  isLarge={false}
+                  fallbackPhoto={getFallback(slides[activeSlide][1])}
+                />
               </motion.div>
-            )}
-          </div>
+
+              {/* Card 3 — bottom right */}
+              <motion.div
+                initial={{ clipPath: 'inset(100% 0 0 0)' }}
+                animate={{ clipPath: 'inset(0% 0 0 0)' }}
+                transition={{ duration: 0.75, delay: 0.35, ease }}
+                style={{ willChange: 'clip-path' }}
+              >
+                <ProjectCard
+                  item={slides[activeSlide][2]}
+                  isLarge={false}
+                  fallbackPhoto={getFallback(slides[activeSlide][2])}
+                />
+              </motion.div>
+            </motion.div>
+          </AnimatePresence>
         </div>
+
+        {/* Carousel controls */}
+        <CarouselControls
+          total={totalSlides}
+          active={activeSlide}
+          onPrev={goPrev}
+          onNext={goNext}
+          onGoTo={goTo}
+        />
+
       </div>
+
+      <style>{`
+        .fp-grid {
+          grid-template-columns: 1.2fr 1fr;
+        }
+        .fp-carousel-track {
+          overflow: hidden;
+          position: relative;
+        }
+        @media (max-width: 680px) {
+          .fp-grid {
+            grid-template-columns: 1fr !important;
+          }
+          .fp-card-large,
+          .fp-card-small {
+            height: 300px !important;
+          }
+          .fp-card-span {
+            grid-row: auto !important;
+          }
+          .fp-header-right {
+            display: none !important;
+          }
+        }
+      `}</style>
     </section>
+  )
+}
+
+function HeaderLink() {
+  const [hovered, setHovered] = useState(false)
+  return (
+    <Link
+      href="/portfolio"
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      style={{
+        fontFamily: 'var(--font-mono)',
+        fontSize: '11px',
+        letterSpacing: '0.15em',
+        textTransform: 'uppercase',
+        color: hovered ? '#f97316' : 'rgba(255,255,255,0.6)',
+        textDecoration: 'none',
+        display: 'inline-flex',
+        alignItems: 'center',
+        gap: '6px',
+        transition: 'color 0.2s ease',
+        whiteSpace: 'nowrap',
+      }}
+    >
+      VER TODO O PORTFÓLIO →
+    </Link>
+  )
+}
+
+function CarouselControls({
+  total,
+  active,
+  onPrev,
+  onNext,
+  onGoTo,
+}: {
+  total: number
+  active: number
+  onPrev: () => void
+  onNext: () => void
+  onGoTo: (i: number) => void
+}) {
+  if (total <= 1) return null
+
+  return (
+    <div style={{
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      marginTop: '1.5rem',
+    }}>
+      {/* Dot indicators */}
+      <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
+        {Array.from({ length: total }).map((_, i) => (
+          <button
+            key={i}
+            onClick={() => onGoTo(i)}
+            aria-label={`Ir para slide ${i + 1}`}
+            style={{
+              width: i === active ? '24px' : '6px',
+              height: '6px',
+              background: i === active ? '#f97316' : 'rgba(255,255,255,0.2)',
+              border: 'none',
+              cursor: 'pointer',
+              padding: 0,
+              transition: 'width 0.3s ease, background 0.3s ease',
+              borderRadius: 0,
+            }}
+          />
+        ))}
+        <span style={{
+          fontFamily: 'var(--font-mono)',
+          fontSize: '9px',
+          letterSpacing: '0.2em',
+          color: 'rgba(148,163,184,0.4)',
+          marginLeft: '8px',
+        }}>
+          {String(active + 1).padStart(2, '0')} / {String(total).padStart(2, '0')}
+        </span>
+      </div>
+
+      {/* Prev / Next */}
+      <div style={{ display: 'flex', gap: '8px' }}>
+        <NavButton onClick={onPrev} disabled={active === 0} direction="prev" />
+        <NavButton onClick={onNext} disabled={active === total - 1} direction="next" />
+      </div>
+    </div>
+  )
+}
+
+function NavButton({
+  onClick,
+  disabled,
+  direction,
+}: {
+  onClick: () => void
+  disabled: boolean
+  direction: 'prev' | 'next'
+}) {
+  const [hovered, setHovered] = useState(false)
+  const isPrev = direction === 'prev'
+
+  return (
+    <button
+      onClick={onClick}
+      disabled={disabled}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      aria-label={isPrev ? 'Slide anterior' : 'Próximo slide'}
+      style={{
+        width: '40px',
+        height: '40px',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderWidth: '1px',
+        borderStyle: 'solid',
+        borderColor: disabled
+          ? 'rgba(255,255,255,0.08)'
+          : hovered ? '#f97316' : 'rgba(255,255,255,0.2)',
+        background: hovered && !disabled ? '#f97316' : 'transparent',
+        color: disabled ? 'rgba(255,255,255,0.15)' : 'white',
+        cursor: disabled ? 'not-allowed' : 'pointer',
+        transition: 'background 0.25s ease, border-color 0.25s ease, color 0.25s ease',
+        borderRadius: 0,
+        padding: 0,
+      }}
+    >
+      {isPrev
+        ? <ChevronLeft style={{ width: '16px', height: '16px' }} />
+        : <ChevronRight style={{ width: '16px', height: '16px' }} />
+      }
+    </button>
   )
 }
 
 function ProjectCard({
   item,
-  large = false,
+  isLarge,
   fallbackPhoto,
 }: {
   item: PortfolioItem & { city?: string | null; year?: number | null }
-  large?: boolean
+  isLarge: boolean
   fallbackPhoto: string
 }) {
+  const [hovered, setHovered] = useState(false)
   const photo = item.cover_image || fallbackPhoto
   const href = item.slug ? `/portfolio/${item.slug}` : '/portfolio'
 
   return (
-    <Link href={href} className="group block relative overflow-hidden h-full" style={{ minHeight: large ? '480px' : '240px', background: '#e4e1db' }}>
-      {/* Photo */}
-      <div
-        className="absolute inset-0 transition-transform duration-700 ease-out group-hover:scale-104"
+    <div
+      className={isLarge ? 'fp-card-large' : 'fp-card-small'}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      style={{
+        position: 'relative',
+        width: '100%',
+        height: isLarge ? '560px' : '277px',
+        overflow: 'hidden',
+        background: '#1e293b',
+        borderRadius: 0,
+        cursor: 'pointer',
+      }}
+    >
+      {/* Image with hover zoom */}
+      <img
+        src={photo}
+        alt={item.title}
         style={{
-          backgroundImage: `url("${photo}")`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          transform: 'scale(1)',
+          position: 'absolute',
+          inset: 0,
+          width: '100%',
+          height: '100%',
+          objectFit: 'cover',
+          objectPosition: 'center',
+          transform: hovered ? 'scale(1.04)' : 'scale(1)',
+          transition: 'transform 0.6s ease',
+          willChange: 'transform',
         }}
       />
 
-      {/* Overlays */}
-      <div className="absolute inset-0" style={{ background: 'rgba(5,6,8,0.45)' }} />
-      <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(5,6,8,0.92) 0%, rgba(5,6,8,0.3) 50%, transparent 100%)' }} />
+      {/* Base tint */}
+      <div style={{ position: 'absolute', inset: 0, background: 'rgba(0,0,0,0.15)', zIndex: 1 }} />
 
-      {/* Content */}
-      <div className="absolute inset-0 p-7 sm:p-8 flex flex-col justify-end">
-        <span
-          className="text-[10px] font-mono tracking-[0.3em] uppercase mb-2"
-          style={{ color: '#c4a040' }}
-        >
-          {SERVICE_LABELS[item.service] ?? item.service}
+      {/* Gradient push-up */}
+      <div style={{
+        position: 'absolute',
+        inset: 0,
+        background: 'linear-gradient(to top, rgba(5,6,8,0.92) 0%, rgba(5,6,8,0.3) 45%, transparent 70%)',
+        zIndex: 2,
+      }} />
+
+      {/* Content block */}
+      <div style={{
+        position: 'absolute',
+        left: 0,
+        right: 0,
+        bottom: 0,
+        padding: '1.5rem',
+        zIndex: 3,
+      }}>
+        {/* Service label */}
+        <span style={{
+          fontFamily: 'var(--font-mono)',
+          fontSize: '9px',
+          letterSpacing: '0.3em',
+          textTransform: 'uppercase',
+          color: '#fb923c',
+          display: 'block',
+          marginBottom: '8px',
+        }}>
+          [ {SERVICE_LABELS[item.service] ?? item.service} ]
         </span>
-        <div className="flex items-end justify-between gap-4">
-          <h3
-            className="font-display font-bold text-[#1e2328] leading-tight"
-            style={{ fontSize: large ? 'clamp(1.4rem, 2.5vw, 2rem)' : '1.15rem' }}
-          >
+
+        {/* Title + arrow row */}
+        <div style={{
+          display: 'flex',
+          alignItems: 'flex-end',
+          justifyContent: 'space-between',
+          gap: '1rem',
+        }}>
+          <h3 style={{
+            fontFamily: 'var(--font-display)',
+            fontWeight: 700,
+            color: 'white',
+            lineHeight: 1.2,
+            fontSize: isLarge ? 'clamp(1.1rem, 2vw, 1.5rem)' : '1rem',
+            margin: 0,
+          }}>
             {item.title}
           </h3>
-          <div
-            className="w-10 h-10 flex items-center justify-center shrink-0 transition-all duration-200 group-hover:bg-[#c4a040] group-hover:border-[#c4a040]"
-            style={{ border: '1px solid rgba(0,0,0,0.15)' }}
+
+          {/* Arrow button */}
+          <Link
+            href={href}
+            onClick={e => e.stopPropagation()}
+            aria-label={`Ver projeto: ${item.title}`}
+            style={{ flexShrink: 0 }}
           >
-            <ArrowUpRight className="w-4 h-4 text-[#1e2328] group-hover:text-[#050608] group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all" />
-          </div>
+            <div style={{
+              width: '36px',
+              height: '36px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              borderWidth: '1px',
+              borderStyle: 'solid',
+              borderColor: hovered ? '#f97316' : 'rgba(255,255,255,0.2)',
+              background: hovered ? '#f97316' : 'transparent',
+              color: 'white',
+              transition: 'background 0.25s ease, border-color 0.25s ease',
+              borderRadius: 0,
+            }}>
+              <ArrowUpRight style={{ width: '14px', height: '14px' }} />
+            </div>
+          </Link>
         </div>
-        {item.city && (
-          <p className="text-[11px] font-mono mt-2" style={{ color: 'rgba(60,74,88,0.65)' }}>
-            {item.city}{item.year ? ` · ${item.year}` : ''}
+
+        {/* Meta */}
+        {(item.city || item.year) && (
+          <p style={{
+            fontSize: '10px',
+            fontFamily: 'var(--font-mono)',
+            color: 'rgba(148,163,184,0.7)',
+            margin: '8px 0 0',
+          }}>
+            {[item.city, item.year].filter(Boolean).join(' · ')}
           </p>
         )}
       </div>
-    </Link>
+
+      {/* Orange left-edge bar */}
+      <div
+        aria-hidden="true"
+        style={{
+          position: 'absolute',
+          left: 0,
+          top: 0,
+          bottom: 0,
+          width: '3px',
+          background: '#f97316',
+          transformOrigin: 'bottom center',
+          transform: hovered ? 'scaleY(1)' : 'scaleY(0)',
+          transition: 'transform 0.4s cubic-bezier(0.16, 1, 0.3, 1)',
+          zIndex: 4,
+        }}
+      />
+
+      {/* Full-area link */}
+      <Link
+        href={href}
+        style={{ position: 'absolute', inset: 0, zIndex: 5 }}
+        aria-label={item.title}
+      />
+    </div>
   )
 }

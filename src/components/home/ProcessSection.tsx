@@ -1,135 +1,358 @@
 'use client'
 
 import { useRef } from 'react'
-import { motion, useInView } from 'framer-motion'
-import { PHOTOS } from '@/lib/images'
+import {
+  motion,
+  useScroll,
+  useTransform,
+  useSpring,
+  type MotionValue,
+} from 'framer-motion'
+import { ClipboardList, FileText, Factory, HardHat } from 'lucide-react'
 
 const steps = [
   {
+    id: 1,
     number: '01',
-    title: 'Consulta e Visita Técnica',
+    title: 'Consulta Técnica',
     description: 'Nosso engenheiro vai até você, tira medidas, entende o projeto. Gratuito, sem compromisso e sem pressão para fechar na hora.',
-    badge: 'Gratuita',
+    icon: ClipboardList,
+    tag: 'Gratuita',
+    code: 'ETAPA-01 / VISITA',
   },
   {
+    id: 2,
     number: '02',
-    title: 'Proposta Técnica em 48h',
+    title: 'Proposta em 48h',
     description: 'Proposta com valor fixo, cronograma detalhado e memorial descritivo. Sem letra miúda — o que está escrito é o que você paga.',
-    badge: '48h',
+    icon: FileText,
+    tag: '48 Horas',
+    code: 'ETAPA-02 / ORÇAMENTO',
   },
   {
+    id: 3,
     number: '03',
     title: 'Fabricação Industrial',
     description: 'Produzimos em oficina própria, sem terceirizar. Aço certificado, solda rastreável e inspeção em cada etapa — nada sai da fábrica fora do padrão.',
-    badge: 'ISO 9001',
+    icon: Factory,
+    tag: 'ISO 9001',
+    code: 'ETAPA-03 / PRODUÇÃO',
   },
   {
+    id: 4,
     number: '04',
     title: 'Instalação com ART',
     description: 'Nossa equipe instala no prazo acordado em contrato. ART do engenheiro responsável entregue em 100% dos projetos estruturais — sem exceção.',
-    badge: 'ART inclusa',
+    icon: HardHat,
+    tag: 'ART Inclusa',
+    code: 'ETAPA-04 / ENTREGA',
   },
 ]
 
-export default function ProcessSection() {
-  const ref = useRef(null)
-  const inView = useInView(ref, { once: true, margin: '-60px' })
+function StepRow({
+  step,
+  index,
+  smooth,
+}: {
+  step: (typeof steps)[0]
+  index: number
+  smooth: MotionValue<number>
+}) {
+  const segProgress = useTransform(smooth, [index / 4, (index + 1) / 4], [0, 1])
+  const Icon = step.icon
+  const isLast = index === 3
 
   return (
-    <section ref={ref} className="overflow-hidden bg-cross" style={{ background: '#eeeae3' }}>
-      <div className="grid grid-cols-1 lg:grid-cols-2">
+    <div
+      className="process-step-row"
+      style={{
+        display: 'grid',
+        gridTemplateColumns: 'minmax(0,1fr) 48px minmax(0,1.6fr)',
+        padding: 'clamp(3.5rem, 5vw, 5rem) 0',
+        borderBottom: isLast ? 'none' : '1px solid rgba(15,23,42,0.08)',
+        position: 'relative',
+      }}
+    >
+      {/* LEFT: Giant number — stroke + orange fill wipe */}
+      <div style={{ position: 'relative', display: 'flex', alignItems: 'flex-start' }}>
+        {/* Layer A: permanent stroke */}
+        <span
+          className="process-step-number"
+          style={{
+            fontFamily: 'var(--font-barlow-condensed)',
+            fontWeight: 900,
+            fontSize: 'clamp(5rem, 16vw, 14rem)',
+            lineHeight: 1,
+            WebkitTextStroke: '1.5px rgba(249,115,22,0.28)',
+            WebkitTextFillColor: 'transparent',
+            color: 'transparent',
+            userSelect: 'none',
+            display: 'block',
+            letterSpacing: '-0.03em',
+          }}
+        >
+          {step.number}
+        </span>
+        {/* Layer B: orange fill, wipes left → right on scroll */}
+        <motion.span
+          aria-hidden="true"
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            fontFamily: 'var(--font-barlow-condensed)',
+            fontWeight: 900,
+            fontSize: 'clamp(5rem, 16vw, 14rem)',
+            lineHeight: 1,
+            color: '#f97316',
+            userSelect: 'none',
+            display: 'block',
+            letterSpacing: '-0.03em',
+            willChange: 'clip-path',
+          }}
+          initial={{ clipPath: 'inset(0 100% 0 0)' }}
+          whileInView={{ clipPath: 'inset(0 0% 0 0)' }}
+          viewport={{ once: true, margin: '-80px' }}
+          transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: index * 0.15 }}
+        >
+          {step.number}
+        </motion.span>
+      </div>
 
-        {/* Left — content */}
-        <div className="py-28 sm:py-36 px-8 sm:px-16 xl:px-24 flex flex-col justify-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          >
-            <span className="font-mono text-[10px] tracking-[0.45em] uppercase block mb-8" style={{ color: 'rgba(196,160,64,0.7)' }}>
-              Nosso processo
-            </span>
-            <h2
-              className="font-display font-black leading-[0.88] mb-16"
-              style={{ fontSize: 'clamp(2.5rem, 5vw, 5rem)', color: '#1e2328', letterSpacing: '-0.02em' }}
-            >
-              Quatro etapas.<br />
-              <span style={{ color: 'rgba(240,241,242,0.18)' }}>Zero improviso.</span>
-            </h2>
-          </motion.div>
+      {/* CENTER: Vertical timeline segment */}
+      <div
+        className="process-timeline-center"
+        style={{ position: 'relative', display: 'flex', justifyContent: 'center' }}
+      >
+        {/* Ghost track */}
+        <div style={{
+          position: 'absolute',
+          top: 0, bottom: 0,
+          left: '50%', marginLeft: '-1px',
+          width: '1px',
+          background: 'rgba(249,115,22,0.15)',
+        }} />
+        {/* Animated progress bar */}
+        <div style={{
+          position: 'absolute',
+          top: 0, bottom: 0,
+          left: '50%', marginLeft: '-1px',
+          width: '2px',
+          overflow: 'hidden',
+        }}>
+          <motion.div style={{
+            width: '100%',
+            height: '100%',
+            background: 'linear-gradient(to bottom, #f97316, #fb923c)',
+            scaleY: segProgress,
+            transformOrigin: 'top center',
+            willChange: 'transform',
+          }} />
+        </div>
+        {/* Dot */}
+        <motion.div
+          style={{
+            position: 'absolute',
+            top: 'clamp(3.5rem, 5vw, 5rem)',
+            left: '50%',
+            marginLeft: '-6px',
+            marginTop: '-6px',
+            width: '12px',
+            height: '12px',
+            borderRadius: '50%',
+            background: '#f97316',
+            border: '2px solid #f4f4f0',
+            boxShadow: '0 0 0 1px rgba(249,115,22,0.35)',
+            zIndex: 2,
+          }}
+          initial={{ scale: 0 }}
+          whileInView={{ scale: 1 }}
+          viewport={{ once: true, margin: '-60px' }}
+          transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1], delay: index * 0.15 + 0.05 }}
+        />
+      </div>
 
-          <div className="space-y-0">
-            {steps.map((step, i) => (
-              <motion.div
-                key={step.number}
-                className="relative flex gap-8"
-                initial={{ opacity: 0, x: -24 }}
-                animate={inView ? { opacity: 1, x: 0 } : {}}
-                transition={{ duration: 0.7, delay: 0.1 + i * 0.12, ease: [0.16, 1, 0.3, 1] }}
-              >
-                <div className="flex flex-col items-center shrink-0 pt-1 self-stretch">
-                  <div
-                    className="w-10 h-10 flex items-center justify-center shrink-0 font-mono font-bold text-[12px]"
-                    style={{ background: 'rgba(196,160,64,0.08)', border: '1px solid rgba(196,160,64,0.25)', color: '#c4a040' }}
-                  >
-                    {step.number}
-                  </div>
-                  {i < steps.length - 1 && (
-                    <div className="w-px flex-1 mt-3 min-h-[36px]" style={{ background: 'rgba(0,0,0,0.09)' }} />
-                  )}
-                </div>
+      {/* RIGHT: Content block */}
+      <motion.div
+        className="process-step-content"
+        style={{ paddingLeft: 'clamp(1.5rem, 3vw, 3rem)' }}
+        initial={{ opacity: 0, x: 40 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true, margin: '-60px' }}
+        transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: index * 0.15 + 0.1 }}
+      >
+        {/* Technical code ID */}
+        <div style={{
+          fontFamily: 'var(--font-mono)',
+          fontSize: '9px',
+          letterSpacing: '0.22em',
+          textTransform: 'uppercase',
+          color: 'rgba(100,116,139,0.6)',
+          marginBottom: '1.1rem',
+        }}>
+          [ {step.code} ]
+        </div>
 
-                <div className="pb-12">
-                  <div className="flex items-center gap-3 mb-3 flex-wrap">
-                    <h3 className="font-display font-bold" style={{ fontSize: '1.15rem', color: '#1e2328' }}>
-                      {step.title}
-                    </h3>
-                    <span
-                      className="text-[9px] font-mono tracking-widest uppercase px-2.5 py-1 shrink-0"
-                      style={{ background: 'rgba(196,160,64,0.1)', border: '1px solid rgba(196,160,64,0.25)', color: 'rgba(196,160,64,0.85)' }}
-                    >
-                      {step.badge}
-                    </span>
-                  </div>
-                  <p className="text-[14px] leading-[1.8]" style={{ color: '#8a9199' }}>
-                    {step.description}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
+        {/* Tag + Icon */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '1.25rem' }}>
+          <span style={{
+            fontSize: '9px',
+            fontFamily: 'var(--font-mono)',
+            letterSpacing: '0.25em',
+            textTransform: 'uppercase',
+            color: '#f97316',
+            border: '1px solid rgba(249,115,22,0.35)',
+            padding: '3px 10px',
+          }}>
+            {step.tag}
+          </span>
+          <div style={{
+            width: '30px',
+            height: '30px',
+            border: '1px solid rgba(249,115,22,0.25)',
+            background: 'rgba(249,115,22,0.07)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            color: '#f97316',
+          }}>
+            <Icon size={14} strokeWidth={1.5} />
           </div>
         </div>
 
-        {/* Right — photo */}
+        {/* Title */}
+        <h3 style={{
+          fontFamily: 'var(--font-barlow-condensed)',
+          fontWeight: 700,
+          fontSize: 'clamp(2rem, 3.2vw, 2.75rem)',
+          textTransform: 'uppercase',
+          letterSpacing: '0.01em',
+          color: '#0f172a',
+          margin: '0 0 0.875rem',
+          lineHeight: 1.05,
+        }}>
+          {step.title}
+        </h3>
+
+        {/* Description */}
+        <p style={{
+          fontFamily: 'var(--font-sans)',
+          fontSize: 'clamp(1.125rem, 1.6vw, 1.35rem)',
+          lineHeight: 1.8,
+          color: '#475569',
+          margin: 0,
+          maxWidth: '44ch',
+        }}>
+          {step.description}
+        </p>
+      </motion.div>
+    </div>
+  )
+}
+
+export default function ProcessSection() {
+  const sectionRef = useRef<HTMLDivElement>(null)
+
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ['start center', 'end center'],
+  })
+
+  const smooth = useSpring(scrollYProgress, {
+    stiffness: 80,
+    damping: 22,
+    restDelta: 0.001,
+  })
+
+  return (
+    <section style={{ background: '#f4f4f0', position: 'relative', overflow: 'hidden' }}>
+
+      {/* Dot grid — orange dots on light paper */}
+      <div style={{
+        position: 'absolute',
+        inset: 0,
+        pointerEvents: 'none',
+        backgroundImage: 'radial-gradient(circle, rgba(249,115,22,0.22) 1px, transparent 1px)',
+        backgroundSize: '32px 32px',
+        backgroundPosition: '16px 16px',
+        maskImage: 'radial-gradient(ellipse 90% 90% at 50% 50%, black 30%, transparent 100%)',
+        WebkitMaskImage: 'radial-gradient(ellipse 90% 90% at 50% 50%, black 30%, transparent 100%)',
+      }} />
+
+      <div style={{
+        position: 'relative',
+        zIndex: 1,
+        maxWidth: '1200px',
+        margin: '0 auto',
+        padding: 'clamp(4rem, 7vw, 6rem) clamp(1.5rem, 4vw, 3rem)',
+      }}>
+
+        {/* Section header */}
         <motion.div
-          className="relative hidden lg:block"
-          style={{ minHeight: '600px' }}
-          initial={{ opacity: 0 }}
-          animate={inView ? { opacity: 1 } : {}}
-          transition={{ duration: 1, delay: 0.2 }}
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-60px' }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          style={{ marginBottom: 'clamp(2rem, 3vw, 3rem)' }}
         >
-          <div
-            className="absolute inset-0"
-            style={{ backgroundImage: `url("${PHOTOS.process}")`, backgroundSize: 'cover', backgroundPosition: 'center' }}
-          />
-          <div
-            className="absolute inset-0"
-            style={{ background: 'linear-gradient(to right, #0c0e11 0%, rgba(12,14,17,0.15) 40%, transparent 100%)' }}
-          />
-          <div className="absolute bottom-12 right-12">
-            <div
-              className="px-6 py-5"
-              style={{ background: 'rgba(12,14,17,0.92)', border: '1px solid rgba(196,160,64,0.2)', backdropFilter: 'blur(12px)' }}
-            >
-              <div className="font-display font-black text-[2.5rem] leading-none" style={{ color: '#c4a040' }}>20+</div>
-              <div className="font-mono text-[10px] tracking-[0.3em] uppercase mt-1" style={{ color: 'rgba(180,188,198,0.4)' }}>
-                anos de obra
-              </div>
-            </div>
-          </div>
+          <span style={{
+            fontFamily: 'var(--font-mono)',
+            fontSize: '10px',
+            letterSpacing: '0.45em',
+            textTransform: 'uppercase',
+            color: '#f97316',
+            display: 'block',
+            marginBottom: '1rem',
+          }}>
+            Nosso processo
+          </span>
+          <h2 style={{
+            fontFamily: 'var(--font-barlow-condensed)',
+            fontWeight: 900,
+            fontSize: 'clamp(3rem, 6vw, 5.5rem)',
+            lineHeight: 0.92,
+            letterSpacing: '0.01em',
+            textTransform: 'uppercase',
+            color: '#0f172a',
+            margin: 0,
+          }}>
+            Quatro etapas.{' '}
+            <span style={{ color: '#f97316' }}>Zero improviso.</span>
+          </h2>
         </motion.div>
 
+        {/* Top rule */}
+        <div style={{ width: '100%', height: '1px', background: 'rgba(15,23,42,0.1)' }} />
+
+        {/* Steps timeline */}
+        <div ref={sectionRef}>
+          {steps.map((step, i) => (
+            <StepRow key={step.id} step={step} index={i} smooth={smooth} />
+          ))}
+        </div>
+
+        {/* Bottom rule */}
+        <div style={{ width: '100%', height: '1px', background: 'rgba(15,23,42,0.1)' }} />
+
       </div>
+
+      <style>{`
+        @media (max-width: 640px) {
+          .process-step-row {
+            grid-template-columns: 1fr !important;
+          }
+          .process-step-number {
+            font-size: clamp(5rem, 22vw, 8rem) !important;
+          }
+          .process-timeline-center {
+            display: none !important;
+          }
+          .process-step-content {
+            padding-left: 0 !important;
+            padding-top: 0.5rem;
+          }
+        }
+      `}</style>
     </section>
   )
 }
