@@ -28,7 +28,7 @@ export default function HeroSection() {
     >
       {/* ── Image background ── */}
       <img
-        src="/logo.png"
+        src="/Robotic Shark Humanoid.png"
         alt=""
         style={{
           position: 'absolute',
