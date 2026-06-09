@@ -11,7 +11,7 @@ export default function AdminShell({ children }: { children: React.ReactNode }) 
   const toggle = useCallback(() => setMobileOpen((v) => !v), [])
 
   return (
-    <div className="flex h-screen bg-[#060809] overflow-hidden">
+    <div className="flex h-screen bg-[#f8fafc] overflow-hidden">
       {/* Desktop sidebar — static flex child, zero positioning tricks */}
       <div className="hidden lg:block shrink-0">
         <AdminSidebar />

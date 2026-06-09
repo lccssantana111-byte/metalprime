@@ -47,23 +47,23 @@ export default async function PortfolioDetailPage({ params }: { params: Promise<
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
 
-      <div className="pt-24 pb-16">
+      <div className="pt-24 pb-16" style={{ background: '#ffffff' }}>
         <div className="container mx-auto px-4">
-          {/* Breadcrumb with schema.org markup */}
-          <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-sm text-metal mb-8">
-            <Link href="/" className="hover:text-metal-light transition-colors">Início</Link>
+          {/* Breadcrumb */}
+          <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-sm mb-8" style={{ color: '#94a3b8' }}>
+            <Link href="/" className="hover:text-slate-700 transition-colors" style={{ color: '#64748b' }}>Início</Link>
             <span aria-hidden>/</span>
-            <Link href="/portfolio" className="hover:text-metal-light transition-colors">Portfólio</Link>
+            <Link href="/portfolio" className="hover:text-slate-700 transition-colors" style={{ color: '#64748b' }}>Portfólio</Link>
             <span aria-hidden>/</span>
-            <Link href={`/servicos/${serviceSlug}`} className="hover:text-metal-light transition-colors capitalize">
+            <Link href={`/servicos/${serviceSlug}`} className="hover:text-slate-700 transition-colors capitalize" style={{ color: '#64748b' }}>
               {SERVICE_LABELS[item.service]}
             </Link>
             <span aria-hidden>/</span>
-            <span className="text-amber-brand">{item.title}</span>
+            <span style={{ color: '#f97316' }}>{item.title}</span>
           </nav>
 
           {/* Hero image */}
-          <div className="aspect-[16/7] bg-graphite rounded-2xl overflow-hidden mb-8 border border-metal-dark/30">
+          <div className="aspect-[16/7] rounded-2xl overflow-hidden mb-8" style={{ background: '#f1f5f9', border: '1px solid #e2e8f0' }}>
             {item.cover_image ? (
               <img
                 src={item.cover_image}
@@ -72,7 +72,7 @@ export default async function PortfolioDetailPage({ params }: { params: Promise<
                 loading="eager"
               />
             ) : (
-              <div className="w-full h-full bg-gradient-to-br from-steel to-graphite flex items-center justify-center">
+              <div className="w-full h-full flex items-center justify-center" style={{ background: 'linear-gradient(135deg, #e2e8f0, #f1f5f9)' }}>
                 <span className="text-6xl">🏗️</span>
               </div>
             )}
@@ -84,37 +84,45 @@ export default async function PortfolioDetailPage({ params }: { params: Promise<
               <div className="mb-4 flex flex-wrap gap-3">
                 <Link
                   href={`/servicos/${serviceSlug}`}
-                  className="text-xs px-3 py-1 bg-amber-brand/10 text-amber-brand border border-amber-brand/20 rounded-full font-medium hover:bg-amber-brand/20 transition-colors"
+                  className="text-xs px-3 py-1 rounded-full font-medium transition-colors"
+                  style={{ background: 'rgba(249,115,22,0.08)', color: '#f97316', border: '1px solid rgba(249,115,22,0.2)' }}
                 >
                   {SERVICE_LABELS[item.service]}
                 </Link>
                 {item.featured && (
-                  <span className="text-xs px-3 py-1 bg-steel/50 text-metal-light border border-metal-dark/30 rounded-full">
+                  <span
+                    className="text-xs px-3 py-1 rounded-full"
+                    style={{ background: '#f1f5f9', color: '#64748b', border: '1px solid #e2e8f0' }}
+                  >
                     Destaque
                   </span>
                 )}
               </div>
-              <h1 className="font-display text-4xl lg:text-5xl font-bold text-foreground mb-4">
+              <h1
+                className="font-display text-4xl lg:text-5xl font-bold mb-4"
+                style={{ color: '#0f172a' }}
+              >
                 {item.title}
               </h1>
               {item.short_desc && (
-                <p className="text-xl text-metal-light mb-6 leading-relaxed">{item.short_desc}</p>
+                <p className="text-xl mb-6 leading-relaxed" style={{ color: '#475569' }}>{item.short_desc}</p>
               )}
               {item.description && (
-                <div className="prose prose-invert max-w-none text-metal leading-relaxed">
+                <div className="prose max-w-none leading-relaxed" style={{ color: '#64748b' }}>
                   <p>{item.description}</p>
                 </div>
               )}
 
               {/* Contextual service link */}
-              <div className="mt-8 p-5 bg-graphite border border-metal-dark/30 rounded-xl">
-                <p className="text-sm text-metal mb-3">
-                  Interessado em <span className="text-foreground font-medium">{SERVICE_LABELS[item.service]}</span>?
+              <div className="mt-8 p-5 rounded-xl" style={{ background: '#f8fafc', border: '1px solid #e2e8f0' }}>
+                <p className="text-sm mb-3" style={{ color: '#64748b' }}>
+                  Interessado em <span className="font-medium" style={{ color: '#0f172a' }}>{SERVICE_LABELS[item.service]}</span>?
                   Veja todos os detalhes do serviço.
                 </p>
                 <Link
                   href={`/servicos/${serviceSlug}`}
-                  className="text-sm text-amber-brand hover:text-amber-light transition-colors font-medium inline-flex items-center gap-1"
+                  className="text-sm font-medium inline-flex items-center gap-1 transition-colors"
+                  style={{ color: '#f97316' }}
                 >
                   Ver serviço de {SERVICE_LABELS[item.service]}
                   <ArrowRight className="w-3 h-3" />
@@ -125,41 +133,45 @@ export default async function PortfolioDetailPage({ params }: { params: Promise<
             {/* Meta + CTA */}
             <div className="space-y-4">
               {item.city && (
-                <div className="flex items-center gap-3 bg-graphite border border-metal-dark/30 rounded-xl p-4">
-                  <MapPin className="w-5 h-5 text-amber-brand shrink-0" />
+                <div className="flex items-center gap-3 rounded-xl p-4" style={{ background: '#ffffff', border: '1px solid #e2e8f0', boxShadow: '0 1px 4px rgba(15,23,42,0.04)' }}>
+                  <MapPin className="w-5 h-5 shrink-0" style={{ color: '#f97316' }} />
                   <div>
-                    <p className="text-xs text-metal-dark">Localização</p>
-                    <p className="text-foreground font-medium">{item.city}</p>
+                    <p className="text-xs" style={{ color: '#94a3b8' }}>Localização</p>
+                    <p className="font-medium" style={{ color: '#0f172a' }}>{item.city}</p>
                   </div>
                 </div>
               )}
               {item.year && (
-                <div className="flex items-center gap-3 bg-graphite border border-metal-dark/30 rounded-xl p-4">
-                  <Calendar className="w-5 h-5 text-amber-brand shrink-0" />
+                <div className="flex items-center gap-3 rounded-xl p-4" style={{ background: '#ffffff', border: '1px solid #e2e8f0', boxShadow: '0 1px 4px rgba(15,23,42,0.04)' }}>
+                  <Calendar className="w-5 h-5 shrink-0" style={{ color: '#f97316' }} />
                   <div>
-                    <p className="text-xs text-metal-dark">Ano de execução</p>
-                    <p className="text-foreground font-medium">{item.year}</p>
+                    <p className="text-xs" style={{ color: '#94a3b8' }}>Ano de execução</p>
+                    <p className="font-medium" style={{ color: '#0f172a' }}>{item.year}</p>
                   </div>
                 </div>
               )}
 
-              {/* Primary CTA — contextual per service */}
-              <Button
-                asChild
-                className="w-full bg-amber-brand hover:bg-amber-light text-carbon font-bold py-4 h-auto group"
+              {/* Primary CTA */}
+              <button
+                onClick={() => { window.location.href = ctaHref }}
+                className="w-full font-bold text-sm tracking-wide py-4 rounded-xl flex items-center justify-center gap-2 group transition-colors"
+                style={{ background: '#0f172a', color: '#ffffff' }}
+                onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = '#1e293b' }}
+                onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = '#0f172a' }}
               >
-                <Link href={ctaHref}>
+                <Link href={ctaHref} className="flex items-center gap-2">
                   {ctaText}
-                  <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </Link>
-              </Button>
+              </button>
 
               {/* Secondary CTA — WhatsApp */}
               <a
                 href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '5511999999999'}?text=${encodeURIComponent(`Olá! Vi o projeto "${item.title}" no portfólio e quero um orçamento similar.`)}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 w-full py-3 bg-[#25D366]/10 border border-[#25D366]/30 text-[#25D366] rounded-xl text-sm font-semibold hover:bg-[#25D366]/20 transition-colors"
+                className="flex items-center justify-center gap-2 w-full py-3 rounded-xl text-sm font-semibold transition-colors"
+                style={{ background: 'rgba(37,211,102,0.08)', border: '1px solid rgba(37,211,102,0.25)', color: '#16a34a' }}
               >
                 <MessageCircle className="w-4 h-4" />
                 Perguntar pelo WhatsApp
@@ -170,10 +182,10 @@ export default async function PortfolioDetailPage({ params }: { params: Promise<
           {/* Gallery */}
           {item.images.length > 0 && (
             <div className="mt-12">
-              <h2 className="font-display text-2xl font-bold text-foreground mb-6">Galeria de imagens</h2>
+              <h2 className="font-display text-2xl font-bold mb-6" style={{ color: '#0f172a' }}>Galeria de imagens</h2>
               <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                 {item.images.map((img, i) => (
-                  <div key={i} className="aspect-square bg-graphite rounded-xl overflow-hidden">
+                  <div key={i} className="aspect-square rounded-xl overflow-hidden" style={{ background: '#f1f5f9' }}>
                     <img
                       src={img}
                       alt={`${item.title} — imagem ${i + 1} — ${SERVICE_LABELS[item.service]}`}
@@ -187,18 +199,21 @@ export default async function PortfolioDetailPage({ params }: { params: Promise<
           )}
 
           {/* Bottom CTA banner */}
-          <div className="mt-16 bg-graphite border border-amber-brand/20 rounded-2xl p-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+          <div
+            className="mt-16 rounded-2xl p-8 flex flex-col sm:flex-row items-center justify-between gap-6"
+            style={{ background: '#fff7ed', border: '1px solid #fed7aa' }}
+          >
             <div>
-              <h3 className="font-display text-2xl font-bold text-foreground mb-2">Gostou do resultado?</h3>
-              <p className="text-metal">Solicite um orçamento gratuito e sem compromisso para seu projeto.</p>
+              <h3 className="font-display text-2xl font-bold mb-2" style={{ color: '#0f172a' }}>Gostou do resultado?</h3>
+              <p style={{ color: '#64748b' }}>Solicite um orçamento gratuito e sem compromisso para seu projeto.</p>
             </div>
-            <Button asChild className="bg-amber-brand hover:bg-amber-light text-carbon font-bold px-8 py-4 h-auto shrink-0">
+            <Button asChild className="font-bold px-8 py-4 h-auto shrink-0" style={{ background: '#f97316', color: '#ffffff' }}>
               <Link href={ctaHref}>Solicitar orçamento</Link>
             </Button>
           </div>
 
           <div className="mt-8 flex justify-between">
-            <Button asChild variant="outline" className="border-metal-dark/50 text-metal-light hover:bg-steel/30">
+            <Button asChild variant="outline" style={{ borderColor: '#e2e8f0', color: '#64748b' }}>
               <Link href="/portfolio">
                 <ArrowLeft className="mr-2 w-4 h-4" />
                 Voltar ao portfólio

@@ -47,18 +47,17 @@ export default function AdminHeader({ onMenuToggle }: { onMenuToggle: () => void
   return (
     <header
       className="h-[52px] shrink-0 flex items-center gap-3 px-4 sm:px-6"
-      style={{ borderBottom: '1px solid rgba(0,0,0,0.08)' }}
+      style={{ background: '#ffffff', borderBottom: '1px solid #f1f5f9' }}
     >
-      {/* Mobile hamburger */}
       <button
-        className="lg:hidden w-8 h-8 flex items-center justify-center rounded-md transition-all shrink-0"
-        style={{ color: 'rgba(0,0,0,0.30)' }}
+        className="lg:hidden w-8 h-8 flex items-center justify-center rounded-lg transition-all shrink-0"
+        style={{ color: '#94a3b8' }}
         onMouseEnter={(e) => {
-          e.currentTarget.style.color = 'rgba(0,0,0,0.70)'
-          e.currentTarget.style.background = 'rgba(0,0,0,0.08)'
+          e.currentTarget.style.color = '#0f172a'
+          e.currentTarget.style.background = '#f1f5f9'
         }}
         onMouseLeave={(e) => {
-          e.currentTarget.style.color = 'rgba(0,0,0,0.30)'
+          e.currentTarget.style.color = '#94a3b8'
           e.currentTarget.style.background = 'transparent'
         }}
         onClick={onMenuToggle}
@@ -67,31 +66,22 @@ export default function AdminHeader({ onMenuToggle }: { onMenuToggle: () => void
         <Menu className="w-4 h-4" />
       </button>
 
-      {/* Page title */}
-      <h1 className="font-display font-semibold text-[15px] text-foreground truncate">
+      <h1 className="font-display font-semibold text-[15px] truncate" style={{ color: '#0f172a' }}>
         {getTitle(pathname)}
       </h1>
 
       <div className="ml-auto flex items-center gap-3 shrink-0">
-        {/* Email — hidden on small screens */}
         {email && (
-          <span
-            className="hidden md:block text-[12px] font-mono truncate max-w-[180px]"
-            style={{ color: 'rgba(0,0,0,0.20)' }}
-          >
+          <span className="hidden md:block text-[12px] font-mono truncate max-w-[180px]" style={{ color: '#94a3b8' }}>
             {email}
           </span>
         )}
 
-        {/* Avatar */}
         <div
           className="w-7 h-7 rounded-full flex items-center justify-center shrink-0"
-          style={{
-            background: 'rgba(200,134,10,0.15)',
-            border: '1px solid rgba(200,134,10,0.25)',
-          }}
+          style={{ background: '#fff7ed', border: '1px solid #fed7aa' }}
         >
-          <span className="font-mono font-bold text-[10px] text-amber-brand leading-none">
+          <span className="font-mono font-bold text-[10px] leading-none" style={{ color: '#ea580c' }}>
             {email ? toInitials(email) : '··'}
           </span>
         </div>

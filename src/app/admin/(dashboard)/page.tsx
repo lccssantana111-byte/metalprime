@@ -16,9 +16,9 @@ function Trend({ current, previous }: { current: number; previous: number }) {
   const diff = current - previous
   const pct = Math.round((diff / previous) * 100)
   const base = 'inline-flex items-center gap-0.5 text-[11px] font-mono tabular-nums'
-  if (diff === 0) return <span className={base} style={{ color: 'rgba(0,0,0,0.25)' }}><Minus className="w-3 h-3" />0%</span>
-  if (diff > 0) return <span className={`${base} text-emerald-400`}><TrendingUp className="w-3 h-3" />+{pct}%</span>
-  return <span className={`${base} text-red-400`}><TrendingDown className="w-3 h-3" />{pct}%</span>
+  if (diff === 0) return <span className={base} style={{ color: '#94a3b8' }}><Minus className="w-3 h-3" />0%</span>
+  if (diff > 0) return <span className={`${base}`} style={{ color: '#16a34a' }}><TrendingUp className="w-3 h-3" />+{pct}%</span>
+  return <span className={`${base}`} style={{ color: '#dc2626' }}><TrendingDown className="w-3 h-3" />{pct}%</span>
 }
 
 export default async function AdminDashboardPage() {
@@ -92,14 +92,14 @@ export default async function AdminDashboardPage() {
       {/* Page header */}
       <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-8">
         <div>
-          <p className="text-[11px] font-mono tracking-[0.15em] uppercase mb-1" style={{ color: 'rgba(0,0,0,0.22)' }}>
+          <p className="text-[11px] font-mono tracking-[0.15em] uppercase mb-1" style={{ color: '#94a3b8' }}>
             {greeting}
           </p>
           <h1 className="font-display font-black text-[2rem] text-foreground leading-none">
             Dashboard
           </h1>
         </div>
-        <p className="text-[12px] font-mono capitalize" style={{ color: 'rgba(0,0,0,0.22)' }}>
+        <p className="text-[12px] font-mono capitalize" style={{ color: '#94a3b8' }}>
           {dateLabel}
         </p>
       </div>
@@ -110,29 +110,29 @@ export default async function AdminDashboardPage() {
           {stale > 0 && (
             <AlertCard
               href="/admin/leads?status=novo"
-              bg="rgba(251,146,60,0.06)"
-              border="rgba(251,146,60,0.2)"
-              borderHover="rgba(251,146,60,0.4)"
-              iconBg="rgba(251,146,60,0.12)"
+              bg="#fff7ed"
+              border="#fed7aa"
+              borderHover="#fb923c"
+              iconBg="#ffedd5"
               Icon={AlertTriangle}
-              iconColor="text-orange-400"
+              iconColor="text-orange-500"
               title={`${stale} lead${stale > 1 ? 's' : ''} sem resposta`}
               sub={`Sem atualização há +${staleDays} dias`}
-              subColor="rgba(251,146,60,0.6)"
+              subColor="#ea580c"
             />
           )}
           {unassigned > 0 && (
             <AlertCard
               href="/admin/leads"
-              bg="rgba(250,204,21,0.06)"
-              border="rgba(250,204,21,0.18)"
-              borderHover="rgba(250,204,21,0.35)"
-              iconBg="rgba(250,204,21,0.1)"
+              bg="#fefce8"
+              border="#fde68a"
+              borderHover="#fbbf24"
+              iconBg="#fef9c3"
               Icon={UserX}
-              iconColor="text-yellow-400"
+              iconColor="text-yellow-600"
               title={`${unassigned} lead${unassigned > 1 ? 's' : ''} sem responsável`}
               sub="Atribua um vendedor para garantir follow-up"
-              subColor="rgba(250,204,21,0.55)"
+              subColor="#ca8a04"
             />
           )}
         </div>
@@ -149,18 +149,18 @@ export default async function AdminDashboardPage() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-2.5 mb-2.5">
         <div
           className="lg:col-span-2 rounded-xl p-5"
-          style={{ background: 'rgba(0,0,0,0.04)', border: '1px solid rgba(0,0,0,0.08)' }}
+          style={{ background: '#ffffff', border: '1px solid #e2e8f0', boxShadow: '0 1px 4px rgba(15,23,42,0.04)' }}
         >
           <div className="flex items-start justify-between mb-5">
             <div>
-              <p className="text-[10px] font-mono font-semibold tracking-[0.15em] uppercase mb-0.5" style={{ color: 'rgba(0,0,0,0.25)' }}>
+              <p className="text-[10px] font-mono font-semibold tracking-[0.15em] uppercase mb-0.5" style={{ color: '#94a3b8' }}>
                 Tendência
               </p>
               <h3 className="font-display font-semibold text-[14px] text-foreground">
                 Leads — últimos 30 dias
               </h3>
             </div>
-            <span className="font-mono text-[12px] tabular-nums" style={{ color: 'rgba(0,0,0,0.22)' }}>
+            <span className="font-mono text-[12px] tabular-nums" style={{ color: '#94a3b8' }}>
               {leads30dTotal} total
             </span>
           </div>
@@ -173,11 +173,11 @@ export default async function AdminDashboardPage() {
 
         <div
           className="rounded-xl p-5"
-          style={{ background: 'rgba(0,0,0,0.04)', border: '1px solid rgba(0,0,0,0.08)' }}
+          style={{ background: '#ffffff', border: '1px solid #e2e8f0', boxShadow: '0 1px 4px rgba(15,23,42,0.04)' }}
         >
           <div className="flex items-start justify-between mb-5">
             <div>
-              <p className="text-[10px] font-mono font-semibold tracking-[0.15em] uppercase mb-0.5" style={{ color: 'rgba(0,0,0,0.25)' }}>
+              <p className="text-[10px] font-mono font-semibold tracking-[0.15em] uppercase mb-0.5" style={{ color: '#94a3b8' }}>
                 Recentes
               </p>
               <h3 className="font-display font-semibold text-[14px] text-foreground">Leads recentes</h3>
@@ -192,10 +192,10 @@ export default async function AdminDashboardPage() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-2.5">
         <div
           className="rounded-xl p-5"
-          style={{ background: 'rgba(0,0,0,0.04)', border: '1px solid rgba(0,0,0,0.08)' }}
+          style={{ background: '#ffffff', border: '1px solid #e2e8f0', boxShadow: '0 1px 4px rgba(15,23,42,0.04)' }}
         >
           <div className="mb-5">
-            <p className="text-[10px] font-mono font-semibold tracking-[0.15em] uppercase mb-0.5" style={{ color: 'rgba(0,0,0,0.25)' }}>
+            <p className="text-[10px] font-mono font-semibold tracking-[0.15em] uppercase mb-0.5" style={{ color: '#94a3b8' }}>
               Pipeline
             </p>
             <h3 className="font-display font-semibold text-[14px] text-foreground">Funil de conversão</h3>
@@ -209,10 +209,10 @@ export default async function AdminDashboardPage() {
 
         <div
           className="rounded-xl p-5"
-          style={{ background: 'rgba(0,0,0,0.04)', border: '1px solid rgba(0,0,0,0.08)' }}
+          style={{ background: '#ffffff', border: '1px solid #e2e8f0', boxShadow: '0 1px 4px rgba(15,23,42,0.04)' }}
         >
           <div className="mb-5">
-            <p className="text-[10px] font-mono font-semibold tracking-[0.15em] uppercase mb-0.5" style={{ color: 'rgba(0,0,0,0.25)' }}>
+            <p className="text-[10px] font-mono font-semibold tracking-[0.15em] uppercase mb-0.5" style={{ color: '#94a3b8' }}>
               Distribuição
             </p>
             <h3 className="font-display font-semibold text-[14px] text-foreground">Leads por serviço</h3>
@@ -231,8 +231,8 @@ export default async function AdminDashboardPage() {
 function EmptyState({ label }: { label: string }) {
   return (
     <div className="h-[180px] flex flex-col items-center justify-center gap-2">
-      <div className="w-6 h-px" style={{ background: 'rgba(0,0,0,0.12)' }} />
-      <p className="text-[12px] font-mono" style={{ color: 'rgba(0,0,0,0.20)' }}>
+      <div className="w-6 h-px" style={{ background: '#e2e8f0' }} />
+      <p className="text-[12px] font-mono" style={{ color: '#94a3b8' }}>
         {label}
       </p>
     </div>
