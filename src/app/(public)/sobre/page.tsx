@@ -68,58 +68,100 @@ export default function SobrePage() {
 
       {/* ── 1. HERO ──────────────────────────────────────────── */}
       <section
-        className="min-h-[72vh] flex items-center relative overflow-hidden"
-        style={{
-          backgroundImage: 'url("/Hard Hat and Blueprint.png")',
-          backgroundSize: 'clamp(400px, 55%, 780px)',
-          backgroundPosition: 'right center',
-          backgroundRepeat: 'no-repeat',
-          backgroundColor: '#ffffff',
-        }}
+        className="min-h-[80vh] flex items-center relative overflow-hidden"
+        style={{ background: '#fafafa' }}
       >
-        {/* Gradiente que cobre o texto com branco e dissolve para a imagem */}
+        {/* Imagem — lado direito, contida com object-position para mostrar o capacete */}
         <div
           aria-hidden="true"
           className="absolute inset-0 pointer-events-none"
           style={{
-            background: 'linear-gradient(to right, #ffffff 40%, rgba(255,255,255,0.85) 60%, rgba(255,255,255,0) 80%)',
+            backgroundImage: 'url("/Hard Hat and Blueprint.png")',
+            backgroundRepeat: 'no-repeat',
+            backgroundSize: '52%',
+            backgroundPosition: '96% 55%',
           }}
         />
 
-        <div className="container mx-auto px-4 sm:px-8 py-28 relative z-10">
+        {/* Gradiente esquerda: garante legibilidade do texto */}
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background: 'linear-gradient(100deg, #fafafa 48%, rgba(250,250,250,0.92) 58%, rgba(250,250,250,0.4) 72%, transparent 88%)',
+          }}
+        />
+
+        {/* Linha de acento vertical sutil */}
+        <div
+          aria-hidden="true"
+          className="absolute left-0 top-0 bottom-0 w-[3px]"
+          style={{ background: 'linear-gradient(to bottom, transparent, #f97316 30%, #f97316 70%, transparent)' }}
+        />
+
+        <div className="container mx-auto px-4 sm:px-8 py-32 relative z-10 max-w-[52%]">
           <SectionLabel>Quem somos</SectionLabel>
 
           <h1
             style={{
               fontFamily: 'var(--font-barlow-condensed)',
               fontWeight: 900,
-              fontSize: 'clamp(3rem, 7vw, 7rem)',
-              lineHeight: 0.95,
-              letterSpacing: '0.01em',
+              fontSize: 'clamp(3.2rem, 6vw, 6.5rem)',
+              lineHeight: 0.92,
+              letterSpacing: '-0.01em',
               textTransform: 'uppercase',
               color: '#0f172a',
-              maxWidth: '720px',
               marginBottom: '1.75rem',
             }}
           >
-            Começamos com<br />
-            uma oficina.{' '}
-            <span style={{ color: '#f97316' }}>
-              Viramos<br />referência.
-            </span>
+            Começamos<br />
+            com uma<br />
+            oficina.{' '}
+            <span style={{ color: '#f97316' }}>Viramos<br />referência.</span>
           </h1>
 
           <p style={{
-            fontSize: '1.1rem',
-            lineHeight: 1.75,
+            fontSize: '1rem',
+            lineHeight: 1.8,
             color: '#64748b',
-            maxWidth: '480px',
+            maxWidth: '400px',
             fontFamily: 'var(--font-sans)',
+            marginBottom: '2.5rem',
           }}>
             Em 20 anos de obra feita direito, construímos reputação junto com
             condomínios, construtoras e arquitetos que precisam de um parceiro
             confiável — não de mais um fornecedor.
           </p>
+
+          {/* Badge de credibilidade */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
+            {[
+              { n: '+20', l: 'anos' },
+              { n: '+5k', l: 'obras' },
+              { n: '100%', l: 'com ART' },
+            ].map((b) => (
+              <div key={b.l} style={{ display: 'flex', flexDirection: 'column' }}>
+                <span style={{
+                  fontFamily: 'var(--font-barlow-condensed)',
+                  fontWeight: 900,
+                  fontSize: '1.4rem',
+                  lineHeight: 1,
+                  color: '#0f172a',
+                }}>
+                  {b.n}
+                </span>
+                <span style={{
+                  fontFamily: 'var(--font-mono)',
+                  fontSize: '9px',
+                  letterSpacing: '0.2em',
+                  textTransform: 'uppercase',
+                  color: '#94a3b8',
+                }}>
+                  {b.l}
+                </span>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
