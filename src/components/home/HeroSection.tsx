@@ -118,6 +118,7 @@ export default function HeroSection() {
             <motion.span
               style={{
                 display: 'block',
+                wordSpacing: '-0.12em',
                 background: 'linear-gradient(90deg, #f97316 0%, #fbbf24 35%, #f97316 55%, #ea580c 80%, #f97316 100%)',
                 backgroundSize: '300% auto',
                 WebkitBackgroundClip: 'text',
