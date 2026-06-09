@@ -1,6 +1,5 @@
 import { getDashboardMetrics } from '@/lib/queries/metrics'
 import { formatBRL } from '@/lib/utils'
-import { AlertTriangle, UserX } from 'lucide-react'
 import { LeadsLineChart } from '@/components/admin/dashboard/LeadsLineChart'
 import { ConversionFunnel } from '@/components/admin/dashboard/ConversionFunnel'
 import { ServicesPieChart } from '@/components/admin/dashboard/ServicesPieChart'
@@ -105,7 +104,7 @@ export default async function AdminDashboardPage() {
               border="#fed7aa"
               borderHover="#fb923c"
               iconBg="#ffedd5"
-              Icon={AlertTriangle}
+              iconType="stale"
               iconColor="text-orange-500"
               title={`${stale} lead${stale > 1 ? 's' : ''} sem resposta`}
               sub={`Sem atualização há +${staleDays} dias`}
@@ -119,7 +118,7 @@ export default async function AdminDashboardPage() {
               border="#fde68a"
               borderHover="#fbbf24"
               iconBg="#fef9c3"
-              Icon={UserX}
+              iconType="unassigned"
               iconColor="text-yellow-600"
               title={`${unassigned} lead${unassigned > 1 ? 's' : ''} sem responsável`}
               sub="Atribua um vendedor para garantir follow-up"

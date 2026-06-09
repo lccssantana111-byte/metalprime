@@ -1,8 +1,12 @@
 'use client'
 
 import Link from 'next/link'
-import { ArrowUpRight } from 'lucide-react'
-import type { LucideIcon } from 'lucide-react'
+import { ArrowUpRight, AlertTriangle, UserX } from 'lucide-react'
+
+const ICONS = {
+  stale: AlertTriangle,
+  unassigned: UserX,
+} as const
 
 interface Props {
   href: string
@@ -10,14 +14,15 @@ interface Props {
   border: string
   borderHover: string
   iconBg: string
-  Icon: LucideIcon
+  iconType: keyof typeof ICONS
   iconColor: string
   title: string
   sub: string
   subColor: string
 }
 
-export function AlertCard({ href, bg, border, borderHover, iconBg, Icon, iconColor, title, sub, subColor }: Props) {
+export function AlertCard({ href, bg, border, borderHover, iconBg, iconType, iconColor, title, sub, subColor }: Props) {
+  const Icon = ICONS[iconType]
   return (
     <Link
       href={href}
