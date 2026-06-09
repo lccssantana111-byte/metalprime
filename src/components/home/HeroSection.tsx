@@ -95,7 +95,7 @@ export default function HeroSection() {
             style={{
               fontFamily: 'var(--font-barlow-condensed)',
               fontWeight: 900,
-              lineHeight: 0.82,
+              lineHeight: 0.72,
               letterSpacing: '0.01em',
               textTransform: 'uppercase',
               fontSize: 'clamp(4.5rem, 8vw, 8.5rem)',
