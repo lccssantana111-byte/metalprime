@@ -72,7 +72,7 @@ export default function HeroSection() {
           variants={container}
           initial="hidden"
           animate="visible"
-          style={{ maxWidth: '620px' }}
+          style={{ maxWidth: '800px' }}
         >
           {/* Eyebrow */}
           <motion.p
@@ -95,16 +95,18 @@ export default function HeroSection() {
             style={{
               fontFamily: 'var(--font-barlow-condensed)',
               fontWeight: 900,
-              lineHeight: 0.72,
+              lineHeight: 1,
               letterSpacing: '0.01em',
               textTransform: 'uppercase',
               fontSize: 'clamp(4.5rem, 8vw, 8.5rem)',
               margin: '0 0 1.75rem',
+              overflow: 'visible',
             }}
           >
             <motion.span
               style={{
                 display: 'block',
+                marginBottom: '-0.08em',
                 background: 'linear-gradient(90deg, #ffffff 0%, #94a3b8 40%, #ffffff 60%, #e2e8f0 80%, #ffffff 100%)',
                 backgroundSize: '300% auto',
                 WebkitBackgroundClip: 'text',
