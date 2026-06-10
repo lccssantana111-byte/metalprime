@@ -68,99 +68,200 @@ export default function SobrePage() {
 
       {/* ── 1. HERO ──────────────────────────────────────────── */}
       <section
-        className="min-h-[80vh] flex items-center relative overflow-hidden"
-        style={{ background: '#fafafa' }}
+        className="relative overflow-hidden"
+        style={{ background: '#ffffff', minHeight: '88vh' }}
       >
-        {/* Imagem — lado direito, contida com object-position para mostrar o capacete */}
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            backgroundImage: 'url("/Hard Hat and Blueprint.png")',
-            backgroundRepeat: 'no-repeat',
-            backgroundSize: '52%',
-            backgroundPosition: '96% 55%',
-          }}
-        />
+        {/* Grid de fundo sutil — só na metade esquerda */}
+        <div aria-hidden="true" className="absolute inset-0 pointer-events-none" style={{
+          backgroundImage: 'radial-gradient(#e2e8f0 1px, transparent 1px)',
+          backgroundSize: '28px 28px',
+          WebkitMaskImage: 'linear-gradient(to right, rgba(0,0,0,0.3) 0%, transparent 55%)',
+          maskImage: 'linear-gradient(to right, rgba(0,0,0,0.3) 0%, transparent 55%)',
+        }} />
 
-        {/* Gradiente esquerda: garante legibilidade do texto */}
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            background: 'linear-gradient(100deg, #fafafa 48%, rgba(250,250,250,0.92) 58%, rgba(250,250,250,0.4) 72%, transparent 88%)',
-          }}
-        />
+        {/* Layout split: 55% texto / 45% imagem */}
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: '55fr 45fr',
+          minHeight: '88vh',
+        }}>
 
-        {/* Linha de acento vertical sutil */}
-        <div
-          aria-hidden="true"
-          className="absolute left-0 top-0 bottom-0 w-[3px]"
-          style={{ background: 'linear-gradient(to bottom, transparent, #f97316 30%, #f97316 70%, transparent)' }}
-        />
+          {/* — Coluna texto — */}
+          <div style={{
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            padding: 'clamp(4rem, 8vw, 7rem) clamp(2rem, 5vw, 5rem) clamp(4rem, 8vw, 7rem) clamp(1.5rem, 4vw, 4rem)',
+            position: 'relative',
+            zIndex: 2,
+          }}>
 
-        <div className="container mx-auto px-4 sm:px-8 py-32 relative z-10 max-w-[52%]">
-          <SectionLabel>Quem somos</SectionLabel>
+            {/* Eyebrow */}
+            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '2rem' }}>
+              <div style={{ width: '28px', height: '1px', background: '#f97316' }} />
+              <span style={{
+                fontFamily: 'var(--font-mono)',
+                fontSize: '10px',
+                letterSpacing: '0.45em',
+                textTransform: 'uppercase',
+                color: '#f97316',
+              }}>
+                Quem somos
+              </span>
+            </div>
 
-          <h1
-            style={{
+            {/* Headline */}
+            <h1 style={{
               fontFamily: 'var(--font-barlow-condensed)',
               fontWeight: 900,
-              fontSize: 'clamp(3.2rem, 6vw, 6.5rem)',
-              lineHeight: 0.92,
-              letterSpacing: '-0.01em',
+              fontSize: 'clamp(3.8rem, 7vw, 7.5rem)',
+              lineHeight: 0.88,
+              letterSpacing: '-0.02em',
               textTransform: 'uppercase',
               color: '#0f172a',
-              marginBottom: '1.75rem',
-            }}
-          >
-            Começamos<br />
-            com uma<br />
-            oficina.{' '}
-            <span style={{ color: '#f97316' }}>Viramos<br />referência.</span>
-          </h1>
+              marginBottom: '2rem',
+            }}>
+              Começamos<br />
+              com uma<br />
+              oficina.<br />
+              <span style={{
+                color: '#f97316',
+                WebkitTextStroke: '0px',
+                display: 'inline-block',
+                marginTop: '0.1em',
+              }}>Viramos<br />referência.</span>
+            </h1>
 
-          <p style={{
-            fontSize: '1rem',
-            lineHeight: 1.8,
-            color: '#64748b',
-            maxWidth: '400px',
-            fontFamily: 'var(--font-sans)',
-            marginBottom: '2.5rem',
+            {/* Divider */}
+            <div style={{ width: '48px', height: '2px', background: '#e2e8f0', marginBottom: '1.75rem' }} />
+
+            {/* Parágrafo */}
+            <p style={{
+              fontFamily: 'var(--font-sans)',
+              fontSize: '1rem',
+              lineHeight: 1.8,
+              color: '#64748b',
+              maxWidth: '380px',
+              marginBottom: '3rem',
+            }}>
+              Em 20 anos de obra feita direito, construímos reputação junto com
+              condomínios, construtoras e arquitetos que precisam de um parceiro
+              confiável — não de mais um fornecedor.
+            </p>
+
+            {/* Stats em linha com separadores */}
+            <div style={{ display: 'flex', alignItems: 'stretch', gap: '0' }}>
+              {[
+                { value: '+20', label: 'Anos de mercado' },
+                { value: '+5.000', label: 'Obras entregues' },
+                { value: '100%', label: 'Com ART' },
+              ].map((s, i) => (
+                <div key={s.label} style={{
+                  paddingRight: i < 2 ? '2rem' : '0',
+                  marginRight: i < 2 ? '2rem' : '0',
+                  borderRight: i < 2 ? '1px solid #e2e8f0' : 'none',
+                }}>
+                  <div style={{
+                    fontFamily: 'var(--font-barlow-condensed)',
+                    fontWeight: 900,
+                    fontSize: '1.75rem',
+                    lineHeight: 1,
+                    color: '#0f172a',
+                    marginBottom: '4px',
+                  }}>{s.value}</div>
+                  <div style={{
+                    fontFamily: 'var(--font-mono)',
+                    fontSize: '9px',
+                    letterSpacing: '0.2em',
+                    textTransform: 'uppercase',
+                    color: '#94a3b8',
+                    whiteSpace: 'nowrap',
+                  }}>{s.label}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* — Coluna imagem — */}
+          <div style={{
+            position: 'relative',
+            overflow: 'hidden',
           }}>
-            Em 20 anos de obra feita direito, construímos reputação junto com
-            condomínios, construtoras e arquitetos que precisam de um parceiro
-            confiável — não de mais um fornecedor.
-          </p>
+            {/* Fundo levemente tintado para a imagem respirar */}
+            <div style={{
+              position: 'absolute',
+              inset: 0,
+              background: '#f8f8f6',
+            }} />
 
-          {/* Badge de credibilidade */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
-            {[
-              { n: '+20', l: 'anos' },
-              { n: '+5k', l: 'obras' },
-              { n: '100%', l: 'com ART' },
-            ].map((b) => (
-              <div key={b.l} style={{ display: 'flex', flexDirection: 'column' }}>
-                <span style={{
-                  fontFamily: 'var(--font-barlow-condensed)',
-                  fontWeight: 900,
-                  fontSize: '1.4rem',
-                  lineHeight: 1,
-                  color: '#0f172a',
-                }}>
-                  {b.n}
-                </span>
-                <span style={{
-                  fontFamily: 'var(--font-mono)',
-                  fontSize: '9px',
-                  letterSpacing: '0.2em',
-                  textTransform: 'uppercase',
-                  color: '#94a3b8',
-                }}>
-                  {b.l}
-                </span>
-              </div>
-            ))}
+            {/* Imagem */}
+            <img
+              src="/Hard Hat and Blueprint.png"
+              alt="Capacete e planta de engenharia Metalprime"
+              style={{
+                position: 'absolute',
+                inset: 0,
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
+                objectPosition: '30% 60%',
+                mixBlendMode: 'multiply',
+              }}
+            />
+
+            {/* Fade suave na borda esquerda — integra com coluna de texto */}
+            <div aria-hidden="true" style={{
+              position: 'absolute',
+              top: 0, left: 0, bottom: 0,
+              width: '120px',
+              background: 'linear-gradient(to right, #ffffff, transparent)',
+              zIndex: 2,
+            }} />
+
+            {/* Tag flutuante — detalhe de acabamento */}
+            <div style={{
+              position: 'absolute',
+              bottom: '2.5rem',
+              right: '2rem',
+              zIndex: 3,
+              background: '#ffffff',
+              border: '1px solid #e2e8f0',
+              padding: '12px 18px',
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '2px',
+            }}>
+              <span style={{
+                fontFamily: 'var(--font-mono)',
+                fontSize: '8px',
+                letterSpacing: '0.3em',
+                textTransform: 'uppercase',
+                color: '#94a3b8',
+              }}>Fundada em</span>
+              <span style={{
+                fontFamily: 'var(--font-barlow-condensed)',
+                fontWeight: 900,
+                fontSize: '1.5rem',
+                lineHeight: 1,
+                color: '#0f172a',
+              }}>2004</span>
+              <span style={{
+                fontFamily: 'var(--font-mono)',
+                fontSize: '8px',
+                letterSpacing: '0.2em',
+                color: '#f97316',
+                textTransform: 'uppercase',
+              }}>Morumbi · SP</span>
+            </div>
+
+            {/* Linha laranja de acento no topo da coluna */}
+            <div style={{
+              position: 'absolute',
+              top: 0, left: 0, right: 0,
+              height: '3px',
+              background: 'linear-gradient(to right, transparent, #f97316 40%, #f97316 100%)',
+              zIndex: 3,
+            }} />
           </div>
         </div>
       </section>
