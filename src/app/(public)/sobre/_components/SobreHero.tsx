@@ -33,7 +33,7 @@ export default function SobreHero() {
     >
       {/* Imagem de fundo */}
       <img
-        src="/Futuristic Structure Design.png"
+        src="/futuristic-structure.png"
         alt=""
         aria-hidden="true"
         style={{
