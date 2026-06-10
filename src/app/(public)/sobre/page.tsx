@@ -65,7 +65,7 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
 
 export default function SobrePage() {
   return (
-    <div className="pt-16">
+    <div>
 
       {/* ── 1. HERO ──────────────────────────────────────────── */}
       <SobreHero />
