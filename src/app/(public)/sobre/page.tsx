@@ -118,97 +118,96 @@ export default function SobrePage() {
       </section>
 
       {/* ── 3. HISTÓRIA + TIMELINE ───────────────────────────── */}
-      <section style={{ background: '#ffffff', paddingTop: '6rem', paddingBottom: '6rem' }}>
+      <section style={{ background: '#0f172a', paddingTop: '6rem', paddingBottom: '0' }}>
         <div className="container mx-auto px-4 sm:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
 
-            <div>
-              <SectionLabel>Nossa história</SectionLabel>
-
-              <h2 style={{
-                fontFamily: 'var(--font-barlow-condensed)',
-                fontWeight: 900,
-                fontSize: 'clamp(2.5rem, 5vw, 4.5rem)',
-                lineHeight: 0.95,
-                letterSpacing: '0.01em',
-                textTransform: 'uppercase',
-                color: '#0f172a',
-                marginBottom: '2rem',
-              }}>
-                Uma oficina.<br />
-                <span style={{ color: 'rgba(15,23,42,0.25)' }}>Uma obsessão.</span>
-              </h2>
-
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
-                {[
-                  'Em 2004, um engenheiro mecânico com zero tolerância para trabalho ruim fundou a Metalprime no Morumbi. O objetivo era simples: fazer em metal o que ninguém fazia direito.',
-                  'A qualidade falou mais alto. Condomínios, construtoras e escritórios de arquitetura passaram a nos chamar porque sabiam o que iam receber: entrega no prazo, ART em dia e sem surpresas na nota.',
-                  'Hoje somos mais de 30 especialistas, com estrutura industrial própria e mais de 5.000 obras executadas. A escala mudou. A obsessão com qualidade continua a mesma.',
-                ].map((p, i) => (
-                  <p key={i} style={{ fontSize: '15px', lineHeight: 1.75, color: '#475569' }}>
-                    {p}
-                  </p>
-                ))}
-              </div>
-            </div>
-
-            {/* Timeline */}
-            <div className="relative">
-              <div
-                className="absolute top-0 bottom-0"
-                style={{
-                  left: '23px',
-                  width: '1px',
-                  background: 'linear-gradient(to bottom, #f97316, rgba(249,115,22,0.08))',
-                }}
-              />
-              <div>
-                {milestones.map((m, i) => (
-                  <div
-                    key={m.year}
-                    className="relative"
-                    style={{
-                      paddingLeft: '64px',
-                      paddingBottom: i < milestones.length - 1 ? '2.5rem' : '0',
-                    }}
-                  >
-                    <div
-                      className="absolute left-0 top-1 flex items-center justify-center"
-                      style={{
-                        width: '48px',
-                        height: '48px',
-                        border: '1px solid rgba(249,115,22,0.35)',
-                        background: '#ffffff',
-                      }}
-                    >
-                      <span style={{
-                        fontFamily: 'var(--font-mono)',
-                        fontWeight: 700,
-                        fontSize: '9px',
-                        color: '#f97316',
-                        letterSpacing: '0.05em',
-                      }}>
-                        {m.year}
-                      </span>
-                    </div>
-                    <h3 style={{
-                      fontFamily: 'var(--font-sans)',
-                      fontWeight: 700,
-                      fontSize: '1rem',
-                      color: '#0f172a',
-                      marginBottom: '4px',
-                    }}>
-                      {m.title}
-                    </h3>
-                    <p style={{ fontSize: '14px', color: '#64748b', lineHeight: 1.65 }}>
-                      {m.desc}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
+          {/* Cabeçalho da seção */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '1rem' }}>
+            <div style={{ width: '32px', height: '1px', background: '#f97316', flexShrink: 0 }} />
+            <span style={{
+              fontFamily: 'var(--font-mono)',
+              fontSize: '10px',
+              letterSpacing: '0.4em',
+              textTransform: 'uppercase' as const,
+              color: '#f97316',
+            }}>Nossa história</span>
           </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-end" style={{ paddingBottom: '5rem' }}>
+            <h2 style={{
+              fontFamily: 'var(--font-barlow-condensed)',
+              fontWeight: 900,
+              fontSize: 'clamp(3rem, 6vw, 6rem)',
+              lineHeight: 0.92,
+              letterSpacing: '-0.01em',
+              textTransform: 'uppercase',
+              color: '#ffffff',
+              margin: 0,
+            }}>
+              Uma oficina.<br />
+              <span style={{ color: 'rgba(255,255,255,0.2)' }}>Uma obsessão.</span>
+            </h2>
+
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.1rem' }}>
+              {[
+                'Em 2004, um engenheiro mecânico com zero tolerância para trabalho ruim fundou a Metalprime no Morumbi. O objetivo era simples: fazer em metal o que ninguém fazia direito.',
+                'A qualidade falou mais alto. Condomínios, construtoras e arquitetos passaram a nos chamar porque sabiam o que iam receber: entrega no prazo, ART em dia e sem surpresas na nota.',
+                'Hoje somos mais de 30 especialistas, com estrutura industrial própria e mais de 5.000 obras executadas. A escala mudou. A obsessão com qualidade continua a mesma.',
+              ].map((p, i) => (
+                <p key={i} style={{ fontSize: '15px', lineHeight: 1.75, color: 'rgba(255,255,255,0.5)', margin: 0 }}>
+                  {p}
+                </p>
+              ))}
+            </div>
+          </div>
+
+          {/* Timeline horizontal — linha do tempo */}
+          <div style={{ borderTop: '1px solid rgba(255,255,255,0.08)' }}>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5">
+              {milestones.map((m, i) => (
+                <div
+                  key={m.year}
+                  style={{
+                    padding: '2.5rem 2rem 2.5rem 0',
+                    borderRight: i < milestones.length - 1 ? '1px solid rgba(255,255,255,0.08)' : 'none',
+                    paddingLeft: i === 0 ? '0' : '2rem',
+                  }}
+                >
+                  {/* Ano */}
+                  <div style={{
+                    fontFamily: 'var(--font-barlow-condensed)',
+                    fontWeight: 900,
+                    fontSize: 'clamp(2rem, 3.5vw, 3rem)',
+                    lineHeight: 1,
+                    color: i === milestones.length - 1 ? '#f97316' : 'rgba(255,255,255,0.15)',
+                    marginBottom: '1rem',
+                  }}>
+                    {m.year}
+                  </div>
+                  {/* Linha decorativa laranja */}
+                  <div style={{
+                    width: '24px',
+                    height: '2px',
+                    background: '#f97316',
+                    marginBottom: '0.75rem',
+                  }} />
+                  <h3 style={{
+                    fontFamily: 'var(--font-sans)',
+                    fontWeight: 700,
+                    fontSize: '0.9rem',
+                    color: '#ffffff',
+                    marginBottom: '6px',
+                  }}>
+                    {m.title}
+                  </h3>
+                  <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.4)', lineHeight: 1.6, margin: 0 }}>
+                    {m.desc}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+
         </div>
       </section>
 
