@@ -104,7 +104,7 @@ export default function SobreHero() {
               lineHeight: 1,
               letterSpacing: '0.01em',
               textTransform: 'uppercase',
-              fontSize: 'clamp(4.5rem, 8vw, 8.5rem)',
+              fontSize: 'clamp(3rem, 5.5vw, 5.5rem)',
               margin: '0 0 1rem',
               overflow: 'visible',
             }}
