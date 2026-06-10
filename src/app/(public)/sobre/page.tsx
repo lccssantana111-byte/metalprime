@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Award, Users, Wrench, Target } from 'lucide-react'
 import { BRAND_NAME } from '@/lib/constants'
 import SobreCTA from './_components/SobreCTA'
+import SobreHero from './_components/SobreHero'
 
 export const metadata: Metadata = {
   title: `Sobre Nós | ${BRAND_NAME}`,
@@ -20,7 +21,7 @@ const values = [
     icon: Target,
     number: '02',
     title: 'Precisão',
-    description: 'Cada milímetro é calculado. ART em 100% dos projetos estruturais — sem exceção, sem negociação.',
+    description: 'Cada milímetro é calculado. ART em 100% dos projetos estruturais, sem exceção.',
   },
   {
     icon: Users,
@@ -67,204 +68,7 @@ export default function SobrePage() {
     <div className="pt-16">
 
       {/* ── 1. HERO ──────────────────────────────────────────── */}
-      <section
-        className="relative overflow-hidden"
-        style={{ background: '#ffffff', minHeight: '88vh' }}
-      >
-        {/* Grid de fundo sutil — só na metade esquerda */}
-        <div aria-hidden="true" className="absolute inset-0 pointer-events-none" style={{
-          backgroundImage: 'radial-gradient(#e2e8f0 1px, transparent 1px)',
-          backgroundSize: '28px 28px',
-          WebkitMaskImage: 'linear-gradient(to right, rgba(0,0,0,0.3) 0%, transparent 55%)',
-          maskImage: 'linear-gradient(to right, rgba(0,0,0,0.3) 0%, transparent 55%)',
-        }} />
-
-        {/* Layout split: 55% texto / 45% imagem */}
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: '55fr 45fr',
-          minHeight: '88vh',
-        }}>
-
-          {/* — Coluna texto — */}
-          <div style={{
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-            padding: 'clamp(4rem, 8vw, 7rem) clamp(2rem, 5vw, 5rem) clamp(4rem, 8vw, 7rem) clamp(1.5rem, 4vw, 4rem)',
-            position: 'relative',
-            zIndex: 2,
-          }}>
-
-            {/* Eyebrow */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '2rem' }}>
-              <div style={{ width: '28px', height: '1px', background: '#f97316' }} />
-              <span style={{
-                fontFamily: 'var(--font-mono)',
-                fontSize: '10px',
-                letterSpacing: '0.45em',
-                textTransform: 'uppercase',
-                color: '#f97316',
-              }}>
-                Quem somos
-              </span>
-            </div>
-
-            {/* Headline */}
-            <h1 style={{
-              fontFamily: 'var(--font-barlow-condensed)',
-              fontWeight: 900,
-              fontSize: 'clamp(3.8rem, 7vw, 7.5rem)',
-              lineHeight: 0.88,
-              letterSpacing: '-0.02em',
-              textTransform: 'uppercase',
-              color: '#0f172a',
-              marginBottom: '2rem',
-            }}>
-              Começamos<br />
-              com uma<br />
-              oficina.<br />
-              <span style={{
-                color: '#f97316',
-                WebkitTextStroke: '0px',
-                display: 'inline-block',
-                marginTop: '0.1em',
-              }}>Viramos<br />referência.</span>
-            </h1>
-
-            {/* Divider */}
-            <div style={{ width: '48px', height: '2px', background: '#e2e8f0', marginBottom: '1.75rem' }} />
-
-            {/* Parágrafo */}
-            <p style={{
-              fontFamily: 'var(--font-sans)',
-              fontSize: '1rem',
-              lineHeight: 1.8,
-              color: '#64748b',
-              maxWidth: '380px',
-              marginBottom: '3rem',
-            }}>
-              Em 20 anos de obra feita direito, construímos reputação junto com
-              condomínios, construtoras e arquitetos que precisam de um parceiro
-              confiável — não de mais um fornecedor.
-            </p>
-
-            {/* Stats em linha com separadores */}
-            <div style={{ display: 'flex', alignItems: 'stretch', gap: '0' }}>
-              {[
-                { value: '+20', label: 'Anos de mercado' },
-                { value: '+5.000', label: 'Obras entregues' },
-                { value: '100%', label: 'Com ART' },
-              ].map((s, i) => (
-                <div key={s.label} style={{
-                  paddingRight: i < 2 ? '2rem' : '0',
-                  marginRight: i < 2 ? '2rem' : '0',
-                  borderRight: i < 2 ? '1px solid #e2e8f0' : 'none',
-                }}>
-                  <div style={{
-                    fontFamily: 'var(--font-barlow-condensed)',
-                    fontWeight: 900,
-                    fontSize: '1.75rem',
-                    lineHeight: 1,
-                    color: '#0f172a',
-                    marginBottom: '4px',
-                  }}>{s.value}</div>
-                  <div style={{
-                    fontFamily: 'var(--font-mono)',
-                    fontSize: '9px',
-                    letterSpacing: '0.2em',
-                    textTransform: 'uppercase',
-                    color: '#94a3b8',
-                    whiteSpace: 'nowrap',
-                  }}>{s.label}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* — Coluna imagem — */}
-          <div style={{
-            position: 'relative',
-            overflow: 'hidden',
-          }}>
-            {/* Fundo levemente tintado para a imagem respirar */}
-            <div style={{
-              position: 'absolute',
-              inset: 0,
-              background: '#f8f8f6',
-            }} />
-
-            {/* Imagem */}
-            <img
-              src="/Hard Hat and Blueprint.png"
-              alt="Capacete e planta de engenharia Metalprime"
-              style={{
-                position: 'absolute',
-                inset: 0,
-                width: '100%',
-                height: '100%',
-                objectFit: 'cover',
-                objectPosition: '30% 60%',
-                mixBlendMode: 'multiply',
-              }}
-            />
-
-            {/* Fade suave na borda esquerda — integra com coluna de texto */}
-            <div aria-hidden="true" style={{
-              position: 'absolute',
-              top: 0, left: 0, bottom: 0,
-              width: '120px',
-              background: 'linear-gradient(to right, #ffffff, transparent)',
-              zIndex: 2,
-            }} />
-
-            {/* Tag flutuante — detalhe de acabamento */}
-            <div style={{
-              position: 'absolute',
-              bottom: '2.5rem',
-              right: '2rem',
-              zIndex: 3,
-              background: '#ffffff',
-              border: '1px solid #e2e8f0',
-              padding: '12px 18px',
-              display: 'flex',
-              flexDirection: 'column',
-              gap: '2px',
-            }}>
-              <span style={{
-                fontFamily: 'var(--font-mono)',
-                fontSize: '8px',
-                letterSpacing: '0.3em',
-                textTransform: 'uppercase',
-                color: '#94a3b8',
-              }}>Fundada em</span>
-              <span style={{
-                fontFamily: 'var(--font-barlow-condensed)',
-                fontWeight: 900,
-                fontSize: '1.5rem',
-                lineHeight: 1,
-                color: '#0f172a',
-              }}>2004</span>
-              <span style={{
-                fontFamily: 'var(--font-mono)',
-                fontSize: '8px',
-                letterSpacing: '0.2em',
-                color: '#f97316',
-                textTransform: 'uppercase',
-              }}>Morumbi · SP</span>
-            </div>
-
-            {/* Linha laranja de acento no topo da coluna */}
-            <div style={{
-              position: 'absolute',
-              top: 0, left: 0, right: 0,
-              height: '3px',
-              background: 'linear-gradient(to right, transparent, #f97316 40%, #f97316 100%)',
-              zIndex: 3,
-            }} />
-          </div>
-        </div>
-      </section>
+      <SobreHero />
 
       {/* ── 2. STATS ─────────────────────────────────────────── */}
       <section style={{
@@ -338,7 +142,7 @@ export default function SobrePage() {
               <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
                 {[
                   'Em 2004, um engenheiro mecânico com zero tolerância para trabalho ruim fundou a Metalprime no Morumbi. O objetivo era simples: fazer em metal o que ninguém fazia direito.',
-                  'A qualidade falou mais alto. Condomínios, construtoras e escritórios de arquitetura passaram a nos chamar porque sabiam o que iam receber — entrega no prazo, ART em dia e sem surpresas na nota.',
+                  'A qualidade falou mais alto. Condomínios, construtoras e escritórios de arquitetura passaram a nos chamar porque sabiam o que iam receber: entrega no prazo, ART em dia e sem surpresas na nota.',
                   'Hoje somos mais de 30 especialistas, com estrutura industrial própria e mais de 5.000 obras executadas. A escala mudou. A obsessão com qualidade continua a mesma.',
                 ].map((p, i) => (
                   <p key={i} style={{ fontSize: '15px', lineHeight: 1.75, color: '#475569' }}>

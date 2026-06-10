@@ -6,7 +6,7 @@ import { WHATSAPP_NUMBER } from '@/lib/constants'
 
 const differentials = [
   'Equipe própria de engenheiros e soldadores certificados',
-  'Fabricação própria — sem terceirizar nenhuma etapa',
+  'Fabricação própria, sem terceirizar nenhuma etapa',
   'ART em 100% dos projetos estruturais (você não se preocupa com a vistoria)',
   'Atendemos toda Grande São Paulo e interior',
   'Garantia de 5 anos em peças estruturais',
