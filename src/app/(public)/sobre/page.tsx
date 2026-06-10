@@ -214,76 +214,124 @@ export default function SobrePage() {
       {/* ── 4. VALORES ───────────────────────────────────────── */}
       <section style={{ background: '#f4f4f0', paddingTop: '6rem', paddingBottom: '6rem' }}>
         <div className="container mx-auto px-4 sm:px-8">
-          <SectionLabel>O que nos move</SectionLabel>
 
-          <h2 style={{
-            fontFamily: 'var(--font-barlow-condensed)',
-            fontWeight: 900,
-            fontSize: 'clamp(2.5rem, 5vw, 4.5rem)',
-            lineHeight: 0.95,
-            letterSpacing: '0.01em',
-            textTransform: 'uppercase',
-            color: '#0f172a',
-            marginBottom: '3rem',
-          }}>
-            O que não abrimos mão
-          </h2>
+          {/* Cabeçalho split */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-end" style={{ marginBottom: '4rem' }}>
+            <h2 style={{
+              fontFamily: 'var(--font-barlow-condensed)',
+              fontWeight: 900,
+              fontSize: 'clamp(3rem, 5vw, 5rem)',
+              lineHeight: 0.92,
+              letterSpacing: '-0.01em',
+              textTransform: 'uppercase',
+              color: '#0f172a',
+              margin: 0,
+            }}>
+              O que não<br />
+              <span style={{ color: 'rgba(15,23,42,0.2)' }}>abrimos mão</span>
+            </h2>
+            <p style={{
+              fontSize: '15px',
+              lineHeight: 1.75,
+              color: '#64748b',
+              margin: 0,
+              maxWidth: '38ch',
+            }}>
+              Quatro princípios que regem cada projeto, do primeiro esboço ao último parafuso.
+            </p>
+          </div>
 
-          <div>
-            {values.map((v, i) => (
-              <div
-                key={v.title}
-                className="py-8 flex flex-col sm:flex-row gap-6 sm:gap-10 items-start"
-                style={{ borderBottom: i < values.length - 1 ? '1px solid #e2e8f0' : 'none' }}
-              >
-                <span
-                  aria-hidden="true"
+          {/* Grid 2x2 */}
+          <div
+            className="grid grid-cols-1 sm:grid-cols-2"
+            style={{ border: '1px solid #e2e8f0' }}
+          >
+            {values.map((v, i) => {
+              const isLeftCol = i % 2 === 0
+              return (
+                <div
+                  key={v.title}
                   style={{
-                    fontFamily: 'var(--font-barlow-condensed)',
-                    fontWeight: 900,
-                    fontSize: '3.5rem',
-                    lineHeight: 1,
-                    color: 'rgba(15,23,42,0.08)',
-                    flexShrink: 0,
-                    width: '3.5rem',
+                    padding: '2.5rem',
+                    background: '#ffffff',
+                    borderRight: isLeftCol ? '1px solid #e2e8f0' : 'none',
+                    borderBottom: i < values.length - 1 ? '1px solid #e2e8f0' : 'none',
+                    position: 'relative',
+                    overflow: 'hidden',
                   }}
                 >
-                  {v.number}
-                </span>
+                  {/* Número fantasma */}
+                  <span
+                    aria-hidden="true"
+                    style={{
+                      position: 'absolute',
+                      top: '0.75rem',
+                      right: '1.25rem',
+                      fontFamily: 'var(--font-barlow-condensed)',
+                      fontWeight: 900,
+                      fontSize: 'clamp(5rem, 8vw, 8rem)',
+                      lineHeight: 1,
+                      color: 'rgba(15,23,42,0.04)',
+                      userSelect: 'none',
+                      pointerEvents: 'none',
+                    }}
+                  >
+                    {v.number}
+                  </span>
 
-                <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1.25rem', flex: 1 }}>
-                  <div style={{
-                    width: '40px',
-                    height: '40px',
-                    border: '1px solid rgba(249,115,22,0.3)',
-                    background: '#fff7ed',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    flexShrink: 0,
-                    marginTop: '2px',
-                  }}>
-                    <v.icon style={{ width: '18px', height: '18px', color: '#f97316' }} />
-                  </div>
-
-                  <div>
-                    <h3 style={{
-                      fontFamily: 'var(--font-sans)',
-                      fontWeight: 700,
-                      fontSize: '1.1rem',
-                      color: '#0f172a',
-                      marginBottom: '6px',
+                  {/* Topo: ícone + linha laranja */}
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2rem' }}>
+                    <div style={{
+                      width: '44px',
+                      height: '44px',
+                      border: '1px solid rgba(249,115,22,0.3)',
+                      background: '#fff7ed',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      flexShrink: 0,
                     }}>
-                      {v.title}
-                    </h3>
-                    <p style={{ fontSize: '14px', color: '#64748b', lineHeight: 1.65 }}>
-                      {v.description}
-                    </p>
+                      <v.icon style={{ width: '20px', height: '20px', color: '#f97316' }} />
+                    </div>
+                    <div style={{ flex: 1, height: '1px', background: '#e2e8f0' }} />
                   </div>
+
+                  <h3 style={{
+                    fontFamily: 'var(--font-barlow-condensed)',
+                    fontWeight: 900,
+                    fontSize: 'clamp(1.6rem, 2.5vw, 2.2rem)',
+                    letterSpacing: '0.02em',
+                    textTransform: 'uppercase',
+                    color: '#0f172a',
+                    marginBottom: '0.75rem',
+                    lineHeight: 1,
+                  }}>
+                    {v.title}
+                  </h3>
+                  <p style={{
+                    fontSize: '14px',
+                    color: '#64748b',
+                    lineHeight: 1.75,
+                    margin: 0,
+                    maxWidth: '36ch',
+                  }}>
+                    {v.description}
+                  </p>
+
+                  {/* Barra laranja inferior */}
+                  <div style={{
+                    position: 'absolute',
+                    bottom: 0,
+                    left: 0,
+                    width: '3rem',
+                    height: '3px',
+                    background: '#f97316',
+                  }} />
                 </div>
-              </div>
-            ))}
+              )
+            })}
           </div>
+
         </div>
       </section>
 
