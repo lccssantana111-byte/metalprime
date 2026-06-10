@@ -1,6 +1,8 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import Link from 'next/link'
+import { ArrowRight } from 'lucide-react'
 
 const up = {
   hidden: { opacity: 0, y: 32 },
@@ -11,13 +13,6 @@ const container = {
   hidden: {},
   visible: { transition: { staggerChildren: 0.12, delayChildren: 0.1 } },
 }
-
-const stats = [
-  { value: '+20 Anos', label: 'De mercado' },
-  { value: '+5.000', label: 'Obras entregues' },
-  { value: '+500', label: 'Condomínios' },
-  { value: '100%', label: 'Com ART' },
-]
 
 export default function SobreHero() {
   return (
@@ -170,46 +165,53 @@ export default function SobreHero() {
             <br />e arquitetos que precisam de um parceiro confiável.
           </motion.p>
 
-          {/* Stats */}
-          <motion.div
-            variants={up}
-            style={{
-              display: 'flex',
-              gap: '0',
-              flexWrap: 'wrap',
-            }}
-          >
-            {stats.map((s, i) => (
-              <div
-                key={s.label}
+          {/* CTA */}
+          <motion.div variants={up} style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+            <Link
+              href="/orcamento"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '10px',
+                padding: '13px 14px 13px 26px',
+                borderRadius: '999px',
+                background: '#f97316',
+                color: 'white',
+                fontSize: '14px',
+                fontWeight: 700,
+                textDecoration: 'none',
+                boxShadow: '0 4px 24px rgba(249,115,22,0.4)',
+                transition: 'background 0.25s, box-shadow 0.25s, transform 0.2s',
+              }}
+              onMouseEnter={(e) => {
+                const el = e.currentTarget as HTMLElement
+                el.style.background = '#ea580c'
+                el.style.boxShadow = '0 8px 36px rgba(249,115,22,0.5)'
+                el.style.transform = 'translateY(-1px)'
+              }}
+              onMouseLeave={(e) => {
+                const el = e.currentTarget as HTMLElement
+                el.style.background = '#f97316'
+                el.style.boxShadow = '0 4px 24px rgba(249,115,22,0.4)'
+                el.style.transform = 'translateY(0)'
+              }}
+            >
+              Solicitar Orçamento Gratuito
+              <span
                 style={{
-                  paddingRight: i < stats.length - 1 ? 'clamp(1.5rem, 3vw, 2.5rem)' : '0',
-                  marginRight: i < stats.length - 1 ? 'clamp(1.5rem, 3vw, 2.5rem)' : '0',
-                  borderRight: i < stats.length - 1 ? '1px solid rgba(255,255,255,0.12)' : 'none',
+                  width: '32px',
+                  height: '32px',
+                  borderRadius: '50%',
+                  background: 'rgba(255,255,255,0.2)',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  flexShrink: 0,
                 }}
               >
-                <div style={{
-                  fontFamily: 'var(--font-barlow-condensed)',
-                  fontWeight: 900,
-                  fontSize: 'clamp(1.5rem, 3vw, 2.25rem)',
-                  lineHeight: 1,
-                  color: '#ffffff',
-                  marginBottom: '4px',
-                }}>
-                  {s.value}
-                </div>
-                <div style={{
-                  fontFamily: 'var(--font-ibm-mono)',
-                  fontSize: '9px',
-                  letterSpacing: '0.2em',
-                  textTransform: 'uppercase',
-                  color: 'rgba(255,255,255,0.35)',
-                  whiteSpace: 'nowrap',
-                }}>
-                  {s.label}
-                </div>
-              </div>
-            ))}
+                <ArrowRight style={{ width: '14px', height: '14px' }} />
+              </span>
+            </Link>
           </motion.div>
         </motion.div>
       </div>
