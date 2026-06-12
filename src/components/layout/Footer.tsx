@@ -43,12 +43,12 @@ export default function Footer() {
     <footer style={{ background: 'white', borderTop: '1px solid #e2e8f0' }}>
 
       {/* Main grid */}
-      <div className="container mx-auto px-5 sm:px-8 pt-20 pb-16">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+      <div className="container mx-auto px-5 sm:px-8 pt-12 sm:pt-16 pb-10 sm:pb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
 
           {/* Brand — 4 cols */}
           <div className="lg:col-span-4">
-            <Link href="/" className="inline-flex items-center gap-3 mb-8 group">
+            <Link href="/" className="inline-flex items-center gap-3 mb-6 group">
               <div className="transition-transform duration-300 group-hover:scale-105">
                 {LOGO_MARK}
               </div>
@@ -58,7 +58,7 @@ export default function Footer() {
               </span>
             </Link>
 
-            <p className="text-[14px] leading-[1.8] mb-10 max-w-xs" style={{ color: '#64748b' }}>
+            <p className="text-[15px] sm:text-[14px] leading-[1.8] mb-8 max-w-xs" style={{ color: '#64748b' }}>
               Excelência em engenharia metálica há mais de 20 anos.
               Estruturas para residências, condomínios, construtoras e indústrias em São Paulo.
             </p>
@@ -72,7 +72,7 @@ export default function Footer() {
                 className="group flex items-center gap-2"
               >
                 <span
-                  className="font-display font-bold text-[1.25rem] transition-colors"
+                  className="font-display font-bold text-[1.4rem] sm:text-[1.25rem] transition-colors"
                   style={{ color: '#0f172a' }}
                   onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = '#f97316' }}
                   onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = '#0f172a' }}
@@ -86,7 +86,7 @@ export default function Footer() {
                 <Mail className="w-3.5 h-3.5 shrink-0" style={{ color: '#cbd5e1' }} />
                 <a
                   href={`mailto:${COMPANY_EMAIL}`}
-                  className="text-[13px] font-mono transition-colors"
+                  className="text-[14px] sm:text-[13px] font-mono transition-colors"
                   style={{ color: '#64748b' }}
                   onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = '#0f172a' }}
                   onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = '#64748b' }}
@@ -97,86 +97,89 @@ export default function Footer() {
 
               <div className="flex items-start gap-2.5">
                 <MapPin className="w-3.5 h-3.5 shrink-0 mt-0.5" style={{ color: '#cbd5e1' }} />
-                <p className="text-[12px] font-mono leading-relaxed" style={{ color: '#94a3b8' }}>
+                <p className="text-[13px] sm:text-[12px] font-mono leading-relaxed" style={{ color: '#94a3b8' }}>
                   {COMPANY_ADDRESS}
                 </p>
               </div>
             </div>
           </div>
 
-          {/* Services — 2 cols */}
-          <div className="lg:col-span-2">
-            <h3 className="font-mono text-[9px] tracking-[0.4em] uppercase mb-7" style={{ color: '#94a3b8' }}>
-              Serviços
-            </h3>
-            <ul className="space-y-3.5">
-              {services.map((s) => (
-                <li key={s.href}>
-                  <Link
-                    href={s.href}
-                    className="text-[13px] transition-colors duration-200 block"
-                    style={{ color: '#64748b' }}
-                    onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = '#0f172a' }}
-                    onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = '#64748b' }}
-                  >
-                    {s.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+          {/* Serviços + Empresa — side by side on mobile, separate cols on desktop */}
+          <div className="lg:col-span-4 grid grid-cols-2 gap-8">
+            {/* Serviços */}
+            <div>
+              <h3 className="font-mono text-[11px] sm:text-[9px] tracking-[0.4em] uppercase mb-5 sm:mb-7" style={{ color: '#94a3b8' }}>
+                Serviços
+              </h3>
+              <ul className="space-y-4 sm:space-y-3.5">
+                {services.map((s) => (
+                  <li key={s.href}>
+                    <Link
+                      href={s.href}
+                      className="text-[15px] sm:text-[13px] transition-colors duration-200 block"
+                      style={{ color: '#64748b' }}
+                      onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = '#0f172a' }}
+                      onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = '#64748b' }}
+                    >
+                      {s.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
 
-          {/* Company — 2 cols */}
-          <div className="lg:col-span-2">
-            <h3 className="font-mono text-[9px] tracking-[0.4em] uppercase mb-7" style={{ color: '#94a3b8' }}>
-              Empresa
-            </h3>
-            <ul className="space-y-3.5">
-              {company.map((c) => (
-                <li key={c.href}>
+            {/* Empresa */}
+            <div>
+              <h3 className="font-mono text-[11px] sm:text-[9px] tracking-[0.4em] uppercase mb-5 sm:mb-7" style={{ color: '#94a3b8' }}>
+                Empresa
+              </h3>
+              <ul className="space-y-4 sm:space-y-3.5">
+                {company.map((c) => (
+                  <li key={c.href}>
+                    <Link
+                      href={c.href}
+                      className="text-[15px] sm:text-[13px] transition-colors duration-200 block"
+                      style={{ color: '#64748b' }}
+                      onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = '#0f172a' }}
+                      onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = '#64748b' }}
+                    >
+                      {c.label}
+                    </Link>
+                  </li>
+                ))}
+                <li className="mt-6 space-y-2">
                   <Link
-                    href={c.href}
-                    className="text-[13px] transition-colors duration-200 block"
-                    style={{ color: '#64748b' }}
-                    onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = '#0f172a' }}
-                    onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = '#64748b' }}
+                    href="/admin"
+                    className="text-[12px] sm:text-[11px] font-mono transition-colors duration-200 block"
+                    style={{ color: '#cbd5e1' }}
+                    onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = '#94a3b8' }}
+                    onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = '#cbd5e1' }}
                   >
-                    {c.label}
+                    Área Admin
+                  </Link>
+                  <Link
+                    href="/corporate/dashboard"
+                    className="text-[12px] sm:text-[11px] font-mono transition-colors duration-200 block"
+                    style={{ color: '#cbd5e1' }}
+                    onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = '#94a3b8' }}
+                    onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = '#cbd5e1' }}
+                  >
+                    Portal do Cliente
                   </Link>
                 </li>
-              ))}
-              <li className="mt-6 space-y-2">
-                <Link
-                  href="/admin"
-                  className="text-[11px] font-mono transition-colors duration-200 block"
-                  style={{ color: '#cbd5e1' }}
-                  onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = '#94a3b8' }}
-                  onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = '#cbd5e1' }}
-                >
-                  Área Admin
-                </Link>
-                <Link
-                  href="/corporate/dashboard"
-                  className="text-[11px] font-mono transition-colors duration-200 block"
-                  style={{ color: '#cbd5e1' }}
-                  onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = '#94a3b8' }}
-                  onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = '#cbd5e1' }}
-                >
-                  Portal do Cliente
-                </Link>
-              </li>
-            </ul>
+              </ul>
+            </div>
           </div>
 
           {/* Atendimento — 4 cols */}
           <div className="lg:col-span-4">
-            <h3 className="font-mono text-[9px] tracking-[0.4em] uppercase mb-7" style={{ color: '#94a3b8' }}>
+            <h3 className="font-mono text-[11px] sm:text-[9px] tracking-[0.4em] uppercase mb-5 sm:mb-7" style={{ color: '#94a3b8' }}>
               Atendimento
             </h3>
 
             <div className="flex items-start gap-2.5 mb-8">
               <Clock className="w-3.5 h-3.5 shrink-0 mt-0.5" style={{ color: '#cbd5e1' }} />
-              <p className="text-[13px] leading-[1.75]" style={{ color: '#64748b' }}>
+              <p className="text-[15px] sm:text-[13px] leading-[1.75]" style={{ color: '#64748b' }}>
                 Seg–Sex das 8h às 18h<br />
                 Sáb das 8h às 13h
               </p>
@@ -184,17 +187,17 @@ export default function Footer() {
 
             <Link
               href="/orcamento"
-              className="group inline-flex items-center gap-2.5 font-semibold text-[13px] px-7 py-3.5 rounded-full transition-all duration-200 mb-10"
+              className="group flex sm:inline-flex items-center justify-center gap-2.5 font-semibold text-[15px] sm:text-[13px] px-7 py-4 sm:py-3.5 rounded-full transition-all duration-200 mb-10"
               style={{ background: '#0f172a', color: 'white' }}
               onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = '#1e293b' }}
               onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = '#0f172a' }}
             >
               Solicitar Orçamento
-              <ArrowUpRight className="w-3.5 h-3.5 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" />
+              <ArrowUpRight className="w-4 h-4 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" />
             </Link>
 
             {/* Social */}
-            <div className="flex gap-5 mt-10">
+            <div className="flex gap-6 mt-2">
               {[
                 { label: 'Instagram', href: 'https://instagram.com/metalprime' },
                 { label: 'Facebook', href: 'https://facebook.com/metalprime' },
@@ -205,7 +208,7 @@ export default function Footer() {
                   href={s.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-[11px] font-mono tracking-wide transition-colors"
+                  className="text-[13px] sm:text-[11px] font-mono tracking-wide transition-colors"
                   style={{ color: '#94a3b8' }}
                   onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = '#f97316' }}
                   onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = '#94a3b8' }}
@@ -215,20 +218,21 @@ export default function Footer() {
               ))}
             </div>
           </div>
+
         </div>
       </div>
 
       {/* Bottom bar */}
       <div style={{ borderTop: '1px solid #f1f5f9' }}>
         <div className="container mx-auto px-5 sm:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="text-[11px] font-mono" style={{ color: '#94a3b8' }}>
+          <p className="text-[12px] sm:text-[11px] font-mono" style={{ color: '#94a3b8' }}>
             © {year} {BRAND_NAME}. Todos os direitos reservados.
           </p>
           <div className="flex items-center gap-6">
-            <span className="text-[10px] font-mono" style={{ color: '#cbd5e1' }}>
+            <span className="text-[11px] sm:text-[10px] font-mono" style={{ color: '#cbd5e1' }}>
               CREA-SP 000000000
             </span>
-            <p className="text-[11px] font-mono" style={{ color: '#cbd5e1' }}>
+            <p className="text-[12px] sm:text-[11px] font-mono" style={{ color: '#cbd5e1' }}>
               São Paulo, SP — Brasil
             </p>
           </div>
