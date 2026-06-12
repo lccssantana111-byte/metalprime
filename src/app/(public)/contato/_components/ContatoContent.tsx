@@ -66,6 +66,7 @@ export default function ContatoContent() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: '-80px' }}
+            className="contato-info-panel"
             style={{ paddingBottom: 'clamp(5rem, 8vw, 7rem)', position: 'sticky', top: '6rem', alignSelf: 'start' }}
           >
             <div style={{
@@ -213,6 +214,7 @@ export default function ContatoContent() {
             whileInView="visible"
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
+            className="contato-form-panel"
             style={{ paddingBottom: 'clamp(5rem, 8vw, 7rem)' }}
           >
             {/* Heading */}
@@ -254,6 +256,14 @@ export default function ContatoContent() {
         @media (max-width: 767px) {
           .contato-content-grid {
             grid-template-columns: 1fr !important;
+            gap: 2rem !important;
+          }
+          .contato-info-panel {
+            position: static !important;
+            padding-bottom: 0 !important;
+          }
+          .contato-form-panel {
+            padding-bottom: clamp(3rem, 6vw, 5rem) !important;
           }
         }
         @media (min-width: 768px) and (max-width: 1023px) {

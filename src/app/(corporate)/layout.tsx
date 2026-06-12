@@ -141,15 +141,21 @@ export default async function CorporateLayout({
         </header>
       )}
 
-      <main style={{
-        maxWidth: '1100px',
-        margin: '0 auto',
-        padding: 'clamp(2rem, 4vw, 3rem) 1.5rem',
-        position: 'relative',
-        zIndex: 1,
-      }}>
-        {children}
-      </main>
+      {user ? (
+        <main style={{
+          maxWidth: '1100px',
+          margin: '0 auto',
+          padding: 'clamp(2rem, 4vw, 3rem) 1.5rem',
+          position: 'relative',
+          zIndex: 1,
+        }}>
+          {children}
+        </main>
+      ) : (
+        <div style={{ position: 'relative', zIndex: 1 }}>
+          {children}
+        </div>
+      )}
     </div>
   )
 }

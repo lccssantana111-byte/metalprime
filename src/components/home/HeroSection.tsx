@@ -27,37 +27,56 @@ export default function HeroSection() {
       }}
     >
       {/* ── Image background ── */}
-      <img
-        src="/Robotic Shark Humanoid.png"
-        alt=""
-        style={{
-          position: 'absolute',
-          inset: 0,
-          width: '100%',
-          height: '100%',
-          objectFit: 'cover',
-          objectPosition: 'center',
-        }}
-      />
+      <picture style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }}>
+        <source
+          media="(max-width: 767px)"
+          srcSet="/imagens portfolio/Robotic Shark Humanoid.png"
+        />
+        <img
+          src="/Robotic Shark Humanoid.png"
+          alt=""
+          style={{
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            objectPosition: 'center top',
+          }}
+        />
+      </picture>
 
       {/* ── Overlays ── */}
       <div
         style={{
           position: 'absolute',
           inset: 0,
-          background: 'linear-gradient(to right, rgba(2,6,23,0.82) 0%, rgba(2,6,23,0.45) 60%, rgba(2,6,23,0.15) 100%)',
+          background: 'linear-gradient(to right, rgba(2,6,23,0.88) 0%, rgba(2,6,23,0.60) 55%, rgba(2,6,23,0.25) 100%)',
         }}
       />
       <div
         style={{
           position: 'absolute',
           inset: 0,
-          background: 'linear-gradient(to top, rgba(2,6,23,0.6) 0%, transparent 50%)',
+          background: 'linear-gradient(to top, rgba(2,6,23,0.75) 0%, transparent 55%)',
         }}
       />
 
       {/* ── Content ── */}
+      <style>{`
+        @media (max-width: 767px) {
+          .hero-content {
+            padding-left: 1.5rem !important;
+            padding-right: 1.5rem !important;
+            padding-top: 52dvh !important;
+            padding-bottom: 3rem !important;
+            align-self: flex-end !important;
+          }
+          .hero-headline {
+            font-size: clamp(3.5rem, 16vw, 5rem) !important;
+          }
+        }
+      `}</style>
       <div
+        className="hero-content"
         style={{
           position: 'relative',
           zIndex: 2,
@@ -92,6 +111,7 @@ export default function HeroSection() {
           {/* Headline */}
           <motion.h1
             variants={up}
+            className="hero-headline"
             style={{
               fontFamily: 'var(--font-barlow-condensed)',
               fontWeight: 900,
