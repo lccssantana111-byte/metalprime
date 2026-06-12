@@ -214,7 +214,7 @@ function StepRow({
         <h3 style={{
           fontFamily: 'var(--font-barlow-condensed)',
           fontWeight: 700,
-          fontSize: 'clamp(2rem, 3.2vw, 2.75rem)',
+          fontSize: 'clamp(1.5rem, 3.2vw, 2.75rem)',
           textTransform: 'uppercase',
           letterSpacing: '0.01em',
           color: '#0f172a',
@@ -227,7 +227,7 @@ function StepRow({
         {/* Description */}
         <p style={{
           fontFamily: 'var(--font-sans)',
-          fontSize: 'clamp(1.125rem, 1.6vw, 1.35rem)',
+          fontSize: 'clamp(0.9rem, 1.6vw, 1.35rem)',
           lineHeight: 1.8,
           color: '#475569',
           margin: 0,
