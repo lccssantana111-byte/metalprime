@@ -121,8 +121,8 @@ export default function SegmentSection() {
           <span
             style={{
               fontFamily: 'var(--font-mono)',
-              fontSize: '10px',
-              letterSpacing: '0.4em',
+              fontSize: '11px',
+              letterSpacing: '0.3em',
               textTransform: 'uppercase',
               color: '#f97316',
             }}
@@ -249,10 +249,10 @@ export default function SegmentSection() {
                     </div>
                     <span style={{
                       fontFamily: 'var(--font-mono)',
-                      fontSize: '10px',
-                      letterSpacing: '0.35em',
+                      fontSize: '11px',
+                      letterSpacing: '0.25em',
                       textTransform: 'uppercase',
-                      color: 'rgba(255,255,255,0.6)',
+                      color: 'rgba(255,255,255,0.75)',
                     }}>
                       {seg.label}
                     </span>
@@ -271,11 +271,11 @@ export default function SegmentSection() {
                     </span>
                     <span style={{
                       display: 'block',
-                      fontSize: '11px',
+                      fontSize: '12px',
                       fontFamily: 'var(--font-mono)',
                       textTransform: 'uppercase',
-                      letterSpacing: '0.15em',
-                      color: 'rgba(255,255,255,0.55)',
+                      letterSpacing: '0.12em',
+                      color: 'rgba(255,255,255,0.7)',
                       marginTop: '4px',
                     }}>
                       {seg.metricLabel}

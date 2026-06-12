@@ -42,9 +42,9 @@ export default async function PortfolioPage() {
           }}>
             <span style={{
               fontFamily: 'var(--font-barlow-condensed)',
-              fontSize: '11px',
+              fontSize: '12px',
               fontWeight: 600,
-              letterSpacing: '0.2em',
+              letterSpacing: '0.15em',
               textTransform: 'uppercase' as const,
               color: '#94a3b8',
             }}>
@@ -100,9 +100,9 @@ export default async function PortfolioPage() {
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                 <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#f97316', flexShrink: 0 }} />
                 <span style={{
-                  fontSize: '11px',
+                  fontSize: '12px',
                   fontWeight: 600,
-                  letterSpacing: '0.12em',
+                  letterSpacing: '0.1em',
                   textTransform: 'uppercase' as const,
                   color: '#94a3b8',
                   fontFamily: 'var(--font-barlow-condensed)',

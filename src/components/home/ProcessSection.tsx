@@ -161,10 +161,10 @@ function StepRow({
         {/* Technical code ID */}
         <div style={{
           fontFamily: 'var(--font-mono)',
-          fontSize: '9px',
-          letterSpacing: '0.22em',
+          fontSize: '11px',
+          letterSpacing: '0.18em',
           textTransform: 'uppercase',
-          color: 'rgba(100,116,139,0.6)',
+          color: 'rgba(100,116,139,0.8)',
           marginBottom: '1.1rem',
         }}>
           [ {step.code} ]
@@ -173,9 +173,9 @@ function StepRow({
         {/* Tag + Icon */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '1.25rem' }}>
           <span style={{
-            fontSize: '9px',
+            fontSize: '11px',
             fontFamily: 'var(--font-mono)',
-            letterSpacing: '0.25em',
+            letterSpacing: '0.2em',
             textTransform: 'uppercase',
             color: '#f97316',
             border: '1px solid rgba(249,115,22,0.35)',

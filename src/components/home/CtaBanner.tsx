@@ -200,8 +200,8 @@ export default function CtaBanner() {
               <p
                 style={{
                   fontFamily: 'var(--font-ibm-mono)',
-                  fontSize: '10px',
-                  letterSpacing: '0.4em',
+                  fontSize: '11px',
+                  letterSpacing: '0.3em',
                   textTransform: 'uppercase',
                   color: '#f97316',
                   marginBottom: '1rem',
@@ -341,11 +341,11 @@ export default function CtaBanner() {
               <p
                 style={{
                   marginTop: '1.5rem',
-                  fontSize: '10px',
+                  fontSize: '12px',
                   fontFamily: 'var(--font-ibm-mono)',
-                  color: 'rgba(100,116,139,0.6)',
+                  color: 'rgba(100,116,139,0.8)',
                   textAlign: 'center',
-                  letterSpacing: '0.08em',
+                  letterSpacing: '0.06em',
                   textTransform: 'uppercase',
                 }}
               >

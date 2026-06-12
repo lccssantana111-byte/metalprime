@@ -107,8 +107,8 @@ export default function TestimonialsCarousel() {
           <div style={{
             display: 'inline-block',
             fontFamily: 'var(--font-mono)',
-            fontSize: '9px',
-            letterSpacing: '0.4em',
+            fontSize: '11px',
+            letterSpacing: '0.3em',
             textTransform: 'uppercase',
             color: '#f97316',
             border: '1px solid rgba(249,115,22,0.3)',

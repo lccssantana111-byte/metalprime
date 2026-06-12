@@ -124,8 +124,8 @@ export default function FeaturedProjects({ items }: Props) {
           <div>
             <span style={{
               fontFamily: 'var(--font-mono)',
-              fontSize: '10px',
-              letterSpacing: '0.4em',
+              fontSize: '11px',
+              letterSpacing: '0.3em',
               textTransform: 'uppercase',
               color: '#f97316',
               display: 'block',
@@ -153,10 +153,10 @@ export default function FeaturedProjects({ items }: Props) {
             className="fp-header-right"
             style={{
               fontFamily: 'var(--font-mono)',
-              fontSize: '9px',
-              letterSpacing: '0.25em',
+              fontSize: '11px',
+              letterSpacing: '0.2em',
               textTransform: 'uppercase',
-              color: 'rgba(148,163,184,0.55)',
+              color: 'rgba(148,163,184,0.75)',
               whiteSpace: 'nowrap',
               flexShrink: 0,
               paddingBottom: '4px',
@@ -386,9 +386,9 @@ function CarouselControls({
         ))}
         <span style={{
           fontFamily: 'var(--font-mono)',
-          fontSize: '9px',
-          letterSpacing: '0.2em',
-          color: 'rgba(148,163,184,0.4)',
+          fontSize: '11px',
+          letterSpacing: '0.15em',
+          color: 'rgba(148,163,184,0.7)',
           marginLeft: '8px',
         }}>
           {String(active + 1).padStart(2, '0')} / {String(total).padStart(2, '0')}
@@ -518,8 +518,8 @@ function ProjectCard({
         {/* Service label */}
         <span style={{
           fontFamily: 'var(--font-mono)',
-          fontSize: '9px',
-          letterSpacing: '0.3em',
+          fontSize: '11px',
+          letterSpacing: '0.2em',
           textTransform: 'uppercase',
           color: '#fb923c',
           display: 'block',
@@ -577,9 +577,9 @@ function ProjectCard({
         {/* Meta */}
         {(item.city || item.year) && (
           <p style={{
-            fontSize: '10px',
+            fontSize: '12px',
             fontFamily: 'var(--font-mono)',
-            color: 'rgba(148,163,184,0.7)',
+            color: 'rgba(148,163,184,0.85)',
             margin: '8px 0 0',
           }}>
             {[item.city, item.year].filter(Boolean).join(' · ')}
