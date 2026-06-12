@@ -283,6 +283,7 @@ export default function ProcessSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-60px' }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="process-header"
           style={{ marginBottom: 'clamp(2rem, 3vw, 3rem)' }}
         >
           <span style={{
@@ -312,10 +313,10 @@ export default function ProcessSection() {
         </motion.div>
 
         {/* Top rule */}
-        <div style={{ width: '100%', height: '1px', background: 'rgba(15,23,42,0.1)' }} />
+        <div className="process-top-rule" style={{ width: '100%', height: '1px', background: 'rgba(15,23,42,0.1)' }} />
 
         {/* Steps timeline */}
-        <div ref={sectionRef}>
+        <div ref={sectionRef} className="process-steps-wrap">
           {steps.map((step, i) => (
             <StepRow key={step.id} step={step} index={i} smooth={smooth} />
           ))}
@@ -328,6 +329,16 @@ export default function ProcessSection() {
 
       <style>{`
         @media (max-width: 640px) {
+          .process-header {
+            text-align: center !important;
+            margin-bottom: 2.5rem !important;
+          }
+          .process-top-rule {
+            margin-bottom: 2.5rem !important;
+          }
+          .process-steps-wrap {
+            padding-left: 0.5rem !important;
+          }
           .process-step-row {
             display: flex !important;
             flex-direction: column !important;
