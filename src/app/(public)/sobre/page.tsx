@@ -149,24 +149,23 @@ export default function SobrePage() {
 
           {/* Timeline horizontal — linha do tempo */}
           <div style={{ borderTop: '1px solid rgba(255,255,255,0.08)' }}>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5">
+            <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-5">
               {milestones.map((m, i) => (
                 <div
                   key={m.year}
                   style={{
-                    padding: '2.5rem 2rem 2.5rem 0',
+                    padding: '1.5rem 1rem',
                     borderRight: i < milestones.length - 1 ? '1px solid rgba(255,255,255,0.08)' : 'none',
-                    paddingLeft: i === 0 ? '0' : '2rem',
                   }}
                 >
                   {/* Ano */}
                   <div style={{
                     fontFamily: 'var(--font-barlow-condensed)',
                     fontWeight: 900,
-                    fontSize: 'clamp(2rem, 3.5vw, 3rem)',
+                    fontSize: 'clamp(1.5rem, 3.5vw, 3rem)',
                     lineHeight: 1,
                     color: i === milestones.length - 1 ? '#f97316' : 'rgba(255,255,255,0.50)',
-                    marginBottom: '1rem',
+                    marginBottom: '0.75rem',
                   }}>
                     {m.year}
                   </div>
