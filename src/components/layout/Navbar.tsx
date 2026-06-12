@@ -281,93 +281,250 @@ export default function Navbar() {
         </button>
       </nav>
 
-      {/* Mobile menu — dark full-screen */}
+      {/* Mobile menu — slide from right */}
       <AnimatePresence>
         {mobileOpen && (
-          <motion.div
-            className="lg:hidden fixed inset-0 z-40"
-            style={{ background: '#0f172a' }}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.22, ease: [0.32, 0.72, 0, 1] }}
-          >
-            <div className="h-[78px]" />
+          <>
+            {/* Backdrop */}
+            <motion.div
+              className="lg:hidden fixed inset-0 z-40"
+              style={{ background: 'rgba(5,8,15,0.7)', backdropFilter: 'blur(4px)' }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.25 }}
+              onClick={() => setMobileOpen(false)}
+            />
 
-            {/* Subtle orange rule */}
-            <div style={{ height: '1px', background: 'linear-gradient(90deg, transparent, rgba(249,115,22,0.35) 30%, rgba(249,115,22,0.35) 70%, transparent)' }} />
+            {/* Drawer */}
+            <motion.div
+              className="lg:hidden fixed top-0 right-0 bottom-0 z-50 flex flex-col"
+              style={{
+                width: 'min(360px, 100vw)',
+                background: '#0c1220',
+                borderLeft: '1px solid rgba(255,255,255,0.07)',
+                boxShadow: '-24px 0 80px rgba(0,0,0,0.5)',
+              }}
+              initial={{ x: '100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '100%' }}
+              transition={{ duration: 0.32, ease: [0.32, 0.72, 0, 1] }}
+            >
+              {/* Drawer header */}
+              <div style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                padding: '0 1.5rem',
+                height: '70px',
+                borderBottom: '1px solid rgba(255,255,255,0.06)',
+                flexShrink: 0,
+              }}>
+                <Link
+                  href="/"
+                  onClick={() => setMobileOpen(false)}
+                  style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none' }}
+                >
+                  <img src="/logo.png" alt="Metalprime" width={30} height={30} style={{ objectFit: 'contain' }} />
+                  <span style={{
+                    fontFamily: 'var(--font-display)',
+                    fontWeight: 900,
+                    fontSize: '1.1rem',
+                    letterSpacing: '0.06em',
+                    textTransform: 'uppercase',
+                    color: 'white',
+                  }}>
+                    {BRAND_NAME.split(' ')[0]}<span style={{ color: '#f97316' }}>.</span>
+                  </span>
+                </Link>
 
-            <div className="h-full overflow-y-auto px-6 pt-6 pb-16 flex flex-col">
-              <nav className="flex-1">
-                {nav.map((item, i) => (
-                  <motion.div
-                    key={item.href}
-                    initial={{ opacity: 0, y: 16 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: i * 0.055, duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                  >
-                    <Link
-                      href={item.href}
-                      className="block py-5 font-display font-black text-[2.1rem] leading-none"
-                      style={{
-                        color: isActive(item.href) ? '#f97316' : 'rgba(255,255,255,0.82)',
-                        borderBottom: '1px solid rgba(255,255,255,0.06)',
-                        transition: 'color 0.2s',
-                      }}
-                      onMouseEnter={e => { if (!isActive(item.href)) (e.currentTarget as HTMLElement).style.color = 'white' }}
-                      onMouseLeave={e => { if (!isActive(item.href)) (e.currentTarget as HTMLElement).style.color = 'rgba(255,255,255,0.82)' }}
+                <button
+                  onClick={() => setMobileOpen(false)}
+                  aria-label="Fechar menu"
+                  style={{
+                    width: '40px',
+                    height: '40px',
+                    borderRadius: '10px',
+                    border: '1px solid rgba(255,255,255,0.1)',
+                    background: 'rgba(255,255,255,0.05)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    color: 'rgba(255,255,255,0.7)',
+                    cursor: 'pointer',
+                    flexShrink: 0,
+                  }}
+                >
+                  <X className="w-4 h-4" />
+                </button>
+              </div>
+
+              {/* Nav links */}
+              <div className="flex-1 overflow-y-auto" style={{ padding: '1rem 0' }}>
+                <nav>
+                  {nav.map((item, i) => (
+                    <motion.div
+                      key={item.href}
+                      initial={{ opacity: 0, x: 20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: i * 0.05, duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
                     >
-                      {item.label}
-                    </Link>
-                    {item.children && (
-                      <div className="py-3 pl-3 grid grid-cols-2 gap-x-4 gap-y-1">
-                        {item.children.map((child) => (
-                          <Link
-                            key={child.href}
-                            href={child.href}
-                            className="py-1.5 text-[12px] transition-colors duration-200"
-                            style={{ color: 'rgba(148,163,184,0.55)' }}
-                            onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = '#f97316' }}
-                            onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = 'rgba(148,163,184,0.55)' }}
-                          >
-                            {child.label}
-                          </Link>
-                        ))}
-                      </div>
-                    )}
-                  </motion.div>
-                ))}
-              </nav>
+                      <Link
+                        href={item.href}
+                        onClick={() => setMobileOpen(false)}
+                        style={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'space-between',
+                          padding: '0.9rem 1.5rem',
+                          fontFamily: 'var(--font-display)',
+                          fontWeight: 800,
+                          fontSize: '1.35rem',
+                          letterSpacing: '0.01em',
+                          textTransform: 'uppercase',
+                          textDecoration: 'none',
+                          color: isActive(item.href) ? '#f97316' : 'rgba(255,255,255,0.85)',
+                          borderLeft: isActive(item.href) ? '3px solid #f97316' : '3px solid transparent',
+                          transition: 'color 0.15s, border-color 0.15s',
+                        }}
+                      >
+                        {item.label}
+                        {isActive(item.href) && (
+                          <span style={{
+                            fontSize: '9px',
+                            fontFamily: 'var(--font-ibm-mono)',
+                            letterSpacing: '0.2em',
+                            color: '#f97316',
+                            opacity: 0.7,
+                          }}>
+                            ATUAL
+                          </span>
+                        )}
+                      </Link>
 
+                      {/* Services submenu */}
+                      {item.children && (
+                        <div style={{
+                          padding: '0.25rem 0 0.75rem 1.5rem',
+                          display: 'grid',
+                          gridTemplateColumns: '1fr 1fr',
+                          gap: '2px',
+                        }}>
+                          {item.children.map((child) => {
+                            const Icon = child.Icon
+                            return (
+                              <Link
+                                key={child.href}
+                                href={child.href}
+                                onClick={() => setMobileOpen(false)}
+                                style={{
+                                  display: 'flex',
+                                  alignItems: 'center',
+                                  gap: '8px',
+                                  padding: '0.6rem 0.75rem',
+                                  borderRadius: '8px',
+                                  textDecoration: 'none',
+                                  background: isActive(child.href) ? 'rgba(249,115,22,0.08)' : 'transparent',
+                                  transition: 'background 0.15s',
+                                }}
+                              >
+                                <div style={{
+                                  width: '28px',
+                                  height: '28px',
+                                  borderRadius: '7px',
+                                  background: 'rgba(255,255,255,0.05)',
+                                  border: '1px solid rgba(255,255,255,0.08)',
+                                  display: 'flex',
+                                  alignItems: 'center',
+                                  justifyContent: 'center',
+                                  flexShrink: 0,
+                                }}>
+                                  <Icon className="w-3.5 h-3.5" style={{ color: isActive(child.href) ? '#f97316' : 'rgba(255,255,255,0.4)' }} />
+                                </div>
+                                <span style={{
+                                  fontSize: '12px',
+                                  fontWeight: 500,
+                                  color: isActive(child.href) ? '#f97316' : 'rgba(255,255,255,0.55)',
+                                  lineHeight: 1.3,
+                                }}>
+                                  {child.label}
+                                </span>
+                              </Link>
+                            )
+                          })}
+                        </div>
+                      )}
+                    </motion.div>
+                  ))}
+                </nav>
+              </div>
+
+              {/* Bottom CTAs */}
               <motion.div
-                className="pt-8 space-y-3"
-                initial={{ opacity: 0, y: 12 }}
+                style={{
+                  padding: '1rem 1.5rem',
+                  borderTop: '1px solid rgba(255,255,255,0.06)',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: '10px',
+                  flexShrink: 0,
+                }}
+                initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.32, duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                transition={{ delay: 0.28, duration: 0.35 }}
               >
                 <a
                   href={`https://wa.me/${WHATSAPP_NUMBER}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block text-center py-4 text-[14px] rounded-2xl border transition-all duration-200"
-                  style={{ fontFamily: 'var(--font-mono)', color: 'rgba(148,163,184,0.7)', borderColor: 'rgba(255,255,255,0.1)' }}
-                  onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.borderColor = '#f97316'; el.style.color = '#f97316' }}
-                  onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.borderColor = 'rgba(255,255,255,0.1)'; el.style.color = 'rgba(148,163,184,0.7)' }}
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '8px',
+                    padding: '0.85rem',
+                    borderRadius: '12px',
+                    border: '1px solid rgba(37,211,102,0.25)',
+                    background: 'rgba(37,211,102,0.05)',
+                    textDecoration: 'none',
+                    color: 'rgba(255,255,255,0.75)',
+                    fontSize: '13px',
+                    fontWeight: 500,
+                    transition: 'background 0.2s, border-color 0.2s',
+                  }}
                 >
-                  {COMPANY_PHONE}
+                  <svg width="16" height="16" fill="#25D366" viewBox="0 0 24 24" aria-hidden>
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                  </svg>
+                  WhatsApp
                 </a>
                 <Link
                   href="/orcamento"
-                  className="block w-full text-center py-4 text-[14px] font-semibold rounded-2xl transition-all duration-300 active:scale-[0.98]"
-                  style={{ background: '#f97316', color: 'white', boxShadow: '0 4px 20px rgba(249,115,22,0.32)' }}
-                  onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.background = '#ea580c'; el.style.boxShadow = '0 6px 28px rgba(249,115,22,0.45)' }}
-                  onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.background = '#f97316'; el.style.boxShadow = '0 4px 20px rgba(249,115,22,0.32)' }}
+                  onClick={() => setMobileOpen(false)}
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '8px',
+                    padding: '0.9rem',
+                    borderRadius: '12px',
+                    background: '#f97316',
+                    color: 'white',
+                    textDecoration: 'none',
+                    fontSize: '14px',
+                    fontWeight: 700,
+                    letterSpacing: '0.04em',
+                    textTransform: 'uppercase',
+                    boxShadow: '0 4px 20px rgba(249,115,22,0.35)',
+                    transition: 'background 0.2s',
+                  }}
                 >
-                  Solicitar Orçamento Gratuito
+                  Solicitar Orçamento
+                  <ArrowUpRight className="w-4 h-4" />
                 </Link>
               </motion.div>
-            </div>
-          </motion.div>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
     </header>
