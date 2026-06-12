@@ -61,23 +61,23 @@ export default function AdminSidebar({ onClose }: Props) {
 
   return (
     <aside
-      className="w-[220px] h-full flex flex-col"
+      className="w-[260px] h-full flex flex-col"
       style={{ background: '#ffffff', borderRight: '1px solid #e2e8f0' }}
     >
       {/* Logo */}
       <div
-        className="h-[52px] flex items-center gap-2.5 px-4 shrink-0"
+        className="h-[64px] flex items-center gap-3 px-5 shrink-0"
         style={{ borderBottom: '1px solid #f1f5f9' }}
       >
         <img
           src="/logo.png"
           alt="Metalprime logo"
-          width={28}
-          height={28}
+          width={34}
+          height={34}
           style={{ objectFit: 'contain', display: 'block' }}
         />
-        <div className="flex items-baseline gap-1.5 min-w-0">
-          <span className="font-display font-bold text-[13px] tracking-wider truncate" style={{ color: '#0f172a' }}>
+        <div className="flex items-baseline gap-2 min-w-0">
+          <span className="font-display font-bold text-[15px] tracking-wider truncate" style={{ color: '#0f172a' }}>
             {BRAND_NAME.split(' ')[0]}
             <span style={{ color: '#f97316' }}>.</span>
           </span>
@@ -88,11 +88,11 @@ export default function AdminSidebar({ onClose }: Props) {
       </div>
 
       {/* Nav */}
-      <nav className="flex-1 overflow-y-auto py-3 px-2 space-y-5">
+      <nav className="flex-1 overflow-y-auto py-4 px-3 space-y-6">
         {navGroups.map((group) => (
           <div key={group.label}>
             <p
-              className="px-2 pb-1.5 text-[10px] font-semibold tracking-[0.18em] uppercase select-none"
+              className="px-2 pb-2 text-[10px] font-semibold tracking-[0.18em] uppercase select-none"
               style={{ color: '#cbd5e1' }}
             >
               {group.label}
@@ -108,7 +108,7 @@ export default function AdminSidebar({ onClose }: Props) {
                     href={item.href}
                     onClick={onClose}
                     className={cn(
-                      'relative flex items-center gap-2.5 px-2.5 py-[7px] rounded-lg text-[13px] font-medium transition-all duration-100',
+                      'relative flex items-center gap-3 px-3 py-2 rounded-lg text-[13.5px] font-medium transition-all duration-100',
                     )}
                     style={{
                       background: active ? '#fff7ed' : 'transparent',
@@ -130,11 +130,11 @@ export default function AdminSidebar({ onClose }: Props) {
                     {active && (
                       <span
                         className="absolute left-0 rounded-r-full"
-                        style={{ top: '6px', bottom: '6px', width: '2px', background: '#f97316' }}
+                        style={{ top: '6px', bottom: '6px', width: '3px', background: '#f97316' }}
                       />
                     )}
                     <item.icon
-                      className="w-3.5 h-3.5 shrink-0"
+                      className="w-4 h-4 shrink-0"
                       style={{ color: active ? '#f97316' : '#94a3b8' }}
                     />
                     {item.label}
@@ -148,13 +148,13 @@ export default function AdminSidebar({ onClose }: Props) {
 
       {/* Footer */}
       <div
-        className="px-2 py-2 shrink-0 space-y-0.5"
+        className="px-3 py-3 shrink-0 space-y-0.5"
         style={{ borderTop: '1px solid #f1f5f9' }}
       >
         <Link
           href="/"
           target="_blank"
-          className="flex items-center gap-2.5 px-2.5 py-[7px] rounded-lg text-[13px] transition-all duration-100"
+          className="flex items-center gap-3 px-3 py-2 rounded-lg text-[13.5px] transition-all duration-100"
           style={{ color: '#94a3b8' }}
           onMouseEnter={(e) => {
             e.currentTarget.style.color = '#0f172a'
@@ -165,12 +165,12 @@ export default function AdminSidebar({ onClose }: Props) {
             e.currentTarget.style.background = 'transparent'
           }}
         >
-          <ExternalLink className="w-3.5 h-3.5 shrink-0" />
+          <ExternalLink className="w-4 h-4 shrink-0" />
           Ver site
         </Link>
         <button
           onClick={handleLogout}
-          className="flex items-center gap-2.5 px-2.5 py-[7px] rounded-lg text-[13px] transition-all duration-100 w-full text-left"
+          className="flex items-center gap-3 px-3 py-2 rounded-lg text-[13.5px] transition-all duration-100 w-full text-left"
           style={{ color: '#94a3b8' }}
           onMouseEnter={(e) => {
             e.currentTarget.style.color = '#dc2626'
@@ -181,7 +181,7 @@ export default function AdminSidebar({ onClose }: Props) {
             e.currentTarget.style.background = 'transparent'
           }}
         >
-          <LogOut className="w-3.5 h-3.5 shrink-0" />
+          <LogOut className="w-4 h-4 shrink-0" />
           Sair
         </button>
       </div>

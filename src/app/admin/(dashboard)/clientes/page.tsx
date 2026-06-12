@@ -56,7 +56,7 @@ export default async function AdminClientesPage({
             href={f.value ? `/admin/clientes?type=${f.value}` : '/admin/clientes'}
             className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${
               (params.type ?? '') === f.value
-                ? 'bg-amber-brand text-white'
+                ? 'bg-[#f97316] text-white'
                 : 'bg-white border border-slate-200 text-slate-500 hover:text-slate-800 hover:border-slate-300'
             }`}
           >
@@ -84,7 +84,7 @@ export default async function AdminClientesPage({
                 <tr key={client.id} className="hover:bg-slate-50 transition-colors">
                   <td className="px-5 py-4">
                     <Link href={`/admin/clientes/${client.id}`} className="block">
-                      <p className="text-sm font-medium text-slate-800 hover:text-amber-brand transition-colors">
+                      <p className="text-sm font-medium text-slate-800 hover:text-[#ea580c] transition-colors">
                         {client.name}
                       </p>
                       {client.document && (

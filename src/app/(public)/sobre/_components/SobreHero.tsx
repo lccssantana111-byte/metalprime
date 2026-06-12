@@ -1,18 +1,9 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
-
-const up = {
-  hidden: { opacity: 0, y: 32 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] } },
-}
-
-const container = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.12, delayChildren: 0.1 } },
-}
+import { fadeUp, staggerContainer } from '@/lib/animations'
+import { CTAButton } from '@/components/ui/design-system'
 
 export default function SobreHero() {
   return (
@@ -28,7 +19,7 @@ export default function SobreHero() {
     >
       {/* Imagem de fundo */}
       <img
-        src="/futuristic-structure.png"
+        src="/Futuristic Structure Design.png"
         alt=""
         aria-hidden="true"
         style={{
@@ -70,14 +61,14 @@ export default function SobreHero() {
         }}
       >
         <motion.div
-          variants={container}
+          variants={staggerContainer}
           initial="hidden"
           animate="visible"
           style={{ maxWidth: '820px' }}
         >
           {/* Eyebrow */}
           <motion.p
-            variants={up}
+            variants={fadeUp}
             style={{
               fontFamily: 'var(--font-ibm-mono)',
               fontSize: '11px',
@@ -92,7 +83,7 @@ export default function SobreHero() {
 
           {/* Headline */}
           <motion.h1
-            variants={up}
+            variants={fadeUp}
             style={{
               fontFamily: 'var(--font-barlow-condensed)',
               fontWeight: 900,
@@ -150,68 +141,28 @@ export default function SobreHero() {
 
           {/* Sub */}
           <motion.p
-            variants={up}
+            variants={fadeUp}
             style={{
               fontSize: '1.05rem',
-              color: 'rgba(255,255,255,0.65)',
-              lineHeight: 1.6,
+              color: 'rgba(255,255,255,0.82)',
+              lineHeight: 1.7,
               margin: '0 0 2.5rem',
-              maxWidth: '380px',
+              maxWidth: '480px',
             }}
           >
-            Em 20 anos de obra feita direito,
-            <br />
-            construímos reputação junto com construtoras
-            <br />e arquitetos que precisam de um parceiro confiável.
+            20 anos construindo reputação junto com construtoras e arquitetos que precisam de um parceiro confiável.
           </motion.p>
 
           {/* CTA */}
-          <motion.div variants={up} style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-            <Link
+          <motion.div variants={fadeUp} style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+            <CTAButton
+              variant="primary"
               href="/orcamento"
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '10px',
-                padding: '13px 14px 13px 26px',
-                borderRadius: '999px',
-                background: '#f97316',
-                color: 'white',
-                fontSize: '14px',
-                fontWeight: 700,
-                textDecoration: 'none',
-                boxShadow: '0 4px 24px rgba(249,115,22,0.4)',
-                transition: 'background 0.25s, box-shadow 0.25s, transform 0.2s',
-              }}
-              onMouseEnter={(e) => {
-                const el = e.currentTarget as HTMLElement
-                el.style.background = '#ea580c'
-                el.style.boxShadow = '0 8px 36px rgba(249,115,22,0.5)'
-                el.style.transform = 'translateY(-1px)'
-              }}
-              onMouseLeave={(e) => {
-                const el = e.currentTarget as HTMLElement
-                el.style.background = '#f97316'
-                el.style.boxShadow = '0 4px 24px rgba(249,115,22,0.4)'
-                el.style.transform = 'translateY(0)'
-              }}
+              iconCircle
+              icon={<ArrowRight style={{ width: '14px', height: '14px' }} />}
             >
               Solicitar Orçamento Gratuito
-              <span
-                style={{
-                  width: '32px',
-                  height: '32px',
-                  borderRadius: '50%',
-                  background: 'rgba(255,255,255,0.2)',
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  flexShrink: 0,
-                }}
-              >
-                <ArrowRight style={{ width: '14px', height: '14px' }} />
-              </span>
-            </Link>
+            </CTAButton>
           </motion.div>
         </motion.div>
       </div>

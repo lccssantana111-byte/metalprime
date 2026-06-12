@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Award, Users, Wrench, Target } from 'lucide-react'
 import { BRAND_NAME } from '@/lib/constants'
+import { SectionLabel } from '@/components/ui/design-system'
 import SobreCTA from './_components/SobreCTA'
 import SobreHero from './_components/SobreHero'
 
@@ -46,22 +47,6 @@ const milestones = [
 ]
 
 
-function SectionLabel({ children }: { children: React.ReactNode }) {
-  return (
-    <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '1.5rem' }}>
-      <div style={{ width: '32px', height: '1px', background: '#f97316', flexShrink: 0 }} />
-      <span style={{
-        fontFamily: 'var(--font-mono)',
-        fontSize: '10px',
-        letterSpacing: '0.4em',
-        textTransform: 'uppercase' as const,
-        color: '#f97316',
-      }}>
-        {children}
-      </span>
-    </div>
-  )
-}
 
 export default function SobrePage() {
   return (
@@ -71,43 +56,51 @@ export default function SobrePage() {
       <SobreHero />
 
       {/* ── 2. STATS ─────────────────────────────────────────── */}
-      <section style={{
-        background: '#f4f4f0',
-        borderTop: '1px solid #e2e8f0',
-        borderBottom: '1px solid #e2e8f0',
-      }}>
+      <section style={{ background: '#f4f4f0' }}>
         <div className="container mx-auto px-4 sm:px-8">
-          <div
-            className="grid grid-cols-2 lg:grid-cols-4"
-            style={{ borderLeft: '1px solid #e2e8f0' }}
-          >
+          <div className="grid grid-cols-2 lg:grid-cols-4" style={{ borderLeft: '1px solid #e2e8f0', borderTop: '1px solid #e2e8f0' }}>
             {[
-              { value: '+20 Anos', label: 'De mercado' },
-              { value: '+5.000', label: 'Projetos entregues' },
-              { value: '+500', label: 'Condomínios' },
-              { value: '100%', label: 'Com ART' },
+              { value: '+20', suffix: 'Anos', label: 'De mercado' },
+              { value: '+5.000', suffix: '', label: 'Projetos entregues' },
+              { value: '+500', suffix: '', label: 'Condomínios' },
+              { value: '100%', suffix: '', label: 'Com ART' },
             ].map((stat, i) => (
               <div
                 key={i}
-                className="py-10 px-6 sm:px-10"
-                style={{ borderRight: '1px solid #e2e8f0' }}
+                style={{
+                  padding: '3rem 2.5rem',
+                  borderRight: '1px solid #e2e8f0',
+                  borderBottom: '1px solid #e2e8f0',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  textAlign: 'center',
+                }}
               >
                 <div style={{
                   fontFamily: 'var(--font-barlow-condensed)',
                   fontWeight: 900,
-                  fontSize: 'clamp(2rem, 4vw, 3.25rem)',
+                  fontSize: 'clamp(3rem, 5vw, 4.5rem)',
                   lineHeight: 1,
                   color: '#0f172a',
-                  marginBottom: '6px',
+                  letterSpacing: '-0.01em',
+                  marginBottom: '0.5rem',
                 }}>
                   {stat.value}
+                  {stat.suffix && (
+                    <span style={{ fontSize: '0.45em', color: '#f97316', marginLeft: '0.2em', verticalAlign: 'middle' }}>
+                      {stat.suffix}
+                    </span>
+                  )}
                 </div>
+                <div style={{ width: '24px', height: '2px', background: '#f97316', marginBottom: '0.75rem' }} />
                 <p style={{
                   fontFamily: 'var(--font-mono)',
                   fontSize: '10px',
                   letterSpacing: '0.25em',
                   textTransform: 'uppercase',
                   color: '#94a3b8',
+                  margin: 0,
                 }}>
                   {stat.label}
                 </p>
@@ -122,18 +115,11 @@ export default function SobrePage() {
         <div className="container mx-auto px-4 sm:px-8">
 
           {/* Cabeçalho da seção */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '1rem' }}>
-            <div style={{ width: '32px', height: '1px', background: '#f97316', flexShrink: 0 }} />
-            <span style={{
-              fontFamily: 'var(--font-mono)',
-              fontSize: '10px',
-              letterSpacing: '0.4em',
-              textTransform: 'uppercase' as const,
-              color: '#f97316',
-            }}>Nossa história</span>
+          <div style={{ marginBottom: '1rem' }}>
+            <SectionLabel label="Nossa história" />
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-end" style={{ paddingBottom: '5rem' }}>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center" style={{ paddingBottom: '5rem' }}>
             <h2 style={{
               fontFamily: 'var(--font-barlow-condensed)',
               fontWeight: 900,
@@ -145,7 +131,7 @@ export default function SobrePage() {
               margin: 0,
             }}>
               Uma oficina.<br />
-              <span style={{ color: 'rgba(255,255,255,0.2)' }}>Uma obsessão.</span>
+              <span style={{ color: '#f97316' }}>Uma obsessão.</span>
             </h2>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1.1rem' }}>
@@ -179,7 +165,7 @@ export default function SobrePage() {
                     fontWeight: 900,
                     fontSize: 'clamp(2rem, 3.5vw, 3rem)',
                     lineHeight: 1,
-                    color: i === milestones.length - 1 ? '#f97316' : 'rgba(255,255,255,0.15)',
+                    color: i === milestones.length - 1 ? '#f97316' : 'rgba(255,255,255,0.50)',
                     marginBottom: '1rem',
                   }}>
                     {m.year}
@@ -215,8 +201,8 @@ export default function SobrePage() {
       <section style={{ background: '#f4f4f0', paddingTop: '6rem', paddingBottom: '6rem' }}>
         <div className="container mx-auto px-4 sm:px-8">
 
-          {/* Cabeçalho split */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-end" style={{ marginBottom: '4rem' }}>
+          {/* Cabeçalho */}
+          <div style={{ marginBottom: '4rem' }}>
             <h2 style={{
               fontFamily: 'var(--font-barlow-condensed)',
               fontWeight: 900,
@@ -228,17 +214,8 @@ export default function SobrePage() {
               margin: 0,
             }}>
               O que não<br />
-              <span style={{ color: 'rgba(15,23,42,0.2)' }}>abrimos mão</span>
+              <span style={{ color: '#f97316' }}>abrimos mão</span>
             </h2>
-            <p style={{
-              fontSize: '15px',
-              lineHeight: 1.75,
-              color: '#64748b',
-              margin: 0,
-              maxWidth: '38ch',
-            }}>
-              Quatro princípios que regem cada projeto, do primeiro esboço ao último parafuso.
-            </p>
           </div>
 
           {/* Grid 2x2 */}
@@ -252,7 +229,7 @@ export default function SobrePage() {
                 <div
                   key={v.title}
                   style={{
-                    padding: '2.5rem',
+                    padding: '3.5rem',
                     background: '#ffffff',
                     borderRight: isLeftCol ? '1px solid #e2e8f0' : 'none',
                     borderBottom: i < values.length - 1 ? '1px solid #e2e8f0' : 'none',
@@ -279,21 +256,18 @@ export default function SobrePage() {
                     {v.number}
                   </span>
 
-                  {/* Topo: ícone + linha laranja */}
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2rem' }}>
-                    <div style={{
-                      width: '44px',
-                      height: '44px',
-                      border: '1px solid rgba(249,115,22,0.3)',
-                      background: '#fff7ed',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      flexShrink: 0,
-                    }}>
-                      <v.icon style={{ width: '20px', height: '20px', color: '#f97316' }} />
-                    </div>
-                    <div style={{ flex: 1, height: '1px', background: '#e2e8f0' }} />
+                  {/* Ícone */}
+                  <div style={{
+                    width: '44px',
+                    height: '44px',
+                    border: '1px solid rgba(249,115,22,0.3)',
+                    background: '#fff7ed',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    marginBottom: '2rem',
+                  }}>
+                    <v.icon style={{ width: '20px', height: '20px', color: '#f97316' }} />
                   </div>
 
                   <h3 style={{

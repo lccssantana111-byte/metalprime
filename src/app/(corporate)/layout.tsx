@@ -1,6 +1,6 @@
 import { createClient } from '@/lib/supabase/server'
 import Link from 'next/link'
-import { BRAND_NAME } from '@/lib/constants'
+import { BRAND_NAME, WHATSAPP_NUMBER } from '@/lib/constants'
 
 export default async function CorporateLayout({
   children,
@@ -11,41 +11,119 @@ export default async function CorporateLayout({
   const { data: { user } } = await supabase.auth.getUser()
 
   return (
-    <div className="min-h-screen bg-carbon">
-      {user && (
-        <header className="sticky top-0 z-40 bg-graphite/95 backdrop-blur-sm border-b border-metal-dark/30">
-          {/* Top amber accent line */}
-          <div className="h-px bg-gradient-to-r from-transparent via-amber-brand/50 to-transparent" />
+    <div style={{
+      minHeight: '100dvh',
+      background: '#080c14',
+      fontFamily: 'var(--font-sans, system-ui, sans-serif)',
+    }}>
 
-          <div className="max-w-6xl mx-auto px-4 h-14 flex items-center justify-between">
-            <Link href="/corporate/dashboard" className="flex items-center gap-3 group">
-              <img
-                src="/logo.png"
-                alt="Metalprime logo"
-                width={32}
-                height={32}
-                style={{ objectFit: 'contain', display: 'block' }}
-              />
-              <div className="flex flex-col leading-none">
-                <span className="font-display font-bold text-foreground text-sm">
-                  {BRAND_NAME.split(' ')[0]}
-                  <span className="text-amber-brand">.</span>
+      {/* Dot grid background */}
+      <div style={{
+        position: 'fixed',
+        inset: 0,
+        backgroundImage: 'radial-gradient(rgba(255,255,255,0.03) 1px, transparent 1px)',
+        backgroundSize: '32px 32px',
+        pointerEvents: 'none',
+        zIndex: 0,
+      }} />
+
+      {user && (
+        <header style={{
+          position: 'sticky',
+          top: 0,
+          zIndex: 40,
+          background: 'rgba(8,12,20,0.90)',
+          backdropFilter: 'blur(16px)',
+          borderBottom: '1px solid rgba(255,255,255,0.06)',
+        }}>
+          <div style={{
+            height: '2px',
+            background: 'linear-gradient(90deg, transparent 0%, rgba(249,115,22,0.7) 30%, rgba(249,115,22,0.7) 70%, transparent 100%)',
+          }} />
+
+          <div style={{
+            maxWidth: '1100px',
+            margin: '0 auto',
+            padding: '0 2rem',
+            height: '72px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+          }}>
+            <Link href="/corporate/dashboard" style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '14px',
+              textDecoration: 'none',
+            }}>
+              <div style={{
+                width: '42px',
+                height: '42px',
+                borderRadius: '10px',
+                background: 'rgba(255,255,255,0.1)',
+                border: '1px solid rgba(255,255,255,0.2)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                overflow: 'hidden',
+                flexShrink: 0,
+              }}>
+                <img
+                  src="/logo.png"
+                  alt="Metalprime"
+                  width={30}
+                  height={30}
+                  style={{ objectFit: 'contain' }}
+                />
+              </div>
+              <div style={{ display: 'flex', flexDirection: 'column', lineHeight: 1, gap: '4px' }}>
+                <span style={{
+                  fontFamily: 'var(--font-display, var(--font-sans))',
+                  fontWeight: 700,
+                  fontSize: '1.1rem',
+                  color: '#ffffff',
+                  letterSpacing: '-0.02em',
+                }}>
+                  {BRAND_NAME.split(' ')[0]}<span style={{ color: '#f97316' }}>.</span>
                 </span>
-                <span className="text-[10px] text-metal-dark uppercase tracking-widest">
+                <span style={{
+                  fontSize: '10px',
+                  color: 'rgba(255,255,255,0.55)',
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.16em',
+                  fontFamily: 'var(--font-mono, monospace)',
+                }}>
                   Portal Corporativo
                 </span>
               </div>
             </Link>
 
-            <div className="flex items-center gap-4">
-              <span className="text-xs text-metal-dark hidden sm:block truncate max-w-[200px]">
+            <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+              <span style={{
+                fontSize: '13px',
+                color: 'rgba(255,255,255,0.5)',
+                maxWidth: '240px',
+                overflow: 'hidden',
+                textOverflow: 'ellipsis',
+                whiteSpace: 'nowrap',
+              }}>
                 {user.email}
               </span>
-              <div className="w-px h-4 bg-metal-dark/40 hidden sm:block" />
+              <div style={{ width: '1px', height: '18px', background: 'rgba(255,255,255,0.12)' }} />
               <form action="/api/auth/signout" method="post">
                 <button
                   type="submit"
-                  className="text-xs text-metal hover:text-foreground transition-colors px-3 py-1.5 rounded-lg hover:bg-steel/40"
+                  style={{
+                    fontSize: '13px',
+                    color: 'rgba(255,255,255,0.8)',
+                    background: 'rgba(255,255,255,0.08)',
+                    border: '1px solid rgba(255,255,255,0.15)',
+                    cursor: 'pointer',
+                    padding: '7px 16px',
+                    borderRadius: '8px',
+                    fontFamily: 'inherit',
+                    letterSpacing: '0.01em',
+                  }}
                 >
                   Sair
                 </button>
@@ -55,7 +133,13 @@ export default async function CorporateLayout({
         </header>
       )}
 
-      <main className="max-w-6xl mx-auto px-4 py-8">
+      <main style={{
+        maxWidth: '1100px',
+        margin: '0 auto',
+        padding: 'clamp(2rem, 4vw, 3rem) 1.5rem',
+        position: 'relative',
+        zIndex: 1,
+      }}>
         {children}
       </main>
     </div>

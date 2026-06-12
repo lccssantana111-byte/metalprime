@@ -11,8 +11,8 @@ interface LeadCardProps {
 export function LeadCard({ lead }: LeadCardProps) {
   return (
     <Link href={`/admin/leads/${lead.id}`} className="block group">
-      <div className="bg-white border border-slate-200 rounded-lg p-3.5 hover:border-amber-brand/40 hover:shadow-sm transition-all cursor-pointer">
-        <p className="text-sm font-medium text-foreground group-hover:text-amber-brand transition-colors truncate mb-1">
+      <div className="bg-white border border-slate-200 rounded-lg p-3.5 hover:border-[#ea580c]/40 hover:shadow-sm transition-all cursor-pointer">
+        <p className="text-sm font-medium text-foreground group-hover:text-[#ea580c] transition-colors truncate mb-1">
           {lead.name}
         </p>
 
@@ -37,7 +37,7 @@ export function LeadCard({ lead }: LeadCardProps) {
 
         <div className="flex items-center justify-between mt-2 pt-2 border-t border-slate-100">
           {lead.service ? (
-            <span className="text-[10px] bg-amber-brand/10 text-amber-brand px-1.5 py-0.5 rounded font-medium truncate max-w-[70%]">
+            <span className="text-[10px] bg-[#f97316]/10 text-[#ea580c] px-1.5 py-0.5 rounded font-medium truncate max-w-[70%]">
               {SERVICE_LABELS[lead.service]}
             </span>
           ) : (

@@ -15,6 +15,10 @@
   --color-brand-dim: rgba(249,115,22,0.08);
   --color-brand-hover: #ea580c;
 
+  /* ── Admin accent ───────────────────────────────── */
+  --color-amber-brand: #ea580c;
+  --color-amber-light: #c2410c;
+
   /* ── Admin dark palette ──────────────────────────── */
   --color-carbon: #060809;
   --color-graphite: #111318;
@@ -23,9 +27,6 @@
   --color-metal-light: #cbd5e1;
   --color-metal-dark: #64748b;
 
-  /* ── Admin amber accent ──────────────────────────── */
-  --color-amber-brand: #c8860a;
-  --color-amber-light: #e8a020;
 
   --color-slate-950: #020617;
   --color-slate-900: #0f172a;

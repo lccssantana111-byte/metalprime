@@ -7,9 +7,9 @@ export function ViewAllLink({ href, label = 'Ver todos' }: { href: string; label
     <Link
       href={href}
       className="text-[10px] font-mono tracking-widest uppercase transition-colors"
-      style={{ color: '#c8860a' }}
-      onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = '#e8a020' }}
-      onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = '#c8860a' }}
+      style={{ color: '#f97316' }}
+      onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = '#ea580c' }}
+      onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = '#f97316' }}
     >
       {label}
     </Link>

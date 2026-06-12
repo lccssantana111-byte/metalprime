@@ -48,13 +48,13 @@ export default function LeadNoteForm({ leadId }: Props) {
         onChange={(e) => setNote(e.target.value)}
         placeholder="Registre uma ligação, visita, e-mail ou qualquer interação..."
         rows={3}
-        className="bg-slate-100 border-slate-200 focus:border-amber-brand/40 text-foreground placeholder:text-slate-400 resize-none mb-3"
+        className="bg-slate-100 border-slate-200 focus:border-[#ea580c]/40 text-foreground placeholder:text-slate-400 resize-none mb-3"
       />
       <Button
         type="submit"
         disabled={loading || !note.trim()}
         size="sm"
-        className="bg-amber-brand hover:bg-amber-light text-carbon font-semibold disabled:opacity-40"
+        className="bg-[#f97316] hover:bg-[#ea580c] text-white font-semibold disabled:opacity-40"
       >
         {loading ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : 'Adicionar nota'}
       </Button>

@@ -51,7 +51,7 @@ export default async function AdminOrcamentosPage({
             href={f.value ? `/admin/orcamentos?status=${f.value}` : '/admin/orcamentos'}
             className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${
               (statusFilter ?? '') === f.value
-                ? 'bg-amber-brand text-carbon'
+                ? 'bg-[#f97316] text-white'
                 : 'bg-white border border-slate-200 text-slate-500 hover:text-slate-800'
             }`}
           >
@@ -77,7 +77,7 @@ export default async function AdminOrcamentosPage({
                 <tr key={quote.id} className="hover:bg-slate-50 transition-colors">
                   <td className="px-5 py-4">
                     <Link href={`/admin/orcamentos/${quote.id}`} className="block">
-                      <p className="text-sm font-medium text-foreground hover:text-amber-brand transition-colors">
+                      <p className="text-sm font-medium text-foreground hover:text-[#ea580c] transition-colors">
                         {quote.name}
                       </p>
                       <p className="text-xs text-slate-500 mt-0.5">{quote.phone}</p>

@@ -114,15 +114,15 @@ export default async function AdminDashboardPage() {
           {unassigned > 0 && (
             <AlertCard
               href="/admin/leads"
-              bg="#fefce8"
-              border="#fde68a"
-              borderHover="#fbbf24"
-              iconBg="#fef9c3"
+              bg="#fff7ed"
+              border="#fed7aa"
+              borderHover="#fb923c"
+              iconBg="#ffedd5"
               iconType="unassigned"
-              iconColor="text-yellow-600"
+              iconColor="text-orange-500"
               title={`${unassigned} lead${unassigned > 1 ? 's' : ''} sem responsável`}
               sub="Atribua um vendedor para garantir follow-up"
-              subColor="#ca8a04"
+              subColor="#ea580c"
             />
           )}
         </div>

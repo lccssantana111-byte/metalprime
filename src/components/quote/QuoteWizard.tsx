@@ -136,10 +136,10 @@ export default function QuoteWizard() {
   }
 
   return (
-    <div className="max-w-2xl mx-auto">
+    <div style={{ maxWidth: '680px', margin: '0 auto' }}>
       <QuoteProgress currentStep={state.step} />
 
-      <div className="mt-8">
+      <div style={{ marginTop: '2.5rem' }}>
         <AnimatePresence mode="wait">
           {state.step === 1 && (
             <motion.div key="step1" initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -30 }} transition={{ duration: 0.3 }}>

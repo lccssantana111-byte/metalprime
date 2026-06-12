@@ -114,7 +114,7 @@ export default function ServicesGrid() {
                     fontFamily: 'var(--font-mono)',
                     fontSize: '11px',
                     letterSpacing: '0.1em',
-                    color: active === i ? '#f97316' : 'rgba(255,255,255,0.18)',
+                    color: active === i ? '#f97316' : 'rgba(255,255,255,0.50)',
                     transition: 'color 0.28s',
                     minWidth: 24,
                     flexShrink: 0,
@@ -130,7 +130,7 @@ export default function ServicesGrid() {
                       fontSize: 'clamp(1.5rem, 2.5vw, 2.1rem)',
                       textTransform: 'uppercase',
                       letterSpacing: '0.02em',
-                      color: active === i ? 'white' : 'rgba(255,255,255,0.38)',
+                      color: active === i ? 'white' : 'rgba(255,255,255,0.65)',
                       transition: 'color 0.28s',
                       margin: 0,
                       lineHeight: 1,
@@ -141,7 +141,7 @@ export default function ServicesGrid() {
                       fontFamily: 'var(--font-sans)',
                       fontSize: '12px',
                       lineHeight: 1.5,
-                      color: active === i ? 'rgba(148,163,184,0.7)' : 'rgba(148,163,184,0.2)',
+                      color: active === i ? 'rgba(148,163,184,0.85)' : 'rgba(148,163,184,0.55)',
                       transition: 'color 0.28s',
                       margin: '5px 0 0',
                     }}>
@@ -160,7 +160,7 @@ export default function ServicesGrid() {
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
-                      color: active === i ? '#f97316' : 'rgba(255,255,255,0.18)',
+                      color: active === i ? '#f97316' : 'rgba(255,255,255,0.50)',
                       transition: 'all 0.28s',
                     }}>
                       <ArrowUpRight style={{ width: 14, height: 14 }} />

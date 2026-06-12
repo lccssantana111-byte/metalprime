@@ -29,16 +29,16 @@ export default function NotFound() {
         {/* Diamond decoration */}
         <div className="relative w-16 h-16 mx-auto mb-10">
           <div className="absolute inset-0 border border-amber-brand/20 rotate-45" />
-          <div className="absolute inset-3 border border-amber-brand/40 rotate-45" />
+          <div className="absolute inset-3 border border-[#ea580c]/40 rotate-45" />
           <div className="absolute inset-6 bg-amber-brand/30 rotate-45" />
         </div>
 
         <div className="flex items-center justify-center gap-3 mb-5">
-          <div className="w-8 h-px bg-amber-brand" />
-          <span className="text-amber-brand text-xs font-semibold tracking-[0.35em] uppercase">
+          <div className="w-8 h-px bg-[#f97316]" />
+          <span className="text-[#ea580c] text-xs font-semibold tracking-[0.35em] uppercase">
             Erro 404
           </span>
-          <div className="w-8 h-px bg-amber-brand" />
+          <div className="w-8 h-px bg-[#f97316]" />
         </div>
 
         <h1 className="font-display font-black text-4xl sm:text-5xl text-foreground leading-none mb-5">
@@ -53,7 +53,7 @@ export default function NotFound() {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <Link
             href="/"
-            className="group inline-flex items-center gap-3 bg-amber-brand hover:bg-amber-light text-carbon font-bold text-sm tracking-wide px-8 py-4 transition-colors duration-200"
+            className="group inline-flex items-center gap-3 bg-[#f97316] hover:bg-[#ea580c] text-white font-bold text-sm tracking-wide px-8 py-4 transition-colors duration-200"
           >
             Voltar ao início
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />

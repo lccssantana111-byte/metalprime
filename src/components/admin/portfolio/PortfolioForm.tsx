@@ -263,7 +263,7 @@ export function PortfolioForm({ item }: PortfolioFormProps) {
           <Button
             type="submit"
             disabled={saving}
-            className="w-full bg-amber-brand hover:bg-amber-light text-carbon font-semibold"
+            className="w-full bg-[#f97316] hover:bg-[#ea580c] text-white font-semibold"
           >
             {saving ? 'Salvando...' : item ? 'Salvar alterações' : 'Criar item'}
           </Button>

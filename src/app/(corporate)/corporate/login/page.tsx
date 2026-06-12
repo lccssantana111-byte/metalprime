@@ -2,17 +2,16 @@
 
 import { useState } from 'react'
 import { createClient } from '@/lib/supabase/client'
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
 import { toast } from 'sonner'
-import { Mail, CheckCircle, ArrowRight } from 'lucide-react'
+import { Mail, ArrowRight, CheckCircle } from 'lucide-react'
 import { BRAND_NAME, WHATSAPP_NUMBER } from '@/lib/constants'
 
 export default function CorporateLoginPage() {
   const [email, setEmail] = useState('')
   const [loading, setLoading] = useState(false)
   const [sent, setSent] = useState(false)
+  const [focused, setFocused] = useState(false)
+  const [hovered, setHovered] = useState(false)
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -34,116 +33,265 @@ export default function CorporateLoginPage() {
   }
 
   return (
-    <div className="min-h-screen bg-carbon flex items-center justify-center p-4 relative overflow-hidden">
+    <div style={{
+      minHeight: '100dvh',
+      background: '#0a0f1a',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      padding: '1.5rem',
+      position: 'relative',
+      overflow: 'hidden',
+      fontFamily: 'var(--font-sans, system-ui, sans-serif)',
+    }}>
 
-      {/* Diagonal stripe texture */}
-      <div
-        className="absolute inset-0 opacity-[0.025]"
-        style={{
-          backgroundImage: `repeating-linear-gradient(
-            -45deg,
-            rgba(200,134,10,0.8) 0px,
-            rgba(200,134,10,0.8) 1px,
-            transparent 1px,
-            transparent 40px
-          )`,
-        }}
-      />
+      {/* Ambient glow */}
+      <div style={{
+        position: 'absolute',
+        top: '30%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+        width: '600px',
+        height: '500px',
+        background: 'radial-gradient(ellipse, rgba(249,115,22,0.07) 0%, transparent 70%)',
+        pointerEvents: 'none',
+      }} />
 
-      {/* Corner marks */}
-      <div className="absolute top-8 left-8 flex flex-col gap-1.5">
-        <div className="w-8 h-px bg-amber-brand/30" />
-        <div className="w-px h-8 bg-amber-brand/30" />
-      </div>
-      <div className="absolute bottom-8 right-8 flex flex-col items-end gap-1.5">
-        <div className="w-px h-8 bg-amber-brand/30 self-end" />
-        <div className="w-8 h-px bg-amber-brand/30" />
-      </div>
+      {/* Dot grid */}
+      <div style={{
+        position: 'absolute',
+        inset: 0,
+        backgroundImage: 'radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px)',
+        backgroundSize: '32px 32px',
+        pointerEvents: 'none',
+      }} />
 
-      {/* Glow */}
-      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[400px] bg-amber-brand/4 rounded-full blur-3xl pointer-events-none" />
+      {/* Top edge accent */}
+      <div style={{
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        height: '1px',
+        background: 'linear-gradient(90deg, transparent, rgba(249,115,22,0.5) 40%, rgba(249,115,22,0.5) 60%, transparent)',
+        pointerEvents: 'none',
+      }} />
 
-      <div className="w-full max-w-md relative z-10">
+      <div style={{ width: '100%', maxWidth: '420px', position: 'relative', zIndex: 1 }}>
 
         {/* Brand */}
-        <div className="text-center mb-10">
-          <div className="inline-flex items-center gap-3 mb-6">
+        <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
+          <div style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '10px',
+            marginBottom: '1.5rem',
+          }}>
             <img
               src="/logo.png"
               alt="Metalprime logo"
-              width={44}
-              height={44}
+              width={40}
+              height={40}
               style={{ objectFit: 'contain', display: 'block' }}
             />
-            <span className="font-display font-bold text-foreground text-lg">
+            <span style={{
+              fontFamily: 'var(--font-display, var(--font-sans))',
+              fontWeight: 700,
+              fontSize: '1.1rem',
+              color: 'rgba(255,255,255,0.95)',
+              letterSpacing: '-0.01em',
+            }}>
               {BRAND_NAME.split(' ')[0]}
-              <span className="text-amber-brand">.</span>
+              <span style={{ color: '#f97316' }}>.</span>
             </span>
           </div>
-          <h1 className="font-display text-2xl font-bold text-foreground">Portal Corporativo</h1>
-          <p className="text-metal text-sm mt-2">Acesso exclusivo para clientes</p>
+
+          <h1 style={{
+            fontFamily: 'var(--font-display, var(--font-sans))',
+            fontSize: 'clamp(1.6rem, 3vw, 2rem)',
+            fontWeight: 700,
+            color: 'rgba(255,255,255,0.95)',
+            letterSpacing: '-0.02em',
+            lineHeight: 1.15,
+            margin: 0,
+          }}>
+            Portal Corporativo
+          </h1>
+          <p style={{
+            fontSize: '14px',
+            color: 'rgba(255,255,255,0.45)',
+            marginTop: '8px',
+            letterSpacing: '0.04em',
+            textTransform: 'uppercase',
+            fontFamily: 'var(--font-mono, monospace)',
+          }}>
+            Acesso exclusivo para clientes
+          </p>
         </div>
 
         {/* Card */}
-        <div className="bg-graphite border border-metal-dark/40 rounded-2xl overflow-hidden">
-          <div className="h-px bg-gradient-to-r from-transparent via-amber-brand/40 to-transparent" />
+        <div style={{
+          background: 'rgba(255,255,255,0.03)',
+          border: '1px solid rgba(255,255,255,0.08)',
+          borderRadius: '20px',
+          overflow: 'hidden',
+          backdropFilter: 'blur(12px)',
+        }}>
+          <div style={{
+            height: '1px',
+            background: 'linear-gradient(90deg, transparent, rgba(249,115,22,0.5) 50%, transparent)',
+          }} />
 
-          <div className="p-8">
+          <div style={{ padding: '2rem' }}>
             {!sent ? (
               <>
-                <h2 className="text-lg font-semibold text-foreground mb-1">Entrar com e-mail</h2>
-                <p className="text-metal text-sm mb-6 leading-relaxed">
+                <h2 style={{
+                  fontSize: '1.05rem',
+                  fontWeight: 600,
+                  color: 'rgba(255,255,255,0.9)',
+                  margin: '0 0 6px',
+                  letterSpacing: '-0.01em',
+                }}>
+                  Entrar com e-mail
+                </h2>
+                <p style={{
+                  fontSize: '14px',
+                  color: 'rgba(255,255,255,0.45)',
+                  lineHeight: 1.6,
+                  margin: '0 0 1.75rem',
+                }}>
                   Insira seu e-mail cadastrado e enviaremos um link de acesso direto — sem senha.
                 </p>
 
-                <form onSubmit={handleSubmit} className="space-y-5">
-                  <div className="space-y-2">
-                    <Label htmlFor="email" className="text-metal-light text-xs uppercase tracking-wider">
+                <form onSubmit={handleSubmit}>
+                  <div style={{ marginBottom: '1rem' }}>
+                    <label style={{
+                      display: 'block',
+                      fontSize: '10px',
+                      fontFamily: 'var(--font-mono, monospace)',
+                      letterSpacing: '0.12em',
+                      textTransform: 'uppercase',
+                      color: 'rgba(255,255,255,0.35)',
+                      marginBottom: '8px',
+                    }}>
                       E-mail corporativo
-                    </Label>
-                    <Input
-                      id="email"
+                    </label>
+                    <input
                       type="email"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
+                      onFocus={() => setFocused(true)}
+                      onBlur={() => setFocused(false)}
                       placeholder="seuemail@empresa.com.br"
                       required
                       autoComplete="email"
-                      className="bg-carbon/60 border-metal-dark/50 focus:border-amber-brand/60 text-foreground h-11 placeholder:text-metal-dark"
+                      style={{
+                        width: '100%',
+                        height: '46px',
+                        background: 'rgba(255,255,255,0.04)',
+                        border: `1px solid ${focused ? 'rgba(249,115,22,0.5)' : 'rgba(255,255,255,0.10)'}`,
+                        borderRadius: '10px',
+                        padding: '0 14px',
+                        fontSize: '14px',
+                        color: 'rgba(255,255,255,0.9)',
+                        outline: 'none',
+                        transition: 'border-color 0.2s ease',
+                        boxSizing: 'border-box',
+                        fontFamily: 'inherit',
+                      }}
                     />
                   </div>
 
-                  <Button
+                  <button
                     type="submit"
                     disabled={loading}
-                    className="w-full bg-amber-brand hover:bg-amber-light text-carbon font-bold h-11 text-sm tracking-wide group"
+                    onMouseEnter={() => setHovered(true)}
+                    onMouseLeave={() => setHovered(false)}
+                    style={{
+                      width: '100%',
+                      height: '46px',
+                      background: loading
+                        ? 'rgba(249,115,22,0.5)'
+                        : hovered
+                          ? '#ea580c'
+                          : '#f97316',
+                      border: 'none',
+                      borderRadius: '10px',
+                      color: '#ffffff',
+                      fontSize: '14px',
+                      fontWeight: 700,
+                      letterSpacing: '0.02em',
+                      cursor: loading ? 'not-allowed' : 'pointer',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      gap: '8px',
+                      transition: 'all 0.2s ease',
+                      transform: hovered && !loading ? 'translateY(-1px)' : 'translateY(0)',
+                      boxShadow: hovered && !loading
+                        ? '0 8px 32px rgba(249,115,22,0.45)'
+                        : '0 4px 20px rgba(249,115,22,0.3)',
+                      fontFamily: 'inherit',
+                    }}
                   >
                     {loading ? (
                       'Enviando...'
                     ) : (
-                      <span className="flex items-center gap-2">
-                        <Mail className="w-4 h-4" />
+                      <>
+                        <Mail style={{ width: '15px', height: '15px' }} />
                         Receber link de acesso
-                        <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
-                      </span>
+                        <ArrowRight style={{ width: '15px', height: '15px' }} />
+                      </>
                     )}
-                  </Button>
+                  </button>
                 </form>
               </>
             ) : (
-              <div className="text-center py-4">
-                <div className="w-14 h-14 rounded-full bg-green-500/10 border border-green-500/20 flex items-center justify-center mx-auto mb-5">
-                  <CheckCircle className="w-7 h-7 text-green-400" />
+              <div style={{ textAlign: 'center', padding: '1rem 0' }}>
+                <div style={{
+                  width: '52px',
+                  height: '52px',
+                  borderRadius: '50%',
+                  background: 'rgba(34,197,94,0.1)',
+                  border: '1px solid rgba(34,197,94,0.25)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  margin: '0 auto 1.25rem',
+                }}>
+                  <CheckCircle style={{ width: '24px', height: '24px', color: '#4ade80' }} />
                 </div>
-                <h2 className="text-lg font-semibold text-foreground mb-2">Link enviado!</h2>
-                <p className="text-metal text-sm leading-relaxed">
+                <h2 style={{
+                  fontSize: '1.05rem',
+                  fontWeight: 600,
+                  color: 'rgba(255,255,255,0.9)',
+                  margin: '0 0 8px',
+                }}>
+                  Link enviado
+                </h2>
+                <p style={{
+                  fontSize: '14px',
+                  color: 'rgba(255,255,255,0.45)',
+                  lineHeight: 1.6,
+                  margin: 0,
+                }}>
                   Verifique sua caixa de entrada em{' '}
-                  <span className="text-foreground font-medium">{email}</span>{' '}
-                  e clique no link para acessar o portal.
+                  <span style={{ color: 'rgba(255,255,255,0.8)', fontWeight: 500 }}>{email}</span>{' '}
+                  e clique no link para acessar.
                 </p>
                 <button
                   onClick={() => setSent(false)}
-                  className="text-sm text-amber-brand hover:text-amber-light mt-5 underline underline-offset-4"
+                  style={{
+                    marginTop: '1.25rem',
+                    fontSize: '13px',
+                    color: '#f97316',
+                    background: 'none',
+                    border: 'none',
+                    cursor: 'pointer',
+                    textDecoration: 'underline',
+                    textUnderlineOffset: '3px',
+                    fontFamily: 'inherit',
+                  }}
                 >
                   Usar outro e-mail
                 </button>
@@ -151,16 +299,27 @@ export default function CorporateLoginPage() {
             )}
           </div>
 
-          <div className="h-px bg-gradient-to-r from-transparent via-metal-dark/40 to-transparent" />
+          <div style={{
+            height: '1px',
+            background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.06) 50%, transparent)',
+          }} />
         </div>
 
-        <p className="text-center text-xs text-metal-dark mt-6">
+        <p style={{
+          textAlign: 'center',
+          fontSize: '12px',
+          color: 'rgba(255,255,255,0.25)',
+          marginTop: '1.5rem',
+        }}>
           Problemas para acessar?{' '}
           <a
             href={`https://wa.me/${WHATSAPP_NUMBER}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-amber-brand hover:text-amber-light transition-colors"
+            style={{
+              color: '#f97316',
+              textDecoration: 'none',
+            }}
           >
             Fale com a nossa equipe
           </a>

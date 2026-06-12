@@ -79,7 +79,7 @@ export function ConfiguracoesForm({ settings }: ConfiguracoesFormProps) {
                   value={values[field.key] ?? ''}
                   onChange={(e) => handleChange(field.key, e.target.value)}
                   placeholder={field.placeholder}
-                  className="mt-1 bg-white border-slate-200 text-slate-800 placeholder:text-slate-400 focus:border-amber-brand/60"
+                  className="mt-1 bg-white border-slate-200 text-slate-800 placeholder:text-slate-400 focus:border-[#ea580c]/60"
                 />
                 {field.hint && (
                   <p className="text-xs text-slate-400 mt-1">{field.hint}</p>
@@ -94,7 +94,7 @@ export function ConfiguracoesForm({ settings }: ConfiguracoesFormProps) {
         <Button
           onClick={handleSave}
           disabled={saving}
-          className="bg-amber-brand hover:bg-amber-light text-carbon font-semibold px-8"
+          className="bg-[#f97316] hover:bg-[#ea580c] text-white font-semibold px-8"
         >
           <Save className="w-4 h-4 mr-2" />
           {saving ? 'Salvando...' : 'Salvar configurações'}

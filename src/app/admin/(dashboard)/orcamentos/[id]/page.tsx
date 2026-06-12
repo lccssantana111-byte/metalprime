@@ -71,7 +71,7 @@ export default async function OrcamentoDetailPage({ params }: { params: Promise<
               {q.estimated_value && (
                 <div className="mb-2">
                   <p className="text-xs text-slate-400">Valor Estimado</p>
-                  <p className="text-lg font-bold text-amber-brand">{formatBRL(q.estimated_value)}</p>
+                  <p className="text-lg font-bold text-[#ea580c]">{formatBRL(q.estimated_value)}</p>
                 </div>
               )}
               {q.final_value && (

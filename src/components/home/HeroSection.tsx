@@ -99,7 +99,7 @@ export default function HeroSection() {
               letterSpacing: '0.01em',
               textTransform: 'uppercase',
               fontSize: 'clamp(4.5rem, 8vw, 8.5rem)',
-              margin: '0 0 1rem',
+              margin: '0 0 0.4rem',
               overflow: 'visible',
             }}
           >
@@ -139,17 +139,13 @@ export default function HeroSection() {
             variants={up}
             style={{
               fontSize: '1.05rem',
-              color: 'rgba(255,255,255,0.65)',
-              lineHeight: 1.6,
+              color: 'rgba(255,255,255,0.82)',
+              lineHeight: 1.7,
               margin: '0 0 2.5rem',
-              maxWidth: '380px',
+              maxWidth: '480px',
             }}
           >
-            Fabricação própria, ART em 100%
-            <br />
-            dos projetos estruturais. Mais de 5.000
-            <br />
-            obras entregues na Grande São Paulo.
+            Fabricação própria, ART em 100% dos projetos estruturais. Mais de 5.000 obras entregues na Grande São Paulo.
           </motion.p>
 
           {/* CTAs */}

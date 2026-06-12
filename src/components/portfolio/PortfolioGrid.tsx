@@ -30,18 +30,18 @@ export default function PortfolioGrid({ items }: Props) {
   return (
     <div>
       {/* Filters */}
-      <div className="flex flex-wrap gap-0 mb-12" style={{ borderBottom: '1px solid #e2e8f0' }}>
+      <div className="flex flex-wrap gap-0 mb-12" style={{ borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
         {filters.map((f) => (
           <button
             key={f.value}
             onClick={() => setActive(f.value)}
             className="relative px-5 py-3 text-sm font-medium transition-all duration-200"
-            style={{ color: active === f.value ? '#0f172a' : '#94a3b8' }}
+            style={{ color: active === f.value ? '#ffffff' : 'rgba(255,255,255,0.60)' }}
             onMouseEnter={(e) => {
-              if (active !== f.value) (e.currentTarget as HTMLElement).style.color = '#64748b'
+              if (active !== f.value) (e.currentTarget as HTMLElement).style.color = 'rgba(255,255,255,0.85)'
             }}
             onMouseLeave={(e) => {
-              if (active !== f.value) (e.currentTarget as HTMLElement).style.color = '#94a3b8'
+              if (active !== f.value) (e.currentTarget as HTMLElement).style.color = 'rgba(255,255,255,0.60)'
             }}
           >
             {f.label}
@@ -54,7 +54,7 @@ export default function PortfolioGrid({ items }: Props) {
             )}
           </button>
         ))}
-        <div className="ml-auto self-center text-xs font-mono" style={{ color: '#94a3b8' }}>
+        <div className="ml-auto self-center text-xs font-mono" style={{ color: 'rgba(255,255,255,0.55)' }}>
           {filtered.length} projeto{filtered.length !== 1 ? 's' : ''}
         </div>
       </div>
@@ -72,7 +72,7 @@ export default function PortfolioGrid({ items }: Props) {
               transition={{ duration: 0.3, delay: i * 0.04 }}
             >
               <CardContainer containerClassName="w-full" className="w-full">
-                <CardBody className="w-full rounded-2xl border border-slate-200 overflow-hidden bg-white">
+                <CardBody className="w-full rounded-2xl overflow-hidden" style={{ background: '#1e293b', border: '1px solid rgba(255,255,255,0.08)' }}>
 
                   {/* Image */}
                   <CardItem translateZ={60} className="w-full">
@@ -118,7 +118,7 @@ export default function PortfolioGrid({ items }: Props) {
                       <CardItem translateZ={40} className="flex-1 min-w-0">
                         <h3
                           className="font-display font-bold text-base leading-snug"
-                          style={{ color: '#0f172a' }}
+                          style={{ color: '#ffffff' }}
                         >
                           {item.title}
                         </h3>
@@ -133,7 +133,7 @@ export default function PortfolioGrid({ items }: Props) {
                         <Link href={`/portfolio/${item.slug}`}>
                           <div
                             className="w-8 h-8 rounded-full flex items-center justify-center border transition-all duration-200 hover:bg-[#f97316] hover:border-[#f97316] hover:text-white"
-                            style={{ borderColor: '#e2e8f0', color: '#94a3b8' }}
+                            style={{ borderColor: 'rgba(255,255,255,0.15)', color: 'rgba(255,255,255,0.4)' }}
                           >
                             <ArrowUpRight className="w-3.5 h-3.5" />
                           </div>

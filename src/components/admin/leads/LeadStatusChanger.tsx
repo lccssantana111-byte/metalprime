@@ -66,7 +66,7 @@ export default function LeadStatusChanger({ leadId, currentStatus }: Props) {
         onClick={handleSave}
         disabled={loading || status === currentStatus}
         size="sm"
-        className="w-full bg-amber-brand hover:bg-amber-light text-carbon font-semibold disabled:opacity-40"
+        className="w-full bg-[#f97316] hover:bg-[#ea580c] text-white font-semibold disabled:opacity-40"
       >
         {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : 'Salvar status'}
       </Button>

@@ -12,7 +12,7 @@ export const dynamic = 'force-dynamic'
 const STATUS_COLORS: Record<string, string> = {
   planejamento: 'bg-blue-500/20 text-blue-300 border-blue-500/30',
   medicao: 'bg-indigo-500/20 text-indigo-300 border-indigo-500/30',
-  producao: 'bg-yellow-500/20 text-yellow-300 border-yellow-500/30',
+  producao: 'bg-orange-500/20 text-orange-300 border-orange-500/30',
   instalacao: 'bg-orange-500/20 text-orange-300 border-orange-500/30',
   concluido: 'bg-green-500/20 text-green-300 border-green-500/30',
   pausado: 'bg-gray-500/20 text-gray-300 border-gray-500/30',
@@ -33,7 +33,7 @@ export default async function AdminProjetosPage() {
           <h1 className="font-display text-3xl font-bold text-foreground">Projetos</h1>
           <p className="text-slate-500 mt-1">{(projects ?? []).length} projetos</p>
         </div>
-        <Button asChild className="bg-amber-brand hover:bg-amber-light text-carbon font-semibold">
+        <Button asChild className="bg-[#f97316] hover:bg-[#ea580c] text-white font-semibold">
           <Link href="/admin/projetos/novo">
             <Plus className="w-4 h-4 mr-2" />
             Novo Projeto
@@ -58,7 +58,7 @@ export default async function AdminProjetosPage() {
                 <tr key={project.id} className="hover:bg-slate-50 transition-colors">
                   <td className="px-5 py-4">
                     <Link href={`/admin/projetos/${project.id}`} className="block">
-                      <p className="text-sm font-medium text-foreground hover:text-amber-brand transition-colors">
+                      <p className="text-sm font-medium text-foreground hover:text-[#ea580c] transition-colors">
                         {project.name}
                       </p>
                       <p className="text-xs text-slate-500 mt-0.5">{SERVICE_LABELS[project.service]}</p>
@@ -91,7 +91,7 @@ export default async function AdminProjetosPage() {
         {(projects ?? []).length === 0 && (
           <div className="text-center py-16">
             <p className="text-slate-500">Nenhum projeto cadastrado.</p>
-            <Button asChild size="sm" className="mt-4 bg-amber-brand hover:bg-amber-light text-carbon">
+            <Button asChild size="sm" className="mt-4 bg-[#f97316] hover:bg-[#ea580c] text-white">
               <Link href="/admin/projetos/novo">Criar primeiro projeto</Link>
             </Button>
           </div>

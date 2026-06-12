@@ -99,9 +99,8 @@ export default function FeaturedProjects({ items }: Props) {
       ref={ref}
       style={{
         background: '#0c1220',
-        backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,0.012) 2px, rgba(255,255,255,0.012) 4px)',
-        borderTop: '3px solid #f97316',
-        padding: '5rem 0 6rem',
+        borderTop: '1px solid rgba(255,255,255,0.06)',
+        padding: '4rem 0 5rem',
         overflow: 'hidden',
         colorScheme: 'dark',
       }}
@@ -110,79 +109,68 @@ export default function FeaturedProjects({ items }: Props) {
 
         {/* Header */}
         <motion.div
-          initial={{ opacity: 0, x: -24 }}
-          animate={inView ? { opacity: 1, x: 0 } : {}}
-          transition={{ duration: 0.8, ease }}
+          initial={{ opacity: 0, y: 16 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7, ease }}
           style={{
-            display: 'grid',
-            gridTemplateColumns: '1fr auto',
-            alignItems: 'end',
+            display: 'flex',
+            alignItems: 'flex-end',
+            justifyContent: 'space-between',
             gap: '2rem',
+            marginBottom: '2rem',
           }}
         >
-          {/* Left — display title */}
+          {/* Left */}
           <div>
             <span style={{
               fontFamily: 'var(--font-mono)',
               fontSize: '10px',
-              letterSpacing: '0.45em',
+              letterSpacing: '0.4em',
               textTransform: 'uppercase',
               color: '#f97316',
               display: 'block',
-              marginBottom: '1.5rem',
+              marginBottom: '0.75rem',
             }}>
-              [ PORTFÓLIO ]
+              Portfólio
             </span>
             <h2 style={{
               fontFamily: 'var(--font-barlow-condensed)',
               fontWeight: 900,
-              lineHeight: 0.9,
-              fontSize: 'clamp(4rem, 8vw, 8rem)',
+              lineHeight: 0.95,
+              fontSize: 'clamp(2rem, 3.5vw, 3.25rem)',
               textTransform: 'uppercase',
               letterSpacing: '0.01em',
               margin: 0,
+              color: 'white',
             }}>
-              <span style={{ display: 'block', color: 'white' }}>OBRAS</span>
-              <span style={{ display: 'block', color: 'white' }}>QUE FALAM.</span>
-              <span style={{ display: 'block', color: '#f97316' }}>POR SI</span>
+              Obras que falam{' '}
+              <span style={{ color: '#f97316' }}>por si.</span>
             </h2>
           </div>
 
           {/* Right — counter */}
-          <div
+          <span
             className="fp-header-right"
             style={{
-              display: 'flex',
-              alignItems: 'flex-end',
-              gap: '2rem',
-              paddingBottom: '6px',
-            }}
-          >
-            <div style={{
-              width: '1px',
-              height: '80px',
-              background: 'rgba(255,255,255,0.12)',
-              flexShrink: 0,
-              alignSelf: 'flex-end',
-            }} />
-            <span style={{
               fontFamily: 'var(--font-mono)',
               fontSize: '9px',
               letterSpacing: '0.25em',
               textTransform: 'uppercase',
-              color: 'rgba(148,163,184,0.5)',
+              color: 'rgba(148,163,184,0.55)',
               whiteSpace: 'nowrap',
-            }}>
-              {String(allItems.length).padStart(2, '0')} / OBRAS EM DESTAQUE
-            </span>
-          </div>
+              flexShrink: 0,
+              paddingBottom: '4px',
+            }}
+          >
+            {String(allItems.length).padStart(2, '0')} obras em destaque
+          </span>
         </motion.div>
 
         {/* Horizontal rule */}
         <div style={{
           height: '1px',
           background: 'rgba(255,255,255,0.07)',
-          margin: '2.5rem 0',
+          marginBottom: '2rem',
         }} />
 
         {/* Carousel */}
@@ -293,7 +281,7 @@ export default function FeaturedProjects({ items }: Props) {
           }
           .fp-card-large,
           .fp-card-small {
-            height: 300px !important;
+            height: 260px !important;
           }
           .fp-card-span {
             grid-row: auto !important;
@@ -447,7 +435,7 @@ function NavButton({
           ? 'rgba(255,255,255,0.08)'
           : hovered ? '#f97316' : 'rgba(255,255,255,0.2)',
         background: hovered && !disabled ? '#f97316' : 'transparent',
-        color: disabled ? 'rgba(255,255,255,0.15)' : 'white',
+        color: disabled ? 'rgba(255,255,255,0.30)' : 'white',
         cursor: disabled ? 'not-allowed' : 'pointer',
         transition: 'background 0.25s ease, border-color 0.25s ease, color 0.25s ease',
         borderRadius: 0,
@@ -483,7 +471,7 @@ function ProjectCard({
       style={{
         position: 'relative',
         width: '100%',
-        height: isLarge ? '560px' : '277px',
+        height: isLarge ? '480px' : '236px',
         overflow: 'hidden',
         background: '#1e293b',
         borderRadius: 0,

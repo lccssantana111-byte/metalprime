@@ -19,7 +19,7 @@ const COLUMNS: LeadStatus[] = [
 
 const COLUMN_COLORS: Record<LeadStatus, string> = {
   novo: 'border-blue-200',
-  em_contato: 'border-yellow-200',
+  em_contato: 'border-orange-200',
   proposta_enviada: 'border-purple-200',
   em_negociacao: 'border-orange-200',
   ganho: 'border-green-200',
@@ -29,7 +29,7 @@ const COLUMN_COLORS: Record<LeadStatus, string> = {
 
 const COLUMN_HEADER_COLORS: Record<LeadStatus, string> = {
   novo: 'bg-blue-50 text-blue-600',
-  em_contato: 'bg-yellow-50 text-yellow-700',
+  em_contato: 'bg-orange-50 text-orange-600',
   proposta_enviada: 'bg-purple-50 text-purple-600',
   em_negociacao: 'bg-orange-50 text-orange-600',
   ganho: 'bg-green-50 text-green-700',

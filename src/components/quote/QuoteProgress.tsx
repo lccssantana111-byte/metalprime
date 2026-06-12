@@ -1,3 +1,5 @@
+import { Check } from 'lucide-react'
+
 const steps = [
   { number: 1, label: 'Serviço' },
   { number: 2, label: 'Detalhes' },
@@ -6,36 +8,53 @@ const steps = [
 ]
 
 export default function QuoteProgress({ currentStep }: { currentStep: number }) {
+  const progress = ((currentStep - 1) / (steps.length - 1)) * 100
+
   return (
-    <div className="flex items-center justify-between relative">
-      <div className="absolute top-4 left-0 right-0 h-px bg-metal-dark/40 z-0" />
-      <div
-        className="absolute top-4 left-0 h-px bg-amber-brand z-0 transition-all duration-500"
-        style={{ width: `${((currentStep - 1) / (steps.length - 1)) * 100}%` }}
-      />
+    <div style={{ position: 'relative', display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', zIndex: 1 }}>
+      {/* Track */}
+      <div style={{
+        position: 'absolute', top: '14px', left: 0, right: 0,
+        height: '1px', background: 'rgba(15,23,42,0.12)', zIndex: 0,
+      }} />
+      {/* Fill */}
+      <div style={{
+        position: 'absolute', top: '14px', left: 0,
+        height: '1px', background: '#f97316', zIndex: 0,
+        width: `${progress}%`, transition: 'width 0.5s ease',
+      }} />
 
       {steps.map((step) => {
         const done = currentStep > step.number
         const active = currentStep === step.number
 
         return (
-          <div key={step.number} className="relative z-10 flex flex-col items-center gap-2">
-            <div
-              className={`w-8 h-8 rounded-full border-2 flex items-center justify-center text-sm font-bold transition-all duration-300 ${
-                done
-                  ? 'bg-amber-brand border-amber-brand text-carbon'
-                  : active
-                  ? 'bg-carbon border-amber-brand text-amber-brand'
-                  : 'bg-carbon border-metal-dark/40 text-metal-dark'
-              }`}
-            >
-              {done ? '✓' : step.number}
+          <div key={step.number} style={{ position: 'relative', zIndex: 2, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
+            <div style={{
+              width: '30px', height: '30px', borderRadius: '50%',
+              border: `1.5px solid ${done ? '#f97316' : active ? '#f97316' : 'rgba(15,23,42,0.2)'}`,
+              background: done ? '#f97316' : active ? '#ffffff' : '#f4f4f0',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              transition: 'all 0.3s ease',
+              boxShadow: '0 0 0 4px #f4f4f0',
+            }}>
+              {done ? (
+                <Check style={{ width: '13px', height: '13px', color: '#ffffff' }} />
+              ) : (
+                <span style={{
+                  fontFamily: 'var(--font-ibm-mono)', fontSize: '11px', fontWeight: 600,
+                  color: active ? '#f97316' : 'rgba(15,23,42,0.3)',
+                }}>
+                  {step.number}
+                </span>
+              )}
             </div>
-            <span
-              className={`text-xs font-medium hidden sm:block transition-colors ${
-                active ? 'text-foreground' : done ? 'text-amber-brand' : 'text-metal-dark'
-              }`}
-            >
+            <span style={{
+              fontFamily: 'var(--font-ibm-mono)', fontSize: '9px',
+              letterSpacing: '0.1em', textTransform: 'uppercase',
+              color: active ? '#0f172a' : done ? '#f97316' : 'rgba(15,23,42,0.35)',
+              transition: 'color 0.3s',
+            }}>
               {step.label}
             </span>
           </div>

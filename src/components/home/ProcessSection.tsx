@@ -73,33 +73,11 @@ function StepRow({
         position: 'relative',
       }}
     >
-      {/* LEFT: Giant number — stroke + orange fill wipe */}
-      <div style={{ position: 'relative', display: 'flex', alignItems: 'flex-start' }}>
-        {/* Layer A: permanent stroke */}
-        <span
+      {/* LEFT: Giant number */}
+      <div style={{ position: 'relative', display: 'flex', alignItems: 'flex-start', overflow: 'hidden' }}>
+        <motion.span
           className="process-step-number"
           style={{
-            fontFamily: 'var(--font-barlow-condensed)',
-            fontWeight: 900,
-            fontSize: 'clamp(5rem, 16vw, 14rem)',
-            lineHeight: 1,
-            WebkitTextStroke: '1.5px rgba(249,115,22,0.28)',
-            WebkitTextFillColor: 'transparent',
-            color: 'transparent',
-            userSelect: 'none',
-            display: 'block',
-            letterSpacing: '-0.03em',
-          }}
-        >
-          {step.number}
-        </span>
-        {/* Layer B: orange fill, wipes left → right on scroll */}
-        <motion.span
-          aria-hidden="true"
-          style={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
             fontFamily: 'var(--font-barlow-condensed)',
             fontWeight: 900,
             fontSize: 'clamp(5rem, 16vw, 14rem)',
@@ -108,12 +86,11 @@ function StepRow({
             userSelect: 'none',
             display: 'block',
             letterSpacing: '-0.03em',
-            willChange: 'clip-path',
           }}
-          initial={{ clipPath: 'inset(0 100% 0 0)' }}
-          whileInView={{ clipPath: 'inset(0 0% 0 0)' }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-80px' }}
-          transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: index * 0.15 }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: index * 0.12 }}
         >
           {step.number}
         </motion.span>

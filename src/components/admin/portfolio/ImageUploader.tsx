@@ -82,7 +82,7 @@ export function ImageUploader({
           className={cn(
             'border-2 border-dashed rounded-xl p-8 text-center cursor-pointer transition-colors',
             dragOver
-              ? 'border-amber-brand bg-amber-brand/5'
+              ? 'border-[#ea580c] bg-[#f97316]/5'
               : 'border-slate-200 hover:border-slate-400'
           )}
           onDragOver={(e) => { e.preventDefault(); setDragOver(true) }}
@@ -100,14 +100,14 @@ export function ImageUploader({
           />
           {uploading ? (
             <div className="flex flex-col items-center gap-2">
-              <Loader2 className="w-8 h-8 text-amber-brand animate-spin" />
+              <Loader2 className="w-8 h-8 text-[#ea580c] animate-spin" />
               <p className="text-sm text-slate-500">Enviando...</p>
             </div>
           ) : (
             <div className="flex flex-col items-center gap-2">
               <Upload className="w-8 h-8 text-slate-400" />
               <p className="text-sm text-slate-500">
-                Arraste imagens ou <span className="text-amber-brand">clique para selecionar</span>
+                Arraste imagens ou <span className="text-[#ea580c]">clique para selecionar</span>
               </p>
               <p className="text-xs text-slate-400">
                 JPG, PNG, WebP · máx. {maxFiles - value.length} arquivo(s)
@@ -129,7 +129,7 @@ export function ImageUploader({
                 sizes="160px"
               />
               {i === 0 && (
-                <span className="absolute bottom-1 left-1 text-[10px] bg-amber-brand text-carbon px-1.5 py-0.5 rounded font-semibold">
+                <span className="absolute bottom-1 left-1 text-[10px] bg-[#f97316] text-white px-1.5 py-0.5 rounded font-semibold">
                   CAPA
                 </span>
               )}

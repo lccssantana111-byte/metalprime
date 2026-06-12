@@ -36,7 +36,7 @@ export default async function ProjetoDetailPage({ params }: { params: Promise<{ 
                 {PROJECT_STATUS_LABELS[p.status]}
               </Badge>
             </div>
-            <p className="text-amber-brand text-sm">{SERVICE_LABELS[p.service]}</p>
+            <p className="text-[#ea580c] text-sm">{SERVICE_LABELS[p.service]}</p>
             {p.description && <p className="text-slate-500 text-sm mt-3">{p.description}</p>}
           </div>
 
@@ -70,7 +70,7 @@ export default async function ProjetoDetailPage({ params }: { params: Promise<{ 
             <div className="space-y-3">
               <div>
                 <p className="text-xs text-slate-400">Valor do contrato</p>
-                <p className="text-xl font-bold text-amber-brand">{formatBRL(p.contract_value)}</p>
+                <p className="text-xl font-bold text-[#ea580c]">{formatBRL(p.contract_value)}</p>
               </div>
               <div>
                 <p className="text-xs text-slate-400">Valor recebido</p>

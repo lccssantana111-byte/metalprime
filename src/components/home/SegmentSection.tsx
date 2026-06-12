@@ -112,6 +112,8 @@ export default function SegmentSection() {
           style={{
             display: 'flex',
             flexDirection: 'column',
+            alignItems: 'center',
+            textAlign: 'center',
             gap: '1.5rem',
             marginBottom: '4rem',
           }}
@@ -128,257 +130,241 @@ export default function SegmentSection() {
             Para quem fazemos
           </span>
 
-          <div
+          <h2
             style={{
-              display: 'flex',
-              flexWrap: 'wrap',
-              alignItems: 'flex-end',
-              justifyContent: 'space-between',
-              gap: '1.5rem',
+              fontFamily: 'var(--font-barlow-condensed)',
+              fontWeight: 900,
+              fontSize: 'clamp(2.5rem, 5vw, 4.5rem)',
+              lineHeight: 0.92,
+              letterSpacing: '0.01em',
+              textTransform: 'uppercase',
+              color: '#0f172a',
+              margin: 0,
             }}
           >
-            <h2
-              style={{
-                fontFamily: 'var(--font-barlow-condensed)',
-                fontWeight: 900,
-                fontSize: 'clamp(2.5rem, 5vw, 4.5rem)',
-                lineHeight: 0.92,
-                letterSpacing: '0.01em',
-                textTransform: 'uppercase',
-                color: '#0f172a',
-                margin: 0,
-              }}
-            >
-              O parceiro certo<br />
-              <span style={{ color: '#f97316' }}>para cada projeto</span>
-            </h2>
-
-          </div>
+            O parceiro certo<br />
+            <span style={{ color: '#f97316' }}>para cada projeto</span>
+          </h2>
         </motion.div>
 
-        {/* Cards grid */}
-        <div
+        {/* Dark tray — anchors the cards into a unified composition */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
           style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-            gap: '1.5rem',
+            background: '#0f172a',
+            borderRadius: '24px',
+            padding: 'clamp(1.25rem, 2.5vw, 1.75rem)',
+            position: 'relative',
+            overflow: 'hidden',
           }}
         >
-          {segments.map((seg, i) => {
-            const Icon = seg.icon
-            return (
-              <motion.div
-                key={seg.label}
-                custom={i}
-                variants={cardVariants}
-                initial="hidden"
-                animate={inView ? 'visible' : 'hidden'}
-                style={{
-                  background: seg.featured ? '#0f172a' : 'white',
-                  border: seg.featured ? 'none' : '1px solid #e2e8f0',
-                  borderRadius: '20px',
-                  padding: '2.25rem',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  gap: '0',
-                  cursor: 'default',
-                  transition: 'box-shadow 0.2s, transform 0.2s',
-                  position: 'relative',
-                  overflow: 'hidden',
-                }}
-                whileHover={{
-                  y: -4,
-                  boxShadow: seg.featured
-                    ? '0 24px 60px rgba(15,23,42,0.28)'
-                    : '0 16px 48px rgba(0,0,0,0.10)',
-                }}
-              >
-                {/* Featured orange top bar */}
-                {seg.featured && (
-                  <div
-                    style={{
-                      position: 'absolute',
-                      top: 0,
-                      left: 0,
-                      right: 0,
-                      height: '3px',
-                      background: '#f97316',
-                      borderRadius: '20px 20px 0 0',
-                    }}
-                  />
-                )}
+          {/* Subtle dot grid inside tray */}
+          <div aria-hidden="true" style={{
+            position: 'absolute',
+            inset: 0,
+            backgroundImage: 'radial-gradient(rgba(255,255,255,0.035) 1px, transparent 1px)',
+            backgroundSize: '24px 24px',
+            pointerEvents: 'none',
+          }} />
 
-                {/* Icon + label */}
-                <div
+          {/* Orange ambient glow — top center */}
+          <div aria-hidden="true" style={{
+            position: 'absolute',
+            top: '-80px',
+            left: '50%',
+            transform: 'translateX(-50%)',
+            width: '60%',
+            height: '220px',
+            background: 'radial-gradient(ellipse at center, rgba(249,115,22,0.10) 0%, transparent 70%)',
+            pointerEvents: 'none',
+          }} />
+
+          {/* Cards grid */}
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+              gap: '1rem',
+              position: 'relative',
+              zIndex: 1,
+            }}
+          >
+            {segments.map((seg, i) => {
+              const Icon = seg.icon
+              return (
+                <motion.div
+                  key={seg.label}
+                  custom={i}
+                  variants={cardVariants}
+                  initial="hidden"
+                  animate={inView ? 'visible' : 'hidden'}
                   style={{
+                    background: seg.featured ? 'rgba(249,115,22,0.07)' : 'rgba(255,255,255,0.03)',
+                    border: seg.featured ? '1px solid rgba(249,115,22,0.22)' : '1px solid rgba(255,255,255,0.07)',
+                    borderRadius: '16px',
+                    padding: '2rem',
                     display: 'flex',
-                    alignItems: 'center',
-                    gap: '12px',
-                    marginBottom: '1.75rem',
+                    flexDirection: 'column',
+                    gap: '0',
+                    cursor: 'default',
+                    transition: 'box-shadow 0.2s, transform 0.2s',
+                    position: 'relative',
+                    overflow: 'hidden',
+                  }}
+                  whileHover={{
+                    y: -3,
+                    boxShadow: seg.featured
+                      ? '0 20px 50px rgba(249,115,22,0.14)'
+                      : '0 16px 40px rgba(0,0,0,0.3)',
                   }}
                 >
-                  <div
-                    style={{
+                  {/* Featured orange top line */}
+                  {seg.featured && (
+                    <div style={{
+                      position: 'absolute',
+                      top: 0,
+                      left: '10%',
+                      right: '10%',
+                      height: '1px',
+                      background: 'linear-gradient(90deg, transparent, rgba(249,115,22,0.8), transparent)',
+                    }} />
+                  )}
+
+                  {/* ── Zone 1: Icon + label (fixed height) */}
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '12px', height: '40px', marginBottom: '1.75rem', flexShrink: 0, width: '100%' }}>
+                    <div style={{
                       width: '40px',
                       height: '40px',
                       borderRadius: '10px',
-                      background: seg.featured ? 'rgba(249,115,22,0.15)' : '#fff7ed',
-                      border: `1px solid ${seg.featured ? 'rgba(249,115,22,0.3)' : '#fed7aa'}`,
+                      background: 'rgba(249,115,22,0.12)',
+                      border: '1px solid rgba(249,115,22,0.25)',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
                       flexShrink: 0,
-                    }}
-                  >
-                    <Icon style={{ width: '18px', height: '18px', color: '#f97316' }} />
-                  </div>
-                  <span
-                    style={{
+                    }}>
+                      <Icon style={{ width: '18px', height: '18px', color: '#f97316' }} />
+                    </div>
+                    <span style={{
                       fontFamily: 'var(--font-mono)',
                       fontSize: '10px',
                       letterSpacing: '0.35em',
                       textTransform: 'uppercase',
-                      color: seg.featured ? '#64748b' : '#94a3b8',
-                    }}
-                  >
-                    {seg.label}
-                  </span>
-                </div>
+                      color: 'rgba(255,255,255,0.6)',
+                    }}>
+                      {seg.label}
+                    </span>
+                  </div>
 
-                {/* Metric */}
-                <div style={{ marginBottom: '1rem' }}>
-                  <span
-                    style={{
+                  {/* ── Zone 2: Metric (fixed height) */}
+                  <div style={{ height: '4.5rem', marginBottom: '1rem', flexShrink: 0, width: '100%', textAlign: 'center' }}>
+                    <span style={{
                       fontFamily: 'var(--font-display)',
                       fontWeight: 900,
                       fontSize: '2.75rem',
                       lineHeight: 1,
                       color: '#f97316',
-                    }}
-                  >
-                    {seg.metric}
-                  </span>
-                  <span
-                    style={{
+                    }}>
+                      {seg.metric}
+                    </span>
+                    <span style={{
                       display: 'block',
                       fontSize: '11px',
                       fontFamily: 'var(--font-mono)',
                       textTransform: 'uppercase',
                       letterSpacing: '0.15em',
-                      color: seg.featured ? '#475569' : '#94a3b8',
-                      marginTop: '2px',
-                    }}
-                  >
-                    {seg.metricLabel}
-                  </span>
-                </div>
+                      color: 'rgba(255,255,255,0.55)',
+                      marginTop: '4px',
+                    }}>
+                      {seg.metricLabel}
+                    </span>
+                  </div>
 
-                {/* Divider */}
-                <div
-                  style={{
-                    height: '1px',
-                    background: seg.featured ? '#1e293b' : '#f1f5f9',
-                    marginBottom: '1.25rem',
-                  }}
-                />
+                  {/* Divider */}
+                  <div style={{ height: '1px', background: 'rgba(255,255,255,0.06)', marginBottom: '1.25rem', flexShrink: 0 }} />
 
-                {/* Headline */}
-                <h3
-                  style={{
+                  {/* ── Zone 3: Headline (fixed height) */}
+                  <h3 style={{
                     fontFamily: 'var(--font-barlow-condensed)',
                     fontWeight: 700,
-                    fontSize: 'clamp(1.3rem, 2vw, 1.6rem)',
+                    fontSize: '1.45rem',
                     letterSpacing: '0.01em',
                     textTransform: 'uppercase',
                     lineHeight: 1.15,
-                    color: seg.featured ? 'white' : '#0f172a',
+                    color: seg.featured ? '#ffffff' : 'rgba(255,255,255,0.85)',
                     marginBottom: '0.75rem',
-                  }}
-                >
-                  {seg.headline}
-                </h3>
+                    minHeight: '3.4rem',
+                    flexShrink: 0,
+                  }}>
+                    {seg.headline}
+                  </h3>
 
-                {/* Description */}
-                <p
-                  style={{
+                  {/* ── Zone 4: Description (grows to fill) */}
+                  <p style={{
                     fontSize: '14px',
                     lineHeight: 1.75,
-                    color: '#64748b',
+                    color: 'rgba(255,255,255,0.68)',
                     marginBottom: '1.5rem',
                     flexGrow: 1,
-                  }}
-                >
-                  {seg.description}
-                </p>
+                  }}>
+                    {seg.description}
+                  </p>
 
-                {/* Feature list */}
-                <ul
-                  style={{
+                  {/* ── Zone 5: Feature list (fixed) */}
+                  <ul style={{
                     listStyle: 'none',
                     padding: 0,
                     margin: '0 0 1.75rem',
                     display: 'flex',
                     flexDirection: 'column',
                     gap: '8px',
-                  }}
-                >
-                  {seg.items.map((item) => (
-                    <li
-                      key={item}
-                      style={{
+                    flexShrink: 0,
+                  }}>
+                    {seg.items.map((item) => (
+                      <li key={item} style={{
                         display: 'flex',
                         alignItems: 'center',
                         gap: '8px',
                         fontSize: '13px',
-                        color: seg.featured ? '#94a3b8' : '#475569',
-                      }}
-                    >
-                      <CheckCircle2
-                        style={{
-                          width: '14px',
-                          height: '14px',
-                          color: '#f97316',
-                          flexShrink: 0,
-                        }}
-                      />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
+                        color: 'rgba(255,255,255,0.72)',
+                      }}>
+                        <CheckCircle2 style={{ width: '14px', height: '14px', color: '#f97316', flexShrink: 0 }} />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
 
-                {/* CTA */}
-                <Link
-                  href={seg.href}
-                  style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: '6px',
-                    fontSize: '13px',
-                    fontWeight: 700,
-                    letterSpacing: '0.05em',
-                    textTransform: 'uppercase',
-                    color: '#f97316',
-                    textDecoration: 'none',
-                    marginTop: 'auto',
-                    transition: 'gap 0.2s',
-                    cursor: 'pointer',
-                  }}
-                  onMouseEnter={(e) => {
-                    const el = e.currentTarget as HTMLElement
-                    el.style.gap = '10px'
-                  }}
-                  onMouseLeave={(e) => {
-                    const el = e.currentTarget as HTMLElement
-                    el.style.gap = '6px'
-                  }}
-                >
-                  {seg.cta}
-                  <ArrowRight style={{ width: '14px', height: '14px' }} />
-                </Link>
-              </motion.div>
-            )
-          })}
-        </div>
+                  {/* ── Zone 6: CTA (pinned to bottom) */}
+                  <div style={{ height: '1px', background: 'rgba(255,255,255,0.06)', marginBottom: '1.25rem', flexShrink: 0 }} />
+                  <Link
+                    href={seg.href}
+                    style={{
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '6px',
+                      fontSize: '13px',
+                      fontWeight: 700,
+                      letterSpacing: '0.05em',
+                      textTransform: 'uppercase',
+                      color: '#f97316',
+                      textDecoration: 'none',
+                      flexShrink: 0,
+                      transition: 'gap 0.2s',
+                      cursor: 'pointer',
+                    }}
+                    onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.gap = '10px' }}
+                    onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.gap = '6px' }}
+                  >
+                    {seg.cta}
+                    <ArrowRight style={{ width: '14px', height: '14px' }} />
+                  </Link>
+                </motion.div>
+              )
+            })}
+          </div>
+        </motion.div>
       </div>
     </section>
   )

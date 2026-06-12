@@ -152,18 +152,14 @@ export default async function PortfolioDetailPage({ params }: { params: Promise<
               )}
 
               {/* Primary CTA */}
-              <button
-                onClick={() => { window.location.href = ctaHref }}
+              <Link
+                href={ctaHref}
                 className="w-full font-bold text-sm tracking-wide py-4 rounded-xl flex items-center justify-center gap-2 group transition-colors"
-                style={{ background: '#0f172a', color: '#ffffff' }}
-                onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = '#1e293b' }}
-                onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = '#0f172a' }}
+                style={{ background: '#f97316', color: '#ffffff' }}
               >
-                <Link href={ctaHref} className="flex items-center gap-2">
-                  {ctaText}
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </Link>
-              </button>
+                {ctaText}
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </Link>
 
               {/* Secondary CTA — WhatsApp */}
               <a

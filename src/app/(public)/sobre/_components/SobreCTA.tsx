@@ -1,8 +1,8 @@
 'use client'
 
-import Link from 'next/link'
 import { ArrowRight, CheckCircle } from 'lucide-react'
 import { WHATSAPP_NUMBER } from '@/lib/constants'
+import { SectionLabel, CTAButton } from '@/components/ui/design-system'
 
 const differentials = [
   'Equipe própria de engenheiros e soldadores certificados',
@@ -15,33 +15,25 @@ const differentials = [
 
 export default function SobreCTA() {
   return (
-    <section style={{ background: '#ffffff', paddingTop: '6rem', paddingBottom: '6rem' }}>
+    <section style={{ background: '#0f172a', paddingTop: '6rem', paddingBottom: '6rem' }}>
       <div className="container mx-auto px-4 sm:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
 
-          <div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '1.5rem' }}>
-              <div style={{ width: '32px', height: '1px', background: '#f97316', flexShrink: 0 }} />
-              <span style={{
-                fontFamily: 'var(--font-mono)',
-                fontSize: '10px',
-                letterSpacing: '0.4em',
-                textTransform: 'uppercase',
-                color: '#f97316',
-              }}>
-                Por que a Metalprime
-              </span>
+          {/* Esquerda */}
+          <div style={{ position: 'sticky', top: '8rem' }}>
+            <div style={{ marginBottom: '1.5rem' }}>
+              <SectionLabel label="Por que a Metalprime" />
             </div>
 
             <h2 style={{
               fontFamily: 'var(--font-barlow-condensed)',
               fontWeight: 900,
-              fontSize: 'clamp(2.5rem, 5vw, 4.5rem)',
-              lineHeight: 0.95,
-              letterSpacing: '0.01em',
-              textTransform: 'uppercase',
-              color: '#0f172a',
-              marginBottom: '1.25rem',
+              fontSize: 'clamp(3rem, 5vw, 5rem)',
+              lineHeight: 0.92,
+              letterSpacing: '-0.01em',
+              textTransform: 'uppercase' as const,
+              color: '#ffffff',
+              marginBottom: '1.5rem',
             }}>
               O que você não<br />
               encontra em<br />
@@ -51,57 +43,59 @@ export default function SobreCTA() {
             <p style={{
               fontSize: '15px',
               lineHeight: 1.75,
-              color: '#64748b',
-              marginBottom: '2.5rem',
-              maxWidth: '380px',
+              color: 'rgba(255,255,255,0.75)',
+              marginBottom: '3rem',
+              maxWidth: '38ch',
             }}>
               A maioria terceiriza, improvisa e entrega sem ART. Aqui é diferente.
               Fale com um engenheiro: visita técnica gratuita, orçamento em 24h.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-3">
-              <Link
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+              <CTAButton
+                variant="primary"
                 href="/orcamento"
-                className="group inline-flex items-center gap-3 font-bold text-sm tracking-wide px-8 py-4"
-                style={{ background: '#f97316', color: '#ffffff' }}
-                onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = '#ea580c' }}
-                onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = '#f97316' }}
+                iconCircle
+                icon={<ArrowRight style={{ width: '14px', height: '14px' }} />}
               >
                 Solicitar Orçamento Gratuito
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </Link>
+              </CTAButton>
 
-              <a
-                href={`https://wa.me/${WHATSAPP_NUMBER}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-sm px-8 py-4 transition-all duration-200"
-                style={{ border: '1px solid #e2e8f0', color: '#475569' }}
-                onMouseEnter={(e) => {
-                  const el = e.currentTarget as HTMLElement
-                  el.style.borderColor = '#0f172a'
-                  el.style.color = '#0f172a'
-                }}
-                onMouseLeave={(e) => {
-                  const el = e.currentTarget as HTMLElement
-                  el.style.borderColor = '#e2e8f0'
-                  el.style.color = '#475569'
-                }}
+              <CTAButton
+                variant="ghost"
+                hrefExternal={`https://wa.me/${WHATSAPP_NUMBER}`}
+                onDark
               >
                 Falar pelo WhatsApp
-              </a>
+              </CTAButton>
             </div>
           </div>
 
-          <div>
+          {/* Direita — diferenciais */}
+          <div style={{ border: '1px solid rgba(255,255,255,0.08)' }}>
             {differentials.map((d, i) => (
               <div
                 key={i}
-                className="flex items-start gap-4 py-4"
-                style={{ borderBottom: i < differentials.length - 1 ? '1px solid #e2e8f0' : 'none' }}
+                className="flex items-start gap-5"
+                style={{
+                  padding: '1.75rem 2rem',
+                  borderBottom: i < differentials.length - 1 ? '1px solid rgba(255,255,255,0.08)' : 'none',
+                }}
               >
-                <CheckCircle style={{ width: '18px', height: '18px', color: '#f97316', flexShrink: 0, marginTop: '1px' }} />
-                <span style={{ fontSize: '14px', color: '#334155', lineHeight: 1.65 }}>
+                <div style={{
+                  width: '28px',
+                  height: '28px',
+                  border: '1px solid rgba(249,115,22,0.3)',
+                  background: 'rgba(249,115,22,0.08)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  flexShrink: 0,
+                  marginTop: '1px',
+                }}>
+                  <CheckCircle style={{ width: '14px', height: '14px', color: '#f97316' }} />
+                </div>
+                <span style={{ fontSize: '14px', color: 'rgba(255,255,255,0.85)', lineHeight: 1.7 }}>
                   {d}
                 </span>
               </div>

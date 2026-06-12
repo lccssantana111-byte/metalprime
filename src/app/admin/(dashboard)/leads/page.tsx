@@ -67,7 +67,7 @@ export default async function AdminLeadsPage({
               href={`/admin/leads${statusFilter ? `?status=${statusFilter}` : ''}`}
               className={`inline-flex items-center gap-1.5 px-3 py-2 text-sm transition-colors ${
                 view === 'list'
-                  ? 'bg-amber-brand text-carbon font-semibold'
+                  ? 'bg-[#f97316] text-white font-semibold'
                   : 'text-slate-500 hover:text-slate-800'
               }`}
             >
@@ -78,7 +78,7 @@ export default async function AdminLeadsPage({
               href={`/admin/leads?view=kanban`}
               className={`inline-flex items-center gap-1.5 px-3 py-2 text-sm transition-colors ${
                 view === 'kanban'
-                  ? 'bg-amber-brand text-carbon font-semibold'
+                  ? 'bg-[#f97316] text-white font-semibold'
                   : 'text-slate-500 hover:text-slate-800'
               }`}
             >
@@ -87,7 +87,7 @@ export default async function AdminLeadsPage({
             </Link>
           </div>
 
-          <Button asChild className="bg-amber-brand hover:bg-amber-light text-carbon font-semibold">
+          <Button asChild className="bg-[#f97316] hover:bg-[#ea580c] text-white font-semibold">
             <Link href="/admin/leads/novo">
               <Plus className="w-4 h-4 mr-2" />
               Novo Lead
@@ -116,7 +116,7 @@ export default async function AdminLeadsPage({
                 href={f.value ? `/admin/leads?status=${f.value}` : '/admin/leads'}
                 className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${
                   (statusFilter ?? '') === f.value
-                    ? 'bg-amber-brand text-carbon'
+                    ? 'bg-[#f97316] text-white'
                     : 'bg-white border border-slate-200 text-slate-500 hover:text-slate-800'
                 }`}
               >
@@ -143,7 +143,7 @@ export default async function AdminLeadsPage({
                     <tr key={lead.id} className="hover:bg-slate-50 transition-colors">
                       <td className="px-5 py-4">
                         <Link href={`/admin/leads/${lead.id}`} className="block">
-                          <p className="text-sm font-medium text-foreground hover:text-amber-brand transition-colors">
+                          <p className="text-sm font-medium text-foreground hover:text-[#ea580c] transition-colors">
                             {lead.name}
                           </p>
                           <p className="text-xs text-slate-500 mt-0.5">{lead.phone}</p>
@@ -174,7 +174,7 @@ export default async function AdminLeadsPage({
             {(listLeads ?? []).length === 0 && (
               <div className="text-center py-16">
                 <p className="text-slate-500 mb-4">Nenhum lead encontrado.</p>
-                <Button asChild size="sm" className="bg-amber-brand hover:bg-amber-light text-carbon">
+                <Button asChild size="sm" className="bg-[#f97316] hover:bg-[#ea580c] text-white">
                   <Link href="/admin/leads/novo">Criar primeiro lead</Link>
                 </Button>
               </div>
@@ -189,7 +189,7 @@ export default async function AdminLeadsPage({
                 {page > 1 && (
                   <Link
                     href={`/admin/leads?page=${page - 1}${statusFilter ? `&status=${statusFilter}` : ''}`}
-                    className="px-4 py-2 bg-white border border-slate-200 text-slate-600 rounded-lg text-sm hover:border-amber-brand/40 transition-colors"
+                    className="px-4 py-2 bg-white border border-slate-200 text-slate-600 rounded-lg text-sm hover:border-[#ea580c]/40 transition-colors"
                   >
                     Anterior
                   </Link>
@@ -197,7 +197,7 @@ export default async function AdminLeadsPage({
                 {page < totalPages && (
                   <Link
                     href={`/admin/leads?page=${page + 1}${statusFilter ? `&status=${statusFilter}` : ''}`}
-                    className="px-4 py-2 bg-white border border-slate-200 text-slate-600 rounded-lg text-sm hover:border-amber-brand/40 transition-colors"
+                    className="px-4 py-2 bg-white border border-slate-200 text-slate-600 rounded-lg text-sm hover:border-[#ea580c]/40 transition-colors"
                   >
                     Próxima
                   </Link>

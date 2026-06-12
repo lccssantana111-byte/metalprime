@@ -22,7 +22,7 @@ export function RecentLeads({ leads }: RecentLeadsProps) {
           className="flex items-center justify-between py-3 hover:bg-slate-50 -mx-2 px-2 rounded transition-colors"
         >
           <div className="min-w-0 flex-1">
-            <p className="text-sm font-medium text-foreground truncate hover:text-amber-brand transition-colors">
+            <p className="text-sm font-medium text-foreground truncate hover:text-[#ea580c] transition-colors">
               {lead.name}
             </p>
             <div className="flex items-center gap-2 mt-0.5">

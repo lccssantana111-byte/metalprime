@@ -130,7 +130,7 @@ export default function Navbar() {
                         style={{
                           background: 'white',
                           border: '1px solid #e2e8f0',
-                          minWidth: '540px',
+                          minWidth: 'min(540px, calc(100vw - 3rem))',
                           boxShadow: '0 16px 48px rgba(15,23,42,0.14), 0 2px 8px rgba(15,23,42,0.05)',
                         }}
                       >
@@ -215,9 +215,9 @@ export default function Navbar() {
           <a
             href={`tel:${COMPANY_PHONE}`}
             className="text-[12px] transition-colors duration-300"
-            style={{ fontFamily: 'var(--font-mono)', color: D ? 'rgba(255,255,255,0.35)' : '#94a3b8' }}
-            onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = D ? 'rgba(255,255,255,0.8)' : '#0f172a' }}
-            onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = D ? 'rgba(255,255,255,0.35)' : '#94a3b8' }}
+            style={{ fontFamily: 'var(--font-mono)', color: D ? 'rgba(255,255,255,0.65)' : '#94a3b8' }}
+            onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = D ? 'rgba(255,255,255,0.95)' : '#0f172a' }}
+            onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = D ? 'rgba(255,255,255,0.65)' : '#94a3b8' }}
           >
             {COMPANY_PHONE}
           </a>

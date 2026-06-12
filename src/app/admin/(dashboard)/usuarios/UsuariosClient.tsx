@@ -11,7 +11,7 @@ import { convidarUsuario, removerUsuario } from './actions'
 import { formatDate } from '@/lib/utils'
 
 const ROLE_CONFIG = {
-  admin: { label: 'Admin', icon: ShieldCheck, className: 'border-amber-brand/40 text-amber-brand' },
+  admin: { label: 'Admin', icon: ShieldCheck, className: 'border-[#ea580c]/40 text-[#ea580c]' },
   comercial: { label: 'Comercial', icon: Briefcase, className: 'border-blue-500/30 text-blue-300' },
   viewer: { label: 'Visualizador', icon: Eye, className: 'border-slate-200 text-slate-400' },
 } as const
@@ -69,7 +69,7 @@ export function UsuariosClient({ users, currentUserId }: { users: User[]; curren
         </div>
         <Button
           onClick={() => setModalOpen(true)}
-          className="bg-amber-brand hover:bg-amber-light text-carbon font-bold gap-2"
+          className="bg-[#f97316] hover:bg-[#ea580c] text-white font-bold gap-2"
         >
           <UserPlus className="w-4 h-4" />
           Adicionar usuário
@@ -160,7 +160,7 @@ export function UsuariosClient({ users, currentUserId }: { users: User[]; curren
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
           <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={() => setModalOpen(false)} />
           <div className="relative w-full max-w-md bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-2xl">
-            <div className="h-px bg-gradient-to-r from-transparent via-amber-brand/40 to-transparent" />
+            <div className="h-px bg-gradient-to-r from-transparent via-[#ea580c]/40 to-transparent" />
             <div className="p-6">
               <div className="flex items-center justify-between mb-6">
                 <h2 className="text-lg font-semibold text-foreground">Adicionar usuário</h2>
@@ -177,7 +177,7 @@ export function UsuariosClient({ users, currentUserId }: { users: User[]; curren
                     name="nome"
                     placeholder="Ex: João Silva"
                     required
-                    className="bg-carbon/60 border-slate-300/50 focus:border-amber-brand/60 text-foreground placeholder:text-slate-400 h-10"
+                    className="bg-carbon/60 border-slate-300/50 focus:border-[#ea580c]/60 text-foreground placeholder:text-slate-400 h-10"
                   />
                 </div>
 
@@ -189,7 +189,7 @@ export function UsuariosClient({ users, currentUserId }: { users: User[]; curren
                     type="email"
                     placeholder="joao@email.com"
                     required
-                    className="bg-carbon/60 border-slate-300/50 focus:border-amber-brand/60 text-foreground placeholder:text-slate-400 h-10"
+                    className="bg-carbon/60 border-slate-300/50 focus:border-[#ea580c]/60 text-foreground placeholder:text-slate-400 h-10"
                   />
                 </div>
 
@@ -206,7 +206,7 @@ export function UsuariosClient({ users, currentUserId }: { users: User[]; curren
                           onClick={() => setRole(key)}
                           className={`flex flex-col items-center gap-1.5 p-3 rounded-lg border text-xs font-medium transition-all ${
                             role === key
-                              ? 'border-amber-brand bg-amber-brand/10 text-amber-brand'
+                              ? 'border-[#ea580c] bg-[#f97316]/10 text-[#ea580c]'
                               : 'border-slate-200 text-slate-500 hover:border-slate-300 hover:text-foreground'
                           }`}
                         >
@@ -235,7 +235,7 @@ export function UsuariosClient({ users, currentUserId }: { users: User[]; curren
                   <Button
                     type="submit"
                     disabled={loading}
-                    className="flex-1 bg-amber-brand hover:bg-amber-light text-carbon font-bold"
+                    className="flex-1 bg-[#f97316] hover:bg-[#ea580c] text-white font-bold"
                   >
                     {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : 'Adicionar'}
                   </Button>

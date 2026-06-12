@@ -46,7 +46,7 @@ export function LeadAssign({ leadId, assignedTo, users }: Props) {
         value={selected}
         onChange={(e) => assign(e.target.value)}
         disabled={loading}
-        className="w-full bg-slate-100 border border-slate-200 text-sm text-foreground rounded-lg px-3 py-2 focus:outline-none focus:border-amber-brand/50 disabled:opacity-50"
+        className="w-full bg-slate-100 border border-slate-200 text-sm text-foreground rounded-lg px-3 py-2 focus:outline-none focus:border-[#ea580c]/50 disabled:opacity-50"
       >
         <option value="">— Sem responsável —</option>
         {users.map((u) => (

@@ -36,7 +36,7 @@ export const LEAD_STATUS_LABELS: Record<string, string> = {
 
 export const LEAD_STATUS_COLORS: Record<string, string> = {
   novo: 'bg-blue-500/20 text-blue-300 border-blue-500/30',
-  em_contato: 'bg-yellow-500/20 text-yellow-300 border-yellow-500/30',
+  em_contato: 'bg-orange-500/20 text-orange-300 border-orange-500/30',
   proposta_enviada: 'bg-purple-500/20 text-purple-300 border-purple-500/30',
   em_negociacao: 'bg-orange-500/20 text-orange-300 border-orange-500/30',
   ganho: 'bg-green-500/20 text-green-300 border-green-500/30',

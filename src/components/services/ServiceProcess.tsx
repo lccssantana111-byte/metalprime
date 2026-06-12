@@ -2,6 +2,8 @@
 
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
+import { COLORS, TYPOGRAPHY } from '@/components/ui/design-system'
+import { springEase } from '@/lib/animations'
 
 const DEFAULT_STEPS = [
   {
@@ -42,10 +44,11 @@ export default function ServiceProcess({ steps = DEFAULT_STEPS }: Props) {
   return (
     <section
       ref={ref}
-      className="py-28 sm:py-36 overflow-hidden"
+      className="relative overflow-hidden"
       style={{ background: '#f7f5f2', borderTop: '1px solid rgba(0,0,0,0.05)' }}
     >
-      <div className="container mx-auto px-5 sm:px-8">
+
+      <div className="relative z-10 container mx-auto px-5 sm:px-8 py-28 sm:py-36">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24">
 
           {/* Header */}
@@ -53,70 +56,175 @@ export default function ServiceProcess({ steps = DEFAULT_STEPS }: Props) {
             className="lg:col-span-4"
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.8, ease: springEase }}
           >
-            <span className="font-mono text-[10px] tracking-[0.45em] uppercase block mb-6" style={{ color: 'rgba(196,160,64,0.7)' }}>
+            <p
+              style={{
+                fontFamily: TYPOGRAPHY.families.mono,
+                fontSize: '11px',
+                letterSpacing: '0.18em',
+                textTransform: 'uppercase',
+                color: COLORS.brand.orange,
+                marginBottom: '1.5rem',
+              }}
+            >
               Como trabalhamos
-            </span>
+            </p>
+
             <h2
-              className="font-display font-black leading-[0.88]"
-              style={{ fontSize: 'clamp(2.5rem, 4vw, 4rem)', color: '#1e2328', letterSpacing: '-0.02em' }}
+              style={{
+                fontFamily: TYPOGRAPHY.families.heading,
+                fontWeight: 900,
+                fontSize: 'clamp(3rem, 5vw, 5rem)',
+                lineHeight: 0.9,
+                textTransform: 'uppercase',
+                letterSpacing: '0.01em',
+                color: '#1e2328',
+                margin: 0,
+              }}
             >
               Do projeto<br />
-              <span style={{ color: 'rgba(240,241,242,0.18)' }}>à entrega</span>
+              <span style={{ color: COLORS.brand.orange }}>à entrega</span>
             </h2>
-            <p className="mt-8 text-[14px] leading-[1.8]" style={{ color: 'rgba(60,74,88,0.4)' }}>
+
+            <p
+              style={{
+                marginTop: '2rem',
+                fontSize: '14px',
+                lineHeight: 1.8,
+                color: '#5a6a7a',
+                maxWidth: '30ch',
+              }}
+            >
               Cada etapa é documentada e comunicada ao cliente. Sem improvisos.
             </p>
+
+            {/* Step count badge */}
+            <div
+              style={{
+                marginTop: '3rem',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.75rem',
+                padding: '0.6rem 1.25rem',
+                border: '1px solid rgba(249,115,22,0.25)',
+                borderRadius: '4px',
+                background: 'rgba(249,115,22,0.06)',
+              }}
+            >
+              <span
+                style={{
+                  fontFamily: TYPOGRAPHY.families.heading,
+                  fontWeight: 900,
+                  fontSize: '2rem',
+                  lineHeight: 1,
+                  color: COLORS.brand.orange,
+                }}
+              >
+                {String(steps.length).padStart(2, '0')}
+              </span>
+              <span
+                style={{
+                  fontFamily: TYPOGRAPHY.families.mono,
+                  fontSize: '10px',
+                  letterSpacing: '0.12em',
+                  textTransform: 'uppercase',
+                  color: '#8a9aaa',
+                  lineHeight: 1.3,
+                }}
+              >
+                etapas<br />controladas
+              </span>
+            </div>
           </motion.div>
 
           {/* Steps */}
           <div className="lg:col-span-8">
             <div className="relative">
-              {/* Vertical rail */}
-              <div
-                className="absolute left-[18px] top-0 bottom-0 w-px hidden sm:block"
-                style={{ background: 'rgba(0,0,0,0.07)' }}
-              />
-
-              <div className="space-y-0">
-                {steps.map((step, i) => (
-                  <motion.div
-                    key={i}
-                    className="relative flex gap-8 sm:gap-10 pb-10 last:pb-0"
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={inView ? { opacity: 1, x: 0 } : {}}
-                    transition={{ duration: 0.6, delay: 0.1 + i * 0.1, ease: [0.16, 1, 0.3, 1] }}
+              {steps.map((step, i) => (
+                <motion.div
+                  key={i}
+                  className="relative"
+                  initial={{ opacity: 0, y: 24 }}
+                  animate={inView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.6, delay: 0.1 + i * 0.1, ease: [0.16, 1, 0.3, 1] }}
+                >
+                  <div
+                    style={{
+                      display: 'grid',
+                      gridTemplateColumns: '64px 1fr',
+                      gap: '1.5rem',
+                      alignItems: 'start',
+                      padding: '1.75rem 0',
+                      borderTop: '1px solid rgba(0,0,0,0.06)',
+                      position: 'relative',
+                    }}
+                    className="group"
                   >
+                    {/* Active highlight bar on hover */}
+                    <div
+                      style={{
+                        position: 'absolute',
+                        left: '-1.5rem',
+                        top: 0,
+                        bottom: 0,
+                        width: '2px',
+                        background: i === 0 ? COLORS.brand.orange : 'transparent',
+                        transition: 'background 0.3s',
+                      }}
+                      className="group-hover:!bg-orange-500"
+                    />
+
                     {/* Number */}
-                    <div className="flex-shrink-0 relative z-10">
+                    <div style={{ paddingTop: '2px' }}>
                       <div
-                        className="w-9 h-9 flex items-center justify-center font-mono text-[11px] font-bold"
                         style={{
-                          background: i === 0 ? '#c4a040' : '#eeeae3',
-                          border: `1px solid ${i === 0 ? '#c4a040' : 'rgba(0,0,0,0.09)'}`,
-                          color: i === 0 ? '#050608' : 'rgba(60,74,88,0.4)',
+                          fontFamily: TYPOGRAPHY.families.heading,
+                          fontWeight: 900,
+                          fontSize: 'clamp(2.5rem, 4vw, 3.5rem)',
+                          lineHeight: 1,
+                          color: i === 0 ? COLORS.brand.orange : 'rgba(0,0,0,0.1)',
+                          letterSpacing: '-0.02em',
+                          transition: 'color 0.3s',
                         }}
+                        className="group-hover:!text-orange-500"
                       >
                         {String(i + 1).padStart(2, '0')}
                       </div>
                     </div>
 
                     {/* Content */}
-                    <div className="pb-10 last:pb-0" style={{ borderBottom: i < steps.length - 1 ? '1px solid rgba(0,0,0,0.05)' : 'none' }}>
+                    <div style={{ paddingTop: '0.4rem' }}>
                       <h3
-                        className="font-display font-bold mb-3"
-                        style={{ fontSize: '1.05rem', color: '#1e2328', letterSpacing: '-0.01em' }}
+                        style={{
+                          fontFamily: TYPOGRAPHY.families.heading,
+                          fontWeight: 700,
+                          fontSize: 'clamp(1.1rem, 2vw, 1.35rem)',
+                          letterSpacing: '0.02em',
+                          textTransform: 'uppercase',
+                          color: '#1e2328',
+                          marginBottom: '0.6rem',
+                          lineHeight: 1.1,
+                        }}
                       >
                         {step.title}
                       </h3>
-                      <p className="text-[13px] leading-[1.85]" style={{ color: 'rgba(60,74,88,0.4)' }}>
+                      <p
+                        style={{
+                          fontSize: '15px',
+                          lineHeight: 1.75,
+                          color: '#5a6a7a',
+                        }}
+                      >
                         {step.description}
                       </p>
                     </div>
-                  </motion.div>
-                ))}
-              </div>
+                  </div>
+                </motion.div>
+              ))}
+
+              {/* Bottom border */}
+              <div style={{ borderTop: '1px solid rgba(0,0,0,0.06)' }} />
             </div>
           </div>
 

@@ -27,7 +27,7 @@ export default async function AdminPortfolioPage() {
           <h1 className="font-display text-3xl font-bold text-foreground">Portfólio</h1>
           <p className="text-slate-500 mt-1">{list.length} itens · {list.filter((i) => i.published).length} publicados</p>
         </div>
-        <Button asChild className="bg-amber-brand hover:bg-amber-light text-carbon font-semibold">
+        <Button asChild className="bg-[#f97316] hover:bg-[#ea580c] text-white font-semibold">
           <Link href="/admin/portfolio/novo">
             <Plus className="w-4 h-4 mr-2" />
             Novo Item
@@ -40,7 +40,7 @@ export default async function AdminPortfolioPage() {
           <Link
             key={item.id}
             href={`/admin/portfolio/${item.id}`}
-            className="group bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm hover:border-amber-brand/40 transition-colors"
+            className="group bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm hover:border-[#ea580c]/40 transition-colors"
           >
             <div className="relative aspect-video bg-steel">
               {item.cover_image ? (
@@ -58,7 +58,7 @@ export default async function AdminPortfolioPage() {
               )}
               <div className="absolute top-2 right-2 flex gap-1.5">
                 {item.featured && (
-                  <span className="bg-amber-brand rounded-full p-1">
+                  <span className="bg-[#f97316] rounded-full p-1">
                     <Star className="w-3 h-3 text-carbon" />
                   </span>
                 )}
@@ -72,7 +72,7 @@ export default async function AdminPortfolioPage() {
               </div>
             </div>
             <div className="p-4">
-              <p className="text-sm font-medium text-foreground group-hover:text-amber-brand transition-colors truncate">
+              <p className="text-sm font-medium text-foreground group-hover:text-[#ea580c] transition-colors truncate">
                 {item.title}
               </p>
               <div className="flex items-center justify-between mt-1.5">
@@ -89,7 +89,7 @@ export default async function AdminPortfolioPage() {
       {list.length === 0 && (
         <div className="text-center py-20 bg-white border border-slate-200 rounded-xl">
           <p className="text-slate-500 mb-4">Nenhum item no portfólio.</p>
-          <Button asChild size="sm" className="bg-amber-brand hover:bg-amber-light text-carbon">
+          <Button asChild size="sm" className="bg-[#f97316] hover:bg-[#ea580c] text-white">
             <Link href="/admin/portfolio/novo">Adicionar primeiro projeto</Link>
           </Button>
         </div>

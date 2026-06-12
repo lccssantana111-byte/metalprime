@@ -41,31 +41,25 @@ export default function CtaBanner() {
         }}
       />
 
-      {/* Dark gradient — left heavy to right lighter, letting texture show on the right */}
+      {/* Dark navy overlay — matches site palette */}
       <div
         style={{
           position: 'absolute',
           inset: 0,
-          background: 'linear-gradient(105deg, rgba(6,8,9,0.96) 0%, rgba(6,8,9,0.85) 45%, rgba(6,8,9,0.60) 100%)',
+          background: 'linear-gradient(105deg, rgba(15,23,42,0.94) 0%, rgba(15,23,42,0.80) 50%, rgba(15,23,42,0.55) 100%)',
         }}
       />
 
-      {/* Amber tint — very subtle, ties texture to brand */}
+      {/* Orange ambient glow — top left */}
       <div
         style={{
           position: 'absolute',
-          inset: 0,
-          background: 'rgba(249,115,22,0.04)',
-          mixBlendMode: 'screen',
-        }}
-      />
-
-      {/* Bottom vignette for smooth footer transition */}
-      <div
-        style={{
-          position: 'absolute',
-          inset: 0,
-          background: 'linear-gradient(to top, rgba(6,8,9,0.6) 0%, transparent 40%)',
+          top: '-120px',
+          left: '-80px',
+          width: '500px',
+          height: '500px',
+          background: 'radial-gradient(ellipse at center, rgba(249,115,22,0.10) 0%, transparent 65%)',
+          pointerEvents: 'none',
         }}
       />
 
@@ -185,7 +179,7 @@ export default function CtaBanner() {
         >
           <div
             style={{
-              background: 'rgba(6,8,9,0.65)',
+              background: 'rgba(15,23,42,0.75)',
               border: '1px solid rgba(249,115,22,0.25)',
               borderRadius: '16px',
               overflow: 'hidden',

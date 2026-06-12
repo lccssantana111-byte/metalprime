@@ -6,6 +6,8 @@ import { ArrowRight, ChevronRight } from 'lucide-react'
 import { WHATSAPP_NUMBER } from '@/lib/constants'
 import { PHOTOS } from '@/lib/images'
 import type { ServiceType } from '@/types'
+import { CTAButton, COLORS, TYPOGRAPHY } from '@/components/ui/design-system'
+import { springEase } from '@/lib/animations'
 
 interface Props {
   name: string
@@ -27,7 +29,7 @@ export default function ServiceHero({ name, tagline, heroImage, slug }: Props) {
   const photo = heroImage || (slug ? SLUG_PHOTOS[slug] : null) || PHOTOS.hero
 
   return (
-    <section className="relative min-h-[80vh] flex items-end overflow-hidden" style={{ background: '#f7f5f2' }}>
+    <section className="relative min-h-screen flex items-end overflow-hidden" style={{ background: '#050608' }}>
       {/* Photo */}
       <div className="absolute inset-0">
         <div
@@ -46,28 +48,36 @@ export default function ServiceHero({ name, tagline, heroImage, slug }: Props) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <Link href="/" className="text-[11px] font-mono transition-colors" style={{ color: 'rgba(180,188,198,0.35)' }}
+          <Link href="/" className="text-[11px] font-mono transition-colors" style={{ color: 'rgba(180,188,198,0.65)' }}
             onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = '#b4bcc6' }}
-            onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = 'rgba(180,188,198,0.35)' }}>
+            onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = 'rgba(180,188,198,0.65)' }}>
             Início
           </Link>
-          <ChevronRight className="w-3 h-3" style={{ color: 'rgba(180,188,198,0.2)' }} />
-          <Link href="/servicos" className="text-[11px] font-mono transition-colors" style={{ color: 'rgba(180,188,198,0.35)' }}
+          <ChevronRight className="w-3 h-3" style={{ color: 'rgba(180,188,198,0.45)' }} />
+          <Link href="/servicos" className="text-[11px] font-mono transition-colors" style={{ color: 'rgba(180,188,198,0.65)' }}
             onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = '#b4bcc6' }}
-            onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = 'rgba(180,188,198,0.35)' }}>
+            onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = 'rgba(180,188,198,0.65)' }}>
             Serviços
           </Link>
-          <ChevronRight className="w-3 h-3" style={{ color: 'rgba(180,188,198,0.2)' }} />
-          <span className="text-[11px] font-mono" style={{ color: '#c4a040' }}>{name}</span>
+          <ChevronRight className="w-3 h-3" style={{ color: 'rgba(180,188,198,0.45)' }} />
+          <span className="text-[11px] font-mono" style={{ color: COLORS.brand.orange }}>{name}</span>
         </motion.nav>
 
-        <div className="overflow-hidden mb-4">
+        <div className="mb-4">
           <motion.h1
-            className="font-display font-black leading-[0.88]"
-            style={{ fontSize: 'clamp(3.5rem, 9vw, 9rem)', color: '#1e2328', letterSpacing: '-0.025em' }}
+            style={{
+              fontFamily: TYPOGRAPHY.families.heading,
+              fontWeight: 900,
+              lineHeight: 0.88,
+              fontSize: 'clamp(3.5rem, 9vw, 9rem)',
+              color: '#ffffff',
+              letterSpacing: '0.01em',
+              textTransform: 'uppercase',
+              margin: 0,
+            }}
             initial={{ y: '110%' }}
             animate={{ y: '0%' }}
-            transition={{ duration: 1, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 1, delay: 0.1, ease: springEase }}
           >
             {name}
           </motion.h1>
@@ -76,7 +86,7 @@ export default function ServiceHero({ name, tagline, heroImage, slug }: Props) {
         {tagline && (
           <motion.p
             className="text-[16px] sm:text-[18px] leading-[1.7] mb-12 max-w-lg"
-            style={{ color: 'rgba(180,188,198,0.65)' }}
+            style={{ color: 'rgba(200,208,218,0.88)' }}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
@@ -86,40 +96,26 @@ export default function ServiceHero({ name, tagline, heroImage, slug }: Props) {
         )}
 
         <motion.div
-          className="flex flex-col sm:flex-row gap-4"
+          style={{ display: 'flex', flexWrap: 'wrap', gap: '12px' }}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.5 }}
+          transition={{ duration: 0.7, delay: 0.5, ease: springEase }}
         >
-          <Link
+          <CTAButton
+            variant="primary"
             href="/orcamento"
-            className="group inline-flex items-center gap-3 font-bold text-[13px] tracking-[0.1em] uppercase px-9 py-[17px] transition-all duration-200"
-            style={{ background: '#c4a040', color: '#050608' }}
-            onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = '#d4b454' }}
-            onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = '#c4a040' }}
+            iconCircle
+            icon={<ArrowRight style={{ width: '14px', height: '14px' }} />}
           >
             Solicitar Orçamento
-            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-          </Link>
-          <a
-            href={`https://wa.me/${WHATSAPP_NUMBER}?text=Olá! Tenho interesse em ${name.toLowerCase()}.`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 text-[13px] px-8 py-[17px] transition-all duration-200"
-            style={{ border: '1px solid rgba(0,0,0,0.12)', color: 'rgba(60,74,88,0.7)' }}
-            onMouseEnter={(e) => {
-              const el = e.currentTarget as HTMLElement
-              el.style.borderColor = 'rgba(0,0,0,0.20)'
-              el.style.color = '#1e2328'
-            }}
-            onMouseLeave={(e) => {
-              const el = e.currentTarget as HTMLElement
-              el.style.borderColor = 'rgba(0,0,0,0.12)'
-              el.style.color = 'rgba(60,74,88,0.7)'
-            }}
+          </CTAButton>
+          <CTAButton
+            variant="ghost"
+            hrefExternal={`https://wa.me/${WHATSAPP_NUMBER}?text=Olá! Tenho interesse em ${name.toLowerCase()}.`}
+            onDark
           >
             Falar pelo WhatsApp
-          </a>
+          </CTAButton>
         </motion.div>
       </div>
     </section>

@@ -33,7 +33,7 @@ const INTERACTION_COLORS: Record<string, string> = {
   call: 'bg-blue-500',
   whatsapp: 'bg-[#25D366]',
   email: 'bg-purple-500',
-  visit: 'bg-amber-brand',
+  visit: 'bg-[#f97316]',
   status_change: 'bg-orange-400',
 }
 
@@ -152,7 +152,7 @@ export default async function LeadDetailPage({ params }: { params: Promise<{ id:
           {/* Score breakdown */}
           <div className="bg-white border border-slate-200 rounded-xl p-5">
             <h3 className="text-sm font-semibold text-foreground mb-3 flex items-center gap-2">
-              <Flame className="w-4 h-4 text-amber-brand" />
+              <Flame className="w-4 h-4 text-[#ea580c]" />
               Lead Score — {score.total}pts
             </h3>
             <div className="space-y-1.5">
@@ -234,7 +234,7 @@ export default async function LeadDetailPage({ params }: { params: Promise<{ id:
                     <div className={`w-2 h-2 rounded-full mt-2 shrink-0 z-10 ${INTERACTION_COLORS[interaction.type] ?? 'bg-metal-dark'}`} />
                     <div className="flex-1 min-w-0 pb-4 border-b border-slate-100 last:border-0">
                       <div className="flex items-center gap-2 mb-1 flex-wrap">
-                        <span className="text-xs font-semibold text-amber-brand">
+                        <span className="text-xs font-semibold text-[#ea580c]">
                           {INTERACTION_TYPE_LABELS[interaction.type] ?? interaction.type}
                         </span>
                         <span className="text-xs text-slate-400">

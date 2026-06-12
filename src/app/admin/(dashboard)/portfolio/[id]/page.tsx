@@ -26,7 +26,7 @@ export default async function EditPortfolioPage({ params }: { params: Promise<{ 
           <Link
             href={`/portfolio/${item.slug}`}
             target="_blank"
-            className="inline-flex items-center gap-1.5 text-xs text-amber-brand hover:text-amber-light"
+            className="inline-flex items-center gap-1.5 text-xs text-[#ea580c] hover:text-[#c2410c]"
           >
             Ver no site
             <ExternalLink className="w-3.5 h-3.5" />

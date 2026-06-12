@@ -46,7 +46,7 @@ export default async function ClienteDetailPage({ params }: { params: Promise<{ 
                     className="flex items-center justify-between py-2.5 border-b border-slate-100 last:border-0 hover:bg-slate-50/60 -mx-2 px-2 rounded transition-colors"
                   >
                     <div>
-                      <p className="text-sm font-medium text-foreground hover:text-amber-brand transition-colors">{p.name}</p>
+                      <p className="text-sm font-medium text-foreground hover:text-[#ea580c] transition-colors">{p.name}</p>
                       <p className="text-xs text-slate-400 mt-0.5">
                         {p.estimated_end ? `Prazo: ${formatDate(p.estimated_end)}` : 'Sem prazo definido'}
                       </p>
@@ -144,7 +144,7 @@ export default async function ClienteDetailPage({ params }: { params: Promise<{ 
             <h3 className="font-semibold text-foreground mb-4">Financeiro</h3>
             <div>
               <p className="text-xs text-slate-400">Volume total de contratos</p>
-              <p className="text-xl font-bold text-amber-brand">{formatBRL(totalContractValue)}</p>
+              <p className="text-xl font-bold text-[#ea580c]">{formatBRL(totalContractValue)}</p>
             </div>
             <div className="mt-3">
               <p className="text-xs text-slate-400">Total de projetos</p>

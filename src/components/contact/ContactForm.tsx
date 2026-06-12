@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { toast } from 'sonner'
-import { Button } from '@/components/ui/button'
+import CTAButton from '@/components/ui/design-system/CTAButton'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Textarea } from '@/components/ui/textarea'
@@ -38,7 +38,7 @@ export default function ContactForm() {
 
   if (submitted) {
     return (
-      <div className="bg-graphite border border-green-500/20 rounded-xl p-10 text-center">
+      <div style={{ background: 'rgba(17,19,24,0.9)', border: '1px solid rgba(34,197,94,0.2)', padding: '3rem 2rem', textAlign: 'center' }}>
         <CheckCircle className="w-12 h-12 text-green-400 mx-auto mb-4" />
         <h3 className="font-display text-2xl font-bold text-foreground mb-3">Mensagem enviada!</h3>
         <p className="text-metal">Retornaremos em até 24 horas. Obrigado pelo contato.</p>
@@ -49,7 +49,7 @@ export default function ContactForm() {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="bg-graphite border border-metal-dark/30 rounded-xl p-8 space-y-5"
+      className="p-8 space-y-5"
     >
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
         <div>
@@ -58,7 +58,8 @@ export default function ContactForm() {
             id="name"
             {...register('name')}
             placeholder="Seu nome completo"
-            className="bg-steel/30 border-metal-dark/40 focus:border-amber-brand/60 text-foreground placeholder:text-metal-dark"
+            className="bg-white/[0.06] border-white/[0.12] focus:border-[#f97316]/60 placeholder:text-white/30"
+            style={{ color: '#ffffff' }}
           />
           {errors.name && <p className="text-red-400 text-xs mt-1">{errors.name.message}</p>}
         </div>
@@ -68,7 +69,8 @@ export default function ContactForm() {
             id="phone"
             {...register('phone')}
             placeholder="(11) 99999-9999"
-            className="bg-steel/30 border-metal-dark/40 focus:border-amber-brand/60 text-foreground placeholder:text-metal-dark"
+            className="bg-white/[0.06] border-white/[0.12] focus:border-[#f97316]/60 placeholder:text-white/30"
+            style={{ color: '#ffffff' }}
           />
           {errors.phone && <p className="text-red-400 text-xs mt-1">{errors.phone.message}</p>}
         </div>
@@ -81,23 +83,33 @@ export default function ContactForm() {
           type="email"
           {...register('email')}
           placeholder="seu@email.com"
-          className="bg-steel/30 border-metal-dark/40 focus:border-amber-brand/60 text-foreground placeholder:text-metal-dark"
+          className="bg-white/[0.06] border-white/[0.12] focus:border-[#f97316]/60 placeholder:text-white/30"
+          style={{ color: '#ffffff' }}
         />
       </div>
 
       <div>
         <Label className="text-metal-light mb-2 block">Serviço de interesse</Label>
         <Select onValueChange={(v) => setValue('service', v)}>
-          <SelectTrigger className="bg-steel/30 border-metal-dark/40 text-foreground">
+          <SelectTrigger
+            className="bg-white/[0.06] border-white/[0.12]"
+            style={{ color: '#ffffff' }}
+          >
             <SelectValue placeholder="Selecione um serviço" />
           </SelectTrigger>
-          <SelectContent className="bg-graphite border-metal-dark/40">
-            <SelectItem value="portoes">Portões</SelectItem>
-            <SelectItem value="grades_e_cercas">Grades e Cercas</SelectItem>
-            <SelectItem value="escadas">Escadas Metálicas</SelectItem>
-            <SelectItem value="corrimoes">Corrimões e Guarda-corpos</SelectItem>
-            <SelectItem value="estruturas_metalicas">Estruturas Metálicas</SelectItem>
-            <SelectItem value="sob_medida">Projeto Sob Medida</SelectItem>
+          <SelectContent
+            style={{
+              background: '#1e293b',
+              border: '1px solid rgba(255,255,255,0.12)',
+              color: '#ffffff',
+            }}
+          >
+            <SelectItem value="portoes" style={{ color: '#ffffff' }}>Portões</SelectItem>
+            <SelectItem value="grades_e_cercas" style={{ color: '#ffffff' }}>Grades e Cercas</SelectItem>
+            <SelectItem value="escadas" style={{ color: '#ffffff' }}>Escadas Metálicas</SelectItem>
+            <SelectItem value="corrimoes" style={{ color: '#ffffff' }}>Corrimões e Guarda-corpos</SelectItem>
+            <SelectItem value="estruturas_metalicas" style={{ color: '#ffffff' }}>Estruturas Metálicas</SelectItem>
+            <SelectItem value="sob_medida" style={{ color: '#ffffff' }}>Projeto Sob Medida</SelectItem>
           </SelectContent>
         </Select>
       </div>
@@ -109,25 +121,28 @@ export default function ContactForm() {
           {...register('message')}
           placeholder="Descreva brevemente o que você precisa..."
           rows={5}
-          className="bg-steel/30 border-metal-dark/40 focus:border-amber-brand/60 text-foreground placeholder:text-metal-dark resize-none"
+          className="bg-white/[0.06] border-white/[0.12] focus:border-[#f97316]/60 placeholder:text-white/30 resize-none"
+          style={{ color: '#ffffff' }}
         />
         {errors.message && <p className="text-red-400 text-xs mt-1">{errors.message.message}</p>}
       </div>
 
-      <Button
+      <CTAButton
+        variant="primary"
         type="submit"
         disabled={isSubmitting}
-        className="w-full bg-amber-brand hover:bg-amber-light text-carbon font-bold py-4 h-auto"
+        size="lg"
+        style={{ width: '100%', justifyContent: 'center', borderRadius: 0, marginTop: '0.25rem' }}
       >
         {isSubmitting ? (
-          <>
-            <Loader2 className="w-4 h-4 animate-spin mr-2" />
+          <span style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
+            <Loader2 className="w-4 h-4 animate-spin" />
             Enviando...
-          </>
+          </span>
         ) : (
           'Enviar Mensagem'
         )}
-      </Button>
+      </CTAButton>
     </form>
   )
 }

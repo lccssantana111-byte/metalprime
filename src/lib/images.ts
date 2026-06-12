@@ -8,12 +8,12 @@ export const PHOTOS = {
   process:      `${U}1504917595217-d4dc5ebe6122${Q}&w=1200`,
 
   services: {
-    portoes:             `${U}1558618666-fcd25c85cd64${Q}&w=900`,
-    grades_e_cercas:     `${U}1581091226825-a6a2a5aee158${Q}&w=900`,
-    escadas:             `${U}1545552987-720aa18145ca${Q}&w=900`,
-    corrimoes:           `${U}1504917595217-d4dc5ebe6122${Q}&w=900`,
-    estruturas_metalicas:`${U}1504307651254-35680f356dfd${Q}&w=900`,
-    sob_medida:          `${U}1534237710431-e2fc698436d0${Q}&w=900`,
+    portoes:             '/servicos/portoes-hero.png',
+    grades_e_cercas:     '/servicos/grades-e-cercas-hero.png',
+    escadas:             '/servicos/escadas-hero.png',
+    corrimoes:           '/servicos/corrimoes-hero.png',
+    estruturas_metalicas:'/servicos/estruturas-metalicas-hero.png',
+    sob_medida:          '/servicos/sob-medida-hero.png',
   },
 
   gallery: {
