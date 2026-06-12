@@ -67,7 +67,7 @@ function StepRow({
       className="process-step-row"
       style={{
         display: 'grid',
-        gridTemplateColumns: 'minmax(0,1fr) 48px minmax(0,1.6fr)',
+        gridTemplateColumns: 'auto 48px 1fr',
         padding: 'clamp(2rem, 4vw, 3.5rem) 0',
         borderBottom: isLast ? 'none' : '1px solid rgba(15,23,42,0.08)',
         position: 'relative',
