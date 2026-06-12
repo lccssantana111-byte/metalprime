@@ -86,15 +86,13 @@ export default function TestimonialsCarousel() {
         backgroundSize: '28px 28px',
       }} />
 
-      <div style={{
-        position: 'relative', zIndex: 1,
-        maxWidth: '1600px', margin: '0 auto',
-        padding: 'clamp(4rem, 6vw, 6rem) clamp(1.5rem, 2.5vw, 2.5rem) clamp(3rem, 5vw, 5rem)',
-        display: 'grid',
-        gridTemplateColumns: 'minmax(340px, 460px) 1fr',
-        gap: 'clamp(2rem, 4vw, 4rem)',
-        alignItems: 'center',
-      }}>
+      <div
+        className="grid grid-cols-1 gap-8 md:grid-cols-[minmax(340px,460px)_1fr] md:items-center"
+        style={{
+          position: 'relative', zIndex: 1,
+          maxWidth: '1600px', margin: '0 auto',
+          padding: 'clamp(4rem, 6vw, 6rem) clamp(1.5rem, 2.5vw, 2.5rem) clamp(3rem, 5vw, 5rem)',
+        }}>
 
         {/* LEFT — sticky headline */}
         <motion.div
@@ -124,8 +122,8 @@ export default function TestimonialsCarousel() {
             style={{
               fontFamily: 'var(--font-barlow-condensed)',
               fontWeight: 900,
-              fontSize: 'clamp(3rem, 5vw, 5rem)',
-              lineHeight: 0.92,
+              fontSize: 'clamp(2rem, 5vw, 5rem)',
+              lineHeight: 0.95,
               letterSpacing: '0.01em',
               textTransform: 'uppercase',
               color: '#0f172a',
@@ -139,7 +137,7 @@ export default function TestimonialsCarousel() {
 
           <p style={{
             fontFamily: 'var(--font-sans)',
-            fontSize: '0.95rem',
+            fontSize: 'clamp(0.8rem, 2.5vw, 0.95rem)',
             color: '#64748b',
             lineHeight: 1.6,
             margin: '0 0 2.5rem',

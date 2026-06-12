@@ -17,7 +17,7 @@ export const TestimonialsColumn = (props: {
   duration?: number;
 }) => {
   return (
-    <div className={props.className}>
+    <div className={`w-full ${props.className ?? ''}`}>
       <motion.div
         animate={{ translateY: "-50%" }}
         transition={{
@@ -32,7 +32,7 @@ export const TestimonialsColumn = (props: {
           <React.Fragment key={index}>
             {props.testimonials.map(({ text, image, name, role, service }, i) => (
               <div
-                className="p-6 rounded-2xl border border-slate-200 shadow-md shadow-slate-900/5 max-w-[300px] w-full bg-white"
+                className="p-6 rounded-2xl border border-slate-200 shadow-md shadow-slate-900/5 w-full sm:max-w-[300px] bg-white"
                 key={i}
               >
                 {/* Stars */}
