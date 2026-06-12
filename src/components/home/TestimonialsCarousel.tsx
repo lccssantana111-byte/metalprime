@@ -123,7 +123,7 @@ export default function TestimonialsCarousel() {
             style={{
               fontFamily: 'var(--font-barlow-condensed)',
               fontWeight: 900,
-              fontSize: 'clamp(2.75rem, 8vw, 5rem)',
+              fontSize: 'clamp(3rem, 6vw, 6.5rem)',
               lineHeight: 0.95,
               letterSpacing: '0.01em',
               textTransform: 'uppercase',
