@@ -137,7 +137,7 @@ export default function FeaturedProjects({ items }: Props) {
               fontFamily: 'var(--font-barlow-condensed)',
               fontWeight: 900,
               lineHeight: 0.95,
-              fontSize: 'clamp(2rem, 3.5vw, 3.25rem)',
+              fontSize: 'clamp(2.75rem, 5vw, 3.25rem)',
               textTransform: 'uppercase',
               letterSpacing: '0.01em',
               margin: 0,
