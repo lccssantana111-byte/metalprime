@@ -67,7 +67,7 @@ export default function HeroSection() {
             padding-left: 1.5rem !important;
             padding-right: 1.5rem !important;
             padding-top: 52dvh !important;
-            padding-bottom: calc(3rem + env(safe-area-inset-bottom, 0px)) !important;
+            padding-bottom: calc(7rem + env(safe-area-inset-bottom, 0px)) !important;
             align-self: flex-end !important;
           }
           .hero-headline {
