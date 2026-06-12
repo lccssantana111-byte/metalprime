@@ -32,9 +32,12 @@ export default function ServiceHero({ name, tagline, heroImage, slug }: Props) {
     <section className="relative min-h-screen flex items-end overflow-hidden" style={{ background: '#050608' }}>
       {/* Photo */}
       <div className="absolute inset-0">
-        <div
-          className="absolute inset-0"
-          style={{ backgroundImage: `url("${photo}")`, backgroundSize: 'cover', backgroundPosition: 'center 30%' }}
+        <img
+          src={photo}
+          alt=""
+          aria-hidden
+          className="absolute inset-0 w-full h-full object-cover object-[center_30%]"
+          fetchPriority="high"
         />
         <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(5,6,8,0.98) 0%, rgba(5,6,8,0.6) 40%, rgba(5,6,8,0.4) 100%)' }} />
         <div className="absolute inset-0" style={{ background: 'linear-gradient(90deg, rgba(5,6,8,0.5) 0%, transparent 60%)' }} />
