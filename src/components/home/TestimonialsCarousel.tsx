@@ -100,6 +100,7 @@ export default function TestimonialsCarousel() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           viewport={{ once: true }}
+          className="text-center md:text-left"
           style={{}}
         >
           <div style={{
@@ -140,7 +141,7 @@ export default function TestimonialsCarousel() {
             fontSize: 'clamp(0.8rem, 2.5vw, 0.95rem)',
             color: '#64748b',
             lineHeight: 1.6,
-            margin: '0 0 2.5rem',
+            margin: '0 auto 2.5rem',
             maxWidth: '340px',
           }}>
             Mais de 5.000 obras entregues em São Paulo desde 2004. Veja o que arquitetos, construtoras e proprietários dizem sobre a Metalprime.
