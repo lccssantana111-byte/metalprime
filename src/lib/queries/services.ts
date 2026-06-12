@@ -1,8 +1,8 @@
-import { createClient } from '@/lib/supabase/server'
+import { createPublicClient } from '@/lib/supabase/public'
 import type { Service, ServiceType } from '@/types'
 
 export async function getAllServices(): Promise<Service[]> {
-  const supabase = await createClient()
+  const supabase = createPublicClient()
   const { data } = await supabase
     .from('services')
     .select('*')
@@ -11,7 +11,7 @@ export async function getAllServices(): Promise<Service[]> {
 }
 
 export async function getServiceBySlug(slug: ServiceType): Promise<Service | null> {
-  const supabase = await createClient()
+  const supabase = createPublicClient()
   const { data } = await supabase.from('services').select('*').eq('slug', slug).single()
   return data as Service | null
 }

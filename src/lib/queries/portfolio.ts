@@ -1,8 +1,8 @@
-import { createClient } from '@/lib/supabase/server'
+import { createPublicClient } from '@/lib/supabase/public'
 import type { PortfolioItem } from '@/types'
 
 export async function getFeaturedPortfolio(): Promise<PortfolioItem[]> {
-  const supabase = await createClient()
+  const supabase = createPublicClient()
   const { data } = await supabase
     .from('portfolio_items')
     .select('*')
@@ -14,7 +14,7 @@ export async function getFeaturedPortfolio(): Promise<PortfolioItem[]> {
 }
 
 export async function getAllPortfolio(service?: string): Promise<PortfolioItem[]> {
-  const supabase = await createClient()
+  const supabase = createPublicClient()
   let query = supabase
     .from('portfolio_items')
     .select('*')
@@ -30,7 +30,7 @@ export async function getAllPortfolio(service?: string): Promise<PortfolioItem[]
 }
 
 export async function getPortfolioBySlug(slug: string): Promise<PortfolioItem | null> {
-  const supabase = await createClient()
+  const supabase = createPublicClient()
   const { data, error } = await supabase
     .from('portfolio_items')
     .select('*')
@@ -42,10 +42,10 @@ export async function getPortfolioBySlug(slug: string): Promise<PortfolioItem | 
 }
 
 export async function getPortfolioSlugs(): Promise<string[]> {
-  const supabase = await createClient()
+  const supabase = createPublicClient()
   const { data } = await supabase
     .from('portfolio_items')
     .select('slug')
     .eq('published', true)
-  return (data ?? []).map((d) => d.slug)
+  return (data ?? []).map((d: { slug: string }) => d.slug)
 }
