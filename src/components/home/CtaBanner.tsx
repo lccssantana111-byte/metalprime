@@ -83,10 +83,10 @@ export default function CtaBanner() {
           width: '100%',
           maxWidth: '1200px',
           margin: '0 auto',
-          padding: 'clamp(4rem, 8vw, 7rem) clamp(1.25rem, 4vw, 2rem)',
+          padding: 'clamp(3rem, 8vw, 7rem) clamp(1.25rem, 4vw, 2rem)',
           display: 'flex',
           alignItems: 'center',
-          gap: '4rem',
+          gap: '3rem',
           flexWrap: 'wrap',
         }}
       >
@@ -137,15 +137,8 @@ export default function CtaBanner() {
             Fabricação própria, ART em todos os projetos estruturais.
           </p>
 
-          {/* Trust badges — horizontal row */}
-          <div
-            style={{
-              display: 'flex',
-              flexWrap: 'wrap',
-              gap: '16px 24px',
-              alignItems: 'center',
-            }}
-          >
+          {/* Trust badges */}
+          <div className="flex flex-col sm:flex-row sm:flex-wrap gap-3 sm:gap-x-6 sm:gap-y-3 items-start sm:items-center">
             {trust.map(({ icon: Icon, text }, i) => (
               <div
                 key={text}
@@ -161,7 +154,7 @@ export default function CtaBanner() {
                 }}
               >
                 {i > 0 && (
-                  <span style={{ color: 'rgba(249,115,22,0.35)', marginRight: '8px' }}>|</span>
+                  <span className="hidden sm:inline" style={{ color: 'rgba(249,115,22,0.35)', marginRight: '8px' }}>|</span>
                 )}
                 <Icon style={{ width: '13px', height: '13px', color: '#f97316', flexShrink: 0 }} />
                 {text}
@@ -243,7 +236,7 @@ export default function CtaBanner() {
                   style={{
                     fontFamily: 'var(--font-barlow-condensed)',
                     fontWeight: 900,
-                    fontSize: 'clamp(1.5rem, 3vw, 2rem)',
+                    fontSize: 'clamp(1.75rem, 5vw, 2rem)',
                     color: 'white',
                     letterSpacing: '0.02em',
                   }}
@@ -295,8 +288,8 @@ export default function CtaBanner() {
                     el.style.transform = 'translateY(0)'
                   }}
                 >
-                  Solicitar Orçamento Gratuito
-                  <ArrowRight style={{ width: '15px', height: '15px' }} />
+                  <span>Solicitar Orçamento</span>
+                  <ArrowRight style={{ width: '15px', height: '15px', flexShrink: 0 }} />
                 </Link>
 
                 <a
