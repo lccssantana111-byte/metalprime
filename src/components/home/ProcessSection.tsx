@@ -312,9 +312,6 @@ export default function ProcessSection() {
           </h2>
         </motion.div>
 
-        {/* Top rule */}
-        <div className="process-top-rule" style={{ width: '100%', height: '1px', background: 'rgba(15,23,42,0.1)' }} />
-
         {/* Steps timeline */}
         <div ref={sectionRef} className="process-steps-wrap">
           {steps.map((step, i) => (
@@ -322,8 +319,6 @@ export default function ProcessSection() {
           ))}
         </div>
 
-        {/* Bottom rule */}
-        <div style={{ width: '100%', height: '1px', background: 'rgba(15,23,42,0.1)' }} />
 
       </div>
 
@@ -331,9 +326,6 @@ export default function ProcessSection() {
         @media (max-width: 640px) {
           .process-header {
             text-align: center !important;
-            margin-bottom: 2.5rem !important;
-          }
-          .process-top-rule {
             margin-bottom: 2.5rem !important;
           }
           .process-steps-wrap {
