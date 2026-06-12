@@ -73,8 +73,8 @@ function StepRow({
         position: 'relative',
       }}
     >
-      {/* LEFT: Giant number */}
-      <div style={{ position: 'relative', display: 'flex', alignItems: 'flex-start', overflow: 'hidden' }}>
+      {/* LEFT: Giant number + inline code (mobile) */}
+      <div className="process-step-number-wrap" style={{ position: 'relative', display: 'flex', alignItems: 'flex-start', overflow: 'hidden' }}>
         <motion.span
           className="process-step-number"
           style={{
@@ -94,6 +94,19 @@ function StepRow({
         >
           {step.number}
         </motion.span>
+        {/* Shown only on mobile, inline with number */}
+        <span className="process-step-code-mobile" style={{
+          display: 'none',
+          fontFamily: 'var(--font-mono)',
+          fontSize: '11px',
+          letterSpacing: '0.15em',
+          textTransform: 'uppercase',
+          color: 'rgba(100,116,139,0.8)',
+          alignSelf: 'center',
+          paddingBottom: '2px',
+        }}>
+          [ {step.code} ]
+        </span>
       </div>
 
       {/* CENTER: Vertical timeline segment */}
@@ -159,7 +172,7 @@ function StepRow({
         transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: index * 0.15 + 0.1 }}
       >
         {/* Technical code ID */}
-        <div style={{
+        <div className="process-step-code" style={{
           fontFamily: 'var(--font-mono)',
           fontSize: '11px',
           letterSpacing: '0.18em',
@@ -274,8 +287,8 @@ export default function ProcessSection() {
         >
           <span style={{
             fontFamily: 'var(--font-mono)',
-            fontSize: '10px',
-            letterSpacing: '0.45em',
+            fontSize: '11px',
+            letterSpacing: '0.35em',
             textTransform: 'uppercase',
             color: '#f97316',
             display: 'block',
@@ -316,17 +329,54 @@ export default function ProcessSection() {
       <style>{`
         @media (max-width: 640px) {
           .process-step-row {
-            grid-template-columns: 1fr !important;
+            display: flex !important;
+            flex-direction: column !important;
+            padding: 0 0 2.5rem 1.25rem !important;
+            border-bottom: none !important;
+            border-left: 2px solid rgba(249,115,22,0.3) !important;
+            position: relative !important;
+            margin-bottom: 0 !important;
+          }
+          .process-step-row:last-child {
+            padding-bottom: 0 !important;
+          }
+          .process-step-row::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -6px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #f97316;
+            border: 2px solid #f4f4f0;
+            box-shadow: 0 0 0 3px rgba(249,115,22,0.15);
+          }
+          .process-step-number-wrap {
+            display: flex !important;
+            align-items: baseline !important;
+            gap: 0.75rem !important;
+            margin-bottom: 0.75rem !important;
+            overflow: visible !important;
           }
           .process-step-number {
-            font-size: clamp(5rem, 22vw, 8rem) !important;
+            font-size: 3.5rem !important;
+            line-height: 1 !important;
+            display: block !important;
+            flex-shrink: 0 !important;
+          }
+          .process-step-code {
+            display: none !important;
+          }
+          .process-step-code-mobile {
+            display: flex !important;
           }
           .process-timeline-center {
             display: none !important;
           }
           .process-step-content {
             padding-left: 0 !important;
-            padding-top: 0.5rem;
+            padding-top: 0 !important;
           }
         }
       `}</style>
