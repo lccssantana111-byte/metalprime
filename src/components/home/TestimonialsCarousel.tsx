@@ -131,7 +131,7 @@ export default function TestimonialsCarousel() {
               margin: '0 0 1.5rem',
             }}
           >
-            Obra entregue,{' '}
+            Obra entregue{' '}
             <span style={{ color: '#f97316' }}>confiança</span>{' '}
             conquistada.
           </h2>
