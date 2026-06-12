@@ -44,22 +44,24 @@ export default async function CorporateLayout({
           <div style={{
             maxWidth: '1100px',
             margin: '0 auto',
-            padding: '0 2rem',
-            height: '72px',
+            padding: '0 clamp(1rem, 4vw, 2rem)',
+            height: '64px',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
+            gap: '12px',
           }}>
             <Link href="/corporate/dashboard" style={{
               display: 'flex',
               alignItems: 'center',
-              gap: '14px',
+              gap: '10px',
               textDecoration: 'none',
+              flexShrink: 0,
             }}>
               <div style={{
-                width: '42px',
-                height: '42px',
-                borderRadius: '10px',
+                width: '36px',
+                height: '36px',
+                borderRadius: '8px',
                 background: 'rgba(255,255,255,0.1)',
                 border: '1px solid rgba(255,255,255,0.2)',
                 display: 'flex',
@@ -71,58 +73,59 @@ export default async function CorporateLayout({
                 <img
                   src="/logo.png"
                   alt="Metalprime"
-                  width={30}
-                  height={30}
+                  width={26}
+                  height={26}
                   style={{ objectFit: 'contain' }}
                 />
               </div>
-              <div style={{ display: 'flex', flexDirection: 'column', lineHeight: 1, gap: '4px' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', lineHeight: 1, gap: '3px' }}>
                 <span style={{
                   fontFamily: 'var(--font-display, var(--font-sans))',
                   fontWeight: 700,
-                  fontSize: '1.1rem',
+                  fontSize: '1rem',
                   color: '#ffffff',
                   letterSpacing: '-0.02em',
                 }}>
                   {BRAND_NAME.split(' ')[0]}<span style={{ color: '#f97316' }}>.</span>
                 </span>
                 <span style={{
-                  fontSize: '10px',
-                  color: 'rgba(255,255,255,0.55)',
+                  fontSize: '9px',
+                  color: 'rgba(255,255,255,0.45)',
                   textTransform: 'uppercase',
-                  letterSpacing: '0.16em',
+                  letterSpacing: '0.14em',
                   fontFamily: 'var(--font-mono, monospace)',
                 }}>
-                  Portal Corporativo
+                  Portal
                 </span>
               </div>
             </Link>
 
-            <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', minWidth: 0 }}>
               <span style={{
-                fontSize: '13px',
-                color: 'rgba(255,255,255,0.5)',
-                maxWidth: '240px',
+                fontSize: '12px',
+                color: 'rgba(255,255,255,0.45)',
                 overflow: 'hidden',
                 textOverflow: 'ellipsis',
                 whiteSpace: 'nowrap',
-              }}>
+                minWidth: 0,
+                display: 'none',
+              }} className="corporate-email">
                 {user.email}
               </span>
-              <div style={{ width: '1px', height: '18px', background: 'rgba(255,255,255,0.12)' }} />
-              <form action="/api/auth/signout" method="post">
+              <form action="/api/auth/signout" method="post" style={{ flexShrink: 0 }}>
                 <button
                   type="submit"
                   style={{
-                    fontSize: '13px',
+                    fontSize: '12px',
                     color: 'rgba(255,255,255,0.8)',
                     background: 'rgba(255,255,255,0.08)',
                     border: '1px solid rgba(255,255,255,0.15)',
                     cursor: 'pointer',
-                    padding: '7px 16px',
-                    borderRadius: '8px',
+                    padding: '6px 14px',
+                    borderRadius: '6px',
                     fontFamily: 'inherit',
                     letterSpacing: '0.01em',
+                    whiteSpace: 'nowrap',
                   }}
                 >
                   Sair
@@ -130,6 +133,11 @@ export default async function CorporateLayout({
               </form>
             </div>
           </div>
+          <style>{`
+            @media (min-width: 480px) {
+              .corporate-email { display: block !important; }
+            }
+          `}</style>
         </header>
       )}
 
