@@ -26,7 +26,7 @@ export default function ServiceFaq({ faq }: Props) {
         borderTop: '1px solid rgba(0,0,0,0.06)',
         position: 'relative',
         overflow: 'hidden',
-        padding: `${SPACING.section.paddingYLg} 0`,
+        padding: 'clamp(3rem, 8vw, 8rem) 0',
       }}
     >
       {/* Dot grid — light version, matches ProcessSection */}
@@ -50,7 +50,7 @@ export default function ServiceFaq({ faq }: Props) {
       }}>
         <div
           className="grid grid-cols-1 lg:grid-cols-12"
-          style={{ gap: 'clamp(3rem, 6vw, 6rem)', alignItems: 'start' }}
+          style={{ gap: 'clamp(1.5rem, 6vw, 6rem)', alignItems: 'start' }}
         >
 
           {/* ── Left: header ─────────────────────────────────── */}
