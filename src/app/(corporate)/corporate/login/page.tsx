@@ -34,7 +34,7 @@ export default function CorporateLoginPage() {
 
   return (
     <div style={{
-      minHeight: '100dvh',
+      flex: 1,
       background: '#0a0f1a',
       display: 'flex',
       alignItems: 'center',

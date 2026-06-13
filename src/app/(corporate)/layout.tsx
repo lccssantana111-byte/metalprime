@@ -15,6 +15,8 @@ export default async function CorporateLayout({
       minHeight: '100dvh',
       background: '#080c14',
       fontFamily: 'var(--font-sans, system-ui, sans-serif)',
+      display: 'flex',
+      flexDirection: 'column',
     }}>
 
       {/* Dot grid background */}
@@ -143,7 +145,9 @@ export default async function CorporateLayout({
 
       {user ? (
         <main style={{
+          flex: 1,
           maxWidth: '1100px',
+          width: '100%',
           margin: '0 auto',
           padding: 'clamp(2rem, 4vw, 3rem) 1.5rem',
           position: 'relative',
@@ -152,7 +156,7 @@ export default async function CorporateLayout({
           {children}
         </main>
       ) : (
-        <div style={{ position: 'relative', zIndex: 1 }}>
+        <div style={{ flex: 1, position: 'relative', zIndex: 1 }}>
           {children}
         </div>
       )}
