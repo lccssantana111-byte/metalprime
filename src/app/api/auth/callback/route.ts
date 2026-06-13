@@ -49,19 +49,15 @@ export async function GET(request: Request) {
   console.log('[callback] sessionEstablished:', sessionEstablished)
 
   if (sessionEstablished) {
-    // Return HTML that redirects client-side so the browser processes
-    // Set-Cookie headers before the next navigation hits the proxy.
     const safeNext = next.startsWith('/') ? next : '/corporate/dashboard'
-    const html = `<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="refresh" content="0;url=${safeNext}"></head><body></body></html>`
-    const response = new NextResponse(html, {
-      status: 200,
-      headers: { 'Content-Type': 'text/html; charset=utf-8' },
-    })
+    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? origin
+    const response = NextResponse.redirect(`${siteUrl}${safeNext}`)
     cookiesToForward.forEach(({ name, value, options }) => {
       response.cookies.set(name, value, options as Parameters<typeof response.cookies.set>[2])
     })
     return response
   }
 
-  return NextResponse.redirect(`${origin}/corporate/login?error=auth`)
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? origin
+  return NextResponse.redirect(`${siteUrl}/corporate/login?error=auth`)
 }
