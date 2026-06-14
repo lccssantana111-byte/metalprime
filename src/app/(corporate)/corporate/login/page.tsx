@@ -90,7 +90,7 @@ export default function CorporateLoginPage() {
           }}>
             <img
               src="/logo.png"
-              alt="Metalprime logo"
+              alt="Metal Shark logo"
               width={40}
               height={40}
               style={{ objectFit: 'contain', display: 'block' }}

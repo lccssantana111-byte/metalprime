@@ -71,7 +71,7 @@ export default function AdminSidebar({ onClose }: Props) {
       >
         <img
           src="/logo.png"
-          alt="Metalprime logo"
+          alt="Metal Shark logo"
           width={34}
           height={34}
           style={{ objectFit: 'contain', display: 'block' }}

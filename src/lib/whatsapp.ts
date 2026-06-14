@@ -29,7 +29,7 @@ export function buildLeadWhatsAppUrl(name: string, service?: ServiceType | null)
 
 export function buildAdminWhatsAppUrl(clientPhone: string, clientName: string, service?: ServiceType | null): string {
   const serviceText = service ? ` — Serviço: ${SERVICE_WA_NAMES[service]}` : ''
-  const message = `Olá, ${clientName}! Aqui é da equipe Metalprime Serralheria${serviceText}. Recebemos seu pedido e gostaríamos de conversar sobre seu projeto.`
+  const message = `Olá, ${clientName}! Aqui é da equipe Metal Shark${serviceText}. Recebemos seu pedido e gostaríamos de conversar sobre seu projeto.`
   const number = clientPhone.replace(/\D/g, '')
   return buildWhatsAppUrl(message, number.startsWith('55') ? number : `55${number}`)
 }

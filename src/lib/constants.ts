@@ -1,8 +1,8 @@
-export const BRAND_NAME = process.env.NEXT_PUBLIC_BRAND_NAME ?? 'Metalprime Serralheria'
-export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://metalprime.com.br'
+export const BRAND_NAME = process.env.NEXT_PUBLIC_BRAND_NAME ?? 'Metal Shark'
+export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://metalshark.com.br'
 export const WHATSAPP_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '5511999999999'
 export const COMPANY_PHONE = process.env.NEXT_PUBLIC_COMPANY_PHONE ?? '(11) 99999-9999'
-export const COMPANY_EMAIL = process.env.NEXT_PUBLIC_COMPANY_EMAIL ?? 'contato@metalprime.com.br'
+export const COMPANY_EMAIL = process.env.NEXT_PUBLIC_COMPANY_EMAIL ?? 'contato@metalshark.com.br'
 export const COMPANY_ADDRESS = `${process.env.NEXT_PUBLIC_COMPANY_ADDRESS_STREET ?? 'Rua das Indústrias, 123'} — ${process.env.NEXT_PUBLIC_COMPANY_ADDRESS_CITY ?? 'São Paulo'}, SP`
 export const COMPANY_ADDRESS_STREET = process.env.NEXT_PUBLIC_COMPANY_ADDRESS_STREET ?? 'Rua das Indústrias, 123'
 export const COMPANY_ADDRESS_CITY = process.env.NEXT_PUBLIC_COMPANY_ADDRESS_CITY ?? 'São Paulo'

@@ -74,7 +74,7 @@ export default async function CorporateLayout({
               }}>
                 <img
                   src="/logo.png"
-                  alt="Metalprime"
+                  alt="Metal Shark"
                   width={26}
                   height={26}
                   style={{ objectFit: 'contain' }}

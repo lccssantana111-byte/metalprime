@@ -50,7 +50,7 @@ export default function AdminLoginPage() {
           <div className="inline-flex items-center justify-center mb-4">
             <img
               src="/logo.png"
-              alt="Metalprime logo"
+              alt="Metal Shark logo"
               width={56}
               height={56}
               style={{ objectFit: 'contain', display: 'block' }}
@@ -87,7 +87,7 @@ export default function AdminLoginPage() {
                 onChange={(e) => setEmail(e.target.value)}
                 required
                 autoComplete="email"
-                placeholder="admin@metalprime.com.br"
+                placeholder="admin@metalshark.com.br"
                 className="h-11 font-mono text-[13px]"
                 style={{
                   background: '#f8fafc',

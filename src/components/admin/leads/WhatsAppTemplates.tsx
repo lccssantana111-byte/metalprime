@@ -18,7 +18,7 @@ function buildTemplates(name: string, service: string, phone: string): Record<Le
     novo: [
       {
         label: 'Primeiro contato',
-        message: `Olá, ${name}! Aqui é da equipe ${process.env.NEXT_PUBLIC_BRAND_NAME ?? 'Metalprime Serralheria'}. Recebemos seu interesse em ${service} e gostaríamos de entender melhor seu projeto. Tem um momento para conversar?`,
+        message: `Olá, ${name}! Aqui é da equipe ${process.env.NEXT_PUBLIC_BRAND_NAME ?? 'Metal Shark'}. Recebemos seu interesse em ${service} e gostaríamos de entender melhor seu projeto. Tem um momento para conversar?`,
       },
       {
         label: 'Agendamento de visita',

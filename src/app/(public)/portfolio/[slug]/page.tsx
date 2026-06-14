@@ -67,7 +67,7 @@ export default async function PortfolioDetailPage({ params }: { params: Promise<
             {item.cover_image ? (
               <img
                 src={item.cover_image}
-                alt={`${item.title} — ${SERVICE_LABELS[item.service]} por ${process.env.NEXT_PUBLIC_BRAND_NAME ?? 'Metalprime'}`}
+                alt={`${item.title} — ${SERVICE_LABELS[item.service]} por ${process.env.NEXT_PUBLIC_BRAND_NAME ?? 'Metal Shark'}`}
                 className="w-full h-full object-cover"
                 loading="eager"
               />

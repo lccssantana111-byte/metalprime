@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # ──────────────────────────────────────────────
-# Metalprime — Supabase setup script
+# Metal Shark — Supabase setup script
 # Uso: bash scripts/setup-supabase.sh
 # ──────────────────────────────────────────────
 set -e
@@ -11,7 +11,7 @@ MIGRATIONS_DIR="$ROOT/supabase/migrations"
 
 echo ""
 echo "┌─────────────────────────────────────────┐"
-echo "│     Metalprime — Supabase Setup         │"
+echo "│     Metal Shark — Supabase Setup        │"
 echo "└─────────────────────────────────────────┘"
 echo ""
 
@@ -40,7 +40,7 @@ SUPABASE_SERVICE_ROLE_KEY=${SERVICE_KEY}
 
 # ── Site ─────────────────────────────────────────
 NEXT_PUBLIC_SITE_URL=${SITE_URL}
-NEXT_PUBLIC_BRAND_NAME=Metalprime Serralheria
+NEXT_PUBLIC_BRAND_NAME=Metal Shark
 
 # ── WhatsApp ──────────────────────────────────────
 NEXT_PUBLIC_WHATSAPP_NUMBER=${WA_NUMBER}
