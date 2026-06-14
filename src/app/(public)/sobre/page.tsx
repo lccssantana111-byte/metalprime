@@ -157,6 +157,8 @@ export default function SobrePage() {
               @media (max-width: 639px) {
                 .timeline-item {
                   animation: fadeSlideIn 0.5s ease both;
+                  padding: 1rem 1rem 1rem 1.5rem !important;
+                  border-left: 3px solid rgba(249,115,22,0.55) !important;
                 }
                 .timeline-item:nth-child(1) { animation-delay: 0.05s; }
                 .timeline-item:nth-child(2) { animation-delay: 0.15s; }
@@ -179,7 +181,7 @@ export default function SobrePage() {
                   <div style={{
                     fontFamily: 'var(--font-barlow-condensed)',
                     fontWeight: 900,
-                    fontSize: 'clamp(1.5rem, 3.5vw, 3rem)',
+                    fontSize: 'clamp(2rem, 6vw, 3rem)',
                     lineHeight: 1,
                     color: i === milestones.length - 1 ? '#f97316' : 'rgba(255,255,255,0.50)',
                     marginBottom: '0.75rem',
