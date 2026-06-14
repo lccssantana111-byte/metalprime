@@ -147,18 +147,35 @@ export default function SobrePage() {
             </div>
           </div>
 
-          {/* Timeline horizontal — linha do tempo */}
+          {/* Timeline — 1 col mobile, 2 col sm, 5 col lg */}
           <div style={{ borderTop: '1px solid rgba(255,255,255,0.08)' }}>
-            <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-5">
+            <style>{`
+              @keyframes fadeSlideIn {
+                from { opacity: 0; transform: translateX(-16px); }
+                to   { opacity: 1; transform: translateX(0); }
+              }
+              @media (max-width: 639px) {
+                .timeline-item {
+                  animation: fadeSlideIn 0.5s ease both;
+                }
+                .timeline-item:nth-child(1) { animation-delay: 0.05s; }
+                .timeline-item:nth-child(2) { animation-delay: 0.15s; }
+                .timeline-item:nth-child(3) { animation-delay: 0.25s; }
+                .timeline-item:nth-child(4) { animation-delay: 0.35s; }
+                .timeline-item:nth-child(5) { animation-delay: 0.45s; }
+              }
+            `}</style>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5">
               {milestones.map((m, i) => (
                 <div
                   key={m.year}
+                  className="timeline-item"
                   style={{
-                    padding: '1.5rem 1rem',
-                    borderRight: i < milestones.length - 1 ? '1px solid rgba(255,255,255,0.08)' : 'none',
+                    padding: '1.5rem 1rem 1.5rem 1.25rem',
+                    borderLeft: '2px solid rgba(249,115,22,0.35)',
+                    borderBottom: '1px solid rgba(255,255,255,0.06)',
                   }}
                 >
-                  {/* Ano */}
                   <div style={{
                     fontFamily: 'var(--font-barlow-condensed)',
                     fontWeight: 900,
@@ -169,20 +186,8 @@ export default function SobrePage() {
                   }}>
                     {m.year}
                   </div>
-                  {/* Linha decorativa laranja */}
-                  <div style={{
-                    width: '24px',
-                    height: '2px',
-                    background: '#f97316',
-                    marginBottom: '0.75rem',
-                  }} />
-                  <h3 style={{
-                    fontFamily: 'var(--font-sans)',
-                    fontWeight: 700,
-                    fontSize: '0.9rem',
-                    color: '#ffffff',
-                    marginBottom: '6px',
-                  }}>
+                  <div style={{ width: '24px', height: '2px', background: '#f97316', marginBottom: '0.75rem' }} />
+                  <h3 style={{ fontFamily: 'var(--font-sans)', fontWeight: 700, fontSize: '0.9rem', color: '#ffffff', marginBottom: '6px' }}>
                     {m.title}
                   </h3>
                   <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.4)', lineHeight: 1.6, margin: 0 }}>
