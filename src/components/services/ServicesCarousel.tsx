@@ -251,7 +251,7 @@ function CarouselCard({ service: s, width }: { service: Service; width: number }
           objectFit: 'cover',
           objectPosition: 'center',
           transition: 'transform 0.9s cubic-bezier(0.25,0.46,0.45,0.94)',
-          filter: 'brightness(0.75) saturate(0.9)',
+          filter: 'brightness(0.92) saturate(0.95)',
         }}
         className="group-hover:scale-[1.04] group-hover:![filter:brightness(0.6)_saturate(0.95)]"
       />
@@ -260,7 +260,7 @@ function CarouselCard({ service: s, width }: { service: Service; width: number }
       <div style={{
         position: 'absolute',
         inset: 0,
-        background: 'linear-gradient(180deg, rgba(0,0,0,0.0) 0%, rgba(0,0,0,0.0) 20%, rgba(2,6,23,0.55) 50%, rgba(2,6,23,0.88) 75%, rgba(2,6,23,0.98) 100%)',
+        background: 'linear-gradient(180deg, rgba(0,0,0,0.0) 0%, rgba(0,0,0,0.0) 35%, rgba(2,6,23,0.35) 60%, rgba(2,6,23,0.75) 80%, rgba(2,6,23,0.92) 100%)',
       }} />
 
 
