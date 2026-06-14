@@ -111,7 +111,7 @@ export default function SobrePage() {
       </section>
 
       {/* ── 3. HISTÓRIA + TIMELINE ───────────────────────────── */}
-      <section style={{ background: '#0f172a', paddingTop: '6rem', paddingBottom: '0' }}>
+      <section style={{ background: '#0f172a', paddingTop: '6rem', paddingBottom: '4rem' }}>
         <div className="container mx-auto px-4 sm:px-8">
 
           {/* Cabeçalho da seção */}
