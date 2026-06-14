@@ -15,6 +15,7 @@ interface Service {
 
 const GAP = 12
 const SIDE_PAD = 64
+const MOBILE_BREAKPOINT = 640
 
 export default function ServicesCarousel({ services }: { services: Service[] }) {
   const total = services.length
@@ -31,8 +32,11 @@ export default function ServicesCarousel({ services }: { services: Service[] }) 
   const calcCardW = useCallback(() => {
     const wrapper = wrapperRef.current
     if (!wrapper) return 0
-    const available = wrapper.clientWidth - SIDE_PAD * 2
-    return (available - GAP * 2) / 3
+    const isMobile = wrapper.clientWidth < MOBILE_BREAKPOINT
+    const sidePad = isMobile ? 24 : SIDE_PAD
+    const cols = isMobile ? 1 : 3
+    const available = wrapper.clientWidth - sidePad * 2
+    return (available - GAP * (cols - 1)) / cols
   }, [])
 
   const applyPos = useCallback((i: number, animated: boolean, w?: number) => {
@@ -40,10 +44,12 @@ export default function ServicesCarousel({ services }: { services: Service[] }) 
     if (!el) return
     const cw = w ?? cardW
     const s = cw + GAP
+    const isMobile = (wrapperRef.current?.clientWidth ?? 0) < MOBILE_BREAKPOINT
+    const sidePad = isMobile ? 24 : SIDE_PAD
     el.style.transition = animated
       ? 'transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94)'
       : 'none'
-    el.style.transform = `translateX(${SIDE_PAD - i * s}px)`
+    el.style.transform = `translateX(${sidePad - i * s}px)`
   }, [cardW])
 
   useEffect(() => {
