@@ -8,12 +8,12 @@ import { Menu, X, ArrowUpRight, ChevronDown, DoorOpen, ShieldCheck, TrendingUp, 
 import { BRAND_NAME, COMPANY_PHONE, WHATSAPP_NUMBER } from '@/lib/constants'
 
 const services = [
-  { label: 'Portões', href: '/servicos/portoes', desc: 'Automáticos, basculantes e deslizantes', Icon: DoorOpen },
-  { label: 'Grades e Cercas', href: '/servicos/grades-e-cercas', desc: 'Segurança com design industrial', Icon: ShieldCheck },
-  { label: 'Escadas Metálicas', href: '/servicos/escadas', desc: 'Retas, helicoidais e flutuantes', Icon: TrendingUp },
-  { label: 'Corrimões', href: '/servicos/corrimoes', desc: 'Inox, ferro e alumínio', Icon: GripHorizontal },
-  { label: 'Estruturas Metálicas', href: '/servicos/estruturas-metalicas', desc: 'Galpões, coberturas e mezaninos', Icon: Building2 },
-  { label: 'Projetos Sob Medida', href: '/servicos/sob-medida', desc: 'Qualquer metal, qualquer forma', Icon: Wrench },
+  { label: 'Portões', href: '/servicos/portoes', desc: 'Industriais, condominiais e comerciais com automação', Icon: DoorOpen },
+  { label: 'Grades e Cercas', href: '/servicos/grades-e-cercas', desc: 'Perímetro industrial, comercial e condominial', Icon: ShieldCheck },
+  { label: 'Escadas Metálicas', href: '/servicos/escadas', desc: 'Estruturais, helicoidais e flutuantes — ART inclusa', Icon: TrendingUp },
+  { label: 'Corrimões', href: '/servicos/corrimoes', desc: 'Conformidade ABNT e NR — inox, ferro e alumínio', Icon: GripHorizontal },
+  { label: 'Estruturas Metálicas', href: '/servicos/estruturas-metalicas', desc: 'Galpões industriais, coberturas e mezaninos', Icon: Building2 },
+  { label: 'Projetos Sob Medida', href: '/servicos/sob-medida', desc: 'Projeto executivo em DWG · Qualquer metal', Icon: Wrench },
 ]
 
 const nav = [
@@ -69,7 +69,7 @@ export default function Navbar() {
           <div style={{ transition: 'transform 0.3s cubic-bezier(0.32,0.72,0,1)' }} className="group-hover:scale-105">
             <img
               src="/logo.png"
-              alt="Metalprime logo"
+              alt="Metal Shark logo"
               width={36}
               height={36}
               style={{ objectFit: 'contain', display: 'block' }}
@@ -173,7 +173,7 @@ export default function Navbar() {
                           style={{ borderTop: '1px solid #f1f5f9', background: '#fafafa' }}
                         >
                           <span className="text-[11px]" style={{ fontFamily: 'var(--font-mono)', color: '#94a3b8' }}>
-                            6 especialidades em metal
+                            6 especialidades · Fabricação própria
                           </span>
                           <Link
                             href="/servicos"
@@ -195,6 +195,7 @@ export default function Navbar() {
               <li key={item.href}>
                 <Link
                   href={item.href}
+                  aria-current={isActive(item.href) ? 'page' : undefined}
                   className="relative px-4 py-2.5 text-[18px] font-medium transition-all duration-200 block rounded-xl"
                   style={{ color: isActive(item.href) ? (D ? 'white' : '#0f172a') : (D ? 'rgba(255,255,255,0.55)' : '#64748b') }}
                   onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = D ? 'rgba(255,255,255,0.08)' : 'rgba(241,245,249,0.8)'; (e.currentTarget as HTMLElement).style.color = D ? 'white' : '#0f172a' }}
@@ -253,7 +254,9 @@ export default function Navbar() {
           className="lg:hidden w-9 h-9 flex items-center justify-center rounded-xl transition-all duration-200"
           style={{ color: D ? 'rgba(255,255,255,0.7)' : '#64748b' }}
           onClick={() => setMobileOpen(!mobileOpen)}
-          aria-label="Menu"
+          aria-label={mobileOpen ? 'Fechar menu' : 'Abrir menu'}
+          aria-expanded={mobileOpen}
+          aria-controls="mobile-menu"
           onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = D ? 'rgba(255,255,255,0.1)' : '#f1f5f9' }}
           onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = 'transparent' }}
         >
@@ -298,6 +301,7 @@ export default function Navbar() {
 
             {/* Drawer */}
             <motion.div
+              id="mobile-menu"
               className="lg:hidden fixed top-0 right-0 bottom-0 z-50 flex flex-col"
               style={{
                 width: 'min(360px, 100vw)',
@@ -325,7 +329,7 @@ export default function Navbar() {
                   onClick={() => setMobileOpen(false)}
                   style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none' }}
                 >
-                  <img src="/logo.png" alt="Metalprime" width={30} height={30} style={{ objectFit: 'contain' }} />
+                  <img src="/logo.png" alt="Metal Shark" width={30} height={30} style={{ objectFit: 'contain' }} />
                   <span style={{
                     fontFamily: 'var(--font-display)',
                     fontWeight: 900,
@@ -407,7 +411,7 @@ export default function Navbar() {
                         <div style={{
                           padding: '0.25rem 0 0.75rem 1.5rem',
                           display: 'grid',
-                          gridTemplateColumns: '1fr 1fr',
+                          gridTemplateColumns: 'repeat(auto-fill, minmax(140px, 1fr))',
                           gap: '2px',
                         }}>
                           {item.children.map((child) => {

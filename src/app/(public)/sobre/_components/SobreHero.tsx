@@ -22,6 +22,7 @@ export default function SobreHero() {
         src="/Futuristic Structure Design.png"
         alt=""
         aria-hidden="true"
+        fetchPriority="high"
         style={{
           position: 'absolute',
           inset: 0,
@@ -150,7 +151,7 @@ export default function SobreHero() {
               maxWidth: '480px',
             }}
           >
-            20 anos construindo reputação junto com construtoras e arquitetos que precisam de um parceiro confiável.
+            20 anos sendo fornecedor homologado de construtoras, incorporadoras e gestores industriais que exigem documentação técnica completa e entrega no cronograma.
           </motion.p>
 
           {/* CTA */}

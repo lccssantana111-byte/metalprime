@@ -28,7 +28,7 @@ export default function ServiceFeatures({ features }: Props) {
     run()
     const id = setInterval(run, 900)
     return () => clearInterval(id)
-  }, [inView, features.length])
+  }, [inView])
 
   if (!features.length) return null
 
@@ -70,7 +70,7 @@ export default function ServiceFeatures({ features }: Props) {
               margin: 0,
             }}>
               Por que a<br />
-              <span style={{ color: COLORS.brand.orange }}>Metalprime</span>
+              <span style={{ color: COLORS.brand.orange }}>Metal Shark</span>
             </h2>
           </div>
 

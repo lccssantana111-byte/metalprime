@@ -19,6 +19,7 @@ export default function ContactForm() {
     register,
     handleSubmit,
     setValue,
+    reset,
     formState: { errors, isSubmitting },
   } = useForm<ContactFormData>({ resolver: zodResolver(contactSchema) })
 
@@ -30,6 +31,7 @@ export default function ContactForm() {
         body: JSON.stringify(data),
       })
       if (!res.ok) throw new Error()
+      reset()
       setSubmitted(true)
     } catch {
       toast.error('Erro ao enviar mensagem. Tente novamente.')
@@ -89,9 +91,10 @@ export default function ContactForm() {
       </div>
 
       <div>
-        <Label className="text-metal-light mb-2 block">Serviço de interesse</Label>
+        <Label id="service-label" className="text-metal-light mb-2 block">Serviço de interesse</Label>
         <Select onValueChange={(v) => setValue('service', v)}>
           <SelectTrigger
+            aria-labelledby="service-label"
             className="bg-white/[0.06] border-white/[0.12]"
             style={{ color: '#ffffff' }}
           >
@@ -119,7 +122,7 @@ export default function ContactForm() {
         <Textarea
           id="message"
           {...register('message')}
-          placeholder="Descreva brevemente o que você precisa..."
+          placeholder="Descreva o escopo do projeto: tipo de estrutura, metragem estimada, prazo e localização da obra."
           rows={5}
           className="bg-white/[0.06] border-white/[0.12] focus:border-[#f97316]/60 placeholder:text-white/30 resize-none"
           style={{ color: '#ffffff' }}

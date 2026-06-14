@@ -45,14 +45,14 @@ export default function ClientLogos() {
               flexShrink: 0,
             }}
           >
-            Empresas que confiam na Metalprime
+            Empresas que constroem com a Metal Shark
           </span>
           <div style={{ height: '1px', flex: 1, background: '#e2e8f0' }} />
         </div>
       </div>
 
       {/* Marquee */}
-      <div className="group/marquee" style={{ position: 'relative' }}>
+      <div className="group/marquee" style={{ position: 'relative', overflow: 'hidden' }}>
         {/* Fade edges */}
         <div
           style={{

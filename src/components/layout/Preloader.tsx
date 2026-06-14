@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { BRAND_NAME } from '@/lib/constants'
 
 export default function Preloader() {
   const [visible, setVisible] = useState(true)
@@ -82,7 +83,7 @@ export default function Preloader() {
               />
               <img
                 src="/logo.png"
-                alt="Metalprime"
+                alt="Metal Shark"
                 style={{ width: '100px', height: '100px', objectFit: 'contain', display: 'block' }}
               />
             </motion.div>
@@ -102,7 +103,7 @@ export default function Preloader() {
                 textTransform: 'uppercase',
                 color: '#ffffff',
               }}>
-                METALPRIME
+                {BRAND_NAME.split(' ')[0].toUpperCase()}
               </div>
               <div style={{
                 fontFamily: 'var(--font-ibm-mono)',

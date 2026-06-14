@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { Award, Users, Wrench, Target } from 'lucide-react'
-import { BRAND_NAME } from '@/lib/constants'
+import { BRAND_NAME, SITE_URL } from '@/lib/constants'
 import { SectionLabel } from '@/components/ui/design-system'
 import SobreCTA from './_components/SobreCTA'
 import SobreHero from './_components/SobreHero'
@@ -8,7 +8,23 @@ import SobreHero from './_components/SobreHero'
 export const metadata: Metadata = {
   title: `Sobre Nós | ${BRAND_NAME}`,
   description:
-    'Conheça a história da Metalprime. +20 anos de especialização em serralheria premium em São Paulo.',
+    'Mais de 20 anos especializados em estruturas metálicas industriais e comerciais em São Paulo. Fabricação própria, equipe de engenheiros certificados, ART em 100% dos projetos estruturais.',
+  alternates: { canonical: `${SITE_URL}/sobre` },
+  openGraph: {
+    title: `Sobre Nós | ${BRAND_NAME}`,
+    description: 'Estruturas metálicas para construtoras, indústrias e empresas. Mais de 20 anos, fabricação própria, ART em 100% dos projetos estruturais em São Paulo.',
+    url: `${SITE_URL}/sobre`,
+    siteName: BRAND_NAME,
+    locale: 'pt_BR',
+    type: 'website',
+    images: [{ url: `${SITE_URL}/og-default.jpg`, width: 1200, height: 630, alt: `Sobre a ${BRAND_NAME}` }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: `Sobre Nós | ${BRAND_NAME}`,
+    description: 'Mais de 20 anos especializados em estruturas metálicas industriais e comerciais em São Paulo.',
+    images: [`${SITE_URL}/og-default.jpg`],
+  },
 }
 
 const values = [
@@ -39,11 +55,11 @@ const values = [
 ]
 
 const milestones = [
-  { year: '2004', title: 'Fundação', desc: 'Nasce a Metalprime no Morumbi, SP, atendendo residências de alto padrão.' },
+  { year: '2004', title: 'Fundação', desc: 'Nasce a Metal Shark no Morumbi, SP, com foco em obras de alto padrão técnico.' },
   { year: '2008', title: 'Expansão', desc: 'Estrutura industrial própria e equipe de engenheiros certificados.' },
   { year: '2013', title: 'ISO 9001', desc: 'Certificação de qualidade e primeiros contratos com grandes construtoras.' },
   { year: '2018', title: '+2.000 obras', desc: 'Marco de 2.000 projetos entregues em toda a Grande São Paulo.' },
-  { year: 'Hoje', title: '+5.000 projetos', desc: 'Referência em serralheria premium para residências, condomínios e construtoras.' },
+  { year: 'Hoje', title: '+5.000 projetos', desc: 'Referência em estruturas metálicas para construtoras, galpões industriais e empreendimentos comerciais.' },
 ]
 
 
@@ -95,7 +111,7 @@ export default function SobrePage() {
                 </div>
                 <div style={{ width: '24px', height: '2px', background: '#f97316', marginBottom: '0.75rem' }} />
                 <p style={{
-                  fontFamily: 'var(--font-mono)',
+                  fontFamily: 'var(--font-ibm-mono)',
                   fontSize: '10px',
                   letterSpacing: '0.25em',
                   textTransform: 'uppercase',
@@ -136,9 +152,9 @@ export default function SobrePage() {
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1.1rem' }}>
               {[
-                'Em 2004, um engenheiro mecânico com zero tolerância para trabalho ruim fundou a Metalprime no Morumbi. O objetivo era simples: fazer em metal o que ninguém fazia direito.',
-                'A qualidade falou mais alto. Condomínios, construtoras e arquitetos passaram a nos chamar porque sabiam o que iam receber: entrega no prazo, ART em dia e sem surpresas na nota.',
-                'Hoje somos mais de 30 especialistas, com estrutura industrial própria e mais de 5.000 obras executadas. A escala mudou. A obsessão com qualidade continua a mesma.',
+                'Em 2004, um engenheiro mecânico com zero tolerância para improvisação fundou a Metal Shark no Morumbi. O objetivo era direto: entregar estruturas metálicas com o rigor técnico que o mercado B2B exige e raramente encontra.',
+                'O resultado falou por si. Construtoras, incorporadoras e gestores industriais passaram a nos incluir nas suas listas de fornecedores homologados porque sabiam o que iam receber: estrutura certificada, entrega no prazo, ART em dia, sem aditivos de contrato.',
+                'Hoje somos mais de 30 especialistas — engenheiros estruturais, soldadores certificados e montadores especializados — com fábrica própria e mais de 5.000 estruturas entregues. O porte cresceu. O padrão técnico não cedeu um milímetro.',
               ].map((p, i) => (
                 <p key={i} style={{ fontSize: '15px', lineHeight: 1.75, color: 'rgba(255,255,255,0.5)', margin: 0 }}>
                   {p}
@@ -149,24 +165,6 @@ export default function SobrePage() {
 
           {/* Timeline — 1 col mobile, 2 col sm, 5 col lg */}
           <div style={{ borderTop: '1px solid rgba(255,255,255,0.08)' }}>
-            <style>{`
-              @keyframes fadeSlideIn {
-                from { opacity: 0; transform: translateX(-16px); }
-                to   { opacity: 1; transform: translateX(0); }
-              }
-              @media (max-width: 639px) {
-                .timeline-item {
-                  animation: fadeSlideIn 0.5s ease both;
-                  padding: 1rem 1rem 1rem 1.5rem !important;
-                  border-left: 3px solid rgba(249,115,22,0.55) !important;
-                }
-                .timeline-item:nth-child(1) { animation-delay: 0.05s; }
-                .timeline-item:nth-child(2) { animation-delay: 0.15s; }
-                .timeline-item:nth-child(3) { animation-delay: 0.25s; }
-                .timeline-item:nth-child(4) { animation-delay: 0.35s; }
-                .timeline-item:nth-child(5) { animation-delay: 0.45s; }
-              }
-            `}</style>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5">
               {milestones.map((m, i) => (
                 <div

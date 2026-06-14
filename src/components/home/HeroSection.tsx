@@ -35,6 +35,7 @@ export default function HeroSection() {
         <img
           src="/Robotic Shark Humanoid.png"
           alt=""
+          fetchPriority="high"
           style={{
             width: '100%',
             height: '100%',
@@ -61,20 +62,6 @@ export default function HeroSection() {
       />
 
       {/* ── Content ── */}
-      <style>{`
-        @media (max-width: 767px) {
-          .hero-content {
-            padding-left: 1.5rem !important;
-            padding-right: 1.5rem !important;
-            padding-top: 52dvh !important;
-            padding-bottom: calc(7rem + env(safe-area-inset-bottom, 0px)) !important;
-            align-self: flex-end !important;
-          }
-          .hero-headline {
-            font-size: clamp(3.5rem, 16vw, 5rem) !important;
-          }
-        }
-      `}</style>
       <div
         className="hero-content"
         style={{
@@ -105,7 +92,7 @@ export default function HeroSection() {
               marginBottom: '1.5rem',
             }}
           >
-            São Paulo · CREA-SP · Desde 2004
+            São Paulo · CREA-SP Credenciado · Estruturas industriais e comerciais
           </motion.p>
 
           {/* Headline */}
@@ -165,7 +152,7 @@ export default function HeroSection() {
               maxWidth: '480px',
             }}
           >
-            Fabricação própria, ART em 100% dos projetos estruturais. Mais de 5.000 obras entregues na Grande São Paulo.
+            Estruturas metálicas para construtoras, galpões industriais e empreendimentos comerciais. Fabricação própria, ART em 100% dos projetos. Mais de 5.000 obras entregues.
           </motion.p>
 
           {/* CTAs */}
@@ -202,7 +189,7 @@ export default function HeroSection() {
                 el.style.transform = 'translateY(0)'
               }}
             >
-              Solicitar Orçamento Gratuito
+              Solicitar Orçamento Técnico
               <span
                 style={{
                   width: '32px',
