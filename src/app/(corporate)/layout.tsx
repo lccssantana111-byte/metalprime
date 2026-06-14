@@ -146,6 +146,7 @@ export default async function CorporateLayout({
       {user ? (
         <main style={{
           flex: 1,
+          minHeight: 'calc(100dvh - 66px)',
           maxWidth: '1100px',
           width: '100%',
           margin: '0 auto',
@@ -156,7 +157,7 @@ export default async function CorporateLayout({
           {children}
         </main>
       ) : (
-        <div style={{ flex: 1, position: 'relative', zIndex: 1 }}>
+        <div style={{ flex: 1, display: 'flex', flexDirection: 'column', position: 'relative', zIndex: 1 }}>
           {children}
         </div>
       )}
