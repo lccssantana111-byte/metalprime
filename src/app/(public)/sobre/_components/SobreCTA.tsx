@@ -51,7 +51,8 @@ export default function SobreCTA() {
               Fale com um engenheiro: visita técnica gratuita, orçamento em 24h.
             </p>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+            {/* Botões — visíveis só no desktop (lg+), no mobile aparecem abaixo da lista */}
+            <div className="hidden lg:flex" style={{ flexDirection: 'column', gap: '12px' }}>
               <CTAButton
                 variant="primary"
                 href="/orcamento"
@@ -72,34 +73,56 @@ export default function SobreCTA() {
           </div>
 
           {/* Direita — diferenciais */}
-          <div style={{ border: '1px solid rgba(255,255,255,0.08)' }}>
-            {differentials.map((d, i) => (
-              <div
-                key={i}
-                className="flex items-start gap-5"
-                style={{
-                  padding: '1.75rem 2rem',
-                  borderBottom: i < differentials.length - 1 ? '1px solid rgba(255,255,255,0.08)' : 'none',
-                }}
-              >
-                <div style={{
-                  width: '28px',
-                  height: '28px',
-                  border: '1px solid rgba(249,115,22,0.3)',
-                  background: 'rgba(249,115,22,0.08)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  flexShrink: 0,
-                  marginTop: '1px',
-                }}>
-                  <CheckCircle style={{ width: '14px', height: '14px', color: '#f97316' }} />
+          <div>
+            <div style={{ border: '1px solid rgba(255,255,255,0.08)' }}>
+              {differentials.map((d, i) => (
+                <div
+                  key={i}
+                  className="flex items-start gap-5"
+                  style={{
+                    padding: '1.75rem 2rem',
+                    borderBottom: i < differentials.length - 1 ? '1px solid rgba(255,255,255,0.08)' : 'none',
+                  }}
+                >
+                  <div style={{
+                    width: '28px',
+                    height: '28px',
+                    border: '1px solid rgba(249,115,22,0.3)',
+                    background: 'rgba(249,115,22,0.08)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    flexShrink: 0,
+                    marginTop: '1px',
+                  }}>
+                    <CheckCircle style={{ width: '14px', height: '14px', color: '#f97316' }} />
+                  </div>
+                  <span style={{ fontSize: '14px', color: 'rgba(255,255,255,0.85)', lineHeight: 1.7 }}>
+                    {d}
+                  </span>
                 </div>
-                <span style={{ fontSize: '14px', color: 'rgba(255,255,255,0.85)', lineHeight: 1.7 }}>
-                  {d}
-                </span>
-              </div>
-            ))}
+              ))}
+            </div>
+
+            {/* Botões — visíveis só no mobile, abaixo da lista */}
+            <div className="flex lg:hidden" style={{ flexDirection: 'column', gap: '12px', marginTop: '2rem' }}>
+              <CTAButton
+                variant="primary"
+                href="/orcamento"
+                iconCircle
+                icon={<ArrowRight style={{ width: '14px', height: '14px' }} />}
+              >
+                Solicitar Orçamento Gratuito
+              </CTAButton>
+
+              <CTAButton
+                variant="ghost"
+                hrefExternal={`https://wa.me/${WHATSAPP_NUMBER}`}
+                onDark
+              >
+                Falar pelo WhatsApp
+              </CTAButton>
+            </div>
           </div>
 
         </div>
