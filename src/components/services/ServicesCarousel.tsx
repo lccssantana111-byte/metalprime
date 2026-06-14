@@ -91,6 +91,22 @@ export default function ServicesCarousel({ services }: { services: Service[] }) 
     applyPos(next, true)
   }
 
+  // Touch swipe
+  const touchStartX = useRef<number | null>(null)
+  const onTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX
+  }
+  const onTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX.current === null) return
+    const dx = e.changedTouches[0].clientX - touchStartX.current
+    touchStartX.current = null
+    if (Math.abs(dx) < 40) return
+    slide(dx < 0 ? 'next' : 'prev')
+  }
+
+  const isMobileView = cardW > 0 && (wrapperRef.current?.clientWidth ?? 0) < MOBILE_BREAKPOINT
+  const fadeW = isMobileView ? 20 : SIDE_PAD + 24
+
   // Dot index: which service is the leftmost visible (0..total-1)
   const dotIdx = ((idxRef.current % total) + total) % total
 
@@ -98,18 +114,20 @@ export default function ServicesCarousel({ services }: { services: Service[] }) 
     <div
       ref={wrapperRef}
       style={{ position: 'relative', paddingTop: '3.5rem', paddingBottom: '3rem' }}
+      onTouchStart={onTouchStart}
+      onTouchEnd={onTouchEnd}
     >
-      {/* Edge fades — hint that more cards exist */}
+      {/* Edge fades */}
       <div style={{
         position: 'absolute', left: 0, top: 0, bottom: 0,
-        width: `${SIDE_PAD + 24}px`,
+        width: `${fadeW}px`,
         background: 'linear-gradient(90deg, #0a0f1e 0%, transparent 100%)',
         zIndex: 10,
         pointerEvents: 'none',
       }} />
       <div style={{
         position: 'absolute', right: 0, top: 0, bottom: 0,
-        width: `${SIDE_PAD + 24}px`,
+        width: `${fadeW}px`,
         background: 'linear-gradient(270deg, #0a0f1e 0%, transparent 100%)',
         zIndex: 10,
         pointerEvents: 'none',
