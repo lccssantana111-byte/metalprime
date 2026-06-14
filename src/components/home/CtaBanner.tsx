@@ -7,9 +7,9 @@ import { ArrowRight, Phone, MessageCircle, ShieldCheck, Clock, Wrench } from 'lu
 import { COMPANY_PHONE, WHATSAPP_NUMBER } from '@/lib/constants'
 
 const trust = [
-  { icon: ShieldCheck, text: 'ART em 100% dos projetos' },
-  { icon: Clock, text: 'Resposta em 24h úteis' },
-  { icon: Wrench, text: 'Visita técnica gratuita' },
+  { icon: ShieldCheck, text: 'ART em 100% dos projetos estruturais' },
+  { icon: Clock, text: 'Proposta técnica em 48h' },
+  { icon: Wrench, text: 'Engenheiro na visita — sem custo' },
 ]
 
 export default function CtaBanner() {
@@ -86,7 +86,7 @@ export default function CtaBanner() {
           padding: 'clamp(3rem, 8vw, 7rem) clamp(1.25rem, 4vw, 2rem)',
           display: 'flex',
           alignItems: 'center',
-          gap: '3rem',
+          gap: 'clamp(1.5rem, 4vw, 3rem)',
           flexWrap: 'wrap',
         }}
       >
@@ -119,9 +119,9 @@ export default function CtaBanner() {
               margin: '0 0 1.75rem',
             }}
           >
-            Seu projeto<br />
-            começa com<br />
-            <span style={{ color: '#f97316' }}>uma ligação.</span>
+            Próximo projeto.<br />
+            Próxima estrutura.<br />
+            <span style={{ color: '#f97316' }}>Fale com um engenheiro.</span>
           </h2>
 
           <p
@@ -133,8 +133,8 @@ export default function CtaBanner() {
               maxWidth: '400px',
             }}
           >
-            A empresa de serralheria com mais obras entregues na Grande São Paulo.
-            Fabricação própria, ART em todos os projetos estruturais.
+            Estruturas entregues no prazo, com documentação técnica completa.
+            Referência para construtoras, incorporadoras e gestores industriais em São Paulo.
           </p>
 
           {/* Trust badges */}
@@ -154,7 +154,7 @@ export default function CtaBanner() {
                 }}
               >
                 {i > 0 && (
-                  <span className="hidden sm:inline" style={{ color: 'rgba(249,115,22,0.35)', marginRight: '8px' }}>|</span>
+                  <span aria-hidden="true" className="hidden sm:inline" style={{ color: 'rgba(249,115,22,0.35)', marginRight: '8px' }}>|</span>
                 )}
                 <Icon style={{ width: '13px', height: '13px', color: '#f97316', flexShrink: 0 }} />
                 {text}
@@ -200,12 +200,13 @@ export default function CtaBanner() {
                   marginBottom: '1rem',
                 }}
               >
-                Ligue agora
+                Fale com a equipe técnica
               </p>
 
               {/* Phone number */}
               <a
                 href={`tel:${COMPANY_PHONE}`}
+                className="group/phone"
                 style={{
                   display: 'flex',
                   alignItems: 'center',
@@ -213,9 +214,8 @@ export default function CtaBanner() {
                   marginBottom: '1.75rem',
                   textDecoration: 'none',
                   transition: 'opacity 0.2s',
+                  opacity: 1,
                 }}
-                onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.opacity = '0.75' }}
-                onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.opacity = '1' }}
               >
                 <div
                   style={{
@@ -258,6 +258,7 @@ export default function CtaBanner() {
               <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
                 <Link
                   href="/orcamento"
+                  className="cta-primary-btn"
                   style={{
                     display: 'inline-flex',
                     alignItems: 'center',
@@ -275,20 +276,8 @@ export default function CtaBanner() {
                     transition: 'background 0.2s, box-shadow 0.2s, transform 0.15s',
                     cursor: 'pointer',
                   }}
-                  onMouseEnter={(e) => {
-                    const el = e.currentTarget as HTMLElement
-                    el.style.background = '#ea580c'
-                    el.style.boxShadow = '0 6px 28px rgba(249,115,22,0.5)'
-                    el.style.transform = 'translateY(-1px)'
-                  }}
-                  onMouseLeave={(e) => {
-                    const el = e.currentTarget as HTMLElement
-                    el.style.background = '#f97316'
-                    el.style.boxShadow = '0 4px 20px rgba(249,115,22,0.35)'
-                    el.style.transform = 'translateY(0)'
-                  }}
                 >
-                  <span>Solicitar Orçamento</span>
+                  <span>Solicitar Orçamento Técnico</span>
                   <ArrowRight style={{ width: '15px', height: '15px', flexShrink: 0 }} />
                 </Link>
 
@@ -296,6 +285,7 @@ export default function CtaBanner() {
                   href={`https://wa.me/${WHATSAPP_NUMBER}?text=Olá! Gostaria de solicitar um orçamento.`}
                   target="_blank"
                   rel="noopener noreferrer"
+                  className="cta-whatsapp-btn"
                   style={{
                     display: 'inline-flex',
                     alignItems: 'center',
@@ -311,18 +301,6 @@ export default function CtaBanner() {
                     textDecoration: 'none',
                     transition: 'all 0.2s',
                     cursor: 'pointer',
-                  }}
-                  onMouseEnter={(e) => {
-                    const el = e.currentTarget as HTMLElement
-                    el.style.borderColor = 'rgba(34,197,94,0.4)'
-                    el.style.color = 'rgba(134,239,172,0.9)'
-                    el.style.background = 'rgba(34,197,94,0.06)'
-                  }}
-                  onMouseLeave={(e) => {
-                    const el = e.currentTarget as HTMLElement
-                    el.style.borderColor = 'rgba(255,255,255,0.14)'
-                    el.style.color = 'rgba(255,255,255,0.75)'
-                    el.style.background = 'rgba(255,255,255,0.04)'
                   }}
                 >
                   <MessageCircle style={{ width: '15px', height: '15px' }} />
@@ -342,7 +320,7 @@ export default function CtaBanner() {
                   textTransform: 'uppercase',
                 }}
               >
-                +5.000 obras entregues / Grande São Paulo
+                +5.000 estruturas entregues · Grande São Paulo
               </p>
             </div>
           </div>

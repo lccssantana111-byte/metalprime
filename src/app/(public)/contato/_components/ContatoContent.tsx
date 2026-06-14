@@ -229,14 +229,14 @@ export default function ContatoContent() {
                 color: '#ffffff',
                 marginBottom: '0.6rem',
               }}>
-                Descreva o que precisa
+                Descreva o projeto
               </h2>
               <p style={{
                 fontSize: '0.9rem',
                 color: 'rgba(255,255,255,0.45)',
                 lineHeight: 1.6,
               }}>
-                Nome, telefone e o que você precisa. Nossa equipe entra em contato.
+                Empresa, contato e escopo. Nossa equipe técnica responde com uma proposta estruturada, não um orçamento genérico.
               </p>
             </div>
 

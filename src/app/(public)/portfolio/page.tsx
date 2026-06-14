@@ -2,16 +2,32 @@ import type { Metadata } from 'next'
 import { getAllPortfolio } from '@/lib/queries/portfolio'
 import PortfolioGrid from '@/components/portfolio/PortfolioGrid'
 import { ZoomParallax } from '@/components/ui/zoom-parallax'
-import { BRAND_NAME } from '@/lib/constants'
+import { BRAND_NAME, SITE_URL } from '@/lib/constants'
 import { PHOTOS } from '@/lib/images'
 import { SectionHeading } from '@/components/ui/design-system'
 
 export const revalidate = 3600
 
 export const metadata: Metadata = {
-  title: `Portfólio | ${BRAND_NAME}`,
+  title: `Portfólio de Projetos | ${BRAND_NAME}`,
   description:
-    'Conheça nossos projetos de serralheria premium: portões, escadas, grades e estruturas metálicas em São Paulo.',
+    'Portfólio de estruturas metálicas industriais e comerciais em São Paulo. Galpões, escadas estruturais, coberturas e portões entregues para construtoras e empresas. ART em 100% dos projetos.',
+  alternates: { canonical: `${SITE_URL}/portfolio` },
+  openGraph: {
+    title: `Portfólio de Projetos | ${BRAND_NAME}`,
+    description: 'Estruturas metálicas para construtoras e empresas em São Paulo. Galpões, escadas, coberturas e portões com ART em 100% dos projetos.',
+    url: `${SITE_URL}/portfolio`,
+    siteName: BRAND_NAME,
+    locale: 'pt_BR',
+    type: 'website',
+    images: [{ url: `${SITE_URL}/og-default.jpg`, width: 1200, height: 630, alt: `Portfólio de Projetos | ${BRAND_NAME}` }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: `Portfólio de Projetos | ${BRAND_NAME}`,
+    description: 'Estruturas metálicas para construtoras e empresas em São Paulo. ART em 100% dos projetos.',
+    images: [`${SITE_URL}/og-default.jpg`],
+  },
 }
 
 const parallaxImages = [
@@ -59,7 +75,7 @@ export default async function PortfolioPage() {
               textTransform: 'uppercase' as const,
               color: '#f97316',
             }}>
-              Metalprime
+              Metal Shark
             </span>
           </div>
 
@@ -95,7 +111,7 @@ export default async function PortfolioPage() {
                 color: '#64748b',
                 margin: '0 0 1rem',
               }}>
-                Cada obra entregue no prazo, com ART e com o padrão que nossos clientes reconhecem como diferencial.
+                Cada estrutura entregue no prazo, com ART e documentação técnica completa — o padrão que construtoras e gestores industriais exigem de um fornecedor homologado.
               </p>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                 <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#f97316', flexShrink: 0 }} />
@@ -118,17 +134,6 @@ export default async function PortfolioPage() {
 
         </div>
 
-        <style>{`
-          @media (max-width: 640px) {
-            .portfolio-hero-grid {
-              grid-template-columns: 1fr !important;
-            }
-            .portfolio-hero-aside {
-              max-width: 100% !important;
-              padding-bottom: 0 !important;
-            }
-          }
-        `}</style>
       </section>
 
       {/* Zoom Parallax — visual showcase */}

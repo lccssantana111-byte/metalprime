@@ -14,7 +14,7 @@ export const revalidate = 1800
 export const metadata: Metadata = {
   title: `${BRAND_NAME} | ${COMPANY_TAGLINE}`,
   description:
-    'Serralheria premium em São Paulo. Portões automáticos, grades, escadas metálicas, corrimões e estruturas metálicas para residências, condomínios e construtoras. +20 anos de mercado.',
+    'Estruturas metálicas para construtoras, galpões industriais e empreendimentos comerciais em São Paulo. Fabricação própria, ART em 100% dos projetos estruturais. Mais de 20 anos de entrega.',
   alternates: { canonical: SITE_URL },
   openGraph: {
     type: 'website',

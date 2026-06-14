@@ -5,12 +5,12 @@ import { WHATSAPP_NUMBER } from '@/lib/constants'
 import { SectionLabel, CTAButton } from '@/components/ui/design-system'
 
 const differentials = [
-  'Equipe própria de engenheiros e soldadores certificados',
-  'Fabricação própria, sem terceirizar nenhuma etapa',
-  'ART em 100% dos projetos estruturais (você não se preocupa com a vistoria)',
-  'Atendemos toda Grande São Paulo e interior',
-  'Garantia de 5 anos em peças estruturais',
-  '+500 condomínios que renovam contratos conosco',
+  'Equipe própria: engenheiros estruturais, soldadores AWS e montadores certificados NR-35',
+  'Fabricação 100% interna — sem terceirização em nenhuma etapa crítica',
+  'ART em 100% dos projetos estruturais — documentação completa para vistorias e seguros',
+  'Memorial descritivo, cronograma físico-financeiro e relatório de inspeção em todas as entregas',
+  'Atendemos Grande São Paulo, ABC, Campinas e interior do estado',
+  'Garantia estrutural de 5 anos — com laudo técnico de responsabilidade',
 ]
 
 export default function SobreCTA() {
@@ -22,7 +22,7 @@ export default function SobreCTA() {
           {/* Esquerda */}
           <div className="lg:sticky" style={{ top: '8rem' }}>
             <div style={{ marginBottom: '1.5rem' }}>
-              <SectionLabel label="Por que a Metalprime" />
+              <SectionLabel label="Por que a Metal Shark" />
             </div>
 
             <h2 style={{
@@ -35,9 +35,9 @@ export default function SobreCTA() {
               color: '#ffffff',
               marginBottom: '1.5rem',
             }}>
-              O que você não<br />
-              encontra em<br />
-              <span style={{ color: '#f97316' }}>qualquer serralheria</span>
+              O que nenhum<br />
+              outro fornecedor<br />
+              <span style={{ color: '#f97316' }}>garante em contrato</span>
             </h2>
 
             <p style={{
@@ -47,8 +47,8 @@ export default function SobreCTA() {
               marginBottom: '3rem',
               maxWidth: '38ch',
             }}>
-              A maioria terceiriza, improvisa e entrega sem ART. Aqui é diferente.
-              Fale com um engenheiro: visita técnica gratuita, orçamento em 24h.
+              A maioria terceiriza, improvisa e entrega sem laudo. Aqui, cada etapa é executada por equipe própria e documentada.
+              Fale com um engenheiro: diagnóstico técnico gratuito, proposta em 48h.
             </p>
 
             {/* Botões — visíveis só no desktop (lg+), no mobile aparecem abaixo da lista */}

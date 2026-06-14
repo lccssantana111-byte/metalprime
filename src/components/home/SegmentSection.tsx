@@ -10,15 +10,15 @@ const segments = [
     icon: Building2,
     label: 'Condomínios',
     metric: '+500',
-    metricLabel: 'condomínios atendidos',
-    headline: 'O parceiro que o síndico confia',
+    metricLabel: 'condomínios e edifícios atendidos',
+    headline: 'O parceiro que o síndico e o gestor confiam',
     description:
-      'Portões automáticos, grades, guaritas e estruturas de segurança. Entregamos ART em todos os itens estruturais — a vistoria passa sem surpresas.',
+      'Portões automáticos, grades de segurança, guaritas e coberturas. ART em todas as estruturas — a vistoria da AVCB e do Corpo de Bombeiros não para por nossa causa.',
     items: [
-      'Portões automáticos com ART',
-      'Grades e cercas de segurança',
-      'Guaritas e coberturas',
-      'Manutenção preventiva',
+      'Portões automáticos com ART inclusa',
+      'Grades e cercas de segurança perimetral',
+      'Guaritas e coberturas certificadas',
+      'Contratos de manutenção preventiva',
     ],
     href: '/orcamento',
     cta: 'Orçamento para condomínio',
@@ -27,15 +27,15 @@ const segments = [
     icon: HardHat,
     label: 'Construtoras',
     metric: '100%',
-    metricLabel: 'de entrega no prazo',
-    headline: 'Certificado e no cronograma — sempre',
+    metricLabel: 'entregas dentro do cronograma',
+    headline: 'Certificado, no prazo, sem surpresas',
     description:
-      'Escadas, estruturas, mezaninos e guarda-corpos. Fabricação própria, sem terceirizar. ART em 100% dos projetos — a obra não para por nossa causa.',
+      'Escadas, estruturas, mezaninos e guarda-corpos para empreendimentos residenciais e comerciais. Fabricação própria — nenhuma etapa é terceirizada. A obra não para por nossa causa.',
     items: [
-      'Estruturas metálicas certificadas',
-      'Escadas e guarda-corpos',
-      'Mezaninos e plataformas',
-      'Entrega no prazo da obra',
+      'Estruturas metálicas com ART do estrutural',
+      'Escadas, guarda-corpos e mezaninos',
+      'Fornecimento compatível com cronograma de obra',
+      'Memorial descritivo e documentação técnica',
     ],
     href: '/orcamento',
     cta: 'Orçamento para construtora',
@@ -45,15 +45,15 @@ const segments = [
     icon: Factory,
     label: 'Indústrias',
     metric: '+20',
-    metricLabel: 'anos de expertise',
-    headline: 'Estrutura própria para grande porte',
+    metricLabel: 'anos em projetos industriais',
+    headline: 'Estrutura própria para projetos de grande porte',
     description:
-      'Galpões, coberturas e mezaninos industriais. Projetamos, fabricamos e instalamos com equipe própria — da fundação ao acabamento.',
+      'Galpões, coberturas metálicas, mezaninos e plataformas industriais. Equipe própria de engenheiros e montadores — da fundação ao comissionamento.',
     items: [
-      'Galpões industriais',
-      'Coberturas metálicas',
-      'Plataformas e mezaninos',
-      'Estruturas sob medida',
+      'Galpões industriais steel frame e pré-moldado',
+      'Coberturas metálicas e shed',
+      'Plataformas, mezaninos e passarelas',
+      'NR-18 e NR-35 em toda a montagem',
     ],
     href: '/orcamento',
     cta: 'Orçamento industrial',
@@ -127,7 +127,7 @@ export default function SegmentSection() {
               color: '#f97316',
             }}
           >
-            Para quem fazemos
+            Segmentos atendidos
           </span>
 
           <h2
@@ -142,8 +142,8 @@ export default function SegmentSection() {
               margin: 0,
             }}
           >
-            O parceiro certo<br />
-            <span style={{ color: '#f97316' }}>para cada projeto</span>
+            Soluções técnicas<br />
+            <span style={{ color: '#f97316' }}>para cada segmento</span>
           </h2>
         </motion.div>
 

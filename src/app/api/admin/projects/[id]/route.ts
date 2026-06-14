@@ -1,8 +1,26 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { z } from 'zod'
 import { createAdminClient } from '@/lib/supabase/admin'
 import { requireAuth, isAuthError } from '@/lib/auth'
 
 type Params = { params: Promise<{ id: string }> }
+
+const milestoneSchema = z.object({
+  title: z.string().min(1).max(200),
+  due_date: z.string().optional(),
+  completed_at: z.string().optional(),
+})
+
+const patchProjectSchema = z.object({
+  name: z.string().min(2).max(200).optional(),
+  status: z.enum(['planejamento', 'medicao', 'producao', 'instalacao', 'concluido', 'pausado', 'cancelado']).optional(),
+  start_date: z.string().optional(),
+  end_date: z.string().optional(),
+  contract_value: z.number().positive().optional(),
+  amount_paid: z.number().min(0).optional(),
+  notes: z.string().max(5000).optional(),
+  milestones: z.array(milestoneSchema).max(50).optional(),
+}).strict()
 
 export async function GET(_req: NextRequest, { params }: Params) {
   const auth = await requireAuth(['admin', 'comercial', 'viewer'])
@@ -25,8 +43,13 @@ export async function PATCH(request: NextRequest, { params }: Params) {
   if (isAuthError(auth)) return auth
 
   const { id } = await params
-  const body = await request.json()
-  const { milestones, ...projectData } = body
+  const raw = await request.json()
+  const parsed = patchProjectSchema.safeParse(raw)
+  if (!parsed.success) {
+    return NextResponse.json({ error: 'Dados inválidos.', details: parsed.error.flatten() }, { status: 400 })
+  }
+
+  const { milestones, ...projectData } = parsed.data
 
   const supabase = createAdminClient()
   const { data, error } = await supabase
@@ -36,13 +59,13 @@ export async function PATCH(request: NextRequest, { params }: Params) {
     .select()
     .single()
 
-  if (error) return NextResponse.json({ error: error.message }, { status: 500 })
+  if (error) return NextResponse.json({ error: 'Erro interno.' }, { status: 500 })
 
   if (milestones && Array.isArray(milestones)) {
     await supabase.from('project_milestones').delete().eq('project_id', id)
     if (milestones.length > 0) {
       await supabase.from('project_milestones').insert(
-        milestones.map((m: { title: string; due_date?: string; completed_at?: string }) => ({
+        milestones.map((m) => ({
           project_id: id,
           title: m.title,
           due_date: m.due_date ?? null,

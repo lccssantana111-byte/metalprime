@@ -1,10 +1,16 @@
 export const BRAND_NAME = process.env.NEXT_PUBLIC_BRAND_NAME ?? 'Metalprime Serralheria'
 export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://metalprime.com.br'
 export const WHATSAPP_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '5511999999999'
-export const COMPANY_PHONE = '(11) 99999-9999'
-export const COMPANY_EMAIL = 'contato@metalprime.com.br'
-export const COMPANY_ADDRESS = 'Rua das Indústrias, 123 — São Paulo, SP'
-export const COMPANY_TAGLINE = 'Estruturas de aço com precisão e elegância'
+export const COMPANY_PHONE = process.env.NEXT_PUBLIC_COMPANY_PHONE ?? '(11) 99999-9999'
+export const COMPANY_EMAIL = process.env.NEXT_PUBLIC_COMPANY_EMAIL ?? 'contato@metalprime.com.br'
+export const COMPANY_ADDRESS = `${process.env.NEXT_PUBLIC_COMPANY_ADDRESS_STREET ?? 'Rua das Indústrias, 123'} — ${process.env.NEXT_PUBLIC_COMPANY_ADDRESS_CITY ?? 'São Paulo'}, SP`
+export const COMPANY_ADDRESS_STREET = process.env.NEXT_PUBLIC_COMPANY_ADDRESS_STREET ?? 'Rua das Indústrias, 123'
+export const COMPANY_ADDRESS_CITY = process.env.NEXT_PUBLIC_COMPANY_ADDRESS_CITY ?? 'São Paulo'
+export const COMPANY_ADDRESS_REGION = 'SP'
+export const COMPANY_ADDRESS_POSTAL = process.env.NEXT_PUBLIC_COMPANY_ADDRESS_POSTAL ?? '01000-000'
+export const COMPANY_GEO_LAT = parseFloat(process.env.NEXT_PUBLIC_COMPANY_GEO_LAT ?? '-23.55')
+export const COMPANY_GEO_LNG = parseFloat(process.env.NEXT_PUBLIC_COMPANY_GEO_LNG ?? '-46.63')
+export const COMPANY_TAGLINE = 'Estruturas feitas para durar'
 
 export const SERVICE_LABELS: Record<string, string> = {
   portoes: 'Portões',

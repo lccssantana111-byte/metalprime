@@ -29,7 +29,7 @@ const company = [
 const LOGO_MARK = (
   <img
     src="/logo.png"
-    alt="Metalprime logo"
+    alt="Metal Shark logo"
     width={32}
     height={32}
     style={{ objectFit: 'contain', display: 'block' }}
@@ -59,8 +59,8 @@ export default function Footer() {
             </Link>
 
             <p className="text-[15px] sm:text-[14px] leading-[1.8] mb-8 max-w-xs" style={{ color: '#64748b' }}>
-              Excelência em engenharia metálica há mais de 20 anos.
-              Estruturas para residências, condomínios, construtoras e indústrias em São Paulo.
+              Estruturas metálicas para construtoras, galpões industriais e empreendimentos comerciais.
+              Fabricação própria, equipe própria, ART em 100% dos projetos. São Paulo e região.
             </p>
 
             {/* Contact */}
@@ -199,8 +199,8 @@ export default function Footer() {
             {/* Social */}
             <div className="flex gap-6 mt-2">
               {[
-                { label: 'Instagram', href: 'https://instagram.com/metalprime' },
-                { label: 'Facebook', href: 'https://facebook.com/metalprime' },
+                { label: 'Instagram', href: 'https://instagram.com/metalshark' },
+                { label: 'Facebook', href: 'https://facebook.com/metalshark' },
                 { label: 'WhatsApp', href: `https://wa.me/${WHATSAPP_NUMBER}` },
               ].map((s) => (
                 <a

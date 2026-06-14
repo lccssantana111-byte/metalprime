@@ -176,7 +176,7 @@ export default function ServiceGallery({ images, serviceSlug }: Props) {
               <motion.img
                 key={activeIndex}
                 src={photos[activeIndex]}
-                alt={`Projeto Metalprime ${activeIndex + 1}`}
+                alt={`Projeto Metal Shark ${activeIndex + 1}`}
                 className="max-w-[calc(100vw-8rem)] max-h-[calc(100vh-8rem)] object-contain"
                 initial={{ scale: 0.94, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}

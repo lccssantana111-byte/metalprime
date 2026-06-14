@@ -5,67 +5,67 @@ import { TestimonialsColumn } from '@/components/ui/testimonials-columns-1'
 
 const testimonials = [
   {
-    name: 'Arq. Patricia Lima',
-    role: 'Arquiteta · Lima & Associados',
-    service: 'Projetos Sob Medida',
-    image: 'https://randomuser.me/api/portraits/women/44.jpg',
-    text: 'Qualidade impecável do início ao fim. A Metalprime transformou um projeto complexo em realidade com uma precisão que raramente vemos no mercado.',
-  },
-  {
     name: 'Eng. Roberto Mendes',
-    role: 'Dir. de Obras · Construtora Mendes',
+    role: 'Diretor de Obras · Construtora Mendes Engenharia',
     service: 'Estruturas Metálicas',
     image: 'https://randomuser.me/api/portraits/men/32.jpg',
-    text: 'Fornecedor oficial em todas as nossas obras por seis anos consecutivos. Cronograma cumprido, ART em 100% dos projetos estruturais. Referência absoluta.',
+    text: 'Fornecedor homologado em todas as nossas obras por seis anos. Cronograma cumprido, ART entregue em 100% dos itens estruturais. Referência absoluta para qualquer construtora séria.',
   },
   {
-    name: 'Ana Paula Souza',
-    role: 'Proprietária · Pinheiros, SP',
-    service: 'Escadas Metálicas',
-    image: 'https://randomuser.me/api/portraits/women/63.jpg',
-    text: 'A escada helicoidal em aço e vidro superou todas as expectativas. Os visitantes fazem questão de perguntar quem executou.',
-  },
-  {
-    name: 'Beatriz Carvalho',
-    role: 'Designer de Interiores · Studio BC',
+    name: 'Arq. Patricia Lima',
+    role: 'Sócia · Lima & Associados Arquitetura',
     service: 'Projetos Sob Medida',
-    image: 'https://randomuser.me/api/portraits/women/17.jpg',
-    text: 'Parceiro indispensável em todos os projetos residenciais de alto padrão. Peças únicas com precisão e acabamento reconhecido pelos clientes.',
-  },
-  {
-    name: 'Ricardo Yamamoto',
-    role: 'Administrador · Cond. Jardins',
-    service: 'Portões e Grades',
-    image: 'https://randomuser.me/api/portraits/men/52.jpg',
-    text: 'Reformamos toda a área de lazer do condomínio. A qualidade do aço e o acabamento são visíveis. Moradores elogiam sem parar.',
-  },
-  {
-    name: 'Carlos Ferreira',
-    role: 'Construtor · CF Engenharia',
-    service: 'Portões Automáticos',
-    image: 'https://randomuser.me/api/portraits/men/41.jpg',
-    text: 'Instalação impecável e prazo cumprido. O portão automático funciona perfeitamente há três anos sem nenhuma manutenção corretiva.',
-  },
-  {
-    name: 'Marina Santos',
-    role: 'Arq. de Interiores · Santos Studio',
-    service: 'Corrimões',
-    image: 'https://randomuser.me/api/portraits/women/28.jpg',
-    text: 'Os corrimões em inox escovado que encomendei trouxeram um acabamento de altíssimo padrão ao projeto. Clientes sempre elogiam.',
-  },
-  {
-    name: 'Eduardo Costa',
-    role: 'Síndico · Cond. Alto da Lapa',
-    service: 'Grades e Cercas',
-    image: 'https://randomuser.me/api/portraits/men/67.jpg',
-    text: 'Modernizamos toda a grade perimetral do condomínio. Excelente custo-benefício e garantia real. Recomendo a todos os síndicos.',
+    image: 'https://randomuser.me/api/portraits/women/44.jpg',
+    text: 'A Metal Shark transformou projetos complexos em realidade com precisão que raramente vejo no mercado. Parceiro indispensável para escritórios de arquitetura que não aceitam imprecisão.',
   },
   {
     name: 'Julia Almeida',
-    role: 'Sócia-Diretora · JA Comércio',
+    role: 'Sócia-Diretora · JA Comércio e Logística',
     service: 'Estruturas Metálicas',
     image: 'https://randomuser.me/api/portraits/women/55.jpg',
-    text: 'Construímos a cobertura metálica do nosso novo galpão com a Metalprime. Entrega antes do prazo e qualidade acima do esperado.',
+    text: 'Construímos a cobertura metálica do nosso galpão logístico com a Metal Shark. Entrega antes do prazo, documentação técnica completa e qualidade bem acima do esperado.',
+  },
+  {
+    name: 'Marcos Andrade',
+    role: 'Gerente de Projetos · Tegma Gestão Logística',
+    service: 'Galpões e Coberturas',
+    image: 'https://randomuser.me/api/portraits/men/48.jpg',
+    text: 'Galpão industrial de 3.500m² entregue em 58 dias, dentro do escopo e sem nenhum aditivo de contrato. Isso é gestão de obra de verdade.',
+  },
+  {
+    name: 'Carlos Ferreira',
+    role: 'Engenheiro Responsável · CF Engenharia',
+    service: 'Portões e Grades',
+    image: 'https://randomuser.me/api/portraits/men/41.jpg',
+    text: 'Parceiro de confiança em três empreendimentos comerciais consecutivos. Instalação impecável, ART no prazo e acompanhamento pós-obra real. Não terceirizam nada.',
+  },
+  {
+    name: 'Ricardo Yamamoto',
+    role: 'Administrador · Condomínio Empresarial Jardins',
+    service: 'Portões e Segurança',
+    image: 'https://randomuser.me/api/portraits/men/52.jpg',
+    text: 'Reformamos toda a segurança perimetral do condomínio empresarial. Qualidade do aço, acabamento e a documentação para a administradora foram impecáveis.',
+  },
+  {
+    name: 'Eduardo Costa',
+    role: 'Facilities Manager · Grupo Costa Alimentos',
+    service: 'Manutenção e Estruturas',
+    image: 'https://randomuser.me/api/portraits/men/67.jpg',
+    text: 'Responsáveis pela manutenção das estruturas de três plantas industriais nossas. Equipe técnica qualificada, laudos em dia e resposta rápida para qualquer chamado.',
+  },
+  {
+    name: 'Dra. Sandra Figueiredo',
+    role: 'Diretora Comercial · Incorporadora SF',
+    service: 'Escadas e Mezaninos',
+    image: 'https://randomuser.me/api/portraits/women/63.jpg',
+    text: 'Escadas metálicas e mezanino corporativo entregues com acabamento de alto padrão. A documentação de ART e conformidade ABNT chegou junto com a obra. Diferencial real.',
+  },
+  {
+    name: 'Eng. Gustavo Pires',
+    role: 'Coordenador Técnico · VBA Construções',
+    service: 'Estruturas Metálicas',
+    image: 'https://randomuser.me/api/portraits/men/23.jpg',
+    text: 'Contratamos para projeto executivo e instalação de estruturas em aço. Nenhum retrabalho, nenhuma não-conformidade. É raro assim no mercado.',
   },
 ]
 
@@ -115,7 +115,7 @@ export default function TestimonialsCarousel() {
             padding: '4px 14px',
             marginBottom: '1.75rem',
           }}>
-            O que os clientes dizem
+            Quem trabalha com a gente
           </div>
 
           <h2
@@ -131,9 +131,9 @@ export default function TestimonialsCarousel() {
               margin: '0 0 1.5rem',
             }}
           >
-            Obra entregue{' '}
-            <span style={{ color: '#f97316' }}>confiança</span>{' '}
-            conquistada.
+            A voz de quem{' '}
+            <span style={{ color: '#f97316' }}>aprova</span>{' '}
+            na prática.
           </h2>
 
           <p style={{
@@ -144,7 +144,7 @@ export default function TestimonialsCarousel() {
             margin: '0 0 2.5rem',
             maxWidth: '340px',
           }}>
-            Mais de 5.000 obras entregues em São Paulo desde 2004. Veja o que arquitetos, construtoras e proprietários dizem sobre a Metalprime.
+            Construtoras, gestores industriais e escritórios de arquitetura que colocam a Metal Shark como fornecedor homologado. Mais de 5.000 estruturas entregues desde 2004.
           </p>
 
         </motion.div>

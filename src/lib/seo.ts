@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { BRAND_NAME, COMPANY_PHONE, COMPANY_EMAIL, SITE_URL, WHATSAPP_NUMBER } from './constants'
+import { BRAND_NAME, COMPANY_PHONE, COMPANY_EMAIL, COMPANY_ADDRESS_STREET, COMPANY_ADDRESS_CITY, COMPANY_ADDRESS_REGION, COMPANY_ADDRESS_POSTAL, COMPANY_GEO_LAT, COMPANY_GEO_LNG, SITE_URL, WHATSAPP_NUMBER } from './constants'
 import type { Service, PortfolioItem } from '@/types'
 
 export function buildServiceMetadata(service: Service): Metadata {
@@ -8,7 +8,7 @@ export function buildServiceMetadata(service: Service): Metadata {
   const description =
     service.seo_description ??
     service.tagline ??
-    `${service.name} sob medida com qualidade premium. Solicite um orçamento gratuito.`
+    `${service.name} para construtoras e empresas em São Paulo. Fabricação própria, ART inclusa. Solicite orçamento.`
   const ogImage = service.hero_image ?? `${SITE_URL}/og-default.jpg`
 
   return {
@@ -95,11 +95,11 @@ export const websiteSchema = {
 
 export const localBusinessSchema = {
   '@context': 'https://schema.org',
-  '@type': 'HomeAndConstructionBusiness',
+  '@type': ['LocalBusiness', 'ProfessionalService'],
   '@id': `${SITE_URL}/#business`,
   name: BRAND_NAME,
   image: [`${SITE_URL}/og-default.jpg`],
-  logo: `${SITE_URL}/logo.svg`,
+  logo: `${SITE_URL}/logo.png`,
   url: SITE_URL,
   telephone: COMPANY_PHONE,
   email: COMPANY_EMAIL,
@@ -119,13 +119,13 @@ export const localBusinessSchema = {
   ],
   address: {
     '@type': 'PostalAddress',
-    streetAddress: 'Rua das Indústrias, 123',
-    addressLocality: 'São Paulo',
-    addressRegion: 'SP',
-    postalCode: '01000-000',
+    streetAddress: COMPANY_ADDRESS_STREET,
+    addressLocality: COMPANY_ADDRESS_CITY,
+    addressRegion: COMPANY_ADDRESS_REGION,
+    postalCode: COMPANY_ADDRESS_POSTAL,
     addressCountry: 'BR',
   },
-  geo: { '@type': 'GeoCoordinates', latitude: -23.55, longitude: -46.63 },
+  geo: { '@type': 'GeoCoordinates', latitude: COMPANY_GEO_LAT, longitude: COMPANY_GEO_LNG },
   openingHoursSpecification: [
     {
       '@type': 'OpeningHoursSpecification',
@@ -144,7 +144,7 @@ export const localBusinessSchema = {
   currenciesAccepted: 'BRL',
   paymentAccepted: 'Cash, Credit Card, Bank Transfer, PIX',
   description:
-    'Serralheria premium em São Paulo. Portões automáticos, grades, escadas metálicas, corrimões e estruturas metálicas para residências, condomínios e construtoras. Mais de 20 anos de mercado.',
+    'Estruturas metálicas industriais e comerciais em São Paulo. Galpões, coberturas, escadas, portões e projetos sob medida para construtoras, indústrias e empresas. ART em 100% dos projetos. Mais de 20 anos.',
   foundingDate: '2004',
   areaServed: [
     { '@type': 'City', name: 'São Paulo' },
@@ -153,12 +153,16 @@ export const localBusinessSchema = {
     { '@type': 'AdministrativeArea', name: 'Grande São Paulo' },
   ],
   knowsAbout: [
-    'Portões automáticos',
-    'Grades de ferro e alumínio',
-    'Escadas metálicas',
-    'Corrimões e guarda-corpos',
-    'Estruturas metálicas',
-    'Serralheria industrial',
+    'Estruturas metálicas industriais',
+    'Galpões industriais em aço',
+    'Coberturas metálicas para galpões',
+    'Escadas metálicas industriais',
+    'Mezaninos e plataformas industriais',
+    'Portões industriais e comerciais',
+    'Serralheria para construtoras',
+    'Estruturas metálicas com ART',
+    'Guarda-corpos e corrimões comerciais',
+    'Projetos metálicos sob medida para empresas',
   ],
   hasOfferCatalog: {
     '@type': 'OfferCatalog',
@@ -179,5 +183,5 @@ export const localBusinessSchema = {
     bestRating: '5',
     worstRating: '1',
   },
-  sameAs: ['https://www.instagram.com/metalprime', 'https://www.facebook.com/metalprime'],
+  sameAs: ['https://www.instagram.com/metalshark', 'https://www.facebook.com/metalshark'],
 }

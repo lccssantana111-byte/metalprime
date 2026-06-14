@@ -13,10 +13,10 @@ export async function GET(request: NextRequest) {
   const typeLabels: Record<string, string> = {
     service: 'Serviço',
     portfolio: 'Portfólio',
-    default: 'Serralheria Premium',
+    default: 'Engenharia Metálica',
   }
 
-  return new ImageResponse(
+  const response = new ImageResponse(
     (
       <div
         style={{
@@ -109,4 +109,6 @@ export async function GET(request: NextRequest) {
       height: 630,
     },
   )
+  response.headers.set('Cache-Control', 'public, max-age=86400, stale-while-revalidate=604800')
+  return response
 }

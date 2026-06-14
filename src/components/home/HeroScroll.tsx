@@ -48,7 +48,7 @@ export default function HeroScroll() {
       >
         <img
           src={PHOTOS.cta}
-          alt="Serralheria Metalprime — projeto executado"
+          alt="Metal Shark — estrutura metálica executada"
           style={{
             width: '100%',
             height: '100%',

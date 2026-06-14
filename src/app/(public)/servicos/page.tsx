@@ -1,13 +1,29 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { ArrowUpRight } from 'lucide-react'
-import { BRAND_NAME, WHATSAPP_NUMBER } from '@/lib/constants'
+import { BRAND_NAME, WHATSAPP_NUMBER, SITE_URL } from '@/lib/constants'
 import ServicesCarousel from '@/components/services/ServicesCarousel'
 
 export const metadata: Metadata = {
-  title: `Serviços de Serralheria Premium | ${BRAND_NAME}`,
+  title: `Estruturas Metálicas Industriais e Comerciais | ${BRAND_NAME}`,
   description:
-    'Portões, grades, escadas metálicas, corrimões, estruturas metálicas e projetos sob medida. Especialistas em serralheria de alto padrão em São Paulo.',
+    'Estruturas metálicas industriais, galpões, coberturas, escadas e portões para construtoras e empresas em São Paulo. Fabricação própria, ART inclusa, entrega no prazo.',
+  alternates: { canonical: `${SITE_URL}/servicos` },
+  openGraph: {
+    title: `Estruturas Metálicas Industriais e Comerciais | ${BRAND_NAME}`,
+    description: 'Estruturas metálicas industriais, galpões, coberturas, escadas e portões para construtoras e empresas em São Paulo. Fabricação própria, ART inclusa, entrega no prazo.',
+    url: `${SITE_URL}/servicos`,
+    siteName: BRAND_NAME,
+    locale: 'pt_BR',
+    type: 'website',
+    images: [{ url: `${SITE_URL}/og-default.jpg`, width: 1200, height: 630, alt: `Serviços | ${BRAND_NAME}` }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: `Estruturas Metálicas Industriais e Comerciais | ${BRAND_NAME}`,
+    description: 'Galpões, coberturas, escadas, portões e projetos sob medida para construtoras e empresas em São Paulo.',
+    images: [`${SITE_URL}/og-default.jpg`],
+  },
 }
 
 const services = [
@@ -15,7 +31,7 @@ const services = [
     href: '/servicos/portoes',
     name: 'Portões',
     number: '01',
-    tagline: 'Automático, manual ou de correr.',
+    tagline: 'Industriais, comerciais e condominiais. ART inclusa.',
     tags: ['Ferro', 'Alumínio', 'Inox', 'Automação'],
     image: '/servicos/Residential Garage View.png',
   },
@@ -23,7 +39,7 @@ const services = [
     href: '/servicos/grades-e-cercas',
     name: 'Grades e Cercas',
     number: '02',
-    tagline: 'Proteção sem abrir mão do design.',
+    tagline: 'Segurança perimetral industrial e comercial.',
     tags: ['Janelas', 'Muros', 'Perímetro', 'Guardrails'],
     image: '/servicos/servicogradesecercas.png',
   },
@@ -31,7 +47,7 @@ const services = [
     href: '/servicos/escadas',
     name: 'Escadas Metálicas',
     number: '03',
-    tagline: 'Do reto ao helicoidal. Projeto incluso.',
+    tagline: 'Estruturais, flutuantes ou helicoidais. ART inclusa.',
     tags: ['Retas', 'Helicoidais', 'Flutuantes', 'Com vidro'],
     image: '/imagens portfolio/Blue Spiral Staircase.png',
   },
@@ -39,7 +55,7 @@ const services = [
     href: '/servicos/corrimoes',
     name: 'Corrimões',
     number: '04',
-    tagline: 'Conformidade ABNT. Acabamento impecável.',
+    tagline: 'Conformidade NR e ABNT. Inox, ferro ou alumínio.',
     tags: ['Inox', 'Ferro', 'Alumínio', 'ABNT'],
     image: '/servicos/corrimoes.png',
   },
@@ -47,7 +63,7 @@ const services = [
     href: '/servicos/estruturas-metalicas',
     name: 'Estruturas Metálicas',
     number: '05',
-    tagline: 'ART inclusa. Fabricação própria.',
+    tagline: 'Galpões, coberturas e mezaninos. Equipe própria.',
     tags: ['Galpões', 'Coberturas', 'Mezaninos', 'ART'],
     image: '/servicos/Modern Architectural Design with Aqua Wall.png',
   },
@@ -55,7 +71,7 @@ const services = [
     href: '/servicos/sob-medida',
     name: 'Sob Medida',
     number: '06',
-    tagline: 'Sua ideia, nossa execução precisa.',
+    tagline: 'Projeto executivo em DWG ou PDF. Executamos.',
     tags: ['Projetos únicos', 'Todos os metais', 'Com arquiteto'],
     image: '/servicos/sob-medida-carousel.png',
   },
@@ -96,7 +112,7 @@ export default function ServicosPage() {
               textTransform: 'uppercase' as const,
               color: '#f97316',
             }}>
-              Metalprime
+              Metal Shark
             </span>
           </div>
 
@@ -142,8 +158,8 @@ export default function ServicosPage() {
               color: '#0f172a',
               margin: 0,
             }}>
-              Tem um projeto<br />
-              <span style={{ color: '#f97316' }}>fora do padrão?</span>
+              Projeto complexo<br />
+              <span style={{ color: '#f97316' }}>ou fora do padrão?</span>
             </h2>
 
             <div>
@@ -154,7 +170,7 @@ export default function ServicosPage() {
                 margin: '0 auto 2rem',
                 lineHeight: 1.75,
               }}>
-                Nossa especialidade são justamente os projetos complexos. Nos diga o que você precisa e montamos um orçamento sem custo.
+                Nossa especialidade são justamente os projetos que outros fornecedores recusam. Envie o escopo técnico e nossa equipe de engenharia retorna com uma proposta estruturada.
               </p>
               <div className="flex flex-wrap justify-center sm:justify-start" style={{ gap: '10px' }}>
                 <Link
@@ -207,11 +223,6 @@ export default function ServicosPage() {
           </div>
         </div>
 
-        <style>{`
-          @media (max-width: 768px) {
-            .servicos-cta-grid { grid-template-columns: 1fr !important; gap: 2rem !important; }
-          }
-        `}</style>
       </section>
 
     </div>
