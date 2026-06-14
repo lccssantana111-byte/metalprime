@@ -129,17 +129,9 @@ export default function ServicosPage() {
       </div>
 
       {/* ── Bottom CTA ── */}
-      <section style={{ background: '#f4f4f0', borderTop: '1px solid #e2e8f0', padding: '6rem 0' }}>
+      <section style={{ background: '#f4f4f0', borderTop: '1px solid #e2e8f0', padding: 'clamp(3rem, 7vw, 6rem) 0' }}>
         <div className="container mx-auto px-4 sm:px-8">
-          <div
-            className="servicos-cta-grid"
-            style={{
-              display: 'grid',
-              gridTemplateColumns: '1fr 1fr',
-              gap: '4rem',
-              alignItems: 'center',
-            }}
-          >
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 sm:gap-16 items-center text-center sm:text-left">
             <h2 style={{
               fontFamily: 'var(--font-barlow-condensed)',
               fontWeight: 900,
@@ -159,12 +151,12 @@ export default function ServicosPage() {
                 fontSize: '15px',
                 color: '#64748b',
                 maxWidth: '42ch',
-                margin: '0 0 2rem',
+                margin: '0 auto 2rem',
                 lineHeight: 1.75,
               }}>
                 Nossa especialidade são justamente os projetos complexos. Nos diga o que você precisa e montamos um orçamento sem custo.
               </p>
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
+              <div className="flex flex-wrap justify-center sm:justify-start" style={{ gap: '10px' }}>
                 <Link
                   href="/orcamento"
                   style={{
