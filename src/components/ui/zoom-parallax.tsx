@@ -48,7 +48,7 @@ export function ZoomParallax({ images }: ZoomParallaxProps) {
 		const lastImage = images[6];
 
 		return (
-			<div ref={container} style={{ position: 'relative', height: '200vh' }}>
+			<div ref={container} style={{ position: 'relative', height: '160vh' }}>
 				<div style={{ position: 'sticky', top: 0, height: '100svh', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
 					<motion.div style={{ scale: mobileScale, width: '100%', transformOrigin: 'center center' }}>
 						<div style={{

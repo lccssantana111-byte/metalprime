@@ -46,7 +46,7 @@ export default async function PortfolioPage() {
   return (
     <div>
       {/* Hero */}
-      <section style={{ background: '#ffffff', paddingTop: '7rem', paddingBottom: '4rem', position: 'relative', overflow: 'hidden' }}>
+      <section style={{ background: '#ffffff', paddingTop: '7rem', paddingBottom: 'clamp(1.5rem, 4vw, 4rem)', position: 'relative', overflow: 'hidden' }}>
         <div className="container mx-auto px-4 sm:px-8">
 
           {/* meta strip */}
@@ -130,7 +130,7 @@ export default async function PortfolioPage() {
           </div>
 
           {/* bottom rule */}
-          <div style={{ marginTop: '2.5rem', height: '1px', background: '#e2e8f0' }} />
+          <div style={{ marginTop: 'clamp(1rem, 3vw, 2.5rem)', height: '1px', background: '#e2e8f0' }} />
 
         </div>
 
