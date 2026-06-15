@@ -213,13 +213,6 @@ body {
   }
 }
 
-/* ── Hero eyebrow responsive ─────────────────────── */
-.hero-eyebrow-short { display: none; }
-
-@media (max-width: 767px) {
-  .hero-eyebrow-full  { display: none; }
-  .hero-eyebrow-short { display: inline; }
-}
 
 /* ── Hero section mobile ─────────────────────────── */
 @media (max-width: 767px) {

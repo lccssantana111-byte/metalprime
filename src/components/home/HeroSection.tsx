@@ -92,8 +92,7 @@ export default function HeroSection() {
               marginBottom: '1rem',
             }}
           >
-            <span className="hero-eyebrow-full">São Paulo · CREA-SP Credenciado · Estruturas industriais e comerciais</span>
-            <span className="hero-eyebrow-short">São Paulo · CREA-SP Credenciado</span>
+            São Paulo · CREA-SP Credenciado
           </motion.p>
 
           {/* Headline */}
