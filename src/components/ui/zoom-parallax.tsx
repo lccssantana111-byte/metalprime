@@ -13,16 +13,6 @@ interface ZoomParallaxProps {
 	images: Image[];
 }
 
-const mobilePositions = [
-	{ w: '45vw', h: '35vh', top: 'auto', left: 'auto' },           // 0: centro
-	{ w: '40vw', h: '28vh', top: '-12vh', left: '8vw' },           // 1: top left
-	{ w: '38vw', h: '32vh', top: '-8vh',  left: '-8vw' },          // 2: top right (leve overlap)
-	{ w: '42vw', h: '26vh', top: 'auto', left: '12vw' },           // 3: meio direita
-	{ w: '38vw', h: '26vh', top: '22vh', left: '6vw' },            // 4: baixo esq
-	{ w: '40vw', h: '26vh', top: '22vh', left: '-8vw' },           // 5: baixo dir
-	{ w: '32vw', h: '20vh', top: '18vh', left: '12vw' },           // 6: baixo centro
-];
-
 export function ZoomParallax({ images }: ZoomParallaxProps) {
 	const container = useRef(null);
 	const [isMobile, setIsMobile] = useState(false);
@@ -48,41 +38,45 @@ export function ZoomParallax({ images }: ZoomParallaxProps) {
 	const scale9 = useTransform(scrollYProgress, [0, 1], [1, 9]);
 	const desktopScales = [scale4, scale5, scale6, scale5, scale6, scale8, scale9];
 
-	// Mobile scales (1x–2.5x — suave, não engole a tela)
-	const mScale1 = useTransform(scrollYProgress, [0, 1], [1, 2]);
-	const mScale2 = useTransform(scrollYProgress, [0, 1], [1, 2.5]);
-	const mobileScales = [mScale1, mScale2, mScale1, mScale2, mScale1, mScale2, mScale1];
+	// Mobile: zoom suave aplicado no grid inteiro
+	const mobileScale = useTransform(scrollYProgress, [0, 1], [1, 1.5]);
 
 	if (isMobile) {
-		return (
-			<div ref={container} className="relative h-[150vh]">
-				<div className="sticky top-0 h-screen overflow-hidden">
-					{images.map(({ src, alt }, index) => {
-						const scale = mobileScales[index % mobileScales.length];
-						const pos = mobilePositions[index] ?? mobilePositions[0];
+		// Grid 2×3 + 1 imagem extra centralizada na última linha
+		// Imagens 0-5 em grid 2 colunas, imagem 6 centralizada abaixo
+		const gridImages = images.slice(0, 6);
+		const lastImage = images[6];
 
-						return (
-							<motion.div
-								key={index}
-								style={{ scale }}
-								className="absolute top-0 flex h-full w-full items-center justify-center"
-							>
-								<div style={{
-									position: 'absolute',
-									width: pos.w,
-									height: pos.h,
-									top: pos.top,
-									left: pos.left,
-								}}>
+		return (
+			<div ref={container} style={{ position: 'relative', height: '200vh' }}>
+				<div style={{ position: 'sticky', top: 0, height: '100svh', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+					<motion.div style={{ scale: mobileScale, width: '100%', transformOrigin: 'center center' }}>
+						<div style={{
+							display: 'grid',
+							gridTemplateColumns: '1fr 1fr',
+							gap: '4px',
+							padding: '0 4px',
+						}}>
+							{gridImages.map(({ src, alt }, index) => (
+								<div key={index} style={{ aspectRatio: '4/3', overflow: 'hidden' }}>
 									<img
 										src={src || '/placeholder.svg'}
 										alt={alt || `Imagem ${index + 1}`}
 										style={{ width: '100%', height: '100%', objectFit: 'cover' }}
 									/>
 								</div>
-							</motion.div>
-						);
-					})}
+							))}
+						</div>
+						{lastImage && (
+							<div style={{ padding: '4px 4px 0', aspectRatio: '16/7', overflow: 'hidden' }}>
+								<img
+									src={lastImage.src || '/placeholder.svg'}
+									alt={lastImage.alt || 'Imagem 7'}
+									style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+								/>
+							</div>
+						)}
+					</motion.div>
 				</div>
 			</div>
 		);

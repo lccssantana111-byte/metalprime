@@ -289,10 +289,10 @@ export default function SegmentSection() {
                   <h3 style={{
                     fontFamily: 'var(--font-barlow-condensed)',
                     fontWeight: 700,
-                    fontSize: '1.45rem',
+                    fontSize: 'clamp(1.15rem, 3.8vw, 1.45rem)',
                     letterSpacing: '0.01em',
                     textTransform: 'uppercase',
-                    lineHeight: 1.15,
+                    lineHeight: 1.1,
                     color: seg.featured ? '#ffffff' : 'rgba(255,255,255,0.85)',
                     marginBottom: '1rem',
                     flexShrink: 0,
