@@ -271,12 +271,12 @@ export default function SegmentSection() {
                     </span>
                     <span style={{
                       display: 'block',
-                      fontSize: '11px',
+                      fontSize: '12px',
                       fontFamily: 'var(--font-mono)',
                       textTransform: 'uppercase',
-                      letterSpacing: '0.12em',
-                      color: 'rgba(255,255,255,0.7)',
-                      marginTop: '4px',
+                      letterSpacing: '0.1em',
+                      color: 'rgba(255,255,255,0.72)',
+                      marginTop: '6px',
                     }}>
                       {seg.metricLabel}
                     </span>
@@ -302,9 +302,9 @@ export default function SegmentSection() {
 
                   {/* ── Zone 4: Description */}
                   <p style={{
-                    fontSize: '13.5px',
-                    lineHeight: 1.65,
-                    color: 'rgba(255,255,255,0.68)',
+                    fontSize: '15px',
+                    lineHeight: 1.7,
+                    color: 'rgba(255,255,255,0.78)',
                     marginBottom: '1.25rem',
                   }}>
                     {seg.description}
@@ -317,7 +317,7 @@ export default function SegmentSection() {
                     margin: '0 0 1.25rem',
                     display: 'flex',
                     flexDirection: 'column',
-                    gap: '7px',
+                    gap: '10px',
                     flexShrink: 0,
                   }}>
                     {seg.items.map((item) => (
@@ -325,10 +325,10 @@ export default function SegmentSection() {
                         display: 'flex',
                         alignItems: 'center',
                         gap: '8px',
-                        fontSize: '13px',
-                        color: 'rgba(255,255,255,0.72)',
+                        fontSize: '14.5px',
+                        color: 'rgba(255,255,255,0.82)',
                       }}>
-                        <CheckCircle2 style={{ width: '14px', height: '14px', color: '#f97316', flexShrink: 0 }} />
+                        <CheckCircle2 style={{ width: '16px', height: '16px', color: '#f97316', flexShrink: 0 }} />
                         {item}
                       </li>
                     ))}
