@@ -111,8 +111,8 @@ export default function CtaBanner() {
             style={{
               fontFamily: 'var(--font-barlow-condensed)',
               fontWeight: 900,
-              lineHeight: 0.92,
-              fontSize: 'clamp(3rem, 6vw, 6.5rem)',
+              lineHeight: 0.95,
+              fontSize: 'clamp(2.5rem, 8.5vw, 6.5rem)',
               color: 'white',
               letterSpacing: '0.01em',
               textTransform: 'uppercase',

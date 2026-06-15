@@ -233,7 +233,7 @@ export default function SegmentSection() {
                   )}
 
                   {/* ── Zone 1: Icon + label (fixed height) */}
-                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '12px', height: '40px', marginBottom: '1.75rem', flexShrink: 0, width: '100%' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '12px', height: '40px', marginBottom: '1.25rem', flexShrink: 0, width: '100%' }}>
                     <div style={{
                       width: '40px',
                       height: '40px',
@@ -258,12 +258,12 @@ export default function SegmentSection() {
                     </span>
                   </div>
 
-                  {/* ── Zone 2: Metric (fixed height) */}
-                  <div style={{ height: '4.5rem', marginBottom: '1rem', flexShrink: 0, width: '100%', textAlign: 'center' }}>
+                  {/* ── Zone 2: Metric (auto height) */}
+                  <div style={{ marginBottom: '0.875rem', flexShrink: 0, width: '100%', textAlign: 'center' }}>
                     <span style={{
                       fontFamily: 'var(--font-display)',
                       fontWeight: 900,
-                      fontSize: '2.75rem',
+                      fontSize: '2.5rem',
                       lineHeight: 1,
                       color: '#f97316',
                     }}>
@@ -271,7 +271,7 @@ export default function SegmentSection() {
                     </span>
                     <span style={{
                       display: 'block',
-                      fontSize: '12px',
+                      fontSize: '11px',
                       fontFamily: 'var(--font-mono)',
                       textTransform: 'uppercase',
                       letterSpacing: '0.12em',
@@ -283,19 +283,18 @@ export default function SegmentSection() {
                   </div>
 
                   {/* Divider */}
-                  <div style={{ height: '1px', background: 'rgba(255,255,255,0.06)', marginBottom: '1.25rem', flexShrink: 0 }} />
+                  <div style={{ height: '1px', background: 'rgba(255,255,255,0.06)', marginBottom: '1rem', flexShrink: 0 }} />
 
-                  {/* ── Zone 3: Headline (fixed height) */}
+                  {/* ── Zone 3: Headline */}
                   <h3 style={{
                     fontFamily: 'var(--font-barlow-condensed)',
                     fontWeight: 700,
-                    fontSize: '1.45rem',
+                    fontSize: '1.2rem',
                     letterSpacing: '0.01em',
                     textTransform: 'uppercase',
-                    lineHeight: 1.15,
+                    lineHeight: 1.2,
                     color: seg.featured ? '#ffffff' : 'rgba(255,255,255,0.85)',
-                    marginBottom: '0.75rem',
-                    minHeight: '3.4rem',
+                    marginBottom: '0.625rem',
                     flexShrink: 0,
                   }}>
                     {seg.headline}
@@ -303,10 +302,10 @@ export default function SegmentSection() {
 
                   {/* ── Zone 4: Description (grows to fill) */}
                   <p style={{
-                    fontSize: '14px',
-                    lineHeight: 1.75,
+                    fontSize: '13.5px',
+                    lineHeight: 1.65,
                     color: 'rgba(255,255,255,0.68)',
-                    marginBottom: '1.5rem',
+                    marginBottom: '1.25rem',
                     flexGrow: 1,
                   }}>
                     {seg.description}
@@ -316,10 +315,10 @@ export default function SegmentSection() {
                   <ul style={{
                     listStyle: 'none',
                     padding: 0,
-                    margin: '0 0 1.75rem',
+                    margin: '0 0 1.25rem',
                     display: 'flex',
                     flexDirection: 'column',
-                    gap: '8px',
+                    gap: '7px',
                     flexShrink: 0,
                   }}>
                     {seg.items.map((item) => (
@@ -337,7 +336,7 @@ export default function SegmentSection() {
                   </ul>
 
                   {/* ── Zone 6: CTA (pinned to bottom) */}
-                  <div style={{ height: '1px', background: 'rgba(255,255,255,0.06)', marginBottom: '1.25rem', flexShrink: 0 }} />
+                  <div style={{ height: '1px', background: 'rgba(255,255,255,0.06)', marginBottom: '1rem', flexShrink: 0 }} />
                   <Link
                     href={seg.href}
                     style={{
