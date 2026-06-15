@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { BRAND_NAME } from '@/lib/constants'
 
 export default function Preloader() {
   const [visible, setVisible] = useState(true)
@@ -103,7 +102,7 @@ export default function Preloader() {
                 textTransform: 'uppercase',
                 color: '#ffffff',
               }}>
-                {BRAND_NAME.split(' ')[0].toUpperCase()}
+                METAL SHARK
               </div>
               <div style={{
                 fontFamily: 'var(--font-ibm-mono)',

@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, ArrowUpRight, ChevronDown, DoorOpen, ShieldCheck, TrendingUp, GripHorizontal, Building2, Wrench } from 'lucide-react'
-import { BRAND_NAME, COMPANY_PHONE, WHATSAPP_NUMBER } from '@/lib/constants'
+import { COMPANY_PHONE, WHATSAPP_NUMBER } from '@/lib/constants'
 
 const services = [
   { label: 'Portões', href: '/servicos/portoes', desc: 'Industriais, condominiais e comerciais com automação', Icon: DoorOpen },
@@ -79,7 +79,7 @@ export default function Navbar() {
             className="font-display font-black text-[20px] tracking-[0.08em] uppercase"
             style={{ color: D ? 'white' : '#0f172a', transition: 'color 0.4s' }}
           >
-            {BRAND_NAME.split(' ')[0]}
+            Metal Shark
             <span style={{ color: '#f97316' }}>.</span>
           </span>
         </Link>
@@ -338,7 +338,7 @@ export default function Navbar() {
                     textTransform: 'uppercase',
                     color: 'white',
                   }}>
-                    {BRAND_NAME.split(' ')[0]}<span style={{ color: '#f97316' }}>.</span>
+                    Metal Shark<span style={{ color: '#f97316' }}>.</span>
                   </span>
                 </Link>
 

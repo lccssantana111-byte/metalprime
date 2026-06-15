@@ -3,7 +3,6 @@
 import Link from 'next/link'
 import { ArrowUpRight, MapPin, Clock, Mail } from 'lucide-react'
 import {
-  BRAND_NAME,
   COMPANY_ADDRESS,
   COMPANY_EMAIL,
   COMPANY_PHONE,
@@ -53,7 +52,7 @@ export default function Footer() {
                 {LOGO_MARK}
               </div>
               <span className="font-display font-black text-[14px] tracking-[0.08em] uppercase" style={{ color: '#0f172a' }}>
-                {BRAND_NAME.split(' ')[0]}
+                Metal Shark
                 <span style={{ color: '#f97316' }}>.</span>
               </span>
             </Link>
@@ -226,7 +225,7 @@ export default function Footer() {
       <div style={{ borderTop: '1px solid #f1f5f9' }}>
         <div className="container mx-auto px-5 sm:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-[12px] sm:text-[11px] font-mono" style={{ color: '#94a3b8' }}>
-            © {year} {BRAND_NAME}. Todos os direitos reservados.
+            © {year} Metal Shark. Todos os direitos reservados.
           </p>
           <div className="flex items-center gap-6">
             <span className="text-[11px] sm:text-[10px] font-mono" style={{ color: '#cbd5e1' }}>
