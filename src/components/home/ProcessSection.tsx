@@ -68,7 +68,7 @@ function StepRow({
       style={{
         display: 'grid',
         gridTemplateColumns: 'minmax(0,1fr) 48px minmax(0,1.6fr)',
-        padding: 'clamp(3.5rem, 5vw, 5rem) 0',
+        padding: 'clamp(2rem, 3vw, 2.75rem) 0',
         borderBottom: isLast ? 'none' : '1px solid rgba(15,23,42,0.08)',
         position: 'relative',
       }}
@@ -80,7 +80,7 @@ function StepRow({
           style={{
             fontFamily: 'var(--font-barlow-condensed)',
             fontWeight: 900,
-            fontSize: 'clamp(5rem, 16vw, 14rem)',
+            fontSize: 'clamp(4rem, 10vw, 9rem)',
             lineHeight: 1,
             color: '#f97316',
             userSelect: 'none',
@@ -274,7 +274,7 @@ export default function ProcessSection() {
         zIndex: 1,
         maxWidth: '1200px',
         margin: '0 auto',
-        padding: 'clamp(4rem, 7vw, 6rem) clamp(1.5rem, 4vw, 3rem)',
+        padding: 'clamp(3rem, 5vw, 4.5rem) clamp(1.5rem, 4vw, 3rem)',
       }}>
 
         {/* Section header */}

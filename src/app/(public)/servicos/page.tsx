@@ -167,7 +167,7 @@ export default function ServicosPage() {
                 fontSize: '15px',
                 color: '#64748b',
                 maxWidth: '42ch',
-                margin: '0 auto 2rem',
+                margin: '0 0 2rem',
                 lineHeight: 1.75,
               }}>
                 Nossa especialidade são justamente os projetos que outros fornecedores recusam. Envie o escopo técnico e nossa equipe de engenharia retorna com uma proposta estruturada.

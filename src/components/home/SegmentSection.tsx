@@ -28,7 +28,7 @@ const segments = [
     label: 'Construtoras',
     metric: '100%',
     metricLabel: 'entregas dentro do cronograma',
-    headline: 'Certificado, no prazo, sem surpresas',
+    headline: 'No prazo. Sem surpresas.',
     description:
       'Escadas, estruturas, mezaninos e guarda-corpos para empreendimentos residenciais e comerciais. Fabricação própria — nenhuma etapa é terceirizada. A obra não para por nossa causa.',
     items: [
@@ -289,24 +289,23 @@ export default function SegmentSection() {
                   <h3 style={{
                     fontFamily: 'var(--font-barlow-condensed)',
                     fontWeight: 700,
-                    fontSize: '1.2rem',
+                    fontSize: '1.45rem',
                     letterSpacing: '0.01em',
                     textTransform: 'uppercase',
-                    lineHeight: 1.2,
+                    lineHeight: 1.15,
                     color: seg.featured ? '#ffffff' : 'rgba(255,255,255,0.85)',
-                    marginBottom: '0.625rem',
+                    marginBottom: '1rem',
                     flexShrink: 0,
                   }}>
                     {seg.headline}
                   </h3>
 
-                  {/* ── Zone 4: Description (grows to fill) */}
+                  {/* ── Zone 4: Description */}
                   <p style={{
                     fontSize: '13.5px',
                     lineHeight: 1.65,
                     color: 'rgba(255,255,255,0.68)',
                     marginBottom: '1.25rem',
-                    flexGrow: 1,
                   }}>
                     {seg.description}
                   </p>

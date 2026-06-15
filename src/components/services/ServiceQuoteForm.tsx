@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { ArrowRight, Check, Phone, MessageSquare } from 'lucide-react'
 import { WHATSAPP_NUMBER } from '@/lib/constants'
@@ -28,6 +28,14 @@ export default function ServiceQuoteForm({ serviceName, serviceSlug }: Props) {
   const [errorMsg, setErrorMsg] = useState('')
   const [focusedField, setFocusedField] = useState<string | null>(null)
   const [form, setForm] = useState({ name: '', phone: '', email: '', message: '' })
+  const [activeGuarantee, setActiveGuarantee] = useState(0)
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveGuarantee(prev => (prev + 1) % GUARANTEES.length)
+    }, 1800)
+    return () => clearInterval(interval)
+  }, [])
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
     setForm(prev => ({ ...prev, [e.target.name]: e.target.value }))
@@ -198,14 +206,15 @@ export default function ServiceQuoteForm({ serviceName, serviceSlug }: Props) {
                     width: '36px',
                     height: '36px',
                     borderRadius: '50%',
-                    background: i === 0 ? COLORS.brand.orange : 'rgba(249,115,22,0.12)',
-                    border: `1px solid ${i === 0 ? COLORS.brand.orange : COLORS.brand.dimBorder}`,
+                    background: i === activeGuarantee ? COLORS.brand.orange : 'rgba(249,115,22,0.12)',
+                    border: `1px solid ${i === activeGuarantee ? COLORS.brand.orange : COLORS.brand.dimBorder}`,
+                    transition: 'background 0.4s, border-color 0.4s',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
                     flexShrink: 0,
                   }}>
-                    <Check style={{ width: '14px', height: '14px', color: i === 0 ? '#ffffff' : COLORS.brand.orange }} />
+                    <Check style={{ width: '14px', height: '14px', color: i === activeGuarantee ? '#ffffff' : COLORS.brand.orange, transition: 'color 0.4s' }} />
                   </div>
                   <div>
                     <div style={{
