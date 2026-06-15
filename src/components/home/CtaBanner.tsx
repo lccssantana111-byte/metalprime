@@ -22,7 +22,7 @@ export default function CtaBanner() {
       style={{
         position: 'relative',
         overflow: 'hidden',
-        minHeight: '620px',
+        minHeight: '560px',
         display: 'flex',
       }}
     >
@@ -83,7 +83,7 @@ export default function CtaBanner() {
           width: '100%',
           maxWidth: '1200px',
           margin: '0 auto',
-          padding: 'clamp(3rem, 8vw, 7rem) clamp(1.25rem, 4vw, 2rem)',
+          padding: 'clamp(3rem, 6vw, 5rem) clamp(1.25rem, 4vw, 2rem)',
           display: 'flex',
           alignItems: 'center',
           gap: 'clamp(1.5rem, 4vw, 3rem)',
@@ -103,7 +103,7 @@ export default function CtaBanner() {
               width: '40px',
               height: '2px',
               background: '#f97316',
-              marginBottom: '1.75rem',
+              marginBottom: '1.25rem',
             }}
           />
 
@@ -112,11 +112,11 @@ export default function CtaBanner() {
               fontFamily: 'var(--font-barlow-condensed)',
               fontWeight: 900,
               lineHeight: 0.95,
-              fontSize: 'clamp(2.5rem, 8.5vw, 6.5rem)',
+              fontSize: 'clamp(2.5rem, 4.5vw, 5rem)',
               color: 'white',
               letterSpacing: '0.01em',
               textTransform: 'uppercase',
-              margin: '0 0 1.75rem',
+              margin: '0 0 1.25rem',
             }}
           >
             Próximo projeto.<br />
@@ -129,7 +129,7 @@ export default function CtaBanner() {
               fontSize: '15px',
               lineHeight: 1.75,
               color: 'rgba(148,163,184,0.9)',
-              marginBottom: '2.5rem',
+              marginBottom: '1.5rem',
               maxWidth: '400px',
             }}
           >
@@ -211,7 +211,7 @@ export default function CtaBanner() {
                   display: 'flex',
                   alignItems: 'center',
                   gap: '12px',
-                  marginBottom: '1.75rem',
+                  marginBottom: '1rem',
                   textDecoration: 'none',
                   transition: 'opacity 0.2s',
                   opacity: 1,
@@ -236,7 +236,7 @@ export default function CtaBanner() {
                   style={{
                     fontFamily: 'var(--font-barlow-condensed)',
                     fontWeight: 900,
-                    fontSize: 'clamp(1.75rem, 5vw, 2rem)',
+                    fontSize: 'clamp(1.75rem, 3.5vw, 2.25rem)',
                     color: 'white',
                     letterSpacing: '0.02em',
                   }}
@@ -250,7 +250,7 @@ export default function CtaBanner() {
                 style={{
                   height: '1px',
                   background: 'linear-gradient(90deg, rgba(249,115,22,0.2), transparent)',
-                  marginBottom: '1.5rem',
+                  marginBottom: '1rem',
                 }}
               />
 
@@ -311,7 +311,7 @@ export default function CtaBanner() {
               {/* Bottom note */}
               <p
                 style={{
-                  marginTop: '1.5rem',
+                  marginTop: '0.875rem',
                   fontSize: '12px',
                   fontFamily: 'var(--font-ibm-mono)',
                   color: 'rgba(100,116,139,0.8)',

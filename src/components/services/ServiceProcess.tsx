@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { COLORS, TYPOGRAPHY } from '@/components/ui/design-system'
 import { springEase } from '@/lib/animations'
@@ -40,6 +40,14 @@ interface Props {
 export default function ServiceProcess({ steps = DEFAULT_STEPS }: Props) {
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: '-60px' })
+  const [activeStep, setActiveStep] = useState(0)
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveStep(prev => (prev + 1) % steps.length)
+    }, 1800)
+    return () => clearInterval(interval)
+  }, [steps.length])
 
   return (
     <section
@@ -159,7 +167,7 @@ export default function ServiceProcess({ steps = DEFAULT_STEPS }: Props) {
                       borderTop: '1px solid rgba(0,0,0,0.06)',
                       position: 'relative',
                     }}
-                    className="group"
+                    className=""
                   >
                     {/* Active highlight bar on hover */}
                     <div
@@ -169,10 +177,10 @@ export default function ServiceProcess({ steps = DEFAULT_STEPS }: Props) {
                         top: 0,
                         bottom: 0,
                         width: '2px',
-                        background: i === 0 ? COLORS.brand.orange : 'transparent',
+                        background: i === activeStep ? COLORS.brand.orange : 'transparent',
                         transition: 'background 0.3s',
                       }}
-                      className="group-hover:!bg-orange-500"
+                      className=""
                     />
 
                     {/* Number */}
@@ -183,11 +191,11 @@ export default function ServiceProcess({ steps = DEFAULT_STEPS }: Props) {
                           fontWeight: 900,
                           fontSize: 'clamp(2.5rem, 4vw, 3.5rem)',
                           lineHeight: 1,
-                          color: i === 0 ? COLORS.brand.orange : 'rgba(0,0,0,0.1)',
+                          color: i === activeStep ? COLORS.brand.orange : 'rgba(0,0,0,0.1)',
                           letterSpacing: '-0.02em',
                           transition: 'color 0.3s',
                         }}
-                        className="group-hover:!text-orange-500"
+                        className=""
                       >
                         {String(i + 1).padStart(2, '0')}
                       </div>

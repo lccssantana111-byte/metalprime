@@ -1,10 +1,15 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { ArrowRight } from 'lucide-react'
+import Link from 'next/link'
+import { ArrowRight, Phone, MessageCircle, ShieldCheck, Clock, Wrench } from 'lucide-react'
 import { COMPANY_PHONE, WHATSAPP_NUMBER } from '@/lib/constants'
-import { CTAButton, COLORS, TYPOGRAPHY } from '@/components/ui/design-system'
-import { PHOTOS } from '@/lib/images'
+
+const trust = [
+  { icon: ShieldCheck, text: 'ART em 100% dos projetos estruturais' },
+  { icon: Clock, text: 'Proposta técnica em 48h' },
+  { icon: Wrench, text: 'Engenheiro na visita — sem custo' },
+]
 
 interface Props {
   serviceName: string
@@ -12,203 +17,158 @@ interface Props {
 
 export default function ServiceCta({ serviceName }: Props) {
   return (
-    <section className="relative overflow-hidden" style={{ background: '#050608' }}>
-      {/* Background image */}
-      <div className="absolute inset-0">
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage: `url("${PHOTOS.cta}")`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-          }}
-        />
-        <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(5,6,8,0.98) 0%, rgba(5,6,8,0.75) 50%, rgba(5,6,8,0.6) 100%)' }} />
-        <div className="absolute inset-0" style={{ background: 'linear-gradient(105deg, rgba(15,23,42,0.92) 0%, rgba(15,23,42,0.65) 55%, rgba(15,23,42,0.3) 100%)' }} />
-      </div>
-
-      {/* Orange glow */}
-      <div
-        className="absolute pointer-events-none"
-        style={{
-          top: '-10%',
-          left: '-5%',
-          width: '50%',
-          height: '120%',
-          background: 'radial-gradient(ellipse at center, rgba(249,115,22,0.12) 0%, transparent 65%)',
-        }}
+    <section
+      style={{
+        position: 'relative',
+        overflow: 'hidden',
+        minHeight: '560px',
+        display: 'flex',
+      }}
+    >
+      {/* Brushed metal texture */}
+      <img
+        src="/Brushed Metal Sheets.png"
+        alt=""
+        aria-hidden="true"
+        style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center center' }}
       />
+
+      {/* Dark overlay */}
+      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(105deg, rgba(15,23,42,0.94) 0%, rgba(15,23,42,0.80) 50%, rgba(15,23,42,0.55) 100%)' }} />
+
+      {/* Orange ambient glow */}
+      <div style={{ position: 'absolute', top: '-120px', left: '-80px', width: '500px', height: '500px', background: 'radial-gradient(ellipse at center, rgba(249,115,22,0.10) 0%, transparent 65%)', pointerEvents: 'none' }} />
 
       {/* Grain */}
+      <div style={{ position: 'absolute', inset: 0, opacity: 0.02, backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E")`, backgroundSize: '200px 200px', pointerEvents: 'none' }} />
+
+      {/* Content */}
       <div
-        className="absolute inset-0 pointer-events-none"
         style={{
-          backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 256 256\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noise\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.9\' numOctaves=\'4\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noise)\' opacity=\'0.04\'/%3E%3C/svg%3E")',
-          opacity: 0.4,
+          position: 'relative',
+          zIndex: 2,
+          width: '100%',
+          maxWidth: '1200px',
+          margin: '0 auto',
+          padding: 'clamp(3rem, 6vw, 5rem) clamp(1.25rem, 4vw, 2rem)',
+          display: 'flex',
+          alignItems: 'center',
+          gap: 'clamp(1.5rem, 4vw, 3rem)',
+          flexWrap: 'wrap',
         }}
-      />
+      >
+        {/* LEFT: Copy */}
+        <motion.div
+          style={{ flex: '1 1 380px', minWidth: 0 }}
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <div style={{ width: '40px', height: '2px', background: '#f97316', marginBottom: '1.25rem' }} />
 
-      <div className="relative z-10 container mx-auto px-5 sm:px-8 py-28 sm:py-36">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          {/* Left — copy */}
-          <motion.div
-            initial={{ opacity: 0, x: -32 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
+          <h2
+            style={{
+              fontFamily: 'var(--font-barlow-condensed)',
+              fontWeight: 900,
+              lineHeight: 0.95,
+              fontSize: 'clamp(2.5rem, 4.5vw, 5rem)',
+              color: 'white',
+              letterSpacing: '0.01em',
+              textTransform: 'uppercase',
+              margin: '0 0 1.25rem',
+            }}
           >
-            <p
-              style={{
-                fontFamily: TYPOGRAPHY.families.mono,
-                fontSize: '11px',
-                letterSpacing: '0.18em',
-                textTransform: 'uppercase',
-                color: COLORS.brand.orange,
-                marginBottom: '1.5rem',
-              }}
-            >
-              Próximo passo
-            </p>
+            Pronto para<br />
+            <span style={{ color: '#f97316' }}>começar?</span>
+          </h2>
 
-            <h2
-              style={{
-                fontFamily: TYPOGRAPHY.families.heading,
-                fontWeight: 900,
-                lineHeight: 0.9,
-                fontSize: 'clamp(3.5rem, 7vw, 7rem)',
-                textTransform: 'uppercase',
-                color: '#ffffff',
-                letterSpacing: '0.01em',
-                margin: 0,
-              }}
-            >
-              Pronto para<br />
-              <span style={{ color: COLORS.brand.orange }}>começar?</span>
-            </h2>
+          <p style={{ fontSize: '15px', lineHeight: 1.75, color: 'rgba(148,163,184,0.9)', marginBottom: '1.5rem', maxWidth: '400px' }}>
+            Fale com nossos especialistas em {serviceName.toLowerCase()} e receba um orçamento detalhado em até 24 horas.
+          </p>
 
-            <p
-              style={{
-                marginTop: '2rem',
-                fontSize: '16px',
-                lineHeight: 1.7,
-                color: 'rgba(180,188,198,0.75)',
-                maxWidth: '38ch',
-              }}
-            >
-              Fale com nossos especialistas e receba um orçamento detalhado em até 24 horas.
-            </p>
-          </motion.div>
-
-          {/* Right — glass card */}
-          <motion.div
-            initial={{ opacity: 0, x: 32 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.15, ease: [0.25, 0.46, 0.45, 0.94] }}
-          >
-            <div
-              style={{
-                background: 'rgba(255,255,255,0.04)',
-                border: '1px solid rgba(255,255,255,0.1)',
-                borderRadius: '16px',
-                padding: 'clamp(2rem, 4vw, 3rem)',
-                backdropFilter: 'blur(16px)',
-                WebkitBackdropFilter: 'blur(16px)',
-                position: 'relative',
-                overflow: 'hidden',
-              }}
-            >
-              {/* Orange accent bar */}
+          {/* Trust badges */}
+          <div className="flex flex-col sm:flex-row sm:flex-wrap gap-3 sm:gap-x-6 sm:gap-y-3 items-start sm:items-center">
+            {trust.map(({ icon: Icon, text }, i) => (
               <div
-                style={{
-                  position: 'absolute',
-                  top: 0,
-                  left: 0,
-                  right: 0,
-                  height: '2px',
-                  background: `linear-gradient(90deg, ${COLORS.brand.orange}, transparent)`,
-                }}
-              />
-
-              <p
-                style={{
-                  fontFamily: TYPOGRAPHY.families.mono,
-                  fontSize: '11px',
-                  letterSpacing: '0.14em',
-                  textTransform: 'uppercase',
-                  color: 'rgba(180,188,198,0.5)',
-                  marginBottom: '0.75rem',
-                }}
+                key={text}
+                style={{ display: 'flex', alignItems: 'center', gap: '7px', fontSize: '12px', color: 'rgba(148,163,184,0.75)', fontFamily: 'var(--font-ibm-mono)', letterSpacing: '0.04em', textTransform: 'uppercase' }}
               >
-                Ligue agora
+                {i > 0 && <span aria-hidden="true" className="hidden sm:inline" style={{ color: 'rgba(249,115,22,0.35)', marginRight: '8px' }}>|</span>}
+                <Icon style={{ width: '13px', height: '13px', color: '#f97316', flexShrink: 0 }} />
+                {text}
+              </div>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* RIGHT: Contact card */}
+        <motion.div
+          style={{ flex: '0 1 380px', minWidth: 0 }}
+          initial={{ opacity: 0, x: 60 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.9, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <div
+            style={{
+              background: 'rgba(15,23,42,0.75)',
+              border: '1px solid rgba(249,115,22,0.25)',
+              borderRadius: '16px',
+              overflow: 'hidden',
+              backdropFilter: 'blur(16px)',
+              WebkitBackdropFilter: 'blur(16px)',
+            }}
+          >
+            <div style={{ height: '3px', background: 'linear-gradient(90deg, #f97316 0%, #fbbf24 50%, #f97316 100%)', width: '100%' }} />
+
+            <div style={{ padding: '2rem 2.25rem 2.25rem' }}>
+              <p style={{ fontFamily: 'var(--font-ibm-mono)', fontSize: '11px', letterSpacing: '0.3em', textTransform: 'uppercase', color: '#f97316', marginBottom: '1rem' }}>
+                Fale com a equipe técnica
               </p>
 
               <a
                 href={`tel:${COMPANY_PHONE}`}
-                style={{
-                  display: 'block',
-                  fontFamily: TYPOGRAPHY.families.heading,
-                  fontWeight: 900,
-                  fontSize: 'clamp(2rem, 4vw, 3rem)',
-                  lineHeight: 1,
-                  color: '#ffffff',
-                  textDecoration: 'none',
-                  letterSpacing: '-0.01em',
-                  marginBottom: '2rem',
-                  transition: 'color 0.2s',
-                }}
-                onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = COLORS.brand.orange }}
-                onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = '#ffffff' }}
+                style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '1rem', textDecoration: 'none', transition: 'opacity 0.2s', opacity: 1 }}
+                onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.opacity = '0.8' }}
+                onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.opacity = '1' }}
               >
-                {COMPANY_PHONE}
+                <div style={{ width: '42px', height: '42px', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(249,115,22,0.12)', border: '1px solid rgba(249,115,22,0.3)', borderRadius: '10px', flexShrink: 0 }}>
+                  <Phone style={{ width: '16px', height: '16px', color: '#f97316' }} />
+                </div>
+                <span style={{ fontFamily: 'var(--font-barlow-condensed)', fontWeight: 900, fontSize: 'clamp(1.75rem, 3.5vw, 2.25rem)', color: 'white', letterSpacing: '0.02em' }}>
+                  {COMPANY_PHONE}
+                </span>
               </a>
 
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-                <CTAButton
-                  variant="primary"
+              <div style={{ height: '1px', background: 'linear-gradient(90deg, rgba(249,115,22,0.2), transparent)', marginBottom: '1rem' }} />
+
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                <Link
                   href="/orcamento"
-                  iconCircle
-                  icon={<ArrowRight style={{ width: '14px', height: '14px' }} />}
+                  style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '10px', padding: '15px 28px', borderRadius: '10px', background: '#f97316', color: 'white', fontSize: '14px', fontWeight: 700, letterSpacing: '0.03em', textDecoration: 'none', boxShadow: '0 4px 20px rgba(249,115,22,0.35)', transition: 'background 0.2s, box-shadow 0.2s', cursor: 'pointer' }}
                 >
-                  Solicitar Orçamento Gratuito
-                </CTAButton>
-                <CTAButton
-                  variant="ghost"
-                  hrefExternal={`https://wa.me/${WHATSAPP_NUMBER}?text=Olá! Tenho interesse em ${serviceName.toLowerCase()}.`}
-                  onDark
+                  <span>Solicitar Orçamento Gratuito</span>
+                  <ArrowRight style={{ width: '15px', height: '15px', flexShrink: 0 }} />
+                </Link>
+
+                <a
+                  href={`https://wa.me/${WHATSAPP_NUMBER}?text=Olá! Tenho interesse em ${serviceName.toLowerCase()}.`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '10px', padding: '14px 28px', borderRadius: '10px', border: '1px solid rgba(255,255,255,0.14)', background: 'rgba(255,255,255,0.04)', color: 'rgba(255,255,255,0.75)', fontSize: '14px', fontWeight: 500, textDecoration: 'none', transition: 'all 0.2s', cursor: 'pointer' }}
                 >
+                  <MessageCircle style={{ width: '15px', height: '15px' }} />
                   Falar pelo WhatsApp
-                </CTAButton>
+                </a>
               </div>
 
-              <div
-                style={{
-                  marginTop: '1.75rem',
-                  paddingTop: '1.25rem',
-                  borderTop: '1px solid rgba(255,255,255,0.07)',
-                  display: 'flex',
-                  gap: '1rem',
-                  flexWrap: 'wrap',
-                }}
-              >
-                {['Orçamento em 24h', 'Visita técnica gratuita', 'ART inclusa'].map((item) => (
-                  <span
-                    key={item}
-                    style={{
-                      fontFamily: TYPOGRAPHY.families.mono,
-                      fontSize: '10px',
-                      letterSpacing: '0.1em',
-                      textTransform: 'uppercase',
-                      color: 'rgba(180,188,198,0.45)',
-                    }}
-                  >
-                    {item}
-                  </span>
-                ))}
-              </div>
+              <p style={{ marginTop: '0.875rem', fontSize: '12px', fontFamily: 'var(--font-ibm-mono)', color: 'rgba(100,116,139,0.8)', textAlign: 'center', letterSpacing: '0.06em', textTransform: 'uppercase' }}>
+                +5.000 estruturas entregues · Grande São Paulo
+              </p>
             </div>
-          </motion.div>
-        </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   )
