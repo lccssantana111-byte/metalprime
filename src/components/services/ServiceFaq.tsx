@@ -26,7 +26,7 @@ export default function ServiceFaq({ faq }: Props) {
         borderTop: '1px solid rgba(0,0,0,0.06)',
         position: 'relative',
         overflow: 'hidden',
-        padding: 'clamp(3rem, 8vw, 8rem) 0',
+        padding: 'clamp(2.5rem, 6vw, 6rem) 0',
       }}
     >
       {/* Dot grid — light version, matches ProcessSection */}

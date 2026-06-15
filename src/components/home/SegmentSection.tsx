@@ -304,7 +304,7 @@ export default function SegmentSection() {
                   <p style={{
                     fontSize: '15px',
                     lineHeight: 1.7,
-                    color: 'rgba(255,255,255,0.78)',
+                    color: 'rgba(255,255,255,0.45)',
                     marginBottom: '1.25rem',
                   }}>
                     {seg.description}
@@ -326,7 +326,8 @@ export default function SegmentSection() {
                         alignItems: 'center',
                         gap: '8px',
                         fontSize: '14.5px',
-                        color: 'rgba(255,255,255,0.82)',
+                        color: '#ffffff',
+                        fontWeight: 500,
                       }}>
                         <CheckCircle2 style={{ width: '16px', height: '16px', color: '#f97316', flexShrink: 0 }} />
                         {item}

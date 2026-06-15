@@ -142,8 +142,8 @@ export default async function PortfolioPage() {
       {/* Grid */}
       <section className="py-24" style={{ background: '#0f172a' }}>
         <div className="container mx-auto px-5 sm:px-8">
-          <div className="mb-14">
-            <SectionHeading size="medium" light>
+          <div className="mb-14" style={{ textAlign: 'center' }}>
+            <SectionHeading size="large" light style={{ fontSize: 'clamp(3.5rem, 14vw, 7rem)', letterSpacing: '-0.02em' }}>
               {items.length > 0 ? `${items.length} projetos` : 'Portfólio'}
             </SectionHeading>
           </div>
