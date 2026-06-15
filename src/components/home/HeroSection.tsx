@@ -86,13 +86,14 @@ export default function HeroSection() {
             style={{
               fontFamily: 'var(--font-ibm-mono)',
               fontSize: '11px',
-              letterSpacing: '0.35em',
+              letterSpacing: '0.25em',
               textTransform: 'uppercase',
               color: '#f97316',
-              marginBottom: '1.5rem',
+              marginBottom: '1rem',
             }}
           >
-            São Paulo · CREA-SP Credenciado · Estruturas industriais e comerciais
+            <span className="hero-eyebrow-full">São Paulo · CREA-SP Credenciado · Estruturas industriais e comerciais</span>
+            <span className="hero-eyebrow-short">São Paulo · CREA-SP Credenciado</span>
           </motion.p>
 
           {/* Headline */}

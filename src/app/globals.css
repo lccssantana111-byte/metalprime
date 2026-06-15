@@ -213,6 +213,14 @@ body {
   }
 }
 
+/* ── Hero eyebrow responsive ─────────────────────── */
+.hero-eyebrow-short { display: none; }
+
+@media (max-width: 767px) {
+  .hero-eyebrow-full  { display: none; }
+  .hero-eyebrow-short { display: inline; }
+}
+
 /* ── Hero section mobile ─────────────────────────── */
 @media (max-width: 767px) {
   .hero-content {
@@ -223,7 +231,7 @@ body {
     align-self: flex-end !important;
   }
   .hero-headline {
-    font-size: clamp(2.6rem, 11vw, 3.6rem) !important;
+    font-size: clamp(3.5rem, 16vw, 5rem) !important;
   }
 }
 
