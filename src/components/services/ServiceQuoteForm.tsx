@@ -104,7 +104,7 @@ export default function ServiceQuoteForm({ serviceName, serviceSlug }: Props) {
         borderTop: '1px solid rgba(255,255,255,0.06)',
         position: 'relative',
         overflow: 'hidden',
-        padding: `${SPACING.section.paddingYLg} 0`,
+        padding: `${SPACING.section.paddingY} 0`,
       }}
     >
       {/* Background accent — radial glow top-right */}
@@ -145,7 +145,7 @@ export default function ServiceQuoteForm({ serviceName, serviceSlug }: Props) {
       }}>
         <div
           className="grid grid-cols-1 lg:grid-cols-12"
-          style={{ gap: 'clamp(3rem, 6vw, 6rem)', alignItems: 'start' }}
+          style={{ gap: 'clamp(2rem, 6vw, 6rem)', alignItems: 'start' }}
         >
 
           {/* ── Left column ──────────────────────────────────── */}
@@ -161,7 +161,7 @@ export default function ServiceQuoteForm({ serviceName, serviceSlug }: Props) {
 
             <motion.div variants={fadeUp}>
               <SectionHeading size="large" light style={{ marginBottom: '1.5rem' }}>
-                Receba uma<br />
+                Receba uma{' '}
                 <span style={{ color: COLORS.brand.orange }}>proposta</span>
               </SectionHeading>
             </motion.div>
@@ -170,10 +170,10 @@ export default function ServiceQuoteForm({ serviceName, serviceSlug }: Props) {
               variants={fadeUp}
               style={{
                 fontFamily: TYPOGRAPHY.families.body,
-                fontSize: '15px',
+                fontSize: '16px',
                 lineHeight: 1.75,
-                color: 'rgba(255,255,255,0.4)',
-                marginBottom: '3rem',
+                color: 'rgba(255,255,255,0.6)',
+                marginBottom: 'clamp(1.5rem, 4vw, 3rem)',
                 maxWidth: '40ch',
               }}
             >
@@ -196,15 +196,15 @@ export default function ServiceQuoteForm({ serviceName, serviceSlug }: Props) {
                   style={{
                     display: 'flex',
                     alignItems: 'center',
-                    gap: '1.25rem',
+                    gap: '1rem',
                     padding: '1.25rem 0',
                     borderBottom: '1px solid rgba(255,255,255,0.08)',
                   }}
                 >
                   {/* Orange circle with check */}
                   <div style={{
-                    width: '36px',
-                    height: '36px',
+                    width: '44px',
+                    height: '44px',
                     borderRadius: '50%',
                     background: i === activeGuarantee ? COLORS.brand.orange : 'rgba(249,115,22,0.12)',
                     border: `1px solid ${i === activeGuarantee ? COLORS.brand.orange : COLORS.brand.dimBorder}`,
@@ -214,23 +214,24 @@ export default function ServiceQuoteForm({ serviceName, serviceSlug }: Props) {
                     justifyContent: 'center',
                     flexShrink: 0,
                   }}>
-                    <Check style={{ width: '14px', height: '14px', color: i === activeGuarantee ? '#ffffff' : COLORS.brand.orange, transition: 'color 0.4s' }} />
+                    <Check style={{ width: '18px', height: '18px', color: i === activeGuarantee ? '#ffffff' : COLORS.brand.orange, transition: 'color 0.4s' }} />
                   </div>
                   <div>
                     <div style={{
                       fontFamily: TYPOGRAPHY.families.body,
-                      fontWeight: 600,
-                      fontSize: '13px',
-                      color: 'rgba(255,255,255,0.85)',
-                      marginBottom: '2px',
+                      fontWeight: 700,
+                      fontSize: '16px',
+                      color: 'rgba(255,255,255,0.92)',
+                      marginBottom: '3px',
+                      lineHeight: 1.2,
                     }}>
                       {g.label}
                     </div>
                     <div style={{
-                      fontFamily: TYPOGRAPHY.families.mono,
-                      fontSize: '10px',
-                      letterSpacing: '0.06em',
-                      color: 'rgba(255,255,255,0.3)',
+                      fontFamily: TYPOGRAPHY.families.body,
+                      fontSize: '13px',
+                      color: 'rgba(255,255,255,0.45)',
+                      lineHeight: 1.4,
                     }}>
                       {g.sub}
                     </div>
@@ -244,10 +245,10 @@ export default function ServiceQuoteForm({ serviceName, serviceSlug }: Props) {
               <p style={{
                 fontFamily: TYPOGRAPHY.families.mono,
                 fontSize: '10px',
-                letterSpacing: '0.3em',
+                letterSpacing: '0.25em',
                 textTransform: 'uppercase',
-                color: 'rgba(255,255,255,0.2)',
-                marginBottom: '0.75rem',
+                color: 'rgba(255,255,255,0.35)',
+                marginBottom: '0.6rem',
               }}>
                 Prefere falar agora?
               </p>
@@ -258,18 +259,18 @@ export default function ServiceQuoteForm({ serviceName, serviceSlug }: Props) {
                 style={{
                   display: 'inline-flex',
                   alignItems: 'center',
-                  gap: '8px',
-                  fontFamily: TYPOGRAPHY.families.mono,
-                  fontSize: '12px',
-                  letterSpacing: '0.05em',
-                  color: 'rgba(255,255,255,0.35)',
+                  gap: '10px',
+                  fontFamily: TYPOGRAPHY.families.body,
+                  fontWeight: 600,
+                  fontSize: '15px',
+                  color: 'rgba(255,255,255,0.7)',
                   textDecoration: 'none',
                   transition: 'color 0.2s',
                 }}
                 onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = COLORS.brand.orange }}
-                onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = 'rgba(255,255,255,0.35)' }}
+                onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = 'rgba(255,255,255,0.7)' }}
               >
-                <MessageSquare style={{ width: '13px', height: '13px' }} />
+                <MessageSquare style={{ width: '16px', height: '16px' }} />
                 Falar pelo WhatsApp →
               </a>
             </motion.div>
@@ -522,13 +523,10 @@ export default function ServiceQuoteForm({ serviceName, serviceSlug }: Props) {
 
                     {/* Submit row */}
                     <div style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'space-between',
-                      flexWrap: 'wrap',
-                      gap: '1rem',
                       paddingTop: '0.5rem',
                       borderTop: '1px solid rgba(255,255,255,0.06)',
+                      display: 'flex',
+                      justifyContent: 'center',
                     }}>
                       <CTAButton
                         variant="primary"
@@ -542,17 +540,6 @@ export default function ServiceQuoteForm({ serviceName, serviceSlug }: Props) {
                       >
                         {status === 'loading' ? 'Enviando...' : 'Solicitar Orçamento'}
                       </CTAButton>
-
-                      <p style={{
-                        fontFamily: TYPOGRAPHY.families.mono,
-                        fontSize: '9px',
-                        letterSpacing: '0.1em',
-                        color: 'rgba(255,255,255,0.50)',
-                        maxWidth: '28ch',
-                        lineHeight: 1.6,
-                      }}>
-                        Seus dados são usados apenas para retorno de contato.
-                      </p>
                     </div>
                   </div>
                 </div>

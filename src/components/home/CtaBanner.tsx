@@ -112,15 +112,15 @@ export default function CtaBanner() {
               fontFamily: 'var(--font-barlow-condensed)',
               fontWeight: 900,
               lineHeight: 0.95,
-              fontSize: 'clamp(2.5rem, 4.5vw, 5rem)',
+              fontSize: 'clamp(2rem, 8vw, 5rem)',
               color: 'white',
               letterSpacing: '0.01em',
               textTransform: 'uppercase',
               margin: '0 0 1.25rem',
             }}
           >
-            Próximo projeto.<br />
-            Próxima estrutura.<br />
+            Próximo projeto.{' '}
+            Próxima estrutura.{' '}
             <span style={{ color: '#f97316' }}>Fale com um engenheiro.</span>
           </h2>
 
@@ -263,12 +263,12 @@ export default function CtaBanner() {
                     display: 'inline-flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    gap: '10px',
-                    padding: '15px 28px',
+                    gap: '8px',
+                    padding: '14px 20px',
                     borderRadius: '10px',
                     background: '#f97316',
                     color: 'white',
-                    fontSize: '14px',
+                    fontSize: '13px',
                     fontWeight: 700,
                     letterSpacing: '0.03em',
                     textDecoration: 'none',

@@ -42,7 +42,7 @@ export const TYPOGRAPHY = {
   },
   sizes: {
     hero: 'clamp(4.5rem, 8vw, 8.5rem)',
-    sectionLarge: 'clamp(2.5rem, 5vw, 4.5rem)',
+    sectionLarge: 'clamp(3rem, 5vw, 4.5rem)',
     sectionMedium: 'clamp(2rem, 4vw, 3.5rem)',
     bodyLg: '1.05rem',
     body: '15px',

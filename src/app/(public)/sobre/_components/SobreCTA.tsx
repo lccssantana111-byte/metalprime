@@ -28,7 +28,7 @@ export default function SobreCTA() {
             <h2 style={{
               fontFamily: 'var(--font-barlow-condensed)',
               fontWeight: 900,
-              fontSize: 'clamp(3rem, 5vw, 5rem)',
+              fontSize: 'clamp(2.25rem, 7vw, 5rem)',
               lineHeight: 0.92,
               letterSpacing: '-0.01em',
               textTransform: 'uppercase' as const,
@@ -44,7 +44,7 @@ export default function SobreCTA() {
               fontSize: '15px',
               lineHeight: 1.75,
               color: 'rgba(255,255,255,0.75)',
-              marginBottom: '3rem',
+              marginBottom: 'clamp(1.5rem, 4vw, 3rem)',
               maxWidth: '38ch',
             }}>
               A maioria terceiriza, improvisa e entrega sem laudo. Aqui, cada etapa é executada por equipe própria e documentada.

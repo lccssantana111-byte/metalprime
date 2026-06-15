@@ -59,6 +59,7 @@ export default function CTAButton({
   const baseStyle: React.CSSProperties = {
     display: 'inline-flex',
     alignItems: 'center',
+    justifyContent: 'center',
     gap: size === 'sm' ? '8px' : '10px',
     border: 'none',
     cursor: disabled ? 'not-allowed' : 'pointer',
