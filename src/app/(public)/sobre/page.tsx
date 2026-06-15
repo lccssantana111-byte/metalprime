@@ -163,23 +163,92 @@ export default function SobrePage() {
             </div>
           </div>
 
-          {/* Timeline — 1 col mobile, 2 col sm, 5 col lg */}
-          <div style={{ borderTop: '1px solid rgba(255,255,255,0.08)' }}>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5">
+          {/* Timeline */}
+          <div style={{ borderTop: '1px solid rgba(255,255,255,0.08)', position: 'relative' }}>
+            {/* Fio vertical contínuo — só mobile */}
+            <div
+              className="lg:hidden"
+              style={{
+                position: 'absolute',
+                top: 0,
+                bottom: 0,
+                left: '1.5rem',
+                width: '2px',
+                background: 'linear-gradient(to bottom, rgba(249,115,22,0.6), rgba(249,115,22,0.1))',
+                zIndex: 0,
+              }}
+            />
+
+            {/* Mobile: lista vertical com fio contínuo */}
+            <div className="lg:hidden" style={{ position: 'relative', zIndex: 1 }}>
               {milestones.map((m, i) => (
                 <div
                   key={m.year}
-                  className="timeline-item"
+                  style={{
+                    display: 'flex',
+                    gap: '1.25rem',
+                    padding: '2rem 1rem 2rem 1.5rem',
+                    borderBottom: i < milestones.length - 1 ? '1px solid rgba(255,255,255,0.06)' : 'none',
+                  }}
+                >
+                  {/* Dot */}
+                  <div style={{
+                    flexShrink: 0,
+                    width: '10px',
+                    height: '10px',
+                    borderRadius: '50%',
+                    background: i === milestones.length - 1 ? '#f97316' : 'rgba(249,115,22,0.5)',
+                    border: '2px solid #f97316',
+                    marginTop: '0.6rem',
+                    marginLeft: '-0.3125rem',
+                  }} />
+
+                  {/* Conteúdo */}
+                  <div style={{ flex: 1 }}>
+                    <div style={{
+                      fontFamily: 'var(--font-barlow-condensed)',
+                      fontWeight: 900,
+                      fontSize: 'clamp(2.5rem, 10vw, 3.5rem)',
+                      lineHeight: 1,
+                      color: i === milestones.length - 1 ? '#f97316' : 'rgba(255,255,255,0.45)',
+                      marginBottom: '0.5rem',
+                    }}>
+                      {m.year}
+                    </div>
+                    <div style={{ width: '28px', height: '2px', background: '#f97316', marginBottom: '0.6rem' }} />
+                    <h3 style={{
+                      fontFamily: 'var(--font-sans)',
+                      fontWeight: 700,
+                      fontSize: '1.05rem',
+                      color: '#ffffff',
+                      marginBottom: '0.4rem',
+                      margin: '0 0 0.4rem',
+                    }}>
+                      {m.title}
+                    </h3>
+                    <p style={{ fontSize: '15px', color: 'rgba(255,255,255,0.5)', lineHeight: 1.65, margin: 0 }}>
+                      {m.desc}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Desktop: 5 colunas lado a lado */}
+            <div className="hidden lg:grid lg:grid-cols-5">
+              {milestones.map((m, i) => (
+                <div
+                  key={m.year}
                   style={{
                     padding: '1.5rem 1rem 1.5rem 1.25rem',
                     borderLeft: '2px solid rgba(249,115,22,0.35)',
-                    borderBottom: '1px solid rgba(255,255,255,0.06)',
+                    borderRight: i < milestones.length - 1 ? 'none' : undefined,
                   }}
                 >
                   <div style={{
                     fontFamily: 'var(--font-barlow-condensed)',
                     fontWeight: 900,
-                    fontSize: 'clamp(2rem, 6vw, 3rem)',
+                    fontSize: 'clamp(2rem, 3vw, 3rem)',
                     lineHeight: 1,
                     color: i === milestones.length - 1 ? '#f97316' : 'rgba(255,255,255,0.50)',
                     marginBottom: '0.75rem',
