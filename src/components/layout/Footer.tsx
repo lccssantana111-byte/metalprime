@@ -58,8 +58,7 @@ export default function Footer() {
             </Link>
 
             <p className="text-[15px] sm:text-[14px] leading-[1.8] mb-8 max-w-xs" style={{ color: '#64748b' }}>
-              Estruturas metálicas para construtoras, galpões industriais e empreendimentos comerciais.
-              Fabricação própria, equipe própria, ART em 100% dos projetos. São Paulo e região.
+              A Metal Shark fabrica e instala portões, corrimãos, grades, portas de aço, coberturas e soluções metálicas sob medida para residências, condomínios e empresas. Fabricação própria, atendimento especializado e compromisso com qualidade, prazo e segurança.
             </p>
 
             {/* Contact */}

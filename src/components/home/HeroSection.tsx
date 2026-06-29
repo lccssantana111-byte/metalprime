@@ -152,7 +152,7 @@ export default function HeroSection() {
               maxWidth: '480px',
             }}
           >
-            Estruturas metálicas para construtoras, galpões industriais e empreendimentos comerciais. Fabricação própria, ART em 100% dos projetos. Mais de 5.000 obras entregues.
+            Portões, corrimãos, grades, portas de aço e estruturas metálicas fabricadas sob medida para residências, condomínios e empresas.
           </motion.p>
 
           {/* CTAs */}
@@ -189,7 +189,7 @@ export default function HeroSection() {
                 el.style.transform = 'translateY(0)'
               }}
             >
-              Solicitar Orçamento Técnico
+              Solicitar Orçamento
               <span
                 style={{
                   width: '32px',

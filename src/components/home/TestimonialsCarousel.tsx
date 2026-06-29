@@ -131,9 +131,9 @@ export default function TestimonialsCarousel() {
               margin: '0 0 1.5rem',
             }}
           >
-            A voz de quem{' '}
-            <span style={{ color: '#f97316' }}>aprova</span>{' '}
-            na prática.
+            Empresas que{' '}
+            <span style={{ color: '#f97316' }}>confiam</span>{' '}
+            na Metal Shark.
           </h2>
 
           <p style={{
@@ -144,7 +144,7 @@ export default function TestimonialsCarousel() {
             margin: '0 0 2.5rem',
             maxWidth: '340px',
           }}>
-            Construtoras, gestores industriais e escritórios de arquitetura que colocam a Metal Shark como fornecedor homologado. Mais de 5.000 estruturas entregues desde 2004.
+            Ao longo de mais de 20 anos, conquistamos a confiança de condomínios, empresas, arquitetos e construtoras por meio de entregas bem executadas, cumprimento de prazos e relacionamento transparente.
           </p>
 
         </motion.div>

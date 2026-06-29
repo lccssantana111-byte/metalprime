@@ -1,16 +1,16 @@
 export const BRAND_NAME = process.env.NEXT_PUBLIC_BRAND_NAME ?? 'Metal Shark'
-export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://metalshark.com.br'
-export const WHATSAPP_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '5511999999999'
-export const COMPANY_PHONE = process.env.NEXT_PUBLIC_COMPANY_PHONE ?? '(11) 99999-9999'
-export const COMPANY_EMAIL = process.env.NEXT_PUBLIC_COMPANY_EMAIL ?? 'contato@metalshark.com.br'
-export const COMPANY_ADDRESS = `${process.env.NEXT_PUBLIC_COMPANY_ADDRESS_STREET ?? 'Rua das Indústrias, 123'} — ${process.env.NEXT_PUBLIC_COMPANY_ADDRESS_CITY ?? 'São Paulo'}, SP`
-export const COMPANY_ADDRESS_STREET = process.env.NEXT_PUBLIC_COMPANY_ADDRESS_STREET ?? 'Rua das Indústrias, 123'
+export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.metalshark.com.br'
+export const WHATSAPP_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '5511949561353'
+export const COMPANY_PHONE = process.env.NEXT_PUBLIC_COMPANY_PHONE ?? '(11) 94956-1353'
+export const COMPANY_EMAIL = process.env.NEXT_PUBLIC_COMPANY_EMAIL ?? 'serralheria172@gmail.com'
+export const COMPANY_ADDRESS = `${process.env.NEXT_PUBLIC_COMPANY_ADDRESS_STREET ?? 'R. Manoel Vergueiro, 1500 - Jardim Belcito'} — ${process.env.NEXT_PUBLIC_COMPANY_ADDRESS_CITY ?? 'São Paulo'}, SP`
+export const COMPANY_ADDRESS_STREET = process.env.NEXT_PUBLIC_COMPANY_ADDRESS_STREET ?? 'R. Manoel Vergueiro, 1500 - Jardim Belcito'
 export const COMPANY_ADDRESS_CITY = process.env.NEXT_PUBLIC_COMPANY_ADDRESS_CITY ?? 'São Paulo'
 export const COMPANY_ADDRESS_REGION = 'SP'
-export const COMPANY_ADDRESS_POSTAL = process.env.NEXT_PUBLIC_COMPANY_ADDRESS_POSTAL ?? '01000-000'
+export const COMPANY_ADDRESS_POSTAL = process.env.NEXT_PUBLIC_COMPANY_ADDRESS_POSTAL ?? '04855-090'
 export const COMPANY_GEO_LAT = parseFloat(process.env.NEXT_PUBLIC_COMPANY_GEO_LAT ?? '-23.55')
 export const COMPANY_GEO_LNG = parseFloat(process.env.NEXT_PUBLIC_COMPANY_GEO_LNG ?? '-46.63')
-export const COMPANY_TAGLINE = 'Estruturas feitas para durar'
+export const COMPANY_TAGLINE = 'Serralheria de alto padrão.'
 
 export const SERVICE_LABELS: Record<string, string> = {
   portoes: 'Portões',

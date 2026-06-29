@@ -3,22 +3,23 @@
 import { useRef } from 'react'
 import { motion, useInView, type Variants } from 'framer-motion'
 import Link from 'next/link'
-import { ArrowRight, Building2, HardHat, Factory, CheckCircle2 } from 'lucide-react'
+import { ArrowRight, Building2, HardHat, CheckCircle2 } from 'lucide-react'
 
 const segments = [
   {
     icon: Building2,
     label: 'Condomínios',
-    metric: '+500',
+    metric: '+100',
     metricLabel: 'condomínios e edifícios atendidos',
     headline: 'O parceiro que o síndico e o gestor confiam',
     description:
-      'Portões automáticos, grades de segurança, guaritas e coberturas. ART em todas as estruturas — a vistoria da AVCB e do Corpo de Bombeiros não para por nossa causa.',
+      'Mantemos condomínios mais seguros com soluções metálicas duráveis, fabricação própria e instalação profissional. Produzimos portões automáticos, corrimãos, grades, portas de aço, coberturas e outras estruturas sob medida para áreas comuns.',
     items: [
-      'Portões automáticos com ART inclusa',
-      'Grades e cercas de segurança perimetral',
-      'Guaritas e coberturas certificadas',
-      'Contratos de manutenção preventiva',
+      'Fabricação própria',
+      'Projeto sob medida',
+      'Instalação especializada',
+      'Atendimento rápido',
+      'Acabamento premium',
     ],
     href: '/orcamento',
     cta: 'Orçamento para condomínio',
@@ -40,23 +41,6 @@ const segments = [
     href: '/orcamento',
     cta: 'Orçamento para construtora',
     featured: true,
-  },
-  {
-    icon: Factory,
-    label: 'Indústrias',
-    metric: '+20',
-    metricLabel: 'anos em projetos industriais',
-    headline: 'Estrutura própria para projetos de grande porte',
-    description:
-      'Galpões, coberturas metálicas, mezaninos e plataformas industriais. Equipe própria de engenheiros e montadores — da fundação ao comissionamento.',
-    items: [
-      'Galpões industriais steel frame e pré-moldado',
-      'Coberturas metálicas e shed',
-      'Plataformas, mezaninos e passarelas',
-      'NR-18 e NR-35 em toda a montagem',
-    ],
-    href: '/orcamento',
-    cta: 'Orçamento industrial',
   },
 ]
 

@@ -7,9 +7,9 @@ import { ArrowRight, Phone, MessageCircle, ShieldCheck, Clock, Wrench } from 'lu
 import { COMPANY_PHONE, WHATSAPP_NUMBER } from '@/lib/constants'
 
 const trust = [
-  { icon: ShieldCheck, text: 'ART em 100% dos projetos estruturais' },
-  { icon: Clock, text: 'Proposta técnica em 48h' },
-  { icon: Wrench, text: 'Engenheiro na visita — sem custo' },
+  { icon: Wrench, text: 'Fabricação própria' },
+  { icon: Clock, text: 'Orçamento em até 48 horas' },
+  { icon: ShieldCheck, text: 'Instalação profissional' },
 ]
 
 export default function CtaBanner() {
@@ -119,9 +119,9 @@ export default function CtaBanner() {
               margin: '0 0 1.25rem',
             }}
           >
-            Próximo projeto.{' '}
-            Próxima estrutura.{' '}
-            <span style={{ color: '#f97316' }}>Fale com um engenheiro.</span>
+            Vamos tirar seu projeto do papel.{' '}
+            Solicite seu orçamento e{' '}
+            <span style={{ color: '#f97316' }}>fale com nossa equipe especializada.</span>
           </h2>
 
           <p
@@ -133,8 +133,7 @@ export default function CtaBanner() {
               maxWidth: '400px',
             }}
           >
-            Estruturas entregues no prazo, com documentação técnica completa.
-            Referência para construtoras, incorporadoras e gestores industriais em São Paulo.
+            Conte com uma equipe especializada para desenvolver, fabricar e instalar soluções metálicas com qualidade, segurança e compromisso com os prazos.
           </p>
 
           {/* Trust badges */}
@@ -277,7 +276,7 @@ export default function CtaBanner() {
                     cursor: 'pointer',
                   }}
                 >
-                  <span>Solicitar Orçamento Técnico</span>
+                  <span>Solicitar Orçamento</span>
                   <ArrowRight style={{ width: '15px', height: '15px', flexShrink: 0 }} />
                 </Link>
 

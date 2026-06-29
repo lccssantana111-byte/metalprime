@@ -14,8 +14,8 @@ const steps = [
   {
     id: 1,
     number: '01',
-    title: 'Consulta Técnica',
-    description: 'Nosso engenheiro vai até você, tira medidas, entende o projeto. Gratuito, sem compromisso e sem pressão para fechar na hora.',
+    title: 'Visita Técnica',
+    description: 'Nosso técnico vai até você, tira medidas, entende o projeto. Gratuito, sem compromisso e sem pressão para fechar na hora.',
     icon: ClipboardList,
     tag: 'Gratuita',
     code: 'ETAPA-01 / VISITA',
@@ -23,8 +23,8 @@ const steps = [
   {
     id: 2,
     number: '02',
-    title: 'Proposta em 48h',
-    description: 'Proposta com valor fixo, cronograma detalhado e memorial descritivo. Sem letra miúda — o que está escrito é o que você paga.',
+    title: 'Orçamento em até 48 horas',
+    description: 'Você recebe um orçamento claro, com valores definidos, cronograma e todas as informações necessárias para tomar sua decisão com segurança.',
     icon: FileText,
     tag: '48 Horas',
     code: 'ETAPA-02 / ORÇAMENTO',
@@ -32,19 +32,19 @@ const steps = [
   {
     id: 3,
     number: '03',
-    title: 'Fabricação Industrial',
-    description: 'Produzimos em oficina própria, sem terceirizar. Aço certificado, solda rastreável e inspeção em cada etapa — nada sai da fábrica fora do padrão.',
+    title: 'Fabricação Própria',
+    description: 'Cada projeto é fabricado em nossa própria serralheria, com materiais de qualidade, acabamento cuidadoso e inspeção em todas as etapas para garantir um resultado durável.',
     icon: Factory,
-    tag: 'ISO 9001',
+    tag: '',
     code: 'ETAPA-03 / PRODUÇÃO',
   },
   {
     id: 4,
     number: '04',
-    title: 'Instalação com ART',
-    description: 'Nossa equipe instala no prazo acordado em contrato. ART do engenheiro responsável entregue em 100% dos projetos estruturais — sem exceção.',
+    title: 'Instalação Profissional',
+    description: 'Nossa equipe realiza a instalação conforme o projeto aprovado, respeitando prazos, organização e acabamento. Quando necessário, emitimos a ART para garantir a responsabilidade técnica da execução.',
     icon: HardHat,
-    tag: 'ART Inclusa',
+    tag: '',
     code: 'ETAPA-04 / ENTREGA',
   },
 ]
@@ -185,17 +185,19 @@ function StepRow({
 
         {/* Tag + Icon */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '1.25rem' }}>
-          <span style={{
-            fontSize: '11px',
-            fontFamily: 'var(--font-mono)',
-            letterSpacing: '0.2em',
-            textTransform: 'uppercase',
-            color: '#f97316',
-            border: '1px solid rgba(249,115,22,0.35)',
-            padding: '3px 10px',
-          }}>
-            {step.tag}
-          </span>
+          {step.tag && (
+            <span style={{
+              fontSize: '11px',
+              fontFamily: 'var(--font-mono)',
+              letterSpacing: '0.2em',
+              textTransform: 'uppercase',
+              color: '#f97316',
+              border: '1px solid rgba(249,115,22,0.35)',
+              padding: '3px 10px',
+            }}>
+              {step.tag}
+            </span>
+          )}
           <div style={{
             width: '30px',
             height: '30px',
