@@ -122,7 +122,7 @@ export default function HeroSection() {
               animate={{ backgroundPosition: ['0% 0%', '200% 0%'] }}
               transition={{ duration: 4, repeat: Infinity, ease: 'linear' }}
             >
-              Engenharia
+              Serralheria
             </motion.span>
             <motion.span
               style={{
@@ -137,7 +137,7 @@ export default function HeroSection() {
               animate={{ backgroundPosition: ['0% 0%', '200% 0%'] }}
               transition={{ duration: 3.5, repeat: Infinity, ease: 'linear', delay: 0.6 }}
             >
-              em Aço.
+              de Alto Padrão.
             </motion.span>
           </motion.h1>
 
