@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation'
 import { createClient } from '@/lib/supabase/client'
 import { Input } from '@/components/ui/input'
 import { Loader2 } from 'lucide-react'
-import { BRAND_NAME } from '@/lib/constants'
+import { BRAND_NAME, SITE_URL } from '@/lib/constants'
 
 export default function AdminLoginPage() {
   const router = useRouter()
@@ -13,6 +13,9 @@ export default function AdminLoginPage() {
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
+  const [resetMode, setResetMode] = useState(false)
+  const [resetSent, setResetSent] = useState(false)
+  const [resetLoading, setResetLoading] = useState(false)
 
   async function handleLogin(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
@@ -27,6 +30,22 @@ export default function AdminLoginPage() {
     }
     router.push('/admin')
     router.refresh()
+  }
+
+  async function handleReset(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault()
+    setError('')
+    setResetLoading(true)
+    const supabase = createClient()
+    const { error: resetError } = await supabase.auth.resetPasswordForEmail(email, {
+      redirectTo: `${SITE_URL}/admin/reset-password`,
+    })
+    setResetLoading(false)
+    if (resetError) {
+      setError('Erro ao enviar o e-mail. Tente novamente.')
+      return
+    }
+    setResetSent(true)
   }
 
   return (
@@ -71,77 +90,162 @@ export default function AdminLoginPage() {
           {/* Top orange rule */}
           <div className="h-0.5 w-12 rounded-full mb-6" style={{ background: '#f97316' }} />
 
-          <form onSubmit={handleLogin} className="space-y-4">
-            <div>
-              <label
-                htmlFor="email"
-                className="block text-[10px] font-mono font-semibold tracking-[0.2em] uppercase mb-2"
-                style={{ color: '#94a3b8' }}
-              >
-                E-mail
-              </label>
-              <Input
-                id="email"
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-                autoComplete="email"
-                placeholder="admin@metalshark.com.br"
-                className="h-11 font-mono text-[13px]"
-                style={{
-                  background: '#f8fafc',
-                  border: '1px solid #e2e8f0',
-                  color: '#0f172a',
-                }}
-              />
-            </div>
-
-            <div>
-              <label
-                htmlFor="password"
-                className="block text-[10px] font-mono font-semibold tracking-[0.2em] uppercase mb-2"
-                style={{ color: '#94a3b8' }}
-              >
-                Senha
-              </label>
-              <Input
-                id="password"
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-                autoComplete="current-password"
-                className="h-11 font-mono text-[13px]"
-                style={{
-                  background: '#f8fafc',
-                  border: '1px solid #e2e8f0',
-                  color: '#0f172a',
-                }}
-              />
-            </div>
-
-            {error && (
-              <div
-                className="flex items-center gap-2.5 text-[13px] px-4 py-3 rounded-lg"
-                style={{ background: '#fef2f2', border: '1px solid #fecaca', color: '#dc2626' }}
-              >
-                <div className="w-1.5 h-1.5 rounded-full bg-red-500 shrink-0" />
-                {error}
+          {resetSent ? (
+            <div className="text-center py-4 space-y-3">
+              <div className="w-10 h-10 rounded-full flex items-center justify-center mx-auto mb-4" style={{ background: '#f0fdf4', border: '1px solid #bbf7d0' }}>
+                <div className="w-2 h-2 rounded-full" style={{ background: '#22c55e' }} />
               </div>
-            )}
+              <p className="text-[14px] font-semibold" style={{ color: '#0f172a' }}>E-mail enviado!</p>
+              <p className="text-[13px]" style={{ color: '#64748b' }}>
+                Verifique a caixa de entrada de <strong>{email}</strong> e clique no link para redefinir sua senha.
+              </p>
+              <button
+                onClick={() => { setResetMode(false); setResetSent(false) }}
+                className="text-[12px] font-mono underline underline-offset-2 mt-4"
+                style={{ color: '#94a3b8' }}
+              >
+                Voltar ao login
+              </button>
+            </div>
+          ) : resetMode ? (
+            <form onSubmit={handleReset} className="space-y-4">
+              <p className="text-[13px] mb-2" style={{ color: '#64748b' }}>
+                Digite seu e-mail e enviaremos um link para redefinir a senha.
+              </p>
+              <div>
+                <label
+                  htmlFor="email-reset"
+                  className="block text-[10px] font-mono font-semibold tracking-[0.2em] uppercase mb-2"
+                  style={{ color: '#94a3b8' }}
+                >
+                  E-mail
+                </label>
+                <Input
+                  id="email-reset"
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                  autoComplete="email"
+                  placeholder="seu@email.com"
+                  className="h-11 font-mono text-[13px]"
+                  style={{ background: '#f8fafc', border: '1px solid #e2e8f0', color: '#0f172a' }}
+                />
+              </div>
 
-            <button
-              type="submit"
-              disabled={loading}
-              className="w-full font-bold text-[13px] tracking-widest uppercase h-11 rounded-lg transition-all duration-200 disabled:opacity-50 flex items-center justify-center gap-2 mt-2"
-              style={{ background: '#0f172a', color: '#ffffff', letterSpacing: '0.12em' }}
-              onMouseEnter={(e) => { if (!loading) (e.currentTarget as HTMLElement).style.background = '#1e293b' }}
-              onMouseLeave={(e) => { if (!loading) (e.currentTarget as HTMLElement).style.background = '#0f172a' }}
-            >
-              {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : 'Entrar'}
-            </button>
-          </form>
+              {error && (
+                <div
+                  className="flex items-center gap-2.5 text-[13px] px-4 py-3 rounded-lg"
+                  style={{ background: '#fef2f2', border: '1px solid #fecaca', color: '#dc2626' }}
+                >
+                  <div className="w-1.5 h-1.5 rounded-full bg-red-500 shrink-0" />
+                  {error}
+                </div>
+              )}
+
+              <button
+                type="submit"
+                disabled={resetLoading}
+                className="w-full font-bold text-[13px] tracking-widest uppercase h-11 rounded-lg transition-all duration-200 disabled:opacity-50 flex items-center justify-center gap-2 mt-2"
+                style={{ background: '#0f172a', color: '#ffffff', letterSpacing: '0.12em' }}
+                onMouseEnter={(e) => { if (!resetLoading) (e.currentTarget as HTMLElement).style.background = '#1e293b' }}
+                onMouseLeave={(e) => { if (!resetLoading) (e.currentTarget as HTMLElement).style.background = '#0f172a' }}
+              >
+                {resetLoading ? <Loader2 className="w-4 h-4 animate-spin" /> : 'Enviar link'}
+              </button>
+
+              <button
+                type="button"
+                onClick={() => { setResetMode(false); setError('') }}
+                className="w-full text-[12px] font-mono text-center underline underline-offset-2"
+                style={{ color: '#94a3b8' }}
+              >
+                Voltar ao login
+              </button>
+            </form>
+          ) : (
+            <form onSubmit={handleLogin} className="space-y-4">
+              <div>
+                <label
+                  htmlFor="email"
+                  className="block text-[10px] font-mono font-semibold tracking-[0.2em] uppercase mb-2"
+                  style={{ color: '#94a3b8' }}
+                >
+                  E-mail
+                </label>
+                <Input
+                  id="email"
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                  autoComplete="email"
+                  placeholder="admin@metalshark.com.br"
+                  className="h-11 font-mono text-[13px]"
+                  style={{
+                    background: '#f8fafc',
+                    border: '1px solid #e2e8f0',
+                    color: '#0f172a',
+                  }}
+                />
+              </div>
+
+              <div>
+                <div className="flex items-center justify-between mb-2">
+                  <label
+                    htmlFor="password"
+                    className="block text-[10px] font-mono font-semibold tracking-[0.2em] uppercase"
+                    style={{ color: '#94a3b8' }}
+                  >
+                    Senha
+                  </label>
+                  <button
+                    type="button"
+                    onClick={() => { setResetMode(true); setError('') }}
+                    className="text-[10px] font-mono underline underline-offset-2"
+                    style={{ color: '#94a3b8' }}
+                  >
+                    Esqueci minha senha
+                  </button>
+                </div>
+                <Input
+                  id="password"
+                  type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                  autoComplete="current-password"
+                  className="h-11 font-mono text-[13px]"
+                  style={{
+                    background: '#f8fafc',
+                    border: '1px solid #e2e8f0',
+                    color: '#0f172a',
+                  }}
+                />
+              </div>
+
+              {error && (
+                <div
+                  className="flex items-center gap-2.5 text-[13px] px-4 py-3 rounded-lg"
+                  style={{ background: '#fef2f2', border: '1px solid #fecaca', color: '#dc2626' }}
+                >
+                  <div className="w-1.5 h-1.5 rounded-full bg-red-500 shrink-0" />
+                  {error}
+                </div>
+              )}
+
+              <button
+                type="submit"
+                disabled={loading}
+                className="w-full font-bold text-[13px] tracking-widest uppercase h-11 rounded-lg transition-all duration-200 disabled:opacity-50 flex items-center justify-center gap-2 mt-2"
+                style={{ background: '#0f172a', color: '#ffffff', letterSpacing: '0.12em' }}
+                onMouseEnter={(e) => { if (!loading) (e.currentTarget as HTMLElement).style.background = '#1e293b' }}
+                onMouseLeave={(e) => { if (!loading) (e.currentTarget as HTMLElement).style.background = '#0f172a' }}
+              >
+                {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : 'Entrar'}
+              </button>
+            </form>
+          )}
         </div>
 
         <p className="text-center text-[11px] font-mono mt-5" style={{ color: '#cbd5e1' }}>
