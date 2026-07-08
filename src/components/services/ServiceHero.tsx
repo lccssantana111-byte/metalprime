@@ -3,8 +3,8 @@
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { ArrowRight, ChevronRight } from 'lucide-react'
-import { WHATSAPP_NUMBER } from '@/lib/constants'
 import { PHOTOS } from '@/lib/images'
+import { useWhatsAppNumber } from '@/components/providers/WhatsAppNumberProvider'
 import type { ServiceType } from '@/types'
 import { CTAButton, COLORS, TYPOGRAPHY } from '@/components/ui/design-system'
 import { springEase } from '@/lib/animations'
@@ -26,6 +26,7 @@ const SLUG_PHOTOS: Record<string, string> = {
 }
 
 export default function ServiceHero({ name, tagline, heroImage, slug }: Props) {
+  const WHATSAPP_NUMBER = useWhatsAppNumber()
   const photo = heroImage || (slug ? SLUG_PHOTOS[slug] : null) || PHOTOS.hero
 
   return (

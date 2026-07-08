@@ -3,9 +3,10 @@
 import { useState, useRef, useEffect } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { ArrowRight, Check, Phone, MessageSquare } from 'lucide-react'
-import { WHATSAPP_NUMBER } from '@/lib/constants'
 import { SectionLabel, SectionHeading, CTAButton, COLORS, TYPOGRAPHY, SPACING } from '@/components/ui/design-system'
 import { springEase, fadeUp, staggerContainer } from '@/lib/animations'
+import { useWhatsAppNumber } from '@/components/providers/WhatsAppNumberProvider'
+import { trackFormSubmit } from '@/lib/gtm'
 
 interface Props {
   serviceName: string
@@ -21,6 +22,7 @@ const GUARANTEES = [
 ]
 
 export default function ServiceQuoteForm({ serviceName, serviceSlug }: Props) {
+  const WHATSAPP_NUMBER = useWhatsAppNumber()
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: '-60px' })
 
@@ -72,6 +74,7 @@ export default function ServiceQuoteForm({ serviceName, serviceSlug }: Props) {
         throw new Error(data.error || 'Erro ao enviar.')
       }
       setStatus('success')
+      trackFormSubmit('contact', { service: serviceSlug || serviceName })
     } catch (err) {
       setErrorMsg(err instanceof Error ? err.message : 'Erro ao enviar. Tente novamente.')
       setStatus('error')

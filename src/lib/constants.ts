@@ -1,7 +1,7 @@
 export const BRAND_NAME = process.env.NEXT_PUBLIC_BRAND_NAME ?? 'Metal Shark'
 export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.metalshark.com.br'
-export const WHATSAPP_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '5511949561353'
-export const COMPANY_PHONE = process.env.NEXT_PUBLIC_COMPANY_PHONE ?? '(11) 94956-1353'
+export const WHATSAPP_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '5511944765127'
+export const COMPANY_PHONE = process.env.NEXT_PUBLIC_COMPANY_PHONE ?? '(11) 94476-5127'
 export const COMPANY_EMAIL = process.env.NEXT_PUBLIC_COMPANY_EMAIL ?? 'serralheria172@gmail.com'
 export const COMPANY_ADDRESS = `${process.env.NEXT_PUBLIC_COMPANY_ADDRESS_STREET ?? 'R. Manoel Vergueiro, 1500 - Jardim Belcito'} — ${process.env.NEXT_PUBLIC_COMPANY_ADDRESS_CITY ?? 'São Paulo'}, SP`
 export const COMPANY_ADDRESS_STREET = process.env.NEXT_PUBLIC_COMPANY_ADDRESS_STREET ?? 'R. Manoel Vergueiro, 1500 - Jardim Belcito'

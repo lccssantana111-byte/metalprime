@@ -1,8 +1,11 @@
 import type { Metadata } from 'next'
 import { DM_Sans, Outfit, IBM_Plex_Mono, Barlow_Condensed } from 'next/font/google'
+import { GoogleTagManager } from '@next/third-parties/google'
 import { Toaster } from '@/components/ui/sonner'
 import './globals.css'
 import { BRAND_NAME, COMPANY_TAGLINE, SITE_URL } from '@/lib/constants'
+
+const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID
 
 const dmSans = DM_Sans({
   variable: '--font-dm-sans',
@@ -55,7 +58,18 @@ export const viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="pt-BR" className={`${dmSans.variable} ${outfit.variable} ${ibmPlexMono.variable} ${barlowCondensed.variable}`}>
+      {GTM_ID && <GoogleTagManager gtmId={GTM_ID} />}
       <body className="min-h-screen bg-background text-foreground antialiased">
+        {GTM_ID && (
+          <noscript>
+            <iframe
+              src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
+              height="0"
+              width="0"
+              style={{ display: 'none', visibility: 'hidden' }}
+            />
+          </noscript>
+        )}
         {children}
         <Toaster richColors position="top-right" />
       </body>

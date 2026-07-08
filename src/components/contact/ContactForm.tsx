@@ -11,6 +11,7 @@ import { Textarea } from '@/components/ui/textarea'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { contactSchema, type ContactFormData } from '@/lib/validators/contact'
 import { Loader2, CheckCircle } from 'lucide-react'
+import { trackFormSubmit } from '@/lib/gtm'
 
 export default function ContactForm() {
   const [submitted, setSubmitted] = useState(false)
@@ -33,6 +34,7 @@ export default function ContactForm() {
       if (!res.ok) throw new Error()
       reset()
       setSubmitted(true)
+      trackFormSubmit('contact', { service: data.service })
     } catch {
       toast.error('Erro ao enviar mensagem. Tente novamente.')
     }

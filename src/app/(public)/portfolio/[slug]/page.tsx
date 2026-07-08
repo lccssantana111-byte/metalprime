@@ -6,6 +6,8 @@ import { SERVICE_LABELS, SERVICE_SLUGS } from '@/lib/constants'
 import Link from 'next/link'
 import { ArrowLeft, ArrowRight, MapPin, Calendar, MessageCircle } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import TrackedWhatsAppLink from '@/components/ui/TrackedWhatsAppLink'
+import { getWhatsAppNumber } from '@/lib/queries/settings'
 
 export const revalidate = 3600
 
@@ -34,6 +36,7 @@ export default async function PortfolioDetailPage({ params }: { params: Promise<
   const { slug } = await params
   const item = await getPortfolioBySlug(slug)
   if (!item) notFound()
+  const whatsappNumber = await getWhatsAppNumber()
 
   const serviceSlug = SERVICE_SLUGS[item.service] ?? item.service
   const ctaHref = `/orcamento?service=${item.service}`
@@ -162,16 +165,15 @@ export default async function PortfolioDetailPage({ params }: { params: Promise<
               </Link>
 
               {/* Secondary CTA — WhatsApp */}
-              <a
-                href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '5511999999999'}?text=${encodeURIComponent(`Olá! Vi o projeto "${item.title}" no portfólio e quero um orçamento similar.`)}`}
-                target="_blank"
-                rel="noopener noreferrer"
+              <TrackedWhatsAppLink
+                source="portfolio_detail"
+                href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(`Olá! Vi o projeto "${item.title}" no portfólio e quero um orçamento similar.`)}`}
                 className="flex items-center justify-center gap-2 w-full py-3 rounded-xl text-sm font-semibold transition-colors"
                 style={{ background: 'rgba(37,211,102,0.08)', border: '1px solid rgba(37,211,102,0.25)', color: '#16a34a' }}
               >
                 <MessageCircle className="w-4 h-4" />
                 Perguntar pelo WhatsApp
-              </a>
+              </TrackedWhatsAppLink>
             </div>
           </div>
 

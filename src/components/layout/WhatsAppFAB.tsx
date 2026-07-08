@@ -3,9 +3,11 @@
 import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { buildWhatsAppUrl } from '@/lib/whatsapp'
-import { WHATSAPP_NUMBER } from '@/lib/constants'
+import { trackWhatsAppClick } from '@/lib/gtm'
+import { useWhatsAppNumber } from '@/components/providers/WhatsAppNumberProvider'
 
 export default function WhatsAppFAB() {
+  const WHATSAPP_NUMBER = useWhatsAppNumber()
   const [visible, setVisible] = useState(false)
   const [hovered, setHovered] = useState(false)
 
@@ -57,6 +59,7 @@ export default function WhatsAppFAB() {
             aria-label="Falar pelo WhatsApp"
             onMouseEnter={() => setHovered(true)}
             onMouseLeave={() => setHovered(false)}
+            onClick={() => trackWhatsAppClick('fab')}
             className="relative group"
           >
             {/* Pulse ring */}

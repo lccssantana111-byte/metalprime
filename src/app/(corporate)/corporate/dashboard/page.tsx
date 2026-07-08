@@ -2,8 +2,8 @@ import { createClient } from '@/lib/supabase/server'
 import { createAdminClient } from '@/lib/supabase/admin'
 import { redirect } from 'next/navigation'
 import type { Project } from '@/types'
-import { WHATSAPP_NUMBER } from '@/lib/constants'
 import ProjectCard from '../../_components/ProjectCard'
+import { getWhatsAppNumber } from '@/lib/queries/settings'
 
 export const dynamic = 'force-dynamic'
 
@@ -11,6 +11,7 @@ export default async function CorporateDashboardPage() {
   const auth = await createClient()
   const { data: { user } } = await auth.auth.getUser()
   if (!user) redirect('/corporate/login')
+  const WHATSAPP_NUMBER = await getWhatsAppNumber()
 
   const supabase = createAdminClient()
   const { data: clientData } = await supabase

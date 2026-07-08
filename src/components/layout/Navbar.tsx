@@ -5,7 +5,8 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, ArrowUpRight, ChevronDown, DoorOpen, ShieldCheck, TrendingUp, GripHorizontal, Building2, Wrench } from 'lucide-react'
-import { COMPANY_PHONE, WHATSAPP_NUMBER } from '@/lib/constants'
+import { COMPANY_PHONE } from '@/lib/constants'
+import { useWhatsAppNumber } from '@/components/providers/WhatsAppNumberProvider'
 
 const services = [
   { label: 'Portões', href: '/servicos/portoes', desc: 'Industriais, condominiais e comerciais com automação', Icon: DoorOpen },
@@ -25,6 +26,7 @@ const nav = [
 ]
 
 export default function Navbar() {
+  const WHATSAPP_NUMBER = useWhatsAppNumber()
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
   const [servicesOpen, setServicesOpen] = useState(false)

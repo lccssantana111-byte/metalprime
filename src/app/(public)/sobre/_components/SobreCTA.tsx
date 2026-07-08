@@ -1,8 +1,9 @@
 'use client'
 
 import { ArrowRight, CheckCircle } from 'lucide-react'
-import { WHATSAPP_NUMBER } from '@/lib/constants'
 import { SectionLabel, CTAButton } from '@/components/ui/design-system'
+import { trackWhatsAppClick } from '@/lib/gtm'
+import { useWhatsAppNumber } from '@/components/providers/WhatsAppNumberProvider'
 
 const differentials = [
   'Equipe própria: engenheiros estruturais, soldadores AWS e montadores certificados NR-35',
@@ -14,6 +15,8 @@ const differentials = [
 ]
 
 export default function SobreCTA() {
+  const WHATSAPP_NUMBER = useWhatsAppNumber()
+
   return (
     <section style={{ background: '#0f172a', paddingTop: '6rem', paddingBottom: '6rem' }}>
       <div className="container mx-auto px-4 sm:px-8">
@@ -65,6 +68,7 @@ export default function SobreCTA() {
               <CTAButton
                 variant="ghost"
                 hrefExternal={`https://wa.me/${WHATSAPP_NUMBER}`}
+                onClick={() => trackWhatsAppClick('sobre_cta')}
                 onDark
               >
                 Falar pelo WhatsApp
@@ -118,6 +122,7 @@ export default function SobreCTA() {
               <CTAButton
                 variant="ghost"
                 hrefExternal={`https://wa.me/${WHATSAPP_NUMBER}`}
+                onClick={() => trackWhatsAppClick('sobre_cta')}
                 onDark
               >
                 Falar pelo WhatsApp

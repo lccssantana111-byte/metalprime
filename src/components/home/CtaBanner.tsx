@@ -4,7 +4,8 @@ import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import Link from 'next/link'
 import { ArrowRight, Phone, MessageCircle, ShieldCheck, Clock, Wrench } from 'lucide-react'
-import { COMPANY_PHONE, WHATSAPP_NUMBER } from '@/lib/constants'
+import { COMPANY_PHONE } from '@/lib/constants'
+import { useWhatsAppNumber } from '@/components/providers/WhatsAppNumberProvider'
 
 const trust = [
   { icon: Wrench, text: 'Fabricação própria' },
@@ -13,6 +14,7 @@ const trust = [
 ]
 
 export default function CtaBanner() {
+  const WHATSAPP_NUMBER = useWhatsAppNumber()
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: '-60px' })
 

@@ -6,8 +6,8 @@ import {
   COMPANY_ADDRESS,
   COMPANY_EMAIL,
   COMPANY_PHONE,
-  WHATSAPP_NUMBER,
 } from '@/lib/constants'
+import { useWhatsAppNumber } from '@/components/providers/WhatsAppNumberProvider'
 
 const services = [
   { label: 'Portões', href: '/servicos/portoes' },
@@ -36,6 +36,7 @@ const LOGO_MARK = (
 )
 
 export default function Footer() {
+  const WHATSAPP_NUMBER = useWhatsAppNumber()
   const year = new Date().getFullYear()
 
   return (

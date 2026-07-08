@@ -5,6 +5,7 @@ import { ChevronLeft, Loader2, Pencil, Send } from 'lucide-react'
 import { SERVICE_LABELS } from '@/lib/constants'
 import { toast } from 'sonner'
 import type { WizardState } from './QuoteWizard'
+import { trackFormSubmit } from '@/lib/gtm'
 
 interface Props {
   state: WizardState
@@ -31,6 +32,7 @@ export default function QuoteStep4Confirm({ state, onEdit, onSuccess, onBack }: 
       })
       const json = await res.json()
       if (!res.ok) throw new Error(json.error)
+      trackFormSubmit('quote', { services: state.services })
       onSuccess(json.quote_id, json.lead_id)
     } catch (err: unknown) {
       toast.error(err instanceof Error ? err.message : 'Erro ao enviar orçamento.')

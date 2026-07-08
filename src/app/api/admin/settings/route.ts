@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { revalidateTag } from 'next/cache'
 import { createAdminClient } from '@/lib/supabase/admin'
 import { requireAuth, isAuthError } from '@/lib/auth'
 
@@ -27,5 +28,6 @@ export async function PATCH(request: NextRequest) {
     .upsert(settings, { onConflict: 'key' })
 
   if (error) return NextResponse.json({ error: error.message }, { status: 500 })
+  revalidateTag('site-settings', 'default')
   return NextResponse.json({ ok: true })
 }

@@ -1,8 +1,10 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { ArrowUpRight } from 'lucide-react'
-import { BRAND_NAME, WHATSAPP_NUMBER, SITE_URL } from '@/lib/constants'
+import { BRAND_NAME, SITE_URL } from '@/lib/constants'
 import ServicesCarousel from '@/components/services/ServicesCarousel'
+import TrackedWhatsAppLink from '@/components/ui/TrackedWhatsAppLink'
+import { getWhatsAppNumber } from '@/lib/queries/settings'
 
 export const metadata: Metadata = {
   title: `Estruturas Metálicas Industriais e Comerciais | ${BRAND_NAME}`,
@@ -77,7 +79,9 @@ const services = [
   },
 ]
 
-export default function ServicosPage() {
+export default async function ServicosPage() {
+  const WHATSAPP_NUMBER = await getWhatsAppNumber()
+
   return (
     <div>
 
@@ -195,10 +199,9 @@ export default function ServicosPage() {
                   Orçamento Gratuito
                   <ArrowUpRight style={{ width: '14px', height: '14px' }} />
                 </Link>
-                <a
+                <TrackedWhatsAppLink
+                  source="servicos_page"
                   href={`https://wa.me/${WHATSAPP_NUMBER}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
                   style={{
                     display: 'inline-flex',
                     alignItems: 'center',
@@ -217,7 +220,7 @@ export default function ServicosPage() {
                   className="hover:!border-[#0f172a] hover:!text-[#0f172a]"
                 >
                   Falar pelo WhatsApp
-                </a>
+                </TrackedWhatsAppLink>
               </div>
             </div>
           </div>

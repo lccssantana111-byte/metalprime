@@ -148,6 +148,7 @@ export default function CTAButton({
         rel="noopener noreferrer"
         style={combinedStyle}
         className={className}
+        onClick={onClick}
         {...handlers}
       >
         {children}

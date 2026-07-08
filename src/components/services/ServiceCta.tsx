@@ -3,7 +3,8 @@
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { ArrowRight, Phone, MessageCircle, ShieldCheck, Clock, Wrench } from 'lucide-react'
-import { COMPANY_PHONE, WHATSAPP_NUMBER } from '@/lib/constants'
+import { COMPANY_PHONE } from '@/lib/constants'
+import { useWhatsAppNumber } from '@/components/providers/WhatsAppNumberProvider'
 
 const trust = [
   { icon: ShieldCheck, text: 'ART em 100% dos projetos estruturais' },
@@ -16,6 +17,8 @@ interface Props {
 }
 
 export default function ServiceCta({ serviceName }: Props) {
+  const WHATSAPP_NUMBER = useWhatsAppNumber()
+
   return (
     <section
       style={{

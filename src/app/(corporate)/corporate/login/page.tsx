@@ -4,9 +4,11 @@ import { useState } from 'react'
 import { createClient } from '@/lib/supabase/client'
 import { toast } from 'sonner'
 import { Mail, ArrowRight, CheckCircle } from 'lucide-react'
-import { BRAND_NAME, WHATSAPP_NUMBER } from '@/lib/constants'
+import { BRAND_NAME } from '@/lib/constants'
+import { useWhatsAppNumber } from '@/components/providers/WhatsAppNumberProvider'
 
 export default function CorporateLoginPage() {
+  const WHATSAPP_NUMBER = useWhatsAppNumber()
   const [email, setEmail] = useState('')
   const [loading, setLoading] = useState(false)
   const [sent, setSent] = useState(false)

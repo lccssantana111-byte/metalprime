@@ -2,10 +2,11 @@ import { notFound, redirect } from 'next/navigation'
 import { createClient } from '@/lib/supabase/server'
 import { createAdminClient } from '@/lib/supabase/admin'
 import type { Project } from '@/types'
-import { SERVICE_LABELS, PROJECT_STATUS_LABELS, WHATSAPP_NUMBER } from '@/lib/constants'
+import { SERVICE_LABELS, PROJECT_STATUS_LABELS } from '@/lib/constants'
 import { formatBRL, formatDate } from '@/lib/utils'
 import { ArrowLeft, CheckCircle, Circle, Clock, MessageCircle } from 'lucide-react'
 import Link from 'next/link'
+import { getWhatsAppNumber } from '@/lib/queries/settings'
 
 export const dynamic = 'force-dynamic'
 
@@ -24,6 +25,7 @@ export default async function CorporateProjetoPage({ params }: { params: Promise
   const auth = await createClient()
   const { data: { user } } = await auth.auth.getUser()
   if (!user) redirect('/corporate/login')
+  const WHATSAPP_NUMBER = await getWhatsAppNumber()
 
   const supabase = createAdminClient()
 

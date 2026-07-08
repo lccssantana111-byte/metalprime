@@ -1,6 +1,8 @@
 import { createClient } from '@/lib/supabase/server'
 import Link from 'next/link'
-import { BRAND_NAME, WHATSAPP_NUMBER } from '@/lib/constants'
+import { BRAND_NAME } from '@/lib/constants'
+import { WhatsAppNumberProvider } from '@/components/providers/WhatsAppNumberProvider'
+import { getWhatsAppNumber } from '@/lib/queries/settings'
 
 export default async function CorporateLayout({
   children,
@@ -9,8 +11,10 @@ export default async function CorporateLayout({
 }) {
   const supabase = await createClient()
   const { data: { user } } = await supabase.auth.getUser()
+  const whatsappNumber = await getWhatsAppNumber()
 
   return (
+    <WhatsAppNumberProvider number={whatsappNumber}>
     <div style={{
       minHeight: '100dvh',
       background: '#080c14',
@@ -162,5 +166,6 @@ export default async function CorporateLayout({
         </div>
       )}
     </div>
+    </WhatsAppNumberProvider>
   )
 }
