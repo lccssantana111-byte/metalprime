@@ -5,7 +5,7 @@ import { Toaster } from '@/components/ui/sonner'
 import './globals.css'
 import { BRAND_NAME, COMPANY_TAGLINE, SITE_URL } from '@/lib/constants'
 
-const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID
+const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID ?? 'GTM-P3HJJKRK'
 
 const dmSans = DM_Sans({
   variable: '--font-dm-sans',
