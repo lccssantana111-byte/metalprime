@@ -15,16 +15,16 @@ export function buildWhatsAppUrl(message: string, number = WHATSAPP_NUMBER): str
   return `https://wa.me/${number}?text=${encoded}`
 }
 
-export function buildQuoteWhatsAppUrl(name: string, service: ServiceType): string {
+export function buildQuoteWhatsAppUrl(name: string, service: ServiceType, number?: string): string {
   const serviceName = SERVICE_WA_NAMES[service]
   const message = `Olá! Sou ${name} e acabei de solicitar um orçamento para *${serviceName}* pelo site. Gostaria de acompanhar minha solicitação.`
-  return buildWhatsAppUrl(message)
+  return buildWhatsAppUrl(message, number)
 }
 
-export function buildLeadWhatsAppUrl(name: string, service?: ServiceType | null): string {
+export function buildLeadWhatsAppUrl(name: string, service?: ServiceType | null, number?: string): string {
   const serviceText = service ? ` sobre *${SERVICE_WA_NAMES[service]}*` : ''
   const message = `Olá! Sou ${name} e enviei uma mensagem pelo site${serviceText}. Gostaria de falar com um especialista.`
-  return buildWhatsAppUrl(message)
+  return buildWhatsAppUrl(message, number)
 }
 
 export function buildAdminWhatsAppUrl(clientPhone: string, clientName: string, service?: ServiceType | null): string {

@@ -6,8 +6,9 @@ import ProcessSection from '@/components/home/ProcessSection'
 import TestimonialsCarousel from '@/components/home/TestimonialsCarousel'
 import CtaBanner from '@/components/home/CtaBanner'
 import { getFeaturedPortfolio } from '@/lib/queries/portfolio'
-import { localBusinessSchema, websiteSchema } from '@/lib/seo'
+import { buildLocalBusinessSchema, websiteSchema } from '@/lib/seo'
 import { BRAND_NAME, COMPANY_TAGLINE, SITE_URL } from '@/lib/constants'
+import { getWhatsAppNumber } from '@/lib/queries/settings'
 
 export const revalidate = 1800
 
@@ -30,12 +31,13 @@ export const metadata: Metadata = {
 
 export default async function HomePage() {
   const featuredItems = await getFeaturedPortfolio().catch(() => [])
+  const whatsappNumber = await getWhatsAppNumber()
 
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(buildLocalBusinessSchema(whatsappNumber)) }}
       />
       <script
         type="application/ld+json"

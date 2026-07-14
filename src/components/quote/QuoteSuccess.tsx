@@ -5,6 +5,7 @@ import { CheckCircle2, ArrowRight, Clock } from 'lucide-react'
 import { buildQuoteWhatsAppUrl } from '@/lib/whatsapp'
 import type { WizardState } from './QuoteWizard'
 import type { ServiceType } from '@/types'
+import { useWhatsAppNumber } from '@/components/providers/WhatsAppNumberProvider'
 
 interface Props { state: WizardState }
 
@@ -22,7 +23,8 @@ function formatBRL(v: number) {
 }
 
 export default function QuoteSuccess({ state }: Props) {
-  const waUrl = buildQuoteWhatsAppUrl(state.name, state.services[0] as ServiceType)
+  const whatsappNumber = useWhatsAppNumber()
+  const waUrl = buildQuoteWhatsAppUrl(state.name, state.services[0] as ServiceType, whatsappNumber)
   const priceRange = PRICE_RANGES[state.services[0]]
 
   return (

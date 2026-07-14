@@ -93,7 +93,8 @@ export const websiteSchema = {
   },
 }
 
-export const localBusinessSchema = {
+export function buildLocalBusinessSchema(whatsappNumber: string = WHATSAPP_NUMBER) {
+  return {
   '@context': 'https://schema.org',
   '@type': ['LocalBusiness', 'ProfessionalService'],
   '@id': `${SITE_URL}/#business`,
@@ -113,7 +114,7 @@ export const localBusinessSchema = {
     },
     {
       '@type': 'ContactPoint',
-      telephone: `+${WHATSAPP_NUMBER}`,
+      telephone: `+${whatsappNumber}`,
       contactType: 'sales',
     },
   ],
@@ -184,4 +185,5 @@ export const localBusinessSchema = {
     worstRating: '1',
   },
   sameAs: ['https://www.instagram.com/metalshark', 'https://www.facebook.com/metalshark'],
+  }
 }
