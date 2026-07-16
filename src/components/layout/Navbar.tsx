@@ -30,7 +30,10 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
   const [servicesOpen, setServicesOpen] = useState(false)
+  const [mounted, setMounted] = useState(false)
   const pathname = usePathname()
+
+  useEffect(() => { setMounted(true) }, [])
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 48)
@@ -45,8 +48,12 @@ export default function Navbar() {
     return () => { document.body.style.overflow = '' }
   }, [mobileOpen])
 
+  // Guarded by `mounted` so the server-rendered shell (which can be served from
+  // a cached/static snapshot) always agrees with the client's first paint —
+  // the correct active link applies right after hydration, avoiding a
+  // hydration mismatch if the cached HTML and the live pathname ever diverge.
   const isActive = (href: string) =>
-    href === '/' ? pathname === '/' : pathname.startsWith(href)
+    mounted && (href === '/' ? pathname === '/' : pathname.startsWith(href))
 
   // D = dark state: at top of page, navbar is dark/glass over the hero
   const D = !scrolled

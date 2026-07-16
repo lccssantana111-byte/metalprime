@@ -6,6 +6,7 @@ export async function proxy(request: NextRequest) {
 
   const isAdminPath = pathname.startsWith('/admin')
   const isAdminLogin = pathname === '/admin/login'
+  const isAdminResetPassword = pathname === '/admin/reset-password'
   const isCorporatePath = pathname.startsWith('/corporate')
   const isCorporateLogin = pathname === '/corporate/login'
 
@@ -42,7 +43,7 @@ export async function proxy(request: NextRequest) {
     data: { user },
   } = await supabase.auth.getUser()
 
-  if (isAdminPath && !isAdminLogin && !user) {
+  if (isAdminPath && !isAdminLogin && !isAdminResetPassword && !user) {
     const url = request.nextUrl.clone()
     url.pathname = '/admin/login'
     return NextResponse.redirect(url)
