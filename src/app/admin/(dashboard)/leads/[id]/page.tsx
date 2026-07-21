@@ -16,6 +16,7 @@ import LeadStatusChanger from '@/components/admin/leads/LeadStatusChanger'
 import LeadNoteForm from '@/components/admin/leads/LeadNoteForm'
 import { LeadAssign } from '@/components/admin/leads/LeadAssign'
 import { WhatsAppTemplates } from '@/components/admin/leads/WhatsAppTemplates'
+import { ConvertToClientButton } from '@/components/admin/leads/ConvertToClientButton'
 
 export const dynamic = 'force-dynamic'
 
@@ -175,6 +176,11 @@ export default async function LeadDetailPage({ params }: { params: Promise<{ id:
               {LEAD_STATUS_LABELS[typedLead.status]}
             </Badge>
             <LeadStatusChanger leadId={id} currentStatus={typedLead.status} />
+            {typedLead.status === 'ganho' && (
+              <div className="mt-3 pt-3 border-t border-slate-100">
+                <ConvertToClientButton leadId={id} clientId={typedLead.client_id} />
+              </div>
+            )}
           </div>
 
           {/* Assignment */}

@@ -6,6 +6,7 @@ import { formatBRL, formatDate, formatPhone } from '@/lib/utils'
 import { ArrowLeft, Mail, Phone, MapPin, Building2 } from 'lucide-react'
 import Link from 'next/link'
 import { Badge } from '@/components/ui/badge'
+import { ClientPortalInvite } from '@/components/admin/clients/ClientPortalInvite'
 
 export const dynamic = 'force-dynamic'
 
@@ -156,7 +157,7 @@ export default async function ClienteDetailPage({ params }: { params: Promise<{ 
             <h3 className="font-semibold text-foreground mb-3">Portal corporativo</h3>
             <Badge
               variant="outline"
-              className={`text-xs border ${
+              className={`text-xs border mb-4 ${
                 c.portal_enabled
                   ? 'border-green-500/30 text-green-400'
                   : 'border-slate-200 text-slate-400'
@@ -164,9 +165,7 @@ export default async function ClienteDetailPage({ params }: { params: Promise<{ 
             >
               {c.portal_enabled ? 'Portal ativo' : 'Portal desativado'}
             </Badge>
-            {c.portal_user_id && (
-              <p className="text-xs text-slate-400 mt-2">Usuário vinculado</p>
-            )}
+            <ClientPortalInvite clientId={c.id} email={c.email} portalEnabled={c.portal_enabled} />
           </div>
         </div>
       </div>
