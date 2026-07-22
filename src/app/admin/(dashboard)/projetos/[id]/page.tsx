@@ -3,9 +3,10 @@ import { createAdminClient } from '@/lib/supabase/admin'
 import type { Project } from '@/types'
 import { SERVICE_LABELS, PROJECT_STATUS_LABELS } from '@/lib/constants'
 import { formatBRL, formatDate } from '@/lib/utils'
-import { ArrowLeft } from 'lucide-react'
+import { ArrowLeft, Pencil } from 'lucide-react'
 import Link from 'next/link'
 import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
 
 export const dynamic = 'force-dynamic'
 
@@ -22,10 +23,18 @@ export default async function ProjetoDetailPage({ params }: { params: Promise<{ 
 
   return (
     <div>
-      <Link href="/admin/projetos" className="inline-flex items-center gap-2 text-sm text-slate-500 hover:text-slate-800 mb-6">
-        <ArrowLeft className="w-4 h-4" />
-        Voltar
-      </Link>
+      <div className="flex items-center justify-between mb-6">
+        <Link href="/admin/projetos" className="inline-flex items-center gap-2 text-sm text-slate-500 hover:text-slate-800">
+          <ArrowLeft className="w-4 h-4" />
+          Voltar
+        </Link>
+        <Button asChild size="sm" className="bg-[#f97316] hover:bg-[#ea580c] text-white">
+          <Link href={`/admin/projetos/${p.id}/editar`}>
+            <Pencil className="w-4 h-4 mr-2" />
+            Editar
+          </Link>
+        </Button>
+      </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div className="lg:col-span-2 space-y-5">

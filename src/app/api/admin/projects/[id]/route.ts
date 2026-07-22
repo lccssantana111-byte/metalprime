@@ -13,11 +13,15 @@ const milestoneSchema = z.object({
 
 const patchProjectSchema = z.object({
   name: z.string().min(2).max(200).optional(),
+  service: z.enum(['portoes', 'grades_e_cercas', 'escadas', 'corrimoes', 'estruturas_metalicas', 'sob_medida']).optional(),
   status: z.enum(['planejamento', 'medicao', 'producao', 'instalacao', 'concluido', 'pausado', 'cancelado']).optional(),
-  start_date: z.string().optional(),
-  end_date: z.string().optional(),
+  description: z.string().max(5000).nullable().optional(),
+  start_date: z.string().nullable().optional(),
+  estimated_end: z.string().nullable().optional(),
   contract_value: z.number().positive().optional(),
   amount_paid: z.number().min(0).optional(),
+  client_id: z.string().uuid().nullable().optional(),
+  quote_id: z.string().uuid().nullable().optional(),
   notes: z.string().max(5000).optional(),
   milestones: z.array(milestoneSchema).max(50).optional(),
 }).strict()
