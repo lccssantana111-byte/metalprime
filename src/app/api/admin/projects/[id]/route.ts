@@ -18,7 +18,7 @@ const patchProjectSchema = z.object({
   description: z.string().max(5000).nullable().optional(),
   start_date: z.string().nullable().optional(),
   estimated_end: z.string().nullable().optional(),
-  contract_value: z.number().positive().optional(),
+  contract_value: z.number().min(0).optional(),
   amount_paid: z.number().min(0).optional(),
   client_id: z.string().uuid().nullable().optional(),
   quote_id: z.string().uuid().nullable().optional(),

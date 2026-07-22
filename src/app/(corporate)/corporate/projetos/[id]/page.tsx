@@ -98,18 +98,25 @@ export default async function CorporateProjetoPage({ params }: { params: Promise
         Meus projetos
       </Link>
 
-      <div style={{
+      <style>{`
+        @media (min-width: 860px) {
+          .corporate-project-grid {
+            grid-template-columns: minmax(0, 1fr) min(300px, 100%) !important;
+          }
+        }
+      `}</style>
+      <div className="corporate-project-grid" style={{
         display: 'grid',
-        gridTemplateColumns: 'minmax(0, 1fr) min(300px, 100%)',
+        gridTemplateColumns: '1fr',
         gap: '1.25rem',
         alignItems: 'start',
       }}>
         {/* Left column */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem', minWidth: 0 }}>
 
           {/* Project header */}
           <div style={card}>
-            <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: '1rem', marginBottom: '6px' }}>
+            <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'flex-start', justifyContent: 'space-between', gap: '0.6rem', marginBottom: '6px' }}>
               <h1 style={{
                 fontFamily: 'var(--font-display, var(--font-sans))',
                 fontSize: 'clamp(1.4rem, 2.5vw, 1.75rem)',
@@ -118,6 +125,8 @@ export default async function CorporateProjetoPage({ params }: { params: Promise
                 letterSpacing: '-0.02em',
                 lineHeight: 1.15,
                 margin: 0,
+                minWidth: 0,
+                wordBreak: 'break-word',
               }}>
                 {p.name}
               </h1>
@@ -220,7 +229,7 @@ export default async function CorporateProjetoPage({ params }: { params: Promise
         </div>
 
         {/* Right column */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', minWidth: 0 }}>
 
           {/* Financial */}
           <div style={card}>

@@ -122,6 +122,7 @@ export default function AdminLoginPage() {
                 </label>
                 <Input
                   id="email-reset"
+                  name="email"
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
@@ -175,6 +176,7 @@ export default function AdminLoginPage() {
                 </label>
                 <Input
                   id="email"
+                  name="email"
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
@@ -210,6 +212,7 @@ export default function AdminLoginPage() {
                 </div>
                 <Input
                   id="password"
+                  name="password"
                   type="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
