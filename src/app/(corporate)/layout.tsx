@@ -15,6 +15,9 @@ export default async function CorporateLayout({
 
   return (
     <WhatsAppNumberProvider number={whatsappNumber}>
+    <style>{`
+      html, body { background: #080c14; }
+    `}</style>
     <div style={{
       minHeight: '100dvh',
       background: '#080c14',
