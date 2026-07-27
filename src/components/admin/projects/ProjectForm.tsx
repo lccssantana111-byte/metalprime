@@ -32,6 +32,7 @@ type FormValues = z.infer<typeof schema>
 interface Milestone {
   title: string
   due_date: string
+  completed_at: string | null
 }
 
 interface ProjectFormProps {
@@ -42,7 +43,7 @@ interface ProjectFormProps {
 export function ProjectForm({ project, clients = [] }: ProjectFormProps) {
   const router = useRouter()
   const [milestones, setMilestones] = useState<Milestone[]>(
-    project?.milestones?.map((m) => ({ title: m.title, due_date: m.due_date ?? '' })) ?? []
+    project?.milestones?.map((m) => ({ title: m.title, due_date: m.due_date ?? '', completed_at: m.completed_at ?? null })) ?? []
   )
   const [newMilestone, setNewMilestone] = useState('')
   const [saving, setSaving] = useState(false)
@@ -70,7 +71,7 @@ export function ProjectForm({ project, clients = [] }: ProjectFormProps) {
   const addMilestone = () => {
     const t = newMilestone.trim()
     if (!t) return
-    setMilestones((prev) => [...prev, { title: t, due_date: '' }])
+    setMilestones((prev) => [...prev, { title: t, due_date: '', completed_at: null }])
     setNewMilestone('')
   }
 
@@ -80,6 +81,12 @@ export function ProjectForm({ project, clients = [] }: ProjectFormProps) {
 
   const updateMilestoneDate = (i: number, date: string) => {
     setMilestones((prev) => prev.map((m, idx) => (idx === i ? { ...m, due_date: date } : m)))
+  }
+
+  const toggleMilestoneCompleted = (i: number) => {
+    setMilestones((prev) =>
+      prev.map((m, idx) => (idx === i ? { ...m, completed_at: m.completed_at ? null : new Date().toISOString() } : m))
+    )
   }
 
   const onSubmit = async (data: FormValues) => {
@@ -193,8 +200,17 @@ export function ProjectForm({ project, clients = [] }: ProjectFormProps) {
             <div className="space-y-3">
               {milestones.map((m, i) => (
                 <div key={i} className="flex items-center gap-3">
+                  <input
+                    type="checkbox"
+                    checked={!!m.completed_at}
+                    onChange={() => toggleMilestoneCompleted(i)}
+                    title="Marcar como concluído"
+                    className="w-4 h-4 shrink-0 accent-[#f97316]"
+                  />
                   <div className="flex-1 flex items-center gap-2">
-                    <span className="text-sm text-foreground flex-1">{m.title}</span>
+                    <span className={`text-sm flex-1 ${m.completed_at ? 'text-slate-400 line-through' : 'text-foreground'}`}>
+                      {m.title}
+                    </span>
                     <Input
                       type="date"
                       value={m.due_date}

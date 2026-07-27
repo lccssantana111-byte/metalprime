@@ -7,8 +7,8 @@ type Params = { params: Promise<{ id: string }> }
 
 const milestoneSchema = z.object({
   title: z.string().min(1).max(200),
-  due_date: z.string().optional(),
-  completed_at: z.string().optional(),
+  due_date: z.string().nullable().optional(),
+  completed_at: z.string().nullable().optional(),
 })
 
 const patchProjectSchema = z.object({
