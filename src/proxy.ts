@@ -1,6 +1,16 @@
 import { createServerClient } from '@supabase/ssr'
 import { NextResponse, type NextRequest } from 'next/server'
 
+// Único e-mail que sempre atravessa o bloqueio do site (ver site_settings.site_locked).
+// Mantido fixo em código (não em env) para nunca ficar trancado fora por engano.
+const SITE_LOCK_BYPASS_EMAIL = 'lccs.santana111@gmail.com'
+
+const SITE_LOCK_EXEMPT_PATHS = [
+  '/suspenso',
+  '/admin/login',
+  '/admin/reset-password',
+]
+
 export async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl
 
@@ -39,9 +49,29 @@ export async function proxy(request: NextRequest) {
     },
   )
 
-  const {
-    data: { user },
-  } = await supabase.auth.getUser()
+  let user: Awaited<ReturnType<typeof supabase.auth.getUser>>['data']['user'] = null
+
+  if (!SITE_LOCK_EXEMPT_PATHS.includes(pathname)) {
+    const { data: lockSetting } = await supabase
+      .from('site_settings')
+      .select('value')
+      .eq('key', 'site_locked')
+      .single()
+
+    if (lockSetting?.value === true) {
+      user = (await supabase.auth.getUser()).data.user
+
+      if (user?.email !== SITE_LOCK_BYPASS_EMAIL) {
+        const url = request.nextUrl.clone()
+        url.pathname = '/suspenso'
+        return NextResponse.rewrite(url)
+      }
+    }
+  }
+
+  if ((isAdminPath || isCorporatePath) && !user) {
+    user = (await supabase.auth.getUser()).data.user
+  }
 
   if (isAdminPath && !isAdminLogin && !isAdminResetPassword && !user) {
     const url = request.nextUrl.clone()
@@ -72,5 +102,5 @@ export async function proxy(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/admin/:path*', '/corporate/:path*'],
+  matcher: ['/((?!_next/static|_next/image|favicon.ico|logo.png|robots.txt|sitemap.xml).*)'],
 }
